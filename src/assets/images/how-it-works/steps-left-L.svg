@@ -1,0 +1,26 @@
+<svg width="1347" height="530" viewBox="0 0 1347 530" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="197%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="85"/>
+    </filter>
+
+<g filter="url(#filter0_b_18_264)">
+<rect width="1347" height="530" fill="white" fill-opacity="0.01"/>
+</g>
+
+    <g filter="url(#blur-filter)">
+        <rect x="62" y="351" width="154" height="143" rx="71.5" fill="#00A5FF" fill-opacity="0.18"/>
+        <rect x="1162" y="32" width="154" height="143" rx="71.5" fill="#FFF1C6"/>
+        <rect x="468" y="17" width="131" height="122" rx="61" fill="#20F1C0" fill-opacity="0.34"/>
+        <rect x="62" y="351" width="154" height="143" rx="71.5" fill="#00A5FF" fill-opacity="0.18"/>
+        <rect x="1162" y="32" width="154" height="143" rx="71.5" fill="#FFF1C6"/>
+        <rect x="468" y="17" width="131" height="122" rx="61" fill="#20F1C0" fill-opacity="0.34"/>
+    </g>
+<defs>
+<filter id="filter0_b_18_264" x="-250" y="-250" width="1847" height="1030" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="125"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_18_264"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_18_264" result="shape"/>
+</filter>
+</defs>
+</svg>
