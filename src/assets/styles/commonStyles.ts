@@ -11,7 +11,7 @@ export const colorVariables = {
   blackColor: "#000000",
   lightBlackColor: "#1A202C",
   darkGrayColor: "#0b132a",
-  whiteColor: "#fff",
+  whiteColor: "#ffffff",
   transparentWhiteColor: "#ffffff80",
   grayColor: "#fcfcfc",
   redColor: "#ff0000",
@@ -57,6 +57,7 @@ export const fontFamily = css`
 
 export interface ButtonProps {
   $background?: string;
+  width?: string;
 }
 
 const greenGradientBackground = css`
@@ -64,7 +65,7 @@ const greenGradientBackground = css`
 `;
 
 const customBackground = css<ButtonProps>`
-  background-color: ${(props) => props.$background};
+  background: ${(props) => props.$background};
 `;
 
 export const Button = styled.button<ButtonProps>`
@@ -89,7 +90,7 @@ export const Button = styled.button<ButtonProps>`
   //background: linear-gradient(133deg, #20f1c0 0%, #3cc1b3 100%);
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
-
+  width: ${(props) => props.width || "auto"};
   ${({ $background }) =>
     $background ? customBackground : greenGradientBackground};
 

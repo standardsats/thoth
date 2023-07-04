@@ -8,8 +8,8 @@ import { MainScreen } from "./new/main-screen/MainScreen.tsx";
 import { Header } from "./new/header/Header.tsx";
 import { HowItWorks } from "./new/how-it-works/HowItWorks.tsx";
 import { ProductAndServices } from "./new/products-and-services/ProductsAndServices.tsx";
-import NewSlider from "./new/slider/StyledSlider.tsx";
-import MySlider from "./new/slider/CustomSlider.tsx";
+import MySlider from "./new/photo/photo-slider/CustomSlider.tsx";
+import { Photo } from "./new/photo/Photo.tsx";
 // import styled from "styled-components";
 
 function App() {
@@ -20,9 +20,9 @@ function App() {
       <Header />
       <MainScreen />
       <HowItWorks />
-      <NewSlider />
+      <Photo />
       <ProductAndServices />
-      <MySlider />
+      {/*<MySlider />*/}
       {/*<Header />*/}
       {/*<main>*/}
       {/*  <MainScreen />*/}

@@ -8,6 +8,8 @@ type ButtonPropsType = {
   minWidth?: string;
   type: "button" | "submit" | "reset";
   $background?: string;
+  width?: string;
+  $underline?: string;
 };
 
 export function CustomButton({
@@ -16,6 +18,7 @@ export function CustomButton({
   onClick,
   type,
   $background,
+  width,
 }: ButtonPropsType) {
   return (
     <Button
@@ -23,6 +26,7 @@ export function CustomButton({
       className={className}
       $background={$background}
       onClick={onClick}
+      width={width}
     >
       {children}
     </Button>
