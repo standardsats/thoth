@@ -5,11 +5,10 @@ import {
   coverImage,
   divWithBackground,
   fontFamily,
-} from "../../assets/styles/commonStyles.ts";
-import { CustomButton } from "../common/button/Button.tsx";
-import { Title } from "../title/Title.tsx";
-import { CustomText } from "../text/Text.tsx";
-import { Test } from "./test/Test.tsx";
+} from "../../../assets/styles/commonStyles.ts";
+import { CustomButton } from "../../common/button/Button.tsx";
+import { Title } from "../../title/Title.tsx";
+import { CustomText } from "../../text/Text.tsx";
 
 type ProductsAndService = {
   title: string;
@@ -74,15 +73,16 @@ const productsAndService: ProductsAndService = {
 };
 
 const StyledDescription = styled.div`
+  position: relative;
+  margin-top: 500px;
   ${coverImage};
-  min-height: calc(901vw / 14.4);
-  padding: 4.86vw;
+  height: 1115px;
   box-sizing: border-box;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("/src/assets/images/products-and-service/description-L.svg");
+  background-image: url("/src/assets/images/products-and-service/test-L.svg");
 
   @media (max-width: 1400px) {
     min-height: 212.58vw;
@@ -99,17 +99,18 @@ const StyledButtons = styled.div`
 `;
 
 const StyledMonitor = styled.div`
-  margin-top: 2.57vw;
-  padding: 0 0 0 6vw;
+  position: relative;
+  z-index: 999;
+  top: -200px;
+  border: 1px solid red;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 88.47vw;
-  min-height: 30.35vw;
+  width: 100%;
+  min-height: 41.53vw;
   ${divWithBackground};
-  background-image: url("/src/assets/images/products-and-service/item-L.svg");
-  border-radius: 30px;
+  background-image: url("/src/assets/images/products-and-service/test.svg");
 `;
 
 const StyledActiveButton = styled(CustomButton)`
@@ -184,88 +185,22 @@ const StyledImage = styled.img`
   display: block;
 `;
 
-export const ProductAndServices = () => {
-  const [activeButton, setActiveButton] = useState<string>("One");
-  const [monitorContent, setMonitorContent] = useState<string>(
-    slides["One"].content.textContent
-  );
-
-  useEffect(() => {
-    // Обновить активную кнопку и содержимое монитора при первой загрузке
-    setActiveButton("One");
-    setMonitorContent(slides["One"].content.textContent);
-  }, []);
-
-  const handleButtonClick = (button: string) => {
-    setActiveButton(button);
-    setMonitorContent(slides[button].content.textContent);
-  };
-
-  const buttonKeys = Object.keys(slides);
+export const Test = () => {
 
   return (
-    <>
-      <StyledDescription>
-        <Title color={colorVariables.whiteColor}>
-          {productsAndService.title}
-        </Title>
-        <CustomText
-          color={colorVariables.whiteColor}
-          fontSize={"1.39vw"}
-          $lineheight={"1.5"}
-          $margin={"1vw 0 2.57vw"}
-        >
-          {productsAndService.text}
-        </CustomText>
-        <StyledButtons>
-          {buttonKeys.map((key) => {
-            const isActive = activeButton === key;
-            const ButtonComponent = isActive ? StyledActiveButton : StyledButton;
-            return (
-              <ButtonComponent
-                type={"button"}
-                key={key}
-                onClick={() => handleButtonClick(key)}
-                width={`${98 / buttonKeys.length}%`}
-              >
-                {slides[key].button}
-              </ButtonComponent>
-            );
-          })}
-        </StyledButtons>
-        <StyledMonitor>
-          <div
-            style={{
-              maxWidth: "29vw",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "start"
-            }}
-          >
-            <CustomText
-              color={colorVariables.whiteColor}
-              fontSize={"1.74vw"}
-              $lineheight={"1.6"}
-              $margin={"6.74vw 0 2.57vw"}
-              $letter={"-0.5px"}
-              $textalign={"left"}
-            >
-              {monitorContent}
-            </CustomText>
-            <StyledMonitorButton
-              type={"button"}
-              onClick={() =>
-                console.log("Press", slides[activeButton].content.button)
-              }
-            >
-              {slides[activeButton].content.button}
-              {/*<ButtonPseudoElement />*/}
-            </StyledMonitorButton>
-          </div>
-          <StyledImage src={slides[activeButton].content.image} alt="Image" />
-        </StyledMonitor>
-      </StyledDescription>
-      <Test />
-    </>
+    <StyledDescription>
+      <Title color={colorVariables.whiteColor}>
+        {productsAndService.title}
+      </Title>
+      <CustomText
+        color={colorVariables.whiteColor}
+        fontSize={"1.39vw"}
+        $lineheight={"1.5"}
+        $margin={"1vw 0 2.57vw"}
+      >
+        {productsAndService.text}
+      </CustomText>
+      <StyledMonitor />
+    </StyledDescription>
   );
 };

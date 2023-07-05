@@ -4,9 +4,9 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import arrowLeft from "../../../assets/images/photo/arrow-left.svg";
 import arrowRight from "../../../assets/images/photo/arrow-right.svg";
-import image1 from "../../../assets/images/photo/test-photo.jpg";
-import image2 from "../../../assets/images/photo/test-photo.jpg";
-import image3 from "../../../assets/images/photo/test-photo.jpg";
+import image1 from "../../../assets/images/test/test-photo.jpg";
+import image2 from "../../../assets/images/test/test-photo.jpg";
+import image3 from "../../../assets/images/test/test-photo.jpg";
 import { CustomButton } from "../../common/button/Button.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 
