@@ -9,7 +9,8 @@ import {
 import { CustomButton } from "../common/button/Button.tsx";
 import { Title } from "../title/Title.tsx";
 import { CustomText } from "../text/Text.tsx";
-import { Test } from "./test/Test.tsx";
+import { MobileWallet } from "./mobile-wallet/MobileWallet.tsx";
+import { AvaibleCurrencies } from "./avaible-currencies/AvaibleCurrencies.tsx";
 
 type ProductsAndService = {
   title: string;
@@ -239,7 +240,7 @@ export const ProductAndServices = () => {
               maxWidth: "29vw",
               display: "flex",
               flexDirection: "column",
-              justifyContent: "start"
+              justifyContent: "start",
             }}
           >
             <CustomText
@@ -265,7 +266,8 @@ export const ProductAndServices = () => {
           <StyledImage src={slides[activeButton].content.image} alt="Image" />
         </StyledMonitor>
       </StyledDescription>
-      <Test />
+      <MobileWallet />
+      <AvaibleCurrencies />
     </>
   );
 };

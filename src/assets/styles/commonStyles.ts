@@ -16,6 +16,7 @@ export const colorVariables = {
   grayColor: "#fcfcfc",
   redColor: "#ff0000",
   greenColor: "#20F1C0",
+  darkColor: "#1C2938",
 };
 
 // export const colorVariables = css`

@@ -10,6 +10,7 @@ import { HowItWorks } from "./new/how-it-works/HowItWorks.tsx";
 import { ProductAndServices } from "./new/products-and-services/ProductsAndServices.tsx";
 import MySlider from "./new/photo/photo-slider/CustomSlider.tsx";
 import { Photo } from "./new/photo/Photo.tsx";
+import { UseCasesOfOurProducts } from "./new/use-cases-of-our-products/UseCasesOfOurProducts.tsx";
 // import styled from "styled-components";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <HowItWorks />
       <Photo />
       <ProductAndServices />
+      <UseCasesOfOurProducts />
       {/*<MySlider />*/}
       {/*<Header />*/}
       {/*<main>*/}
@@ -81,7 +83,7 @@ function App() {
       {/*    count is {count}*/}
       {/*  </button>*/}
       {/*  <p>*/}
-      {/*    Edit <code>src/App.tsx</code> and save to test HMR*/}
+      {/*    Edit <code>src/App.tsx</code> and save to mobile-wallet HMR*/}
       {/*  </p>*/}
       {/*</div>*/}
       {/*<p*/}
