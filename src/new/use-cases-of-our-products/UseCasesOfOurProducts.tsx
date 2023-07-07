@@ -4,7 +4,6 @@ import {
   colorVariables,
   coverImage,
   divWithBackground,
-  fontFamily,
 } from "../../assets/styles/commonStyles.ts";
 import { CustomButton } from "../common/button/Button.tsx";
 import { Title } from "../title/Title.tsx";
@@ -175,7 +174,7 @@ const StyledCardText = styled(CustomText)`
   `}
 `;
 
-const StyledWrapper = styled.p`
+const StyledWrapper = styled.div`
   display: flex;
   flex-direction: row;
 `;

@@ -8,6 +8,7 @@ import {
 import { CustomButton } from "../../common/button/Button.tsx";
 import { Title } from "../../title/Title.tsx";
 import { CustomText } from "../../text/Text.tsx";
+import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 
 type MobileWallet = {
   title: string;
@@ -27,7 +28,8 @@ const StyledMobileWallet = styled.div`
   min-height: 41.53vw;
 
   @media (max-width: 1400px) {
-    min-height: 212.58vw;
+    box-sizing: border-box;
+    min-height: 233.66vw;
     flex-direction: column;
   }
 `;
@@ -45,7 +47,11 @@ const StyledMonitor = styled.div`
   width: 100%;
   height: 100%;
   ${coverImage};
-  background-image: url("/src/assets/images/products-and-service/test.svg");
+  background-image: url("/src/assets/images/products-and-service/mobile-wallet-L.svg");
+
+  @media (max-width: 1400px) {
+    background-image: url("/src/assets/images/products-and-service/mobile-wallet-S.svg");
+  }
 `;
 
 const StyledText = styled(CustomText)`
@@ -106,9 +112,6 @@ const DownloadButtonHandler = () => {
   console.log("Press download button");
 };
 
-// const fontSize = isMobile ? "4.92vw" : "1.74vw";
-// const margin = isMobile ? "3.58vw 0 6.04vw" : "1.46vw 0 5.9vw";
-
 const ContentDownloadButton = (
   <StyledButtonContent>
     <StyledIcon />
@@ -116,7 +119,12 @@ const ContentDownloadButton = (
   </StyledButtonContent>
 );
 
+
 export const MobileWallet = () => {
+  const isMobile = useMobileDetection();
+
+  // const fontSize = isMobile ? "4.92vw" : "1.74vw";
+// const margin = isMobile ? "3.58vw 0 6.04vw" : "1.46vw 0 5.9vw";
   return (
     <StyledMobileWallet>
       <StyledMonitor>

@@ -89,7 +89,7 @@ const StyledIcon = styled.div`
   ${divWithImage};
   width: 1.18vw;
   height: 1.04vw;
-  background-image: url("/src/assets/images/button-open.svg");
+  background-image: url("/src/assets/images/common/play-icon.svg");
 
   @media (max-width: 1400px) {
     width: 3.35vw;

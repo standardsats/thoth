@@ -8,15 +8,18 @@ export const resetMarginsAndPaddings = css`
 
 export const colorVariables = {
   blueColor: "#366eff",
+  lightBlackColor: "#16202C",
   blackColor: "#000000",
-  lightBlackColor: "#1A202C",
+  lightGrayColor: "#1A202C",
   darkGrayColor: "#0b132a",
   whiteColor: "#ffffff",
   transparentWhiteColor: "#ffffff80",
   grayColor: "#fcfcfc",
   redColor: "#ff0000",
   greenColor: "#20F1C0",
+  darkGreenColor: "#00BAA4",
   darkColor: "#1C2938",
+
 };
 
 // export const colorVariables = css`
