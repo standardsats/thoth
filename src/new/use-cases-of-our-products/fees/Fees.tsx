@@ -7,6 +7,7 @@ import {
   fontFamily,
 } from "../../../assets/styles/commonStyles.ts";
 import { CustomButton } from "../../common/button/Button.tsx";
+import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 
 type Fees = {
   title: string;
@@ -50,6 +51,13 @@ const StyledFees = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 94%;
+  
+  @media (max-width: 1400px) {
+    padding: 12.37vw 8.25vw 16.89vw 11vw;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
 `;
 
 const StyledLine = styled.div`
@@ -60,6 +68,11 @@ const StyledLine = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
+
+  @media (max-width: 1400px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledMain = styled.div`
@@ -85,6 +98,15 @@ const StyledSubtitle = styled(Subtitle)`
   line-height: 1.2;
   letter-spacing: -1px;
   border-bottom: 2px solid ${colorVariables.lightBlackColor};
+
+  @media (max-width: 1400px) {
+    padding-bottom: 5.09vw;
+    font-size: 9.8vw;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -1px;
+  }
 
   ${({ $margin }) => `
     margin: ${$margin};
@@ -115,8 +137,28 @@ const StyledMainText = styled(CustomText)`
   `}
 `;
 
+const StyledSpan = styled(CustomText)`
+  font-weight: 400;
+
+  @media (max-width: 1400px) {
+    width: 80%;
+  }
+  ${({ $lineheight, $margin, fontSize, $textalign, $letter }) => `
+    line-height: ${$lineheight};
+    margin: ${$margin};
+    font-size: ${fontSize};
+    text-align: ${$textalign};
+    letter-spacing: ${$letter};
+  `}
+`;
+
 const StyledButton = styled(CustomButton)`
   border-radius: 0;
+
+  @media (max-width: 1400px) {
+    margin-top: 10.8vw;
+    width: 100%;
+  }
 `;
 
 const StyledButtonContent = styled.div`
@@ -142,6 +184,7 @@ const StyledCheckText = styled.span`
   letter-spacing: -0.32px;
 
   @media (max-width: 1400px) {
+    margin-right: 6.5vw;
     font-size: 3.15vw;
   }
 `;
@@ -153,7 +196,7 @@ const StyledIcon = styled.div`
   background-image: url("/src/assets/images/common/play-icon.svg");
 
   @media (max-width: 1400px) {
-    width: 3.35vw;
+    width: 3.34vw;
     height: 2.95vw;
   }
 `;
@@ -170,11 +213,23 @@ const ContentCheckButton = (
   </StyledButtonContent>
 );
 
+const Button = () => (
+  <StyledButtonWrapper>
+    <StyledButton
+      type={"button"}
+      children={ContentCheckButton}
+      onClick={CheckButtonHandler}
+    />
+  </StyledButtonWrapper>
+);
+
 export const Fees = () => {
+  const isMobile = useMobileDetection();
   return (
     <StyledFees>
       <StyledSubtitle
-        $margin={"0 0 3.89vw"}
+        $margin={"0"}
+        // $margin={"0 0 3.89vw"}
         color={colorVariables.lightBlackColor}
       >
         {fees.title}
@@ -182,10 +237,13 @@ export const Fees = () => {
       <StyledLine>
         <StyledTexType
           color={colorVariables.blackColor}
-          $margin={"0"}
-          fontSize={"2.78vw"}
+          // $margin={"0"}
+          $margin={"9.82vw 0 0 0"}
+          // fontSize={"2.78vw"}
+          fontSize={"6.88vw"}
           $lineheight={"1.2"}
-          $letter={"normal"}
+          // $letter={"normal"}
+          $letter={"-0.7px"}
           $textalign={"left"}
         >
           {fees.lineOne.title}
@@ -193,8 +251,10 @@ export const Fees = () => {
         <StyledMain>
           <StyledMainText
             color={colorVariables.darkGreenColor}
-            $margin={"0"}
-            fontSize={"2.78vw"}
+            // $margin={"0"}
+            $margin={"5.1vw 0 3.1vw"}
+            fontSize={"6.88vw"}
+            // fontSize={"2.78vw"}
             $lineheight={"1.2"}
             $letter={"normal"}
             $textalign={"left"}
@@ -202,31 +262,29 @@ export const Fees = () => {
             {fees.lineOne.text.main}
           </StyledMainText>
           {fees.lineOne.text.span && (
-            <StyledMainText
+            <StyledSpan
               color={colorVariables.blackColor}
               $margin={"1vw 0"}
-              fontSize={"1.28vw"}
+              fontSize={"4.09vw"}
+              // fontSize={"1.28vw"}
               $lineheight={"1.2"}
-              $letter={"normal"}
+              // $letter={"normal"}
+              $letter={"-0.4px"}
               $textalign={"left"}
             >
               {fees.lineOne.text.span}
-            </StyledMainText>
+            </StyledSpan>
           )}
         </StyledMain>
-        <StyledButtonWrapper>
-          <StyledButton
-            type={"button"}
-            children={ContentCheckButton}
-            onClick={CheckButtonHandler}
-          />
-        </StyledButtonWrapper>
+        {!isMobile && <Button />}
       </StyledLine>
       <StyledLine>
         <StyledTexType
           color={colorVariables.blackColor}
-          $margin={"0"}
-          fontSize={"2.78vw"}
+          // $margin={"0"}
+          $margin={"9.82vw 0 0 0"}
+          fontSize={"6.88vw"}
+          // fontSize={"2.78vw"}
           $lineheight={"1.2"}
           $letter={"normal"}
           $textalign={"left"}
@@ -236,16 +294,21 @@ export const Fees = () => {
         <StyledMain>
           <StyledMainText
             color={colorVariables.darkGreenColor}
-            $margin={"0"}
-            fontSize={"2.78vw"}
+            // $margin={"0"}
+            $margin={"5.1vw 0 3.1vw"}
+            fontSize={"6.88vw"}
+            // fontSize={"2.78vw"}
             $lineheight={"1.2"}
-            $letter={"normal"}
+            // $letter={"normal"}
+            $letter={"-0.7px"}
             $textalign={"left"}
           >
             {fees.lineTwo.text.main}
           </StyledMainText>
         </StyledMain>
+        {isMobile && <Button />}
       </StyledLine>
     </StyledFees>
   );
 };
+

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import styled from "styled-components";
 import {
   colorVariables,
@@ -5,6 +6,7 @@ import {
 } from "../../../assets/styles/commonStyles.ts";
 import { Title } from "../../title/Title.tsx";
 import { CustomText } from "../../text/Text.tsx";
+import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 
 type AvaibleCurrencies = {
   title: string;
@@ -50,43 +52,73 @@ const StyledAvaibleCurrencies = styled.div`
   background-image: url("/src/assets/images/products-and-service/avaible-currencies.svg");
 
   @media (max-width: 1400px) {
+    padding: 22vw 0 20.27vw 4.93vw;
     min-height: 212.58vw;
     flex-direction: column;
+    background-image: none;
+    background-color: ${colorVariables.darkGrayColor};
   }
 `;
 
 const StyledTitle = styled(Title)`
   text-align: left;
+  line-height: 1.2;
+
+  @media (max-width: 1400px) {
+    max-width: 80%;
+  }
 `;
 
 const StyledGridContainer = styled.div`
   display: grid;
-  grid-template-columns: 20% auto;
+  grid-template-columns: 19vw 1fr;
   grid-template-rows: auto auto auto;
   gap: 5.2vw 1vw;
+  //TODO
+  @media (max-width: 1400px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const StyledGridItemLeft = styled.div`
   grid-column: 1;
   display: flex;
   align-items: center;
+
+  @media (max-width: 1400px) {
+    width: 52%;
+    align-items: center;
+  }
 `;
 
 const StyledGridItemRight = styled.div`
   grid-column: 2;
   display: flex;
   align-items: center;
+
+  @media (max-width: 1400px) {
+    align-items: end;
+    justify-content: end;
+  }
 `;
 
 const StyledImage = styled.img`
-  width: auto;
+  width: 74vw;
   height: auto;
-  max-width: 100%;
-  max-height: 100%;
+  //TODO
+  @media (max-width: 1400px) {
+    padding-left: 3.5vw;
+    width: 92vw;
+  }
 `;
 
 const StyledText = styled(CustomText)`
   max-width: 37%;
+
+  @media (max-width: 1400px) {
+    max-width: 80%;
+  }
 
   ${({ $lineheight, $margin, fontSize, $textalign }) => `
     line-height: ${$lineheight};
@@ -100,6 +132,12 @@ const StyledGridText = styled(CustomText)`
   font-weight: 500;
   letter-spacing: -0.8px;
 
+  @media (max-width: 1400px) {
+    letter-spacing: -0.5px;
+    width: 100%;
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+  }
+
   ${({ $lineheight, $margin, fontSize, $textalign }) => `
     line-height: ${$lineheight};
     margin: ${$margin};
@@ -109,6 +147,15 @@ const StyledGridText = styled(CustomText)`
 `;
 
 export const AvaibleCurrencies = () => {
+  const isMobile = useMobileDetection();
+
+  const fontSize = isMobile ? "4.92vw" : "1.73vw";
+  const margin = isMobile ? "7.87vw 0 4.3vw" : "2vw 0 6.18vw";
+
+  const fontSizeGrid = isMobile ? "6.89vw" : "2.77vw";
+  const lineHeightGrid = isMobile ? "1" : "1.5";
+  const marginGrid = isMobile ? "14.37vw 0 10vw" : "0 1vw 0 0";
+
   return (
     <StyledAvaibleCurrencies>
       <StyledTitle color={colorVariables.whiteColor}>
@@ -116,31 +163,38 @@ export const AvaibleCurrencies = () => {
       </StyledTitle>
       <StyledText
         color={colorVariables.whiteColor}
-        fontSize={"1.73vw"}
+        fontSize={fontSize}
         $lineheight={"1.6"}
-        $margin={"2vw 0 6.18vw"}
+        $margin={margin}
         $textalign={"left"}
       >
         {avaibleCurrencies.text}
       </StyledText>
       <StyledGridContainer>
         {avaibleCurrencies.imagesContext.map((item, index) => (
-          <React.Fragment key={index}>
+          <Fragment key={index}>
             <StyledGridItemLeft>
               <StyledGridText
                 color={colorVariables.whiteColor}
-                fontSize="2.77vw"
-                $lineheight="1.5"
-                $margin="0 1vw 0 0"
+                fontSize={fontSizeGrid}
+                $lineheight={lineHeightGrid}
+                $margin={marginGrid}
                 $textalign="left"
               >
                 {item.text}
               </StyledGridText>
             </StyledGridItemLeft>
             <StyledGridItemRight>
-              <StyledImage src={item.image} alt={item.text} />
+              {!isMobile ? (
+                <StyledImage src={item.image} alt={item.text} />
+              ) : (
+                <StyledImage
+                  src={"/src/assets/images/products-and-service/line-S.svg"}
+                  alt={item.text}
+                />
+              )}
             </StyledGridItemRight>
-          </React.Fragment>
+          </Fragment>
         ))}
       </StyledGridContainer>
     </StyledAvaibleCurrencies>

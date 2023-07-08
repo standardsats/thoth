@@ -28,8 +28,9 @@ const StyledMobileWallet = styled.div`
   min-height: 41.53vw;
 
   @media (max-width: 1400px) {
+    background-color: ${colorVariables.darkGrayColor};
     box-sizing: border-box;
-    min-height: 233.66vw;
+    min-height: 270.66vw;
     flex-direction: column;
   }
 `;
@@ -48,14 +49,22 @@ const StyledMonitor = styled.div`
   height: 100%;
   ${coverImage};
   background-image: url("/src/assets/images/products-and-service/mobile-wallet-L.svg");
-
+  
   @media (max-width: 1400px) {
+    box-sizing: border-box;
+    padding: 0 9vw 4.14vw;
     background-image: url("/src/assets/images/products-and-service/mobile-wallet-S.svg");
+    justify-content: end;
+    align-items: start;
   }
 `;
 
 const StyledText = styled(CustomText)`
   max-width: 37%;
+
+  @media (max-width: 1400px) {
+    max-width: 90%;
+  }
 
   ${({ $lineheight, $margin, $textalign }) => `
     line-height: ${$lineheight};
@@ -91,7 +100,8 @@ const StyledDownloadText = styled.span`
   letter-spacing: -0.32px;
 
   @media (max-width: 1400px) {
-    font-size: 3.15vw;
+    margin-left: 6vw;
+    font-size: 3.19vw;
   }
 `;
 
@@ -102,8 +112,8 @@ const StyledIcon = styled.div`
   background-image: url("/src/assets/images/products-and-service/download-icon.svg");
 
   @media (max-width: 1400px) {
-    width: 3.35vw;
-    height: 2.95vw;
+    width: 2.39vw;
+    height: 2.79vw;
   }
 `;
 
@@ -123,17 +133,17 @@ const ContentDownloadButton = (
 export const MobileWallet = () => {
   const isMobile = useMobileDetection();
 
-  // const fontSize = isMobile ? "4.92vw" : "1.74vw";
-// const margin = isMobile ? "3.58vw 0 6.04vw" : "1.46vw 0 5.9vw";
+  const fontSize = isMobile ? "4.92vw" : "1.39vw";
+  const margin = isMobile ? "8.82vw 0" : "3.06vw 0 3.75vw";
   return (
     <StyledMobileWallet>
       <StyledMonitor>
         <Title color={colorVariables.whiteColor}>{mobileWallet.title}</Title>
         <StyledText
           color={colorVariables.whiteColor}
-          fontSize={"1.39vw"}
-          $lineheight={"1.5"}
-          $margin={"3.06vw 0 3.75vw"}
+          fontSize={fontSize}
+          $lineheight={"1.6"}
+          $margin={margin}
           $textalign={"left"}
         >
           {mobileWallet.text}

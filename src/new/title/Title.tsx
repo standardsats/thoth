@@ -26,6 +26,6 @@ export const StyledHeading = styled.h4<TitleProps>`
   }
 `;
 
-export const Title: FC<TitleProps> = ({ color, children }) => (
-  <StyledHeading color={color}>{children}</StyledHeading>
+export const Title: FC<TitleProps> = ({ children, ...style }) => (
+  <StyledHeading {...style}>{children}</StyledHeading>
 );

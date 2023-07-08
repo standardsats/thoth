@@ -10,6 +10,9 @@ import { Title } from "../title/Title.tsx";
 import { CustomText } from "../text/Text.tsx";
 import { Subtitle } from "../subtitle/Subtitle.tsx";
 import { Fees } from "./fees/Fees.tsx";
+import { MobSlider } from "./MobSlider.tsx";
+import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
+import { Slide } from "./Slide.tsx";
 
 type UseCasesOfOurProducts = {
   title: string;
@@ -17,7 +20,7 @@ type UseCasesOfOurProducts = {
   slides: Slides;
 };
 
-type Slides = {
+export type Slides = {
   [key: string]: {
     button: string;
     content: Array<{
@@ -102,18 +105,20 @@ const productsAndService: UseCasesOfOurProducts = {
 
 const StyledDescription = styled.div`
   ${coverImage};
-  min-height: calc(901vw / 14.4);
+  min-height: calc(1015vw / 14.4);
   padding: 4.86vw;
   box-sizing: border-box;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("/src/assets/images/products-and-service/description-L.svg");
+  background-image: url("/src/assets/images/use-cases-of-our-products/background-L.svg");
 
   @media (max-width: 1400px) {
-    min-height: 212.58vw;
+    min-height: 138.78vw;
     flex-direction: column;
+    padding: 0;
+    background-image: url("/src/assets/images/use-cases-of-our-products/background-S.svg");
   }
 `;
 
@@ -133,16 +138,23 @@ const StyledMonitor = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 3vw;
   width: 88.47vw;
-  min-height: 30.35vw;
+  min-height: 37.15vw;
   ${divWithBackground};
-  background-image: url("/src/assets/images/products-and-service/item-L.svg");
+  background-image: url("/src/assets/images/use-cases-of-our-products/slide-L.svg");
   border-radius: 30px;
+
+  @media (max-width: 1400px) {
+    display: block;
+    padding: 0;
+    background-image: none;
+  }
 `;
 
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-image: url("/src/assets/images/use-cases-of-our-products/slide-S.svg");
 `;
 
 const StyledImage = styled.img`
@@ -156,7 +168,7 @@ const StyledCardTitle = styled(Subtitle)`
   font-weight: 500;
   letter-spacing: normal;
 
-  ${({ $margin, fontSize, $lineheight}) => `
+  ${({ $margin, fontSize, $lineheight }) => `
     line-height: ${$lineheight};
     margin: ${$margin};
     font-size: ${fontSize};
@@ -179,10 +191,9 @@ const StyledWrapper = styled.div`
   flex-direction: row;
 `;
 
-
 const StyledActiveButton = styled(CustomButton)`
   border-bottom: 2px solid ${colorVariables.greenColor};
-  
+
   padding-bottom: 2.57vw;
   background: transparent;
   border-radius: 0;
@@ -217,6 +228,7 @@ const StyledButton = styled(CustomButton)`
 `;
 
 export const UseCasesOfOurProducts = () => {
+  const isMobile = useMobileDetection();
   const [activeButton, setActiveButton] = useState<string>("One");
 
   useEffect(() => {
@@ -229,6 +241,7 @@ export const UseCasesOfOurProducts = () => {
   };
 
   const buttonKeys = Object.keys(slides);
+  console.log(isMobile);
 
   return (
     <>
@@ -238,56 +251,69 @@ export const UseCasesOfOurProducts = () => {
         </Title>
         <CustomText
           color={colorVariables.whiteColor}
-          fontSize={"1.39vw"}
+          fontSize={"3.54vw"}
+          // fontSize={"1.39vw"}
           $lineheight={"1.5"}
           $margin={"1vw 0 2.57vw"}
         >
           {productsAndService.text}
         </CustomText>
-        <StyledButtons>
-          {buttonKeys.map((key) => {
-            const isActive = activeButton === key;
-            const ButtonComponent = isActive
-              ? StyledActiveButton
-              : StyledButton;
-            return (
-              <ButtonComponent
-                type={"button"}
-                key={key}
-                onClick={() => handleButtonClick(key)}
-                width={`${98 / buttonKeys.length}%`}
-              >
-                {slides[key].button}
-              </ButtonComponent>
-            );
-          })}
-        </StyledButtons>
-        <StyledMonitor>
-          {slides[activeButton].content.map((card, index) => (
-            <StyledCard key={index}>
-              <StyledWrapper>
-                <StyledImage src={card.image} alt={card.title} />
-                <StyledCardTitle
-                  color={colorVariables.whiteColor}
-                  $margin={"0"}
-                  fontSize={"1.53vw"}
-                  $lineheight={"1.5"}
+        {!isMobile && (
+          <StyledButtons>
+            {buttonKeys.map((key) => {
+              const isActive = activeButton === key;
+              const ButtonComponent = isActive
+                ? StyledActiveButton
+                : StyledButton;
+              return (
+                <ButtonComponent
+                  type={"button"}
+                  key={key}
+                  onClick={() => handleButtonClick(key)}
+                  width={`${98 / buttonKeys.length}%`}
                 >
-                  {card.title}
-                </StyledCardTitle>
-              </StyledWrapper>
-              <StyledCardText
-                color={colorVariables.whiteColor}
-                fontSize={"1.39vw"}
-                $lineheight={"1.2"}
-                $margin={"0"}
-                $textalign={"left"}
-                $letter={"-0.4px"}
-              >
-                {card.text}
-              </StyledCardText>
-            </StyledCard>
-          ))}
+                  {slides[key].button}
+                </ButtonComponent>
+              );
+            })}
+          </StyledButtons>
+        )}
+        <StyledMonitor>
+          {isMobile ? (
+            <MobSlider slides={slides} />
+          ) : (
+            slides[activeButton].content.map((card, index) => (
+              <Slide
+                key={index}
+                image={card.image}
+                title={card.title}
+                text={card.text}
+              />
+            ))
+          )}
+          {/*      <StyledWrapper>*/}
+          {/*        <StyledImage src={card.image} alt={card.title} />*/}
+          {/*        <StyledCardTitle*/}
+          {/*          color={colorVariables.whiteColor}*/}
+          {/*          $margin={"0"}*/}
+          {/*          fontSize={"1.53vw"}*/}
+          {/*          $lineheight={"1.5"}*/}
+          {/*        >*/}
+          {/*          {card.title}*/}
+          {/*        </StyledCardTitle>*/}
+          {/*      </StyledWrapper>*/}
+          {/*      <StyledCardText*/}
+          {/*        color={colorVariables.whiteColor}*/}
+          {/*        fontSize={"1.39vw"}*/}
+          {/*        $lineheight={"1.2"}*/}
+          {/*        $margin={"0"}*/}
+          {/*        $textalign={"left"}*/}
+          {/*        $letter={"-0.4px"}*/}
+          {/*      >*/}
+          {/*        {card.text}*/}
+          {/*      </StyledCardText>*/}
+          {/*    </StyledCard>*/}
+          {/*  ))}*/}
         </StyledMonitor>
       </StyledDescription>
       <Fees />

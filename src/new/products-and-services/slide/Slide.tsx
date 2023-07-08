@@ -10,6 +10,12 @@ import { Slides } from "../ProductsAndServices.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 import { Subtitle } from "../../subtitle/Subtitle.tsx";
 
+type SlideProps = {
+  activeButton: string;
+  monitorContent: string;
+  slides: Slides;
+};
+
 const StyledWrapper = styled.div`
   width: 82.25vw;
 
@@ -115,12 +121,6 @@ const StyledImage = styled.img`
     max-height: 21.5vw;
   }
 `;
-
-type SlideProps = {
-  activeButton: string;
-  monitorContent: string;
-  slides: Slides;
-};
 
 export const Slide = ({ activeButton, monitorContent, slides }: SlideProps) => {
   const isMobile = useMobileDetection();
