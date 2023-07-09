@@ -5,13 +5,13 @@ import {
   coverImage,
 } from "../../assets/styles/commonStyles.ts";
 import { CustomButton } from "../common/button/Button.tsx";
-import { StyledHeading } from "../title/Title.tsx";
-import { CustomText } from "../text/Text.tsx";
 import { MobileWallet } from "./mobile-wallet/MobileWallet.tsx";
 import { AvaibleCurrencies } from "./avaible-currencies/AvaibleCurrencies.tsx";
 import { Slide } from "./slide/Slide.tsx";
 import { MobileSlider } from "./MobileSlider.tsx";
 import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
+import { SectionTitle } from "../section-title/SectionTitle.tsx";
+import { DescriptionTHOH } from "../descriptionTHOH/descriptionTHOH.tsx";
 
 type ProductsAndService = {
   title: string;
@@ -46,7 +46,7 @@ const slides: Slides = {
       textContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       button: "test",
-      image: "/src/assets/images/products-and-service/merchants-solution.svg"
+      image: "/src/assets/images/products-and-service/merchants-solution.svg",
     },
   },
   Three: {
@@ -55,7 +55,7 @@ const slides: Slides = {
       textContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       button: "test",
-      image: "/src/assets/images/products-and-service/merchants-solution.svg"
+      image: "/src/assets/images/products-and-service/merchants-solution.svg",
     },
   },
   Four: {
@@ -64,7 +64,7 @@ const slides: Slides = {
       textContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       button: "test",
-      image: "/src/assets/images/products-and-service/merchants-solution.svg"
+      image: "/src/assets/images/products-and-service/merchants-solution.svg",
     },
   },
 };
@@ -94,8 +94,16 @@ const StyledDescription = styled.div`
   }
 `;
 
-const StyledTitle = styled(StyledHeading)`
+const StyledSectionTitle = styled(SectionTitle)`
   width: 80%;
+`;
+
+const StyledDescriptionTHOH = styled(DescriptionTHOH)`
+  margin: 1vw 0 2.57vw;
+
+  @media (max-width: 1400px) {
+    margin: 1.77vw 0 10.61vw;
+  }
 `;
 
 const StyledButtons = styled.div`
@@ -108,7 +116,7 @@ const StyledButtons = styled.div`
 
 const StyledActiveButton = styled(CustomButton)`
   border-bottom: 2px solid ${colorVariables.greenColor};
-  
+
   padding-bottom: 2.57vw;
   background: transparent;
   border-radius: 0;
@@ -143,6 +151,7 @@ const StyledButton = styled(CustomButton)`
 `;
 
 export const ProductAndServices = () => {
+  const { whiteColor } = colorVariables;
   const isMobile = useMobileDetection();
   const [activeButton, setActiveButton] = useState<string>("One");
   const [monitorContent, setMonitorContent] = useState<string>(
@@ -162,23 +171,15 @@ export const ProductAndServices = () => {
 
   const buttonKeys = Object.keys(slides);
 
-  const fontSize = isMobile ? "3.53vw" : "1.39vw";
-  const margin = isMobile ? "1.77vw 0 10.61vw" : "1vw 0 2.57vw";
-
   return (
     <>
       <StyledDescription>
-        <StyledTitle color={colorVariables.whiteColor}>
+        <StyledSectionTitle color={whiteColor}>
           {productsAndService.title}
-        </StyledTitle>
-        <CustomText
-          color={colorVariables.whiteColor}
-          fontSize={fontSize}
-          $lineheight={"1.5"}
-          $margin={margin}
-        >
+        </StyledSectionTitle>
+        <StyledDescriptionTHOH color={whiteColor}>
           {productsAndService.text}
-        </CustomText>
+        </StyledDescriptionTHOH>
         {!isMobile && (
           <StyledButtons>
             {buttonKeys.map((key) => {

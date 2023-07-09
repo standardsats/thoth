@@ -9,6 +9,7 @@ import { CustomButton } from "../../common/button/Button.tsx";
 import { Title } from "../../title/Title.tsx";
 import { CustomText } from "../../text/Text.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
+import { SectionTitle } from "../../section-title/SectionTitle.tsx";
 
 type MobileWallet = {
   title: string;
@@ -131,6 +132,7 @@ const ContentDownloadButton = (
 
 
 export const MobileWallet = () => {
+  const { whiteColor } = colorVariables;
   const isMobile = useMobileDetection();
 
   const fontSize = isMobile ? "4.92vw" : "1.39vw";
@@ -138,7 +140,7 @@ export const MobileWallet = () => {
   return (
     <StyledMobileWallet>
       <StyledMonitor>
-        <Title color={colorVariables.whiteColor}>{mobileWallet.title}</Title>
+        <SectionTitle color={whiteColor}>{mobileWallet.title}</SectionTitle>
         <StyledText
           color={colorVariables.whiteColor}
           fontSize={fontSize}

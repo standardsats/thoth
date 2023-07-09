@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { colorVariables } from "../../assets/styles/commonStyles.ts";
-import { Subtitle } from "../subtitle/Subtitle.tsx";
-import { CustomText } from "../text/Text.tsx";
+import {
+  resetMarginsAndPaddings,
+  colorVariables,
+  fontFamily,
+} from "../../assets/styles/commonStyles.ts";
+import { SlideTitle } from "../slide-title/SlideTitle.tsx";
+
+const { whiteColor } = colorVariables;
 
 type SlideProps = {
   button?: string;
@@ -11,121 +16,94 @@ type SlideProps = {
   text: string;
 };
 
-const StyledCard = styled.div`
+const StyledSlide = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media (max-width: 1400px) {
+    width: 80vw;
+    min-height: 68.17vw;
+    align-items: start;
+  }
+`;
+
+const StyledSlideContainer = styled.div`
+  @media (max-width: 1400px) {
+    padding: 7.18vw 0 10.26vw 5vw;
+  }
+`;
+
+const StyledSlideTitle = styled(SlideTitle)`
+  @media (max-width: 1400px) {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9.29vw 1.38vw 5.33vw 12.84vw;
+    border-bottom: 1px solid ${whiteColor};
+  }
 `;
 
 const StyledImage = styled.img`
   margin-right: 2.15vw;
-  max-width: 2.98vw;
+  width: 2.98vw;
   height: auto;
+  @media (max-width: 1400px) {
+    width: 12.45vw;
+    margin-right: 3.93vw;
+  }
 `;
 
-const StyledCardTitle = styled(Subtitle)`
+const SlidedSubtitle = styled.h4`
+  ${resetMarginsAndPaddings};
   text-align: left;
+  font-size: calc(22vw / 14.4);
+  ${fontFamily};
   font-weight: 500;
-  letter-spacing: normal;
+  line-height: 1.5;
+  color: ${whiteColor};
 
-  ${({ $margin, fontSize, $lineheight }) => `
-    line-height: ${$lineheight};
-    margin: ${$margin};
-    font-size: ${fontSize};
-  `}
+  @media (max-width: 1400px) {
+    font-size: calc(22vw / 5.08);
+  }
 `;
 
-const StyledCardText = styled(CustomText)`
+const StyledCardText = styled.p`
+  ${resetMarginsAndPaddings};
+  ${fontFamily};
+  color: ${whiteColor};
+  font-size: calc(20vw / 14.05);
+  font-style: normal;
   font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  text-align: left;
 
-  ${({ $lineheight, $margin, fontSize, $textalign }) => `
-    line-height: ${$lineheight};
-    margin: ${$margin};
-    font-size: ${fontSize};
-    text-align: ${$textalign}
-  `}
+  @media (max-width: 1400px) {
+    font-size: calc(20vw / 5.08);
+  }
 `;
 
 const StyledWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  padding-bottom: calc(14vw / 14.4);
+  
+  @media (max-width: 1400px) {
+    padding-bottom: calc(24vw / 5.08);
+  }
 `;
-
-
-// const StyledWrapper = styled.div`
-//   width: 82.25vw;
-//
-//   @media (max-width: 1400px) {
-//     background-image: url("/src/assets/images/use-cases-of-our-products/slide-S.svg");
-//     height: auto;
-//     display: flex;
-//   }
-// `;
-//
-// const StyledSlide = styled.div`
-//   margin-top: 2.57vw;
-//   padding: 0 0 0 6vw;
-//   box-sizing: border-box;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   align-items: stretch;
-//   width: 82.25vw;
-//   ${divWithBackground};
-//   //background-image: url("/src/assets/images/products-and-service/item-L.svg");
-//   border-radius: 30px;
-//
-//   @media (max-width: 1400px) {
-//     border-radius: 0;
-//     width: 100%;
-//   }
-// `;
-
 
 export const Slide: React.FC<SlideProps> = ({ button, image, title, text }) => {
   return (
-    <StyledCard>
-      {button && (
-        <Subtitle
-          color={colorVariables.whiteColor}
-          fontSize={"4.9vw"}
-          $lineheight={"1.5"}
-          $margin={"0"}
-        >
-          {button}
-        </Subtitle>
-      )}
-      <StyledWrapper>
-        <StyledImage src={image} alt={title} />
-        <StyledCardTitle
-          color={colorVariables.whiteColor}
-          $margin={"0"}
-          fontSize={"1.53vw"}
-          $lineheight={"1.5"}
-        >
-          {title}
-        </StyledCardTitle>
-      </StyledWrapper>
-      <StyledCardText
-        color={colorVariables.whiteColor}
-        fontSize={"1.39vw"}
-        $lineheight={"1.2"}
-        $margin={"0"}
-        $textalign={"left"}
-        $letter={"-0.4px"}
-      >
-        {text}
-      </StyledCardText>
-    </StyledCard>
-    // <StyledWrapper>
-    //   <StyledSlide>
-    //     <h1>{button}</h1>
-    //     <div>
-    //       <img src={image} alt={title} />
-    //       <p>{title}</p>
-    //     </div>
-    //     <p>{text}</p>
-    //   </StyledSlide>
-    // </StyledWrapper>
+    <StyledSlide>
+      {button && <StyledSlideTitle>{button}</StyledSlideTitle>}
+      <StyledSlideContainer>
+        <StyledWrapper>
+          <StyledImage src={image} alt={title} />
+          <SlidedSubtitle>{title}</SlidedSubtitle>
+        </StyledWrapper>
+        <StyledCardText>{text}</StyledCardText>
+      </StyledSlideContainer>
+    </StyledSlide>
   );
 };

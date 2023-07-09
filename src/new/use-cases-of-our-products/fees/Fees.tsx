@@ -1,13 +1,15 @@
 import styled from "styled-components";
-import { Subtitle } from "../../subtitle/Subtitle.tsx";
-import { CustomText } from "../../text/Text.tsx";
 import {
   colorVariables,
   divWithImage,
   fontFamily,
+  resetMarginsAndPaddings,
 } from "../../../assets/styles/commonStyles.ts";
 import { CustomButton } from "../../common/button/Button.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
+import { SectionTitle } from "../../section-title/SectionTitle.tsx";
+
+const { lightBlackColor, blackColor, darkGreenColor } = colorVariables;
 
 type Fees = {
   title: string;
@@ -51,7 +53,7 @@ const StyledFees = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 94%;
-  
+
   @media (max-width: 1400px) {
     padding: 12.37vw 8.25vw 16.89vw 11vw;
     margin: 0;
@@ -87,11 +89,12 @@ const StyledButtonWrapper = styled.div`
   justify-content: end;
 `;
 
-const StyledSubtitle = styled(Subtitle)`
+const StyledTitle = styled(SectionTitle)`
   grid-column: 1 / 2;
   width: 100%;
   text-align: left;
   padding-bottom: 1.89vw;
+  margin-bottom: 3.89vw;
   font-size: 3.47vw;
   font-style: normal;
   font-weight: 500;
@@ -101,55 +104,66 @@ const StyledSubtitle = styled(Subtitle)`
 
   @media (max-width: 1400px) {
     padding-bottom: 5.09vw;
+    margin: 0;
     font-size: 9.8vw;
     font-style: normal;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -1px;
   }
-
-  ${({ $margin }) => `
-    margin: ${$margin};
-  `}
 `;
 
-const StyledTexType = styled(CustomText)`
+const StyledSubtitle = styled.h3`
+  ${resetMarginsAndPaddings};
+  color: ${blackColor};
+  ${fontFamily};
+  font-size: calc(40vw / 14.4);
+  font-style: normal;
   font-weight: 500;
-
-  ${({ $lineheight, $margin, fontSize, $textalign, $letter }) => `
-    line-height: ${$lineheight};
-    margin: ${$margin};
-    font-size: ${fontSize};
-    text-align: ${$textalign};
-    letter-spacing: ${$letter};
-  `}
-`;
-
-const StyledMainText = styled(CustomText)`
-  font-weight: 400;
-
-  ${({ $lineheight, $margin, fontSize, $textalign, $letter }) => `
-    line-height: ${$lineheight};
-    margin: ${$margin};
-    font-size: ${fontSize};
-    text-align: ${$textalign};
-    letter-spacing: ${$letter};
-  `}
-`;
-
-const StyledSpan = styled(CustomText)`
-  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
 
   @media (max-width: 1400px) {
-    width: 80%;
+    margin: 9.82vw 0 0 0;
+    font-size: calc(35vw / 5.08);
+    letter-spacing: -0.7px;
   }
-  ${({ $lineheight, $margin, fontSize, $textalign, $letter }) => `
-    line-height: ${$lineheight};
-    margin: ${$margin};
-    font-size: ${fontSize};
-    text-align: ${$textalign};
-    letter-spacing: ${$letter};
-  `}
+`;
+
+const StyledMainText = styled.p`
+  ${resetMarginsAndPaddings};
+  ${fontFamily};
+  color: ${darkGreenColor};
+  font-size: calc(40vw / 14.4);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  text-align: left;
+
+  @media (max-width: 1400px) {
+    font-size: calc(35vw / 5.08);
+    letter-spacing: -0.7px;
+    margin: 5.1vw 0 3.1vw;
+  }
+`;
+
+const StyledSpan = styled.p`
+  ${resetMarginsAndPaddings};
+  color: ${blackColor};
+  ${fontFamily};
+  font-size: calc(20vw / 14.4);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  text-align: left;
+
+  @media (max-width: 1400px) {
+    margin: 1vw 0;
+    width: 80%;
+    font-size: calc(20vw / 5.08);
+  }
 `;
 
 const StyledButton = styled(CustomButton)`
@@ -227,88 +241,24 @@ export const Fees = () => {
   const isMobile = useMobileDetection();
   return (
     <StyledFees>
-      <StyledSubtitle
-        $margin={"0"}
-        // $margin={"0 0 3.89vw"}
-        color={colorVariables.lightBlackColor}
-      >
-        {fees.title}
-      </StyledSubtitle>
+      <StyledTitle color={lightBlackColor}>{fees.title}</StyledTitle>
       <StyledLine>
-        <StyledTexType
-          color={colorVariables.blackColor}
-          // $margin={"0"}
-          $margin={"9.82vw 0 0 0"}
-          // fontSize={"2.78vw"}
-          fontSize={"6.88vw"}
-          $lineheight={"1.2"}
-          // $letter={"normal"}
-          $letter={"-0.7px"}
-          $textalign={"left"}
-        >
-          {fees.lineOne.title}
-        </StyledTexType>
+        <StyledSubtitle>{fees.lineOne.title}</StyledSubtitle>
         <StyledMain>
-          <StyledMainText
-            color={colorVariables.darkGreenColor}
-            // $margin={"0"}
-            $margin={"5.1vw 0 3.1vw"}
-            fontSize={"6.88vw"}
-            // fontSize={"2.78vw"}
-            $lineheight={"1.2"}
-            $letter={"normal"}
-            $textalign={"left"}
-          >
-            {fees.lineOne.text.main}
-          </StyledMainText>
+          <StyledMainText>{fees.lineOne.text.main}</StyledMainText>
           {fees.lineOne.text.span && (
-            <StyledSpan
-              color={colorVariables.blackColor}
-              $margin={"1vw 0"}
-              fontSize={"4.09vw"}
-              // fontSize={"1.28vw"}
-              $lineheight={"1.2"}
-              // $letter={"normal"}
-              $letter={"-0.4px"}
-              $textalign={"left"}
-            >
-              {fees.lineOne.text.span}
-            </StyledSpan>
+            <StyledSpan>{fees.lineOne.text.span}</StyledSpan>
           )}
         </StyledMain>
         {!isMobile && <Button />}
       </StyledLine>
       <StyledLine>
-        <StyledTexType
-          color={colorVariables.blackColor}
-          // $margin={"0"}
-          $margin={"9.82vw 0 0 0"}
-          fontSize={"6.88vw"}
-          // fontSize={"2.78vw"}
-          $lineheight={"1.2"}
-          $letter={"normal"}
-          $textalign={"left"}
-        >
-          {fees.lineTwo.title}
-        </StyledTexType>
+        <StyledSubtitle>{fees.lineTwo.title}</StyledSubtitle>
         <StyledMain>
-          <StyledMainText
-            color={colorVariables.darkGreenColor}
-            // $margin={"0"}
-            $margin={"5.1vw 0 3.1vw"}
-            fontSize={"6.88vw"}
-            // fontSize={"2.78vw"}
-            $lineheight={"1.2"}
-            // $letter={"normal"}
-            $letter={"-0.7px"}
-            $textalign={"left"}
-          >
-            {fees.lineTwo.text.main}
-          </StyledMainText>
+          <StyledMainText>{fees.lineTwo.text.main}</StyledMainText>
         </StyledMain>
         {isMobile && <Button />}
       </StyledLine>
     </StyledFees>
   );
 };
-

@@ -17,3 +17,8 @@
     font-family: 'Gramatika-Bold'; 
     src: url('./Gramatika-Bold.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'Plus_Jakarta_Sans-Regular';
+    src: url('./Plus_Jakarta_Sans-Regular.ttf') format('truetype');
+}

@@ -7,6 +7,7 @@ import {
 import { Title } from "../../title/Title.tsx";
 import { CustomText } from "../../text/Text.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
+import { SectionTitle } from "../../section-title/SectionTitle.tsx";
 
 type AvaibleCurrencies = {
   title: string;
@@ -147,6 +148,7 @@ const StyledGridText = styled(CustomText)`
 `;
 
 export const AvaibleCurrencies = () => {
+  const { whiteColor } = colorVariables;
   const isMobile = useMobileDetection();
 
   const fontSize = isMobile ? "4.92vw" : "1.73vw";
@@ -158,9 +160,7 @@ export const AvaibleCurrencies = () => {
 
   return (
     <StyledAvaibleCurrencies>
-      <StyledTitle color={colorVariables.whiteColor}>
-        {avaibleCurrencies.title}
-      </StyledTitle>
+      <SectionTitle color={whiteColor}>{avaibleCurrencies.title}</SectionTitle>
       <StyledText
         color={colorVariables.whiteColor}
         fontSize={fontSize}

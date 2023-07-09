@@ -5,12 +5,12 @@ import {
   divWithImage,
   commonBackgroundMixin,
 } from "../../assets/styles/commonStyles.ts";
-import { Title } from "../title/Title.tsx";
-import { CustomText } from "../text/Text.tsx";
 import { sectionHowItWork } from "../../assets/constants/constants.ts";
 import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
 import { Step } from "./step/Step.tsx";
 import { Advantages } from "../advantages/Advantages.tsx";
+import { SectionTitle } from "../section-title/SectionTitle.tsx";
+import { DescriptionTHOH } from "../descriptionTHOH/descriptionTHOH.tsx";
 
 const StyledSteps = styled.div`
   position: relative;
@@ -24,6 +24,14 @@ const StyledSteps = styled.div`
     padding-top: 16.7vw;
     width: 90.55vw;
     background-image: url("/src/assets/images/how-it-works/steps-S.svg");
+  }
+`;
+
+const StyledDescriptionTHOH = styled(DescriptionTHOH)`
+  margin: 0.7vw 0 1.71vw;
+
+  @media (max-width: 1400px) {
+    margin-bottom: 4.72vw;
   }
 `;
 
@@ -164,24 +172,18 @@ const StyledSvgStepThree = styled.div`
 export const HowItWorks = () => {
   const isMobile = useMobileDetection();
   const { darkGrayColor, lightBlackColor } = colorVariables;
-
-  const fontSize = isMobile ? "3.54vw" : "1.25vw";
   const textMarginStep = isMobile ? "0.7vw 0 4.72vw" : "1.11vw 0 2.85vw";
   const subtitleMarginStep = isMobile ? "5vw 0 0 0" : "0";
-  const textMarginCustomText = isMobile ? "0.7vw 0 4.72vw" : "0.7vw 0 1.71vw";
 
   return (
     <>
       <StyledSteps>
-        <Title color={darkGrayColor}>{sectionHowItWork.title}</Title>
-        <CustomText
-          color={lightBlackColor}
-          fontSize={fontSize}
-          $lineheight={"1.5"}
-          $margin={textMarginCustomText}
-        >
+        <SectionTitle color={darkGrayColor}>
+          {sectionHowItWork.title}
+        </SectionTitle>
+        <StyledDescriptionTHOH color={darkGrayColor}>
           {sectionHowItWork.text}
-        </CustomText>
+        </StyledDescriptionTHOH>
         <StyledStepsWrapper>
           <StyledParent>
             <StyledLineLeft />

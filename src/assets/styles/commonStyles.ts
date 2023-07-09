@@ -59,6 +59,10 @@ export const fontFamily = css`
   font-family: Gramatika, sans-serif;
 `;
 
+export const fontFamilySecond = css`
+  font-family: Plus_Jakarta_Sans, sans-serif;
+`;
+
 export interface ButtonProps {
   $background?: string;
   width?: string;
