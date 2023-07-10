@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Button } from "../../../assets/styles/commonStyles.ts";
 
+//Types
 type ButtonPropsType = {
   className?: string;
   children?: ReactNode;
@@ -12,6 +13,7 @@ type ButtonPropsType = {
   $underline?: string;
 };
 
+//Component
 export function CustomButton({
   className,
   children,

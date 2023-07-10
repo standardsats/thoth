@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Slide } from "./Slide";
 import { NewsSlider } from "./news-slider/NewsSlider.tsx";
 import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
-import { SectionTitle } from "../section-title/SectionTitle.tsx";
+import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
 import {
   colorVariables,
   coverImage,
@@ -18,6 +18,11 @@ const StyledSection = styled.div`
   box-sizing: border-box;
   width: 100%;
   background-image: url("/src/assets/images/news/news-L.svg");
+
+  @media (max-width: 1400px) {
+    background-image: url("/src/assets/images/news/news-S.svg");
+    min-height: calc(1441vw / 5.08);
+  }
 `;
 
 const NewsContainer = styled.div`

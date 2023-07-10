@@ -10,8 +10,8 @@ import { AvaibleCurrencies } from "./avaible-currencies/AvaibleCurrencies.tsx";
 import { Slide } from "./slide/Slide.tsx";
 import { MobileSlider } from "./MobileSlider.tsx";
 import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
-import { SectionTitle } from "../section-title/SectionTitle.tsx";
-import { DescriptionTHOH } from "../descriptionTHOH/descriptionTHOH.tsx";
+import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
+import { DescriptionTHOH } from "../common/descriptionTHOH/descriptionTHOH.tsx";
 
 type ProductsAndService = {
   title: string;

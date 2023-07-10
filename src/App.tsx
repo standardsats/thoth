@@ -6,6 +6,9 @@ import { ProductAndServices } from "./new/products-and-services/ProductsAndServi
 import { Photo } from "./new/photo/Photo.tsx";
 import { UseCasesOfOurProducts } from "./new/use-cases-of-our-products/UseCasesOfOurProducts.tsx";
 import { News } from "./new/news/News.tsx";
+import { HaveAQuestion } from "./new/have-a-question/HaveAQuestion.tsx";
+import { VideoSlider } from "./new/video-slider/VideoSlider.tsx";
+import { Footer } from "./new/Footer/Footer.tsx";
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
       <ProductAndServices />
       <UseCasesOfOurProducts />
       <News />
+      <HaveAQuestion />
+      <Footer />
+      <VideoSlider />
     </>
   );
 }

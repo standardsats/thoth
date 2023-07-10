@@ -7,7 +7,7 @@ import {
 } from "../../../assets/styles/commonStyles.ts";
 import { CustomButton } from "../../common/button/Button.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
-import { SectionTitle } from "../../section-title/SectionTitle.tsx";
+import { SectionTitle } from "../../common/section-title/SectionTitle.tsx";
 
 const { lightBlackColor, blackColor, darkGreenColor } = colorVariables;
 

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { css } from "styled-components";
 
+export const sizeVariable = "1400px";
+
 export const resetMarginsAndPaddings = css`
   margin: 0;
   padding: 0;
@@ -16,11 +18,31 @@ export const colorVariables = {
   transparentWhiteColor: "#ffffff80",
   grayColor: "#fcfcfc",
   redColor: "#ff0000",
+  lightGreenColor: "#3cc1b3",
   greenColor: "#20F1C0",
   darkGreenColor: "#00BAA4",
   darkColor: "#1C2938",
-
+  deepColor: "#141E29",
 };
+
+export const ButtonNew = styled.button<ButtonProps>`
+  ${resetMarginsAndPaddings};
+  font-family: "Gramatika", sans-serif;
+  font-style: normal;
+  border: none;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
 
 // export const colorVariables = css`
 //   --blue-color: #366eff;
@@ -119,4 +141,29 @@ export const ButtonText = styled.span`
   //line-height: 1.5;
   //letter-spacing: -0.32px;
   //color: #fff;
+`;
+
+//How-it-works
+export const StepSvgMixin = css`
+  margin-bottom: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  @media (max-width: ${sizeVariable}) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const StyledLinesMixin = css`
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: 2;
+
+  @media (max-width: ${sizeVariable}) {
+    width: 45vw;
+    background-size: auto 100%;
+    background-position: center;
+  }
 `;

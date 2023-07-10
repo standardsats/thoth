@@ -6,10 +6,10 @@ import {
   fontFamily,
 } from "../../../assets/styles/commonStyles.ts";
 import { CustomButton } from "../../common/button/Button.tsx";
-import { Title } from "../../title/Title.tsx";
-import { CustomText } from "../../text/Text.tsx";
+import { Title } from "../../common/title/Title.tsx";
+import { CustomText } from "../../common/text/Text.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
-import { SectionTitle } from "../../section-title/SectionTitle.tsx";
+import { SectionTitle } from "../../common/section-title/SectionTitle.tsx";
 
 type MobileWallet = {
   title: string;

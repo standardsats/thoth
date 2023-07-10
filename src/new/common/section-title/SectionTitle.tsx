@@ -3,13 +3,16 @@ import { FC, ReactNode } from "react";
 import {
   fontFamily,
   resetMarginsAndPaddings,
-} from "../../assets/styles/commonStyles.ts";
+  sizeVariable,
+} from "../../../assets/styles/commonStyles.ts";
 
-interface SectionTitleProps {
+//Types
+type SectionTitleProps = {
   children: ReactNode;
   color: string;
-}
+};
 
+//Styles
 export const StyledSectionTitle = styled.h2<SectionTitleProps>`
   ${resetMarginsAndPaddings};
   text-align: center;
@@ -20,12 +23,13 @@ export const StyledSectionTitle = styled.h2<SectionTitleProps>`
   letter-spacing: -1px;
   color: ${(props) => props.color};
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(50vw / 5.08);
     line-height: 1.2;
   }
 `;
 
+//Component
 export const SectionTitle: FC<SectionTitleProps> = ({ children, ...style }) => (
   <StyledSectionTitle {...style}>{children}</StyledSectionTitle>
 );

@@ -4,14 +4,17 @@ import {
   colorVariables,
   fontFamily,
   resetMarginsAndPaddings,
-} from "../../assets/styles/commonStyles.ts";
+  sizeVariable,
+} from "../../../assets/styles/commonStyles.ts";
 
 const { whiteColor } = colorVariables;
 
+//Types
 type SlideTitleProps = {
   children: ReactNode;
 };
 
+//Styles
 const StyledSlideTitle = styled.h3<SlideTitleProps>`
   ${resetMarginsAndPaddings};
   text-align: center;
@@ -21,11 +24,12 @@ const StyledSlideTitle = styled.h3<SlideTitleProps>`
   line-height: 1.5;
   color: ${whiteColor};
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(25vw / 5.08);
   }
 `;
 
+//Component
 export const SlideTitle: FC<SlideTitleProps> = ({ children, ...style }) => (
   <StyledSlideTitle {...style}>{children}</StyledSlideTitle>
 );

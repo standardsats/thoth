@@ -1,8 +1,22 @@
 import styled from "styled-components";
-import { Subtitle } from "../../subtitle/Subtitle.tsx";
-import { CustomText } from "../../text/Text.tsx";
-import { ReactNode } from "react";
+import { ReactNode, FC } from "react";
+import {
+  colorVariables,
+  fontFamily,
+  resetMarginsAndPaddings,
+  sizeVariable,
+} from "../../../assets/styles/commonStyles.ts";
 
+const { lightGrayColor } = colorVariables;
+
+//Types
+type StepProps = {
+  subtitle: string;
+  text: string;
+  svg: ReactNode;
+};
+
+//Styles
 const StyledStep = styled.div`
   position: relative;
   z-index: 1;
@@ -11,45 +25,54 @@ const StyledStep = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     max-width: 54.33vw;
   }
-  // TODO
-  //&:nth-child(2) {
-  //  max-width: 23.19vw;
-  //
-  //  @media (max-width: 1400px) {
-  //    max-width: 65.75vw;
-  //  }
-  //}
 `;
 
-interface StepProps {
-  subtitle: string;
-  text: string;
-  color: string;
-  textMargin: string;
-  subtitleMargin: string;
-  svg: ReactNode;
-}
+const StyledSubtitle = styled.h3`
+  width: 130%;
+  ${resetMarginsAndPaddings};
+  color: ${lightGrayColor};
+  text-align: center;
+  ${fontFamily};
+  font-size: calc(26vw / 14.4);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.52px;
 
-export const Step: React.FC<StepProps> = ({
-  subtitle,
-  text,
-  color,
-  textMargin,
-  subtitleMargin,
-  svg,
-}) => {
+  @media (max-width: ${sizeVariable}) {
+    width: 100%;
+    font-size: calc(26vw / 5.08);
+    margin: 5vw 0 0 0;
+  }
+`;
+
+const StyledText = styled.p`
+  ${resetMarginsAndPaddings};
+  margin: 1.11vw 0 2.85vw;
+  color: ${lightGrayColor};
+  text-align: center;
+  ${fontFamily};
+  font-size: calc(20vw / 14.4);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+
+  @media (max-width: ${sizeVariable}) {
+    font-size: calc(20vw / 5.08);
+    margin: 0.7vw 0 4.72vw;
+  }
+`;
+
+//Component
+export const Step: FC<StepProps> = ({ subtitle, text, svg }) => {
   return (
     <StyledStep>
       {svg}
-      <Subtitle color={color} $margin={subtitleMargin}>
-        {subtitle}
-      </Subtitle>
-      <CustomText color={color} $margin={textMargin}>
-        {text}
-      </CustomText>
+      <StyledSubtitle>{subtitle}</StyledSubtitle>
+      <StyledText>{text}</StyledText>
     </StyledStep>
   );
 };

@@ -3,12 +3,12 @@ import {
   divWithBackground,
   fontFamily,
 } from "../../../assets/styles/commonStyles.ts";
-import { CustomText } from "../../text/Text.tsx";
+import { CustomText } from "../../common/text/Text.tsx";
 import { colorVariables } from "../../../assets/styles/commonStyles.ts";
 import { CustomButton } from "../../common/button/Button.tsx";
 import { Slides } from "../ProductsAndServices.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
-import { Subtitle } from "../../subtitle/Subtitle.tsx";
+import { Subtitle } from "../../common/subtitle/Subtitle.tsx";
 
 type SlideProps = {
   activeButton: string;

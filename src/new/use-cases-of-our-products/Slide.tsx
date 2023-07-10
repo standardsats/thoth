@@ -5,7 +5,7 @@ import {
   colorVariables,
   fontFamily,
 } from "../../assets/styles/commonStyles.ts";
-import { SlideTitle } from "../slide-title/SlideTitle.tsx";
+import { SlideTitle } from "../common/slide-title/SlideTitle.tsx";
 
 const { whiteColor } = colorVariables;
 

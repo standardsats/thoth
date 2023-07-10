@@ -3,7 +3,7 @@ import { FC, ReactNode } from "react";
 import {
   fontFamily,
   resetMarginsAndPaddings,
-} from "../../assets/styles/commonStyles.ts";
+} from "../../../assets/styles/commonStyles.ts";
 
 interface StyledTextProps {
   color: string;

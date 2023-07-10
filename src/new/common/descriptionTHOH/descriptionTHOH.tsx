@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { FC, ReactNode } from "react";
 import {
-  colorVariables,
   fontFamily,
   fontFamilySecond,
   resetMarginsAndPaddings,
-} from "../../assets/styles/commonStyles.ts";
-import { SectionTitle } from "../section-title/SectionTitle.tsx";
-const { whiteColor } = colorVariables;
+  sizeVariable,
+} from "../../../assets/styles/commonStyles.ts";
 
+//Types
 type DescriptionTHOHProps = {
   children: ReactNode;
   color: string;
 };
 
+//Styles
 const StyledDescriptionTHOH = styled.p<DescriptionTHOHProps>`
   ${resetMarginsAndPaddings};
   text-align: center;
@@ -23,18 +23,15 @@ const StyledDescriptionTHOH = styled.p<DescriptionTHOHProps>`
   line-height: 1.5;
   color: ${(props) => props.color};
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     ${fontFamilySecond};
     font-size: calc(18vw / 5.08);
     line-height: 1.5;
   }
 `;
 
-export const HaveAQuestion = () => {
-  return (
-    <>
-      <SectionTitle color={whiteColor}>{news.title}</SectionTitle>
-
-    </>
-  )
-}
+//Component
+export const DescriptionTHOH: FC<DescriptionTHOHProps> = ({
+  children,
+  ...style
+}) => <StyledDescriptionTHOH {...style}>{children}</StyledDescriptionTHOH>;

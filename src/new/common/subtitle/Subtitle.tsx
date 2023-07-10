@@ -1,15 +1,20 @@
 import styled from "styled-components";
 import { FC, ReactNode } from "react";
-import { fontFamily, resetMarginsAndPaddings } from "../../assets/styles/commonStyles.ts";
+import {
+  fontFamily,
+  resetMarginsAndPaddings,
+} from "../../../assets/styles/commonStyles.ts";
 
-interface SubtitleProps {
+//Types
+type SubtitleProps = {
   children: ReactNode;
   color: string;
   $margin: string;
   fontSize?: string;
   $lineheight?: string;
-}
+};
 
+//Styles
 const StyledSubtitle = styled("h3")<SubtitleProps>`
   ${resetMarginsAndPaddings};
   ${(props) => props.$margin && `margin: ${props.$margin};`}
@@ -27,6 +32,7 @@ const StyledSubtitle = styled("h3")<SubtitleProps>`
   }
 `;
 
+//Components
 export const Subtitle: FC<SubtitleProps> = ({ children, ...style }) => (
   <StyledSubtitle {...style}>{children}</StyledSubtitle>
 );

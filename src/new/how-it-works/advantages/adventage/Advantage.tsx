@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Subtitle } from "../../subtitle/Subtitle.tsx";
-import { CustomText } from "../../text/Text.tsx";
+import { Subtitle } from "../../../common/subtitle/Subtitle.tsx";
+import { CustomText } from "../../../common/text/Text.tsx";
 import { ReactNode } from "react";
-import { colorVariables } from "../../../assets/styles/commonStyles.ts";
-import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
+import { colorVariables } from "../../../../assets/styles/commonStyles.ts";
+import { useMobileDetection } from "../../../../hooks/useMobileDetection.tsx";
 
 const StyledAdvantageContainer = styled.div`
   padding: 0;
@@ -29,6 +29,7 @@ const StyledWrapper = styled.div`
   min-height: 3.56vw;
   display: flex;
   flex-direction: row;
+  align-items: center; /* Добавлено выравнивание по вертикали */
 
   @media (max-width: 1400px) {
     width: 100%;

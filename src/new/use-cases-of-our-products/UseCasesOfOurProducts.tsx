@@ -10,8 +10,8 @@ import { Fees } from "./fees/Fees.tsx";
 import { MobSlider } from "./MobSlider.tsx";
 import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
 import { Slide } from "./Slide.tsx";
-import { SectionTitle } from "../section-title/SectionTitle.tsx";
-import { DescriptionTHOH } from "../descriptionTHOH/descriptionTHOH.tsx";
+import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
+import { DescriptionTHOH } from "../common/descriptionTHOH/descriptionTHOH.tsx";
 
 type UseCasesOfOurProducts = {
   title: string;

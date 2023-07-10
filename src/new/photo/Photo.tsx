@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { colorVariables } from "../../assets/styles/commonStyles.ts";
-import { sectionHowItWork } from "../../assets/constants/constants.ts";
 import { PhotoSlider } from "./photo-slider/PhotoSlider.tsx";
-import { SectionTitle } from "../section-title/SectionTitle.tsx";
+import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
+
+const sectionPhoto = {
+  title: "Photo",
+};
 
 const StyledPhoto = styled.div`
   padding-bottom: 4.16vw;
@@ -26,9 +29,7 @@ export const Photo = () => {
 
   return (
     <StyledPhoto>
-      <SectionTitle color={darkGrayColor}>
-        {sectionHowItWork.title}
-      </SectionTitle>
+      <SectionTitle color={darkGrayColor}>{sectionPhoto.title}</SectionTitle>
       <PhotoSlider />
     </StyledPhoto>
   );
