@@ -4,32 +4,36 @@ import {
   coverImage,
   divWithImage,
   fontFamily,
+  sizeVariable,
+  TextMixin,
 } from "../../../assets/styles/commonStyles.ts";
-import { CustomButton } from "../../common/button/Button.tsx";
-import { Title } from "../../common/title/Title.tsx";
-import { CustomText } from "../../common/text/Text.tsx";
-import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 import { SectionTitle } from "../../common/section-title/SectionTitle.tsx";
+import { CustomButton } from "../../common/customButton/CustomButton.tsx";
 
-type MobileWallet = {
-  title: string;
-  text: string;
-  button: string;
-};
+const { darkColor, whiteColor, darkGrayColor, lightGreenColor, greenColor } = colorVariables;
 
+//Data
 const mobileWallet: MobileWallet = {
   title: "Mobile Wallet",
   text: "A solution enabling businesses to accept crypto payments in all major coins and exchange it all into Fiat, Coins or StableCoins.",
   button: "Download",
 };
 
-const StyledMobileWallet = styled.div`
+//Type
+type MobileWallet = {
+  title: string;
+  text: string;
+  button: string;
+};
+
+//Styles
+const StyledMobileWallet = styled.section`
   position: relative;
-  background-color: ${colorVariables.darkColor};
+  background-color: ${darkColor};
   min-height: 41.53vw;
 
-  @media (max-width: 1400px) {
-    background-color: ${colorVariables.darkGrayColor};
+  @media (max-width: ${sizeVariable}) {
+    background-color: ${darkGrayColor};
     box-sizing: border-box;
     min-height: 270.66vw;
     flex-direction: column;
@@ -50,8 +54,8 @@ const StyledMonitor = styled.div`
   height: 100%;
   ${coverImage};
   background-image: url("/src/assets/images/products-and-service/mobile-wallet-L.svg");
-  
-  @media (max-width: 1400px) {
+
+  @media (max-width: ${sizeVariable}) {
     box-sizing: border-box;
     padding: 0 9vw 4.14vw;
     background-image: url("/src/assets/images/products-and-service/mobile-wallet-S.svg");
@@ -60,21 +64,23 @@ const StyledMonitor = styled.div`
   }
 `;
 
-const StyledText = styled(CustomText)`
+const StyledText = styled.p`
   max-width: 37%;
+  ${TextMixin};
+  margin: 3.06vw 0 3.75vw;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     max-width: 90%;
+    margin: 8.82vw 0;
   }
-
-  ${({ $lineheight, $margin, $textalign }) => `
-    line-height: ${$lineheight};
-    margin: ${$margin};
-    text-align: ${$textalign};
-  `}
 `;
 
 const StyledButton = styled(CustomButton)`
+  background: linear-gradient(
+    133deg,
+    ${greenColor} 0%,
+    ${lightGreenColor} 100%
+  );
   border-radius: 0;
 `;
 
@@ -84,7 +90,7 @@ const StyledButtonContent = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     min-width: 33vw;
     min-height: 8.33vw;
   }
@@ -92,7 +98,7 @@ const StyledButtonContent = styled.div`
 
 const StyledDownloadText = styled.span`
   margin-left: 2.29vw;
-  color: ${colorVariables.whiteColor};
+  color: ${whiteColor};
   font-size: 1.11vw;
   ${fontFamily};
   font-style: normal;
@@ -100,7 +106,7 @@ const StyledDownloadText = styled.span`
   line-height: 1.5%;
   letter-spacing: -0.32px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin-left: 6vw;
     font-size: 3.19vw;
   }
@@ -112,12 +118,13 @@ const StyledIcon = styled.div`
   height: 1.53vw;
   background-image: url("/src/assets/images/products-and-service/download-icon.svg");
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 2.39vw;
     height: 2.79vw;
   }
 `;
 
+//Component
 const DownloadButtonHandler = () => {
   //TODO актуализировть событие
   console.log("Press download button");
@@ -130,26 +137,13 @@ const ContentDownloadButton = (
   </StyledButtonContent>
 );
 
-
 export const MobileWallet = () => {
-  const { whiteColor } = colorVariables;
-  const isMobile = useMobileDetection();
 
-  const fontSize = isMobile ? "4.92vw" : "1.39vw";
-  const margin = isMobile ? "8.82vw 0" : "3.06vw 0 3.75vw";
   return (
     <StyledMobileWallet>
       <StyledMonitor>
         <SectionTitle color={whiteColor}>{mobileWallet.title}</SectionTitle>
-        <StyledText
-          color={colorVariables.whiteColor}
-          fontSize={fontSize}
-          $lineheight={"1.6"}
-          $margin={margin}
-          $textalign={"left"}
-        >
-          {mobileWallet.text}
-        </StyledText>
+        <StyledText>{mobileWallet.text}</StyledText>
         <StyledButton
           type={"button"}
           children={ContentDownloadButton}

@@ -33,24 +33,28 @@ const sectionHowItWork = {
   },
   advantages: [
     {
+      index: "1",
       subtitle: "EU Regulated",
       text: "is fully regulated underEstionian License.",
       image:
         "/src/assets/images/how-it-works/advantages/advantages-first-icon.svg",
     },
     {
+      index: "2",
       subtitle: "All types of crypto",
       text: "Coins, StableCoins, Tokens are supported.",
       image:
         "/src/assets/images/how-it-works/advantages/advantages-second-icon.svg",
     },
     {
+      index: "3",
       subtitle: "Major Blockchains",
       text: "Bitcoin, Ethereum, Solana, BinanceSmart Chain, Ripple, etc.",
       image:
         "/src/assets/images/how-it-works/advantages/advantages-third-icon.svg",
     },
     {
+      index: "4",
       subtitle: "Free of Charge",
       text: "All outgoing transactions, transfers and payouts in crypto are free of charge.",
       image:
@@ -120,7 +124,7 @@ const StyledLineLeft = styled.div`
     top: 25vw;
     left: 7vw;
     height: calc(100% - 20.86vw + 15vw);
-    background-image: url("/src/assets/images/logo.svg");
+    background-image: url("/src/assets/images/how-it-works/left-line-S.svg");
   }
 `;
 

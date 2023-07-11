@@ -8,7 +8,7 @@ import {
   sizeVariable,
 } from "../../assets/styles/commonStyles.ts";
 import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
-import { CustomButton } from "../common/button/Button.tsx";
+import { CustomButton } from "../common/customButton/CustomButton.tsx";
 
 const { greenColor, lightGreenColor, whiteColor } = colorVariables;
 

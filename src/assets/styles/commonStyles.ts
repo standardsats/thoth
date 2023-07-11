@@ -25,7 +25,7 @@ export const colorVariables = {
   deepColor: "#141E29",
 };
 
-export const ButtonNew = styled.button<ButtonProps>`
+export const ButtonNew = styled.button`
   ${resetMarginsAndPaddings};
   font-family: "Gramatika", sans-serif;
   font-style: normal;
@@ -98,7 +98,7 @@ const customBackground = css<ButtonProps>`
   background: ${(props) => props.$background};
 `;
 
-export const Button = styled.button<ButtonProps>`
+export const ButtonOld = styled.button<ButtonProps>`
   //padding: 8px 28px;
   //box-shadow: 0 4px 18px rgba(54, 110, 255, 0.35),
   //  inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -165,5 +165,36 @@ export const StyledLinesMixin = css`
     width: 45vw;
     background-size: auto 100%;
     background-position: center;
+  }
+`;
+
+//ProductsAndService
+export const TitleButtonsMixin = css`
+  width: calc(90% / 4);
+  color: ${colorVariables.whiteColor};
+  padding-bottom: 2.57vw;
+  background: transparent;
+  border-radius: 0;
+  text-align: center;
+  font-size: 1.74vw;
+  font-family: Grammatika, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+`;
+
+export const TextMixin = css`
+  ${resetMarginsAndPaddings};
+  color: ${colorVariables.whiteColor};
+  ${fontFamily};
+  font-size: calc(25vw / 14.4);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.5px;
+  text-align: left;
+
+  @media (max-width: ${sizeVariable}) {
+    font-size: calc(25vw / 5.08);
   }
 `;

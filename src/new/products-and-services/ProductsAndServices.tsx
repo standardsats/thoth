@@ -1,81 +1,74 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import {
   colorVariables,
   coverImage,
+  sizeVariable,
+  TitleButtonsMixin,
 } from "../../assets/styles/commonStyles.ts";
-import { CustomButton } from "../common/button/Button.tsx";
 import { MobileWallet } from "./mobile-wallet/MobileWallet.tsx";
 import { AvaibleCurrencies } from "./avaible-currencies/AvaibleCurrencies.tsx";
 import { Slide } from "./slide/Slide.tsx";
-import { MobileSlider } from "./MobileSlider.tsx";
+import { MobileSlider } from "./mobile-slider/MobileSlider.tsx";
 import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
 import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
 import { DescriptionTHOH } from "../common/descriptionTHOH/descriptionTHOH.tsx";
+import { CustomButton } from "../common/customButton/CustomButton.tsx";
+import { VideoSlider } from "./video-slider/VidioSlider.tsx";
 
-type ProductsAndService = {
-  title: string;
-  text: string;
-  slides: Slides;
-};
+const { whiteColor, greenColor } = colorVariables;
 
-export type Slides = {
-  [key: string]: {
-    button: string;
-    content: {
-      textContent: string;
-      button: string;
-      image: string;
-    };
-  };
-};
-
-const slides: Slides = {
-  One: {
-    button: "Merchants Solution",
-    content: {
+//Data
+const sectionProductsAndService = {
+  title: "Products and Services",
+  text: "Product Description THOTH",
+  slides: [
+    {
+      id: "1",
+      mainButton: "Merchants Solution",
       textContent:
         "A solution enabling businesses to accept crypto payments in all major coins and exchange it all into Fiat, Coins or StableCoins.",
       button: "Read more",
       image: "/src/assets/images/products-and-service/merchants-solution.svg",
     },
-  },
-  Two: {
-    button: "Enterprise Blockchain Wallets",
-    content: {
+    {
+      id: "2",
+      mainButton: "Enterprise Blockchain Wallets",
       textContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       button: "test",
       image: "/src/assets/images/products-and-service/merchants-solution.svg",
     },
-  },
-  Three: {
-    button: "Wallet App",
-    content: {
+    {
+      id: "3",
+      mainButton: "Wallet App",
       textContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       button: "test",
       image: "/src/assets/images/products-and-service/merchants-solution.svg",
     },
-  },
-  Four: {
-    button: "Staking",
-    content: {
+    {
+      id: "4",
+      mainButton: "Staking",
       textContent:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       button: "test",
-      image: "/src/assets/images/products-and-service/merchants-solution.svg",
+      image: "/src/assets/images/test/test-photo.jpg",
     },
-  },
+  ],
 };
 
-const productsAndService: ProductsAndService = {
-  title: "Products and Services",
-  text: "Product Description THOTH",
-  slides: slides,
+//Types
+export type SlideData = {
+  id: string;
+  mainButton: string;
+  textContent: string;
+  button: string;
+  image: string;
 };
 
-const StyledDescription = styled.div`
+//Styles
+const StyledDescription = styled.section`
   ${coverImage};
   height: calc(901vw / 14.4);
   padding: 4.86vw;
@@ -86,7 +79,7 @@ const StyledDescription = styled.div`
   align-items: center;
   background-image: url("/src/assets/images/products-and-service/description-L.svg");
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     height: calc(970vw / 5.08);
     padding: 14.93vw 0;
     flex-direction: column;
@@ -101,7 +94,7 @@ const StyledSectionTitle = styled(SectionTitle)`
 const StyledDescriptionTHOH = styled(DescriptionTHOH)`
   margin: 1vw 0 2.57vw;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin: 1.77vw 0 10.61vw;
   }
 `;
@@ -115,70 +108,37 @@ const StyledButtons = styled.div`
 `;
 
 const StyledActiveButton = styled(CustomButton)`
-  border-bottom: 2px solid ${colorVariables.greenColor};
-
-  padding-bottom: 2.57vw;
-  background: transparent;
-  border-radius: 0;
-  text-align: center;
-  font-size: 1.74vw;
-  font-family: Grammatika, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.5;
-
-  &:hover {
-    border-bottom: 2px solid ${colorVariables.greenColor};
-  }
+  ${TitleButtonsMixin};
+  border-bottom: 2px solid ${greenColor};
 `;
 
 const StyledButton = styled(CustomButton)`
-  border-bottom: 2px solid ${colorVariables.whiteColor};
-
-  padding-bottom: 2.57vw;
-  background: transparent;
-  border-radius: 0;
-  text-align: center;
-  font-size: 1.74vw;
-  font-family: Grammatika, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.5;
-
-  &:hover {
-    border-bottom: 2px solid ${colorVariables.whiteColor};
-  }
+  ${TitleButtonsMixin};
+  border-bottom: 2px solid ${whiteColor};
 `;
 
+//Component
 export const ProductAndServices = () => {
-  const { whiteColor } = colorVariables;
   const isMobile = useMobileDetection();
-  const [activeButton, setActiveButton] = useState<string>("One");
-  const [monitorContent, setMonitorContent] = useState<string>(
-    slides["One"].content.textContent
-  );
-
-  useEffect(() => {
-    // Обновить активную кнопку и содержимое монитора при первой загрузке
-    setActiveButton("One");
-    setMonitorContent(slides["One"].content.textContent);
-  }, []);
+  const [activeButton, setActiveButton] = useState<string>("1");
 
   const handleButtonClick = (button: string) => {
     setActiveButton(button);
-    setMonitorContent(slides[button].content.textContent);
   };
 
-  const buttonKeys = Object.keys(slides);
+  const buttonKeys = sectionProductsAndService.slides.map((slide) => slide.id);
+  const slideData = sectionProductsAndService.slides.find(
+    (slide) => slide.id === activeButton
+  );
 
   return (
     <>
       <StyledDescription>
         <StyledSectionTitle color={whiteColor}>
-          {productsAndService.title}
+          {sectionProductsAndService.title}
         </StyledSectionTitle>
         <StyledDescriptionTHOH color={whiteColor}>
-          {productsAndService.text}
+          {sectionProductsAndService.text}
         </StyledDescriptionTHOH>
         {!isMobile && (
           <StyledButtons>
@@ -187,31 +147,33 @@ export const ProductAndServices = () => {
               const ButtonComponent = isActive
                 ? StyledActiveButton
                 : StyledButton;
-              return (
-                <ButtonComponent
-                  type={"button"}
-                  key={key}
-                  onClick={() => handleButtonClick(key)}
-                  width={`${90 / buttonKeys.length}%`}
-                >
-                  {slides[key].button}
-                </ButtonComponent>
+              const slide = sectionProductsAndService.slides.find(
+                (slide) => slide.id === key
               );
+              if (slide) {
+                return (
+                  <ButtonComponent
+                    key={slide.id}
+                    type={"button"}
+                    onClick={() => handleButtonClick(slide.id)}
+                  >
+                    {slide.mainButton}
+                  </ButtonComponent>
+                );
+              }
+              return null;
             })}
           </StyledButtons>
         )}
         {isMobile ? (
-          <MobileSlider slides={slides} />
+          <MobileSlider slides={sectionProductsAndService.slides} />
         ) : (
-          <Slide
-            activeButton={activeButton}
-            monitorContent={monitorContent}
-            slides={slides}
-          />
+          slideData && <Slide slide={slideData} />
         )}
       </StyledDescription>
       <MobileWallet />
       <AvaibleCurrencies />
+      <VideoSlider />
     </>
   );
 };

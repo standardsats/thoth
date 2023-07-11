@@ -1,12 +1,36 @@
 import styled from "styled-components";
-import { colorVariables } from "../../assets/styles/commonStyles.ts";
+import {
+  colorVariables,
+  sizeVariable,
+} from "../../assets/styles/commonStyles.ts";
 import { PhotoSlider } from "./photo-slider/PhotoSlider.tsx";
 import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
 
+const { darkGrayColor } = colorVariables;
+
+//Data
 const sectionPhoto = {
   title: "Photo",
+  slides: [
+    {
+      index: "0",
+      image: "src/assets/images/test/test-photo.jpg",
+      alt: "Slide 1",
+    },
+    {
+      index: "1",
+      image: "src/assets/images/test/test-photo.jpg",
+      alt: "Slide 1",
+    },
+    {
+      index: "2",
+      image: "src/assets/images/test/test-photo.jpg",
+      alt: "Slide 1",
+    },
+  ],
 };
 
+//Styles
 const StyledPhoto = styled.div`
   padding-bottom: 4.16vw;
   display: flex;
@@ -16,7 +40,7 @@ const StyledPhoto = styled.div`
   box-sizing: border-box;
   min-height: 74.44vw;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     box-sizing: border-box;
     padding: 0;
     min-height: 91.26vw;
@@ -24,13 +48,12 @@ const StyledPhoto = styled.div`
   }
 `;
 
+//Component
 export const Photo = () => {
-  const { darkGrayColor } = colorVariables;
-
   return (
     <StyledPhoto>
       <SectionTitle color={darkGrayColor}>{sectionPhoto.title}</SectionTitle>
-      <PhotoSlider />
+      <PhotoSlider slides={sectionPhoto.slides} />
     </StyledPhoto>
   );
 };

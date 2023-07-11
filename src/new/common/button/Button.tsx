@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Button } from "../../../assets/styles/commonStyles.ts";
+import { ButtonOld } from "../../../assets/styles/commonStyles.ts";
 
 //Types
 type ButtonPropsType = {
@@ -23,7 +23,7 @@ export function CustomButton({
   width,
 }: ButtonPropsType) {
   return (
-    <Button
+    <ButtonOld
       type={type}
       className={className}
       $background={$background}
@@ -31,6 +31,6 @@ export function CustomButton({
       width={width}
     >
       {children}
-    </Button>
+    </ButtonOld>
   );
 }

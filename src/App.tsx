@@ -13,16 +13,16 @@ import { Footer } from "./new/Footer/Footer.tsx";
 function App() {
   return (
     <>
-      <Header />
+      {/*<Header />*/}
       <MainScreen />
       <HowItWorks />
       <Photo />
       <ProductAndServices />
-      <UseCasesOfOurProducts />
-      <News />
-      <HaveAQuestion />
-      <Footer />
-      <VideoSlider />
+      {/*<UseCasesOfOurProducts />*/}
+      {/*<News />*/}
+      {/*<HaveAQuestion />*/}
+      {/*<Footer />*/}
+      {/*<VideoSlider />*/}
     </>
   );
 }

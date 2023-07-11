@@ -1,19 +1,32 @@
 import styled from "styled-components";
-import { Subtitle } from "../../../common/subtitle/Subtitle.tsx";
-import { CustomText } from "../../../common/text/Text.tsx";
-import { ReactNode } from "react";
-import { colorVariables } from "../../../../assets/styles/commonStyles.ts";
-import { useMobileDetection } from "../../../../hooks/useMobileDetection.tsx";
+import { FC, ReactNode } from "react";
+import {
+  colorVariables,
+  fontFamily,
+  resetMarginsAndPaddings,
+  sizeVariable,
+} from "../../../../assets/styles/commonStyles.ts";
 
+const { whiteColor } = colorVariables;
+
+//Types
+type StepProps = {
+  subtitle: string;
+  text: string;
+  svg: ReactNode;
+};
+
+//Styles
 const StyledAdvantageContainer = styled.div`
   padding: 0;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  max-width: 19%;
   border-bottom: none;
+  align-self: start;
+  max-width: ((1440vw - 50vw) / 4);
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
+    align-self: center;
     padding: 10.5vw 3.5vw;
     max-width: 80.3vw;
     border-bottom: 0.5px ${colorVariables.whiteColor} solid;
@@ -29,61 +42,56 @@ const StyledWrapper = styled.div`
   min-height: 3.56vw;
   display: flex;
   flex-direction: row;
-  align-items: center; /* Добавлено выравнивание по вертикали */
+  align-items: center;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 100%;
   }
 `;
 
-const CenteredSubtitle = styled(Subtitle)`
-  align-self: center;
+const StyledSubtitle = styled.h3`
+  ${resetMarginsAndPaddings};
+  color: ${whiteColor};
+  ${fontFamily};
+  font-size: calc(26vw / 14.4);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.96;
+  text-align: left;
+
+  @media (max-width: ${sizeVariable}) {
+    line-height: 0.83;
+    font-size: calc(30vw / 5.08);
+  }
 `;
 
-interface StepProps {
-  subtitle: string;
-  text: string;
-  textMargin: string;
-  subtitleMargin: string;
-  svg: ReactNode;
-}
+const StyledText = styled.p`
+  ${resetMarginsAndPaddings};
+  margin: 2.5vw 0 0 0;
+  color: ${whiteColor};
+  ${fontFamily};
+  font-size: calc(20vw / 14.4);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: left;
+  max-width: 19vw;
 
-export const Advantage: React.FC<StepProps> = ({
-  subtitle,
-  text,
-  textMargin,
-  subtitleMargin,
-  svg,
-}) => {
-  const { whiteColor } = colorVariables;
-  const isMobile = useMobileDetection();
+  @media (max-width: ${sizeVariable}) {
+    font-size: calc(25vw / 5.08);
+    line-height: 1;
+    max-width: 100%;
+  }
+`;
 
-  const fontSizeCenteredSubtitle = isMobile ? "5.9vw" : "1.81vw";
-  const fontSizeCustomText = isMobile ? "4.9vw" : "1.39vw";
-  const lineHeightCustomText = isMobile ? "1" : "1.25";
-
+export const Advantage: FC<StepProps> = ({ subtitle, text, svg }) => {
   return (
     <StyledAdvantageContainer>
       <StyledWrapper>
         {svg}
-        <CenteredSubtitle
-          color={whiteColor}
-          fontSize={fontSizeCenteredSubtitle}
-          $lineheight={"0.83"}
-          $margin={subtitleMargin}
-        >
-          {subtitle}
-        </CenteredSubtitle>
+        <StyledSubtitle>{subtitle}</StyledSubtitle>
       </StyledWrapper>
-      <CustomText
-        $textalign={"left"}
-        fontSize={fontSizeCustomText}
-        $lineheight={lineHeightCustomText}
-        color={whiteColor}
-        $margin={textMargin}
-      >
-        {text}
-      </CustomText>
+      <StyledText>{text}</StyledText>
     </StyledAdvantageContainer>
   );
 };

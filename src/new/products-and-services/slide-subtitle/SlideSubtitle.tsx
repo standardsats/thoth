@@ -4,6 +4,7 @@ import {
   colorVariables,
   fontFamily,
   resetMarginsAndPaddings,
+  sizeVariable,
 } from "../../../assets/styles/commonStyles.ts";
 
 const { whiteColor } = colorVariables;
@@ -21,7 +22,7 @@ export const StyledSlideSubtitle = styled.h4<SlideSubtitleProps>`
   line-height: 1.5;
   color: ${whiteColor};
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(22vw / 5.08);
   }
 `;

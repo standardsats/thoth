@@ -2,24 +2,28 @@ import styled from "styled-components";
 import {
   divWithBackground,
   fontFamily,
+  sizeVariable,
+  TextMixin,
 } from "../../../assets/styles/commonStyles.ts";
-import { CustomText } from "../../common/text/Text.tsx";
 import { colorVariables } from "../../../assets/styles/commonStyles.ts";
-import { CustomButton } from "../../common/button/Button.tsx";
-import { Slides } from "../ProductsAndServices.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
-import { Subtitle } from "../../common/subtitle/Subtitle.tsx";
+import { SlideSubtitle } from "../slide-subtitle/SlideSubtitle.tsx";
+import { CustomButton } from "../../common/customButton/CustomButton.tsx";
+import { SlideData } from "../ProductsAndServices.tsx";
+import { FC } from "react";
 
+const { greenColor } = colorVariables;
+
+//Types
 type SlideProps = {
-  activeButton: string;
-  monitorContent: string;
-  slides: Slides;
+  slide: SlideData;
 };
 
+//Styles
 const StyledWrapper = styled.div`
   width: 82.25vw;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 82.41vw;
     margin-right: 7.66vw;
     height: 100%;
@@ -40,7 +44,7 @@ const StyledSlide = styled.div`
   background-image: url("/src/assets/images/products-and-service/item-L.svg");
   border-radius: 30px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin-top: 0;
     padding: 8.86vw 4.53vw;
     justify-content: start;
@@ -51,15 +55,24 @@ const StyledSlide = styled.div`
   }
 `;
 
+const StyledText = styled.p`
+  ${TextMixin};
+  margin: 6.74vw 0 2.57vw;
+
+  @media (max-width: ${sizeVariable}) {
+    margin: 12.95vw 0 4.32vw;
+  }
+`;
+
 const StyledSlideContent = styled.div`
-  max-width: 29vw;
+  width: 32vw;
   display: flex;
   flex-direction: column;
   justify-content: start;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin: 0 auto;
-    max-width: 57.28vw;
+    width: 70vw;
     box-sizing: border-box;
   }
 `;
@@ -69,7 +82,7 @@ const StyledMonitorButton = styled(CustomButton)`
   padding-right: 1.43vw;
   width: fit-content;
   background: transparent;
-  color: ${colorVariables.greenColor};
+  color: ${greenColor};
   font-size: 1.74vw;
   ${fontFamily};
   font-style: normal;
@@ -77,7 +90,7 @@ const StyledMonitorButton = styled(CustomButton)`
   line-height: 1.6;
   letter-spacing: -0.5px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     padding-right: 6vw;
     font-size: 4.91vw;
   }
@@ -94,76 +107,94 @@ const StyledMonitorButton = styled(CustomButton)`
     top: 60%;
     transform: translateY(-60%);
 
-    @media (max-width: 1400px) {
+    @media (max-width: ${sizeVariable}) {
       width: 2.94vw;
       height: 2.61vw;
     }
   }
 `;
 
-const StyledImage = styled.img`
-  padding: 5.24vw;
+const StyledImageContainer = styled.div`
+  height: 20vw;
+  width: 40vw;
+  padding: 5.24vw 4vw;
   position: relative;
   background-repeat: no-repeat;
   background-size: contain;
   margin: auto;
   display: block;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin: 0;
-    padding: 12.77vw 0 11.59vw;
-    width: 95%;
-    height: auto;
+    padding: 6vw 0 0 0;
+    height: 30vw;
+    width: 70vw;
     object-position: center top;
-  }
-
-  @media (min-width: 1399px) {
-    max-height: 21.5vw;
   }
 `;
 
-export const Slide = ({ activeButton, monitorContent, slides }: SlideProps) => {
-  const isMobile = useMobileDetection();
-  const title = slides[activeButton].button;
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`;
 
-  const fontSize = isMobile ? "3.94vw" : "1.74vw";
-  const margin = isMobile ? "12.95vw 0 4.32vw" : "6.74vw 0 2.57vw";
-  const letter = isMobile ? "-0.4px" : "-0.5px";
+//Component
+export const Slide: FC<SlideProps> = ({ slide }) => {
+  const isMobile = useMobileDetection();
+
+  //TODO актуализировть события
+  const handleButton1Click = () => {
+    console.log("Button slide 1 clicked");
+  };
+
+  const handleButton2Click = () => {
+    console.log("Button slide 2 clicked");
+  };
+
+  const handleButton3Click = () => {
+    console.log("Button slide 3 clicked");
+  };
+
+  const handleButton4Click = () => {
+    console.log("Button slide 4 clicked");
+  };
+
+  const handleButtonClick = (button: string) => {
+    switch (button) {
+      case "1":
+        handleButton1Click();
+        break;
+      case "2":
+        handleButton2Click();
+        break;
+      case "3":
+        handleButton3Click();
+        break;
+      case "4":
+        handleButton4Click();
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <StyledWrapper>
       <StyledSlide>
-        {isMobile && (
-          <Subtitle
-            color={colorVariables.whiteColor}
-            fontSize={"4.9vw"}
-            $lineheight={"1.5"}
-            $margin={"0"}
-          >
-            {title}
-          </Subtitle>
-        )}
+        {isMobile && <SlideSubtitle>{slide.mainButton}</SlideSubtitle>}
         <StyledSlideContent>
-          <CustomText
-            color={colorVariables.whiteColor}
-            fontSize={fontSize}
-            $lineheight={"1.6"}
-            $margin={margin}
-            $letter={letter}
-            $textalign={"left"}
-          >
-            {monitorContent}
-          </CustomText>
+          <StyledText>{slide.textContent}</StyledText>
           <StyledMonitorButton
-            type={"button"}
-            onClick={() =>
-              console.log("Press", slides[activeButton].content.button)
-            }
+            type="button"
+            onClick={() => handleButtonClick(slide.id)}
           >
-            {slides[activeButton].content.button}
+            {slide.button}
           </StyledMonitorButton>
         </StyledSlideContent>
-        <StyledImage src={slides[activeButton].content.image} alt="Image" />
+        <StyledImageContainer>
+          <StyledImage src={slide.image} alt="Image" />
+        </StyledImageContainer>
       </StyledSlide>
     </StyledWrapper>
   );
