@@ -10,7 +10,8 @@ import {
 import { SectionTitle } from "../../common/section-title/SectionTitle.tsx";
 import { CustomButton } from "../../common/customButton/CustomButton.tsx";
 
-const { darkColor, whiteColor, darkGrayColor, lightGreenColor, greenColor } = colorVariables;
+const { darkColor, whiteColor, darkGrayColor, lightGreenColor, greenColor } =
+  colorVariables;
 
 //Data
 const mobileWallet: MobileWallet = {

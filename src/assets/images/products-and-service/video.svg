@@ -1,0 +1,23 @@
+<svg width="530" height="627" viewBox="0 0 530 627" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <filter id="blur-filter" x="-50%" y="-50%" width="200%" height="197%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="70"/>
+    </filter>
+
+    <g filter="url(#blur-filter)">
+    <circle cx="177.5" cy="526.5" r="75.5" fill="#00A5FF" fill-opacity="0.3"/>
+    <circle cx="404.5" cy="109.5" r="75.5" fill="#20F1C0" fill-opacity="0.31"/>
+    <circle cx="189.5" cy="285.5" r="75.5" fill="#FFE9A3"/>
+    </g>
+    <g filter="url(#blur-filter)">
+        <path d="M0 20C0 8.95429 8.95431 0 20 0H510C521.046 0 530 8.9543 530 20V607C530 618.046 521.046 627 510 627H20C8.95429 627 0 618.046 0 607V20Z" fill="white" fill-opacity="0.01"/>
+    </g>
+    <defs>
+        <filter id="filter0_b_20_5543" x="-250" y="-250" width="1030" height="1127" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feGaussianBlur in="BackgroundImageFix" stdDeviation="125"/>
+            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_20_5543"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_20_5543" result="shape"/>
+        </filter>
+    </defs>
+</svg>
+

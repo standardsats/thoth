@@ -2,10 +2,45 @@ import Slider, { CustomArrowProps, Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import { Slide } from "./Slide.tsx";
-import { Slides } from "./UseCasesOfOurProducts.tsx";
-import arrowRight from "../../assets/images/use-cases-of-our-products/slider-bitton.svg";
-import { CustomButton } from "../common/button/Button.tsx";
+import { Slide } from "../slide/Slide.tsx";
+import { Slides } from "../UseCasesOfOurProducts.tsx";
+import arrowRight from "../../../assets/images/use-cases-of-our-products/slider-bitton.svg";
+import { CustomButton } from "../../common/customButton/CustomButton.tsx";
+import { FC } from "react";
+
+//Type
+type MobileSliderProps = {
+  slides: Slides;
+};
+
+//Style
+const StyledButton = styled(CustomButton)<{ isPrev?: boolean }>`
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 12.5%;
+  right: 5%;
+  width: 9.8vw;
+  height: 9.8vw;
+  border-radius: 50%;
+  background: transparent;
+  z-index: 10;
+  transition: background-color 0.3s;
+
+  @media (max-width: 1400px) {
+    width: ${(props) => (props.isPrev ? "6.39vw" : "8.82vw")};
+    height: ${(props) => (props.isPrev ? "6.39vw" : "8.82vw")};
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const StyledArrowImage = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 
 const StyledSlideContainer = styled.div`
   height: 100%;
@@ -14,7 +49,7 @@ const StyledSlideContainer = styled.div`
   background-size: cover;
 `;
 
-const NextArrow: React.FC<CustomArrowProps> = ({ onClick }) => (
+const NextArrow: FC<CustomArrowProps> = ({ onClick }) => (
   <StyledButton
     type="button"
     className="arrow next"
@@ -24,7 +59,7 @@ const NextArrow: React.FC<CustomArrowProps> = ({ onClick }) => (
   </StyledButton>
 );
 
-export const MobSlider = ({ slides }: { slides: Slides }) => {
+export const MobileSlider: FC<MobileSliderProps> = ({ slides }) => {
   const settings: Settings = {
     dots: false,
     arrows: true,
@@ -65,32 +100,3 @@ export const MobSlider = ({ slides }: { slides: Slides }) => {
     </StyledSlideContainer>
   );
 };
-
-// Стили
-const StyledButton = styled(CustomButton)<{ isPrev?: boolean }>`
-  padding: 0;
-  border: none;
-  position: absolute;
-  top: 12.5%;
-  right: 5%;
-  width: 9.8vw;
-  height: 9.8vw;
-  border-radius: 50%;
-  background: transparent;
-  z-index: 10;
-  transition: background-color 0.3s;
-
-  @media (max-width: 1400px) {
-    width: ${(props) => (props.isPrev ? "6.39vw" : "8.82vw")};
-    height: ${(props) => (props.isPrev ? "6.39vw" : "8.82vw")};
-  }
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-`;
-
-const StyledArrowImage = styled.img`
-  width: 100%;
-  height: 100%;
-`;

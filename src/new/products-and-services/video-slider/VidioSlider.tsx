@@ -1,104 +1,226 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import { DescriptionTHOH } from "../../common/descriptionTHOH/descriptionTHOH.tsx";
+import { SectionTitle } from "../../common/section-title/SectionTitle.tsx";
+import {
+  colorVariables,
+  coverImage,
+  fontFamily,
+  resetMarginsAndPaddings,
+  sizeVariable,
+} from "../../../assets/styles/commonStyles.ts";
 
-const SliderContainer = styled.div`
+const { darkColor } = colorVariables;
+
+// Data
+const sectionVideo = {
+  title: "Video",
+  text: "Product Description THOTH",
+  movies: [
+    {
+      id: "1",
+      title: "Video title 1",
+      content: "Slide 1",
+    },
+    {
+      id: "2",
+      title: "Video title 2",
+      content: "Slide 2",
+    },
+    {
+      id: "3",
+      title: "Video title 3",
+      content: "Slide 3",
+    },
+    {
+      id: "4",
+      title: "Video title 4",
+      content: "Slide 4",
+    },
+    {
+      id: "5",
+      title: "Video title 5",
+      content: "Slide 5",
+    },
+  ],
+};
+
+//Styles
+const StyledSlider = styled.section`
+  margin: calc(50vw / 14.4);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledSliderContainer = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+
+  @media (max-width: ${sizeVariable}) {
+    flex-direction: column;
+  }
 `;
 
-const VideoContainer = styled.div`
+const StyledSectionTitle = styled(SectionTitle)`
+  width: 80%;
+`;
+
+const StyledDescriptionTHOH = styled(DescriptionTHOH)`
+  margin: 1vw 0 2.57vw;
+`;
+
+const StyledVideoContainer = styled.div`
   width: 54%;
+  height: 100%;
+
+  @media (max-width: ${sizeVariable}) {
+    width: 100%;
+  }
 `;
 
-const SlideContainerWrapper = styled.div`
+const StyledSlideContainerWrapper = styled.div`
+  border-radius: 20px;
   width: 37%;
-  position: relative;
+  ${coverImage};
+  height: auto;
+  background-image: url("/src/assets/images/products-and-service/video.svg");
+
+  @media (max-width: ${sizeVariable}) {
+    width: 100%;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
-const SlideContainer = styled.div`
-  height: 400px;
+const StyledSlideContainer = styled.div`
+  height: 40vw;
   overflow-y: scroll;
+
+  @media (max-width: ${sizeVariable}) {
+    height: 125vw;
+  }
 `;
 
-const Slide = styled.div`
-  height: 200px;
-  margin-bottom: 10px;
-  background-color: lightgray;
+const StyledSlide = styled.div`
+  box-sizing: border-box;
+  position: relative;
+  height: 14.73vw;
+  width: 28.26vw;
+  margin: 2.23vw 1.23vw 4.44vw;
+  background-color: gray;
   cursor: pointer;
+  border-radius: 20px;
+
+  @media (max-width: ${sizeVariable}) {
+    height: 44.48vw;
+    width: 81.3vw;
+    margin: 12vw 6vw 12vw 0;
+  }
 `;
 
-const SelectedSlide = styled.div`
-  height: 200px;
-  margin-bottom: 10px;
+const StyledSlideTitle = styled.p`
+  max-width: 100%;
+  position: absolute;
+  bottom: -2.5vw;
+  left: 2.5vw;
+  ${resetMarginsAndPaddings};
+  color: ${darkColor};
+  ${fontFamily};
+  font-size: calc(25vw / 14.4);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+
+  @media (max-width: ${sizeVariable}) {
+    font-size: calc(25vw / 5.08);
+    bottom: -8vw;
+  }
+`;
+
+const StyledSelectedSlide = styled.div`
+  position: relative;
+  height: 37vw;
+  margin: 0 1.23vw 0.79vw;
   background-color: lightblue;
+  border-radius: 20px;
+  > p {
+    bottom: -4vw;
+    font-size: calc(30vw / 14.4);
+  }
+
+  @media (max-width: ${sizeVariable}) {
+    height: 53.34vw;
+    margin: 0 6.1vw 12vw;
+    > p {
+      bottom: -8vw;
+      font-size: calc(25vw / 5.08);
+    }
+  }
 `;
 
-const Scrollbar = styled.div`
-  //height: 100px;
-  //background-color: gray;
-  //cursor: pointer;
-  //position: relative;
-
-  //&::after {
-  //  content: "";
-  //  position: absolute;
-  //  top: 50%;
-  //  right: 0;
-  //  transform: translate(50%, -50%);
-  //  width: 10px;
-  //  height: 50px;
-  //  background-color: red;
-  //}
+const StyledSlideContent = styled.div`
+  margin-top: 0.79vw;
 `;
 
+//Components
 export const VideoSlider = () => {
-  const [selectedSlide, setSelectedSlide] = useState(1);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [selectedSlide, setSelectedSlide] = useState("1");
 
-  const handleSlideClick = (slide) => {
-    setSelectedSlide(slide);
-  };
-
-  const handleScroll = (e) => {
-    const { scrollTop, clientHeight, scrollHeight } = e.target;
-    const maxScrollPosition = scrollHeight - clientHeight;
-    const position = (scrollTop / maxScrollPosition) * 100;
-    setScrollPosition(position);
-  };
-
-  const handleScrollbarDrag = (e) => {
-    const { clientY } = e;
-    const { top, height } = e.target.getBoundingClientRect();
-    const position = ((clientY - top) / height) * 100;
-    setScrollPosition(position);
+  const handleSlideClick = (slideId: string) => {
+    setSelectedSlide(slideId);
   };
 
   return (
-    <SliderContainer>
-      <VideoContainer>
-        {selectedSlide && <SelectedSlide>{selectedSlide}</SelectedSlide>}
-      </VideoContainer>
-      <SlideContainerWrapper>
-        <SlideContainer onScroll={handleScroll}>
-          {[1, 2, 3, 4, 5].map((slide) => (
-            <Slide
-              key={slide}
-              onClick={() => handleSlideClick(slide)}
-              style={{
-                backgroundColor:
-                  selectedSlide === slide ? "lightblue" : "lightgray",
-              }}
-            >
-              Slide {slide}
-            </Slide>
-          ))}
-        </SlideContainer>
-        <Scrollbar
-          style={{ top: `${scrollPosition}%` }}
-          onMouseDown={handleScrollbarDrag}
-        />
-      </SlideContainerWrapper>
-    </SliderContainer>
+    <StyledSlider>
+      <StyledSectionTitle color={darkColor}>
+        {sectionVideo.title}
+      </StyledSectionTitle>
+      <StyledDescriptionTHOH color={darkColor}>
+        {sectionVideo.text}
+      </StyledDescriptionTHOH>
+      <StyledSliderContainer>
+        <StyledVideoContainer>
+          {/* Видео */}
+          {sectionVideo.movies.map((movie) => {
+            if (selectedSlide === movie.id) {
+              return (
+                <StyledSelectedSlide key={movie.id}>
+                  <StyledSlideTitle>{movie.title}</StyledSlideTitle>
+                  <StyledSlideContent>{movie.content}</StyledSlideContent>
+                </StyledSelectedSlide>
+              );
+            }
+            return null;
+          })}
+        </StyledVideoContainer>
+        <StyledSlideContainerWrapper>
+          <StyledSlideContainer>
+            {/* Слайды */}
+            {sectionVideo.movies.map((movie) => (
+              <StyledSlide
+                key={movie.id}
+                onClick={() => handleSlideClick(movie.id)}
+                style={{
+                  backgroundColor:
+                    selectedSlide === movie.id ? "lightblue" : "lightgray",
+                }}
+              >
+                <StyledSlideContent>{movie.content}</StyledSlideContent>
+                <StyledSlideTitle>{movie.title}</StyledSlideTitle>
+              </StyledSlide>
+            ))}
+          </StyledSlideContainer>
+        </StyledSlideContainerWrapper>
+      </StyledSliderContainer>
+    </StyledSlider>
   );
 };

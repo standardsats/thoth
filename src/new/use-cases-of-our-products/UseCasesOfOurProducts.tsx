@@ -4,32 +4,22 @@ import {
   colorVariables,
   coverImage,
   divWithBackground,
+  sizeVariable,
+  TitleButtonsMixin,
 } from "../../assets/styles/commonStyles.ts";
-import { CustomButton } from "../common/button/Button.tsx";
+import { CustomButton } from "../common/customButton/CustomButton.tsx";
 import { Fees } from "./fees/Fees.tsx";
-import { MobSlider } from "./MobSlider.tsx";
+import { MobileSlider } from "./mobile-slider/MobileSlider.tsx";
 import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
-import { Slide } from "./Slide.tsx";
+import { Slide } from "./slide/Slide.tsx";
 import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
 import { DescriptionTHOH } from "../common/descriptionTHOH/descriptionTHOH.tsx";
+import { News } from "./news/News.tsx";
+import { HaveAQuestion } from "./have-a-question/HaveAQuestion.tsx";
 
-type UseCasesOfOurProducts = {
-  title: string;
-  text: string;
-  slides: Slides;
-};
+const { greenColor, whiteColor } = colorVariables;
 
-export type Slides = {
-  [key: string]: {
-    button: string;
-    content: Array<{
-      image: string;
-      title: string;
-      text: string;
-    }>;
-  };
-};
-
+//Data
 const slides: Slides = {
   One: {
     button: "Merchants Solution",
@@ -96,13 +86,31 @@ const slides: Slides = {
   },
 };
 
+//Type
 const useCasesOfOurProducts: UseCasesOfOurProducts = {
   title: "Use Cases of Our Products",
   text: "Product Description THOTH",
   slides: slides,
 };
 
-const StyledDescription = styled.div`
+type UseCasesOfOurProducts = {
+  title: string;
+  text: string;
+  slides: Slides;
+};
+
+export type Slides = {
+  [key: string]: {
+    button: string;
+    content: Array<{
+      image: string;
+      title: string;
+      text: string;
+    }>;
+  };
+};
+
+const StyledDescription = styled.section`
   ${coverImage};
   min-height: calc(1015vw / 14.4);
   padding: 4.86vw;
@@ -113,7 +121,7 @@ const StyledDescription = styled.div`
   align-items: center;
   background-image: url("/src/assets/images/use-cases-of-our-products/background-L.svg");
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     padding: 14.17vw 0 12.4vw 0;
     box-sizing: border-box;
     min-height: 138.78vw;
@@ -130,7 +138,7 @@ const StyledContainer = styled.div`
 const StyledDescriptionTHOH = styled(DescriptionTHOH)`
   margin: 1vw 0 2.57vw;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin: 1.76vw 0 0;
   }
 `;
@@ -156,7 +164,7 @@ const StyledMonitor = styled.div`
   background-image: url("/src/assets/images/use-cases-of-our-products/slide-L.svg");
   border-radius: 30px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     display: block;
     padding: 0;
     background-image: none;
@@ -164,45 +172,29 @@ const StyledMonitor = styled.div`
 `;
 
 const StyledActiveButton = styled(CustomButton)`
-  border-bottom: 2px solid ${colorVariables.greenColor};
-
-  padding-bottom: 2.57vw;
-  background: transparent;
-  border-radius: 0;
-  text-align: center;
-  font-size: 25px;
-  font-family: Grammatika, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.5;
+  width: calc(100% / 3);
+  ${TitleButtonsMixin};
+  border-bottom: 2px solid ${greenColor};
 
   &:hover {
-    border-bottom: 2px solid ${colorVariables.greenColor};
+    border-bottom: 2px solid ${greenColor};
   }
 `;
 
 const StyledButton = styled(CustomButton)`
-  border-bottom: 2px solid ${colorVariables.whiteColor};
-
-  padding-bottom: 2.57vw;
-  background: transparent;
-  border-radius: 0;
-  text-align: center;
-  font-size: 25px;
-  font-family: Grammatika, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.5;
+  width: calc(100% / 3);
+  ${TitleButtonsMixin};
+  border-bottom: 2px solid ${whiteColor};
 
   &:hover {
-    border-bottom: 2px solid ${colorVariables.whiteColor};
+    border-bottom: 2px solid ${whiteColor};
   }
 `;
 
+//Components
 export const UseCasesOfOurProducts = () => {
   const isMobile = useMobileDetection();
   const [activeButton, setActiveButton] = useState<string>("One");
-  const { whiteColor } = colorVariables;
 
   useEffect(() => {
     // Обновить активную кнопку и содержимое монитора при первой загрузке
@@ -214,7 +206,6 @@ export const UseCasesOfOurProducts = () => {
   };
 
   const buttonKeys = Object.keys(slides);
-  console.log(isMobile);
 
   return (
     <>
@@ -238,7 +229,6 @@ export const UseCasesOfOurProducts = () => {
                     type={"button"}
                     key={key}
                     onClick={() => handleButtonClick(key)}
-                    width={`${98 / buttonKeys.length}%`}
                   >
                     {slides[key].button}
                   </ButtonComponent>
@@ -249,7 +239,7 @@ export const UseCasesOfOurProducts = () => {
         </StyledContainer>
         <StyledMonitor>
           {isMobile ? (
-            <MobSlider slides={slides} />
+            <MobileSlider slides={slides} />
           ) : (
             slides[activeButton].content.map((card, index) => (
               <Slide
@@ -263,6 +253,8 @@ export const UseCasesOfOurProducts = () => {
         </StyledMonitor>
       </StyledDescription>
       <Fees />
+      <News />
+      <HaveAQuestion />
     </>
   );
 };

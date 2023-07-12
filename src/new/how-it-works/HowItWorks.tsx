@@ -70,7 +70,7 @@ const StyledSteps = styled.div`
   ${divWithBackground};
   width: 93.54vw;
   height: auto;
-  background-image: url("/src/assets/images/how-it-works/steps-left-L.svg");
+  background-image: url("/src/assets/images/how-it-works/steps-L.svg");
 
   @media (max-width: ${sizeVariable}) {
     padding-top: 16.7vw;

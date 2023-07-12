@@ -1,17 +1,72 @@
 import styled from "styled-components";
-import { Slide } from "./Slide";
+import { Slide } from "./slide/Slide.tsx";
 import { NewsSlider } from "./news-slider/NewsSlider.tsx";
-import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
-import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
+import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
+import { SectionTitle } from "../../common/section-title/SectionTitle.tsx";
 import {
   colorVariables,
   coverImage,
   fontFamily,
-} from "../../assets/styles/commonStyles.ts";
-import { CustomButton } from "../common/button/Button.tsx";
+  sizeVariable,
+} from "../../../assets/styles/commonStyles.ts";
+import { CustomButton } from "../../common/customButton/CustomButton.tsx";
 
-const { whiteColor } = colorVariables;
+const { whiteColor, greenColor } = colorVariables;
 
+//Data
+const news = {
+  title: "News",
+  button: "Read more",
+  slides: [
+    {
+      id: "1",
+      span: "Corporate News",
+      date: "20.04.2022",
+      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      image: "/src/assets/images/test/test-photo.jpg",
+      alt: "Image",
+    },
+    {
+      id: "2",
+      span: "Corporate News",
+      date: "21.04.2022",
+      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      image: "/src/assets/images/test/test-photo.jpg",
+      alt: "Image",
+    },
+    {
+      id: "3",
+      span: "Corporate News",
+      date: "22.04.2022",
+      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      image: "/src/assets/images/test/test-photo.jpg",
+      alt: "Image",
+    },
+    {
+      id: "4",
+      span: "Corporate News",
+      date: "23.04.2022",
+      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      image: "/src/assets/images/test/test-photo.jpg",
+      alt: "Image",
+    },
+    {
+      id: "5",
+      span: "Corporate News",
+      date: "24.04.2022",
+      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
+      image: "/src/assets/images/test/test-photo.jpg",
+      alt: "Image",
+    },
+  ],
+};
+
+//Styles
 const StyledSection = styled.div`
   ${coverImage};
   min-height: calc(1317vw / 14.4);
@@ -19,7 +74,7 @@ const StyledSection = styled.div`
   width: 100%;
   background-image: url("/src/assets/images/news/news-L.svg");
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     background-image: url("/src/assets/images/news/news-S.svg");
     min-height: calc(1441vw / 5.08);
   }
@@ -29,7 +84,7 @@ const NewsContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     flex-direction: column;
   }
 `;
@@ -40,7 +95,7 @@ const StyledWrapper = styled.div`
   flex-direction: row;
   align-items: end;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     padding: 14vw 3.56vw 7.34vw;
   }
 `;
@@ -51,7 +106,7 @@ const StyledButton = styled(CustomButton)`
   padding-right: 1.43vw;
   width: fit-content;
   background: transparent;
-  color: ${colorVariables.greenColor};
+  color: ${greenColor};
   font-size: 1.74vw;
   ${fontFamily};
   font-style: normal;
@@ -59,7 +114,7 @@ const StyledButton = styled(CustomButton)`
   line-height: 2.2;
   letter-spacing: -0.5px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin-left: 10vw;
     padding-right: 6vw;
     font-size: 4.91vw;
@@ -78,7 +133,7 @@ const StyledButton = styled(CustomButton)`
     top: 60%;
     transform: translateY(-60%);
 
-    @media (max-width: 1400px) {
+    @media (max-width: ${sizeVariable}) {
       width: 2.94vw;
       height: 2.61vw;
     }
@@ -90,7 +145,7 @@ const BigSlidesContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -102,57 +157,10 @@ const SmallSlidesContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 100%;
   }
 `;
-
-const news = {
-  title: "News",
-  button: "Read more",
-  slides: [
-    {
-      span: "Corporate News",
-      date: "20.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: "/src/assets/images/test/test-photo.jpg",
-      alt: "Image",
-    },
-    {
-      span: "Corporate News",
-      date: "21.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: "/src/assets/images/test/test-photo.jpg",
-      alt: "Image",
-    },
-    {
-      span: "Corporate News",
-      date: "22.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: "/src/assets/images/test/test-photo.jpg",
-      alt: "Image",
-    },
-    {
-      span: "Corporate News",
-      date: "23.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: "/src/assets/images/test/test-photo.jpg",
-      alt: "Image",
-    },
-    {
-      span: "Corporate News",
-      date: "24.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: "/src/assets/images/test/test-photo.jpg",
-      alt: "Image",
-    },
-  ],
-};
 
 export const News = () => {
   const isMobile = useMobileDetection();
@@ -168,6 +176,7 @@ export const News = () => {
     console.log("Press button Read more");
   };
 
+  //Components
   return (
     <StyledSection>
       <StyledWrapper>
@@ -178,16 +187,16 @@ export const News = () => {
       </StyledWrapper>
       <NewsContainer>
         <BigSlidesContainer>
-          {bigSlides.map((slide, index) => (
-            <Slide key={index} slide={slide} size="big" />
+          {bigSlides.map((slide) => (
+            <Slide key={slide.id} slide={slide} size="big" />
           ))}
         </BigSlidesContainer>
         {isMobile ? (
           <NewsSlider slides={smallSlides} size="small" />
         ) : (
           <SmallSlidesContainer>
-            {smallSlides.map((slide, index) => (
-              <Slide key={index} slide={slide} size="small" />
+            {smallSlides.map((slide) => (
+              <Slide key={slide.id} slide={slide} size="small" />
             ))}
           </SmallSlidesContainer>
         )}

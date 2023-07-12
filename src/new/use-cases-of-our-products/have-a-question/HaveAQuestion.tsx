@@ -3,21 +3,38 @@ import {
   colorVariables,
   fontFamily,
   resetMarginsAndPaddings,
-} from "../../assets/styles/commonStyles.ts";
-import { SectionTitle } from "../common/section-title/SectionTitle.tsx";
-import React from "react";
-import { Link } from "../common/Link/Link.tsx";
+  sizeVariable,
+} from "../../../assets/styles/commonStyles.ts";
+import { SectionTitle } from "../../common/section-title/SectionTitle.tsx";
+import { Link } from "../../common/Link/Link.tsx";
 
 const { deepColor, darkGreenColor } = colorVariables;
 
-const StyledSection = styled.div`
+//Data
+const questions = {
+  title: "Have a question?",
+  text: "Explore our solutions or you can contact us throughticket system and contact form. Feel free to get in touch..",
+  existing: {
+    title: "For existing clients",
+    text: "If you already have an account please use our ticket system.",
+    linkName: "Get 24\\7 Support",
+  },
+  new: {
+    title: "For new clients or partners",
+    text: "Please leave your inquiry and our Buisness Development Team will contact you shortly.",
+    linkName: "Contact BD Team",
+  },
+};
+
+//Styles
+const StyledSection = styled.section`
   display: flex;
   flex-direction: row;
   align-items: start;
   justify-content: space-between;
   padding: 10.9vw 3.54vw;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     flex-direction: column;
     padding: 12vw 8.01vw 19.1vw;
   }
@@ -27,8 +44,8 @@ const StyledTitle = styled(SectionTitle)`
   padding: 3.13vw 0 1.8vw;
   align-self: start;
   text-align: left;
-  
-  @media (max-width: 1400px) {
+
+  @media (max-width: ${sizeVariable}) {
     flex-direction: column;
     padding: 0 0 7.28vw;
   }
@@ -41,7 +58,7 @@ const StyledContainer = styled.div`
   align-items: start;
   max-width: 31.94vw;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     min-width: 100%;
   }
 `;
@@ -52,10 +69,9 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   max-width: 31.94vw;
   align-items: start;
-  //align-self: flex-start;
   justify-content: space-between;
-  
-  @media (max-width: 1400px) {
+
+  @media (max-width: ${sizeVariable}) {
     min-width: 100%;
   }
 `;
@@ -71,7 +87,7 @@ const StyledText = styled.p`
   line-height: 1.6;
   letter-spacing: -0.5px;
   text-align: left;
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 100%;
     padding: 2.56vw 0 5.5vw;
   }
@@ -79,12 +95,12 @@ const StyledText = styled.p`
   &:first-child,
   &.custom-first {
     width: 30.76vw;
-    @media (max-width: 1400px) {
+    @media (max-width: ${sizeVariable}) {
       width: 100%;
     }
   }
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(25vw / 5.08);
   }
 `;
@@ -92,7 +108,7 @@ const StyledText = styled.p`
 const StyledImage = styled.img`
   width: auto;
   height: calc(58vw / 14.4);
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     height: calc(58vw / 5.08);
     margin: 12vw 0 4.92vw;
   }
@@ -110,7 +126,7 @@ const StyledSubtitle = styled.h3`
   letter-spacing: -0.6px;
   text-align: left;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(30vw / 5.08);
   }
 `;
@@ -126,28 +142,12 @@ const StyledLink = styled(Link)`
   letter-spacing: -0.5px;
   text-decoration-line: underline;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(25vw / 5.08);
   }
 `;
 
-const questions = {
-  title: "Have a question?",
-  text:
-    "Explore our solutions or you can contact us throughticket system and contact form. Feel free to get in touch..",
-  existing: {
-    title: "For existing clients",
-    text: "If you already have an account please use our ticket system.",
-    linkName: "Get 24\\7 Support",
-  },
-  new: {
-    title: "For new clients or partners",
-    text:
-      "Please leave your inquiry and our Buisness Development Team will contact you shortly.",
-    linkName: "Contact BD Team",
-  },
-};
-
+//Component
 export const HaveAQuestion = () => {
   return (
     <StyledSection>
@@ -171,7 +171,7 @@ export const HaveAQuestion = () => {
         <StyledLink
           href={"example.com"}
           target="_blank"
-          rel="noopener noreferrer"
+          $relAttribute="noopener noreferrer"
           color={darkGreenColor}
         >
           {questions.existing.linkName}
@@ -191,7 +191,7 @@ export const HaveAQuestion = () => {
         <StyledLink
           href={"example.com"}
           target="_blank"
-          rel="noopener noreferrer"
+          $relAttribute="noopener noreferrer"
           color={darkGreenColor}
         >
           {questions.new.linkName}
@@ -200,4 +200,3 @@ export const HaveAQuestion = () => {
     </StyledSection>
   );
 };
-

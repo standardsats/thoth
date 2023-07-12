@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import arrowLeft from "../../../assets/images/photo/arrow-left.svg";
 import arrowRight from "../../../assets/images/photo/arrow-right.svg";
-import { CustomButton } from "../../common/button/Button.tsx";
+import { CustomButton } from "../../common/customButton/CustomButton.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 import { FC, ReactNode } from "react";
 import { sizeVariable } from "../../../assets/styles/commonStyles.ts";
@@ -63,13 +63,13 @@ const StyledSlideContent = styled.div`
   }
 `;
 
-const StyledButton = styled(CustomButton)<{ isPrev?: boolean }>`
+const StyledButton = styled(CustomButton)<{ $isPrev?: boolean }>`
   padding: 0;
   border: none;
   position: absolute;
-  top: ${(props) => (props.isPrev ? "42.5%" : "40%")};
-  width: ${(props) => (props.isPrev ? "6.55vw" : "8.62vw")};
-  height: ${(props) => (props.isPrev ? "6.55vw" : "8.62vw")};
+  top: ${(props) => (props.$isPrev ? "42.5%" : "40%")};
+  width: ${(props) => (props.$isPrev ? "6.55vw" : "8.62vw")};
+  height: ${(props) => (props.$isPrev ? "6.55vw" : "8.62vw")};
   border-radius: 50%;
   background: transparent;
   z-index: 10;
@@ -162,7 +162,7 @@ const PrevArrow: FC<CustomArrowProps> = ({ onClick }) => (
     type="button"
     className="arrow prev"
     onClick={onClick as () => void}
-    isPrev
+    $isPrev
   >
     <StyledArrowImage src={arrowLeft} alt="Next" />
   </StyledButton>

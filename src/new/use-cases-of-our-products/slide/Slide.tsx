@@ -4,11 +4,13 @@ import {
   resetMarginsAndPaddings,
   colorVariables,
   fontFamily,
-} from "../../assets/styles/commonStyles.ts";
-import { SlideTitle } from "../common/slide-title/SlideTitle.tsx";
+  sizeVariable,
+} from "../../../assets/styles/commonStyles.ts";
+import { SlideTitle } from "../../common/slide-title/SlideTitle.tsx";
 
 const { whiteColor } = colorVariables;
 
+//Types
 type SlideProps = {
   button?: string;
   image: string;
@@ -16,12 +18,13 @@ type SlideProps = {
   text: string;
 };
 
+//Styles
 const StyledSlide = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 80vw;
     min-height: 68.17vw;
     align-items: start;
@@ -29,13 +32,13 @@ const StyledSlide = styled.div`
 `;
 
 const StyledSlideContainer = styled.div`
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     padding: 7.18vw 0 10.26vw 5vw;
   }
 `;
 
 const StyledSlideTitle = styled(SlideTitle)`
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 100%;
     box-sizing: border-box;
     padding: 9.29vw 1.38vw 5.33vw 12.84vw;
@@ -47,7 +50,8 @@ const StyledImage = styled.img`
   margin-right: 2.15vw;
   width: 2.98vw;
   height: auto;
-  @media (max-width: 1400px) {
+
+  @media (max-width: ${sizeVariable}) {
     width: 12.45vw;
     margin-right: 3.93vw;
   }
@@ -62,7 +66,7 @@ const SlidedSubtitle = styled.h4`
   line-height: 1.5;
   color: ${whiteColor};
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(22vw / 5.08);
   }
 `;
@@ -78,7 +82,7 @@ const StyledCardText = styled.p`
   letter-spacing: -0.4px;
   text-align: left;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(20vw / 5.08);
   }
 `;
@@ -87,12 +91,13 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding-bottom: calc(14vw / 14.4);
-  
-  @media (max-width: 1400px) {
+
+  @media (max-width: ${sizeVariable}) {
     padding-bottom: calc(24vw / 5.08);
   }
 `;
 
+//Component
 export const Slide: React.FC<SlideProps> = ({ button, image, title, text }) => {
   return (
     <StyledSlide>

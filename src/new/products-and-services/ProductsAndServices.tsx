@@ -108,13 +108,23 @@ const StyledButtons = styled.div`
 `;
 
 const StyledActiveButton = styled(CustomButton)`
+  width: calc(90% / 4);
   ${TitleButtonsMixin};
   border-bottom: 2px solid ${greenColor};
+
+  &:hover {
+    border-bottom: 2px solid ${greenColor};
+  }
 `;
 
 const StyledButton = styled(CustomButton)`
+  width: calc(90% / 4);
   ${TitleButtonsMixin};
   border-bottom: 2px solid ${whiteColor};
+
+  &:hover {
+    border-bottom: 2px solid ${whiteColor};
+  }
 `;
 
 //Component

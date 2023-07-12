@@ -4,13 +4,16 @@ import {
   divWithImage,
   fontFamily,
   resetMarginsAndPaddings,
+  sizeVariable,
 } from "../../../assets/styles/commonStyles.ts";
-import { CustomButton } from "../../common/button/Button.tsx";
+import { CustomButton } from "../../common/customButton/CustomButton.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 import { SectionTitle } from "../../common/section-title/SectionTitle.tsx";
 
-const { lightBlackColor, blackColor, darkGreenColor } = colorVariables;
+const { lightBlackColor, blackColor, darkGreenColor, whiteColor, greenColor, lightGreenColor } =
+  colorVariables;
 
+//Data
 type Fees = {
   title: string;
   lineOne: {
@@ -47,14 +50,15 @@ const fees: Fees = {
   },
 };
 
-const StyledFees = styled.div`
+//Styles
+const StyledFees = styled.section`
   margin: 5.2vw auto 6.07vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 94%;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     padding: 12.37vw 8.25vw 16.89vw 11vw;
     margin: 0;
     width: 100%;
@@ -71,7 +75,7 @@ const StyledLine = styled.div`
   justify-content: flex-start;
   width: 100%;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     display: flex;
     flex-direction: column;
   }
@@ -100,9 +104,9 @@ const StyledTitle = styled(SectionTitle)`
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -1px;
-  border-bottom: 2px solid ${colorVariables.lightBlackColor};
+  border-bottom: 2px solid ${lightBlackColor};
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     padding-bottom: 5.09vw;
     margin: 0;
     font-size: 9.8vw;
@@ -123,7 +127,7 @@ const StyledSubtitle = styled.h3`
   line-height: 1.2;
   letter-spacing: -0.8px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin: 9.82vw 0 0 0;
     font-size: calc(35vw / 5.08);
     letter-spacing: -0.7px;
@@ -141,7 +145,7 @@ const StyledMainText = styled.p`
   letter-spacing: -0.8px;
   text-align: left;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     font-size: calc(35vw / 5.08);
     letter-spacing: -0.7px;
     margin: 5.1vw 0 3.1vw;
@@ -159,7 +163,7 @@ const StyledSpan = styled.p`
   letter-spacing: -0.4px;
   text-align: left;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin: 1vw 0;
     width: 80%;
     font-size: calc(20vw / 5.08);
@@ -169,7 +173,7 @@ const StyledSpan = styled.p`
 const StyledButton = styled(CustomButton)`
   border-radius: 0;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin-top: 10.8vw;
     width: 100%;
   }
@@ -180,8 +184,13 @@ const StyledButtonContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(
+    133deg,
+    ${greenColor} 0%,
+    ${lightGreenColor} 100%
+  );
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     min-width: 33vw;
     min-height: 8.33vw;
   }
@@ -189,7 +198,7 @@ const StyledButtonContent = styled.div`
 
 const StyledCheckText = styled.span`
   margin-right: 1.29vw;
-  color: ${colorVariables.whiteColor};
+  color: ${whiteColor};
   font-size: 1.11vw;
   ${fontFamily};
   font-style: normal;
@@ -197,7 +206,7 @@ const StyledCheckText = styled.span`
   line-height: 1.5%;
   letter-spacing: -0.32px;
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     margin-right: 6.5vw;
     font-size: 3.15vw;
   }
@@ -209,23 +218,25 @@ const StyledIcon = styled.div`
   height: 1.18vw;
   background-image: url("/src/assets/images/common/play-icon.svg");
 
-  @media (max-width: 1400px) {
+  @media (max-width: ${sizeVariable}) {
     width: 3.34vw;
     height: 2.95vw;
   }
 `;
 
-const CheckButtonHandler = () => {
-  //TODO актуализировть событие
-  console.log("Press check pricing details");
-};
-
+//Components
 const ContentCheckButton = (
   <StyledButtonContent>
     <StyledCheckText>{fees.lineOne.text.button}</StyledCheckText>
     <StyledIcon />
   </StyledButtonContent>
 );
+
+//TODO
+//актуализировать событие
+const CheckButtonHandler = () => {
+  console.log("Press fees button");
+};
 
 const Button = () => (
   <StyledButtonWrapper>

@@ -8,6 +8,12 @@ const FooterContainer = styled.footer`
   justify-content: space-between;
   padding: 20px;
   background-color: black;
+
+  @media (max-width: 1400px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const Column = styled.div`
@@ -91,7 +97,7 @@ export function Footer() {
                 color={"pink"}
                 href={link.href}
                 target="_blank"
-                rel="noopener noreferrer"
+                $relAttribute="noopener noreferrer"
               >
                 {link.name}
               </Link>
@@ -108,7 +114,7 @@ export function Footer() {
                 color={"pink"}
                 href={link.href}
                 target="_blank"
-                rel="noopener noreferrer"
+                $relAttribute="noopener noreferrer"
               >
                 {link.name}
               </Link>
@@ -125,7 +131,7 @@ export function Footer() {
                 color={"pink"}
                 href={link.href}
                 target="_blank"
-                rel="noopener noreferrer"
+                $relAttribute="noopener noreferrer"
               >
                 {link.name}
               </Link>

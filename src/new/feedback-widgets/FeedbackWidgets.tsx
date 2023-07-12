@@ -8,9 +8,9 @@ type FeedbackWidgetsProps = {
 };
 
 // Styles
-const StyledFeedbackWidgets = styled.div<{ reverseOrder: boolean }>`
+const StyledFeedbackWidgets = styled.div<{ $reverseOrder: boolean }>`
   display: flex;
-  flex-direction: ${({ reverseOrder }) => (reverseOrder ? "row" : "row")};
+  flex-direction: ${({ $reverseOrder }) => ($reverseOrder ? "row" : "row")};
   justify-content: center;
   align-items: center;
 `;
@@ -75,13 +75,13 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
   );
 
   return (
-    <StyledFeedbackWidgets reverseOrder={shouldReverseOrder}>
+    <StyledFeedbackWidgets $reverseOrder={shouldReverseOrder}>
       {!isLightType && (
         <StyledLink
           color={"transparent"}
           href={"https://example.com/instagram"}
           target="_blank"
-          rel="noopener noreferrer"
+          $relAttribute="noopener noreferrer"
         >
           {ContentInstagramButton}
         </StyledLink>
@@ -91,7 +91,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
           color={"transparent"}
           href={"https://example.com/telegram"}
           target="_blank"
-          rel="noopener noreferrer"
+          $relAttribute="noopener noreferrer"
         >
           {ContentTelegramButton}
         </StyledLink>
@@ -100,7 +100,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
         color={"transparent"}
         href={"https://example.com/twitter"}
         target="_blank"
-        rel="noopener noreferrer"
+        $relAttribute="noopener noreferrer"
       >
         {ContentTwitterButton}
       </StyledLink>
@@ -108,7 +108,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
         color={"transparent"}
         href={"https://example.com/facebook"}
         target="_blank"
-        rel="noopener noreferrer"
+        $relAttribute="noopener noreferrer"
       >
         {ContentFacebookButton}
       </StyledLink>
@@ -117,7 +117,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
           color={"transparent"}
           href={"https://example.com/email"}
           target="_blank"
-          rel="noopener noreferrer"
+          $relAttribute="noopener noreferrer"
         >
           {ContentEmailButton}
         </StyledLink>

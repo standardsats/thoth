@@ -5,26 +5,52 @@ import { HowItWorks } from "./new/how-it-works/HowItWorks.tsx";
 import { ProductAndServices } from "./new/products-and-services/ProductsAndServices.tsx";
 import { Photo } from "./new/photo/Photo.tsx";
 import { UseCasesOfOurProducts } from "./new/use-cases-of-our-products/UseCasesOfOurProducts.tsx";
-import { News } from "./new/news/News.tsx";
-import { HaveAQuestion } from "./new/have-a-question/HaveAQuestion.tsx";
-import { VideoSlider } from "./new/video-slider/VideoSlider.tsx";
+import { Element } from "react-scroll";
 import { Footer } from "./new/Footer/Footer.tsx";
 
-function App() {
+const sections = [
+  { id: "1", title: "How it Works" },
+  { id: "2", title: "Photo" },
+  { id: "3", title: "Products and Services" },
+  { id: "4", title: "Use Cases of Our Products" },
+];
+export const App = () => {
   return (
     <>
-      {/*<Header />*/}
+      <Header sections={sections} />
       <MainScreen />
-      <HowItWorks />
-      <Photo />
-      <ProductAndServices />
-      {/*<UseCasesOfOurProducts />*/}
-      {/*<News />*/}
-      {/*<HaveAQuestion />*/}
-      {/*<Footer />*/}
-      {/*<VideoSlider />*/}
+      {sections.map((section) => {
+        if (section.id === "1") {
+          return (
+            <Element key={section.id} name={section.id}>
+              <HowItWorks />
+            </Element>
+          );
+        }
+        if (section.id === "2") {
+          return (
+            <Element key={section.id} name={section.id}>
+              <Photo />
+            </Element>
+          );
+        }
+        if (section.id === "3") {
+          return (
+            <Element key={section.id} name={section.id}>
+              <ProductAndServices />
+            </Element>
+          );
+        }
+        if (section.id === "4") {
+          return (
+            <Element key={section.id} name={section.id}>
+              <UseCasesOfOurProducts />
+            </Element>
+          );
+        }
+        return null;
+      })}
+      <Footer />
     </>
   );
 }
-
-export default App;
