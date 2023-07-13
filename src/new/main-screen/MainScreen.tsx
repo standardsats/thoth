@@ -25,7 +25,7 @@ const StyledScreen = styled.section`
   width: 100%;
   height: auto;
   min-height: 63.47vw;
-  background-image: url("/images/main-screen/screen-L.svg");
+  background-image: url(`${process.env.PUBLIC_URL}/images/main-screen/screen-L.svg`);
 
   @media (max-width: ${sizeVariable}) {
     width: 100vw;
