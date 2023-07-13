@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import { css } from "styled-components";
 
-export const sizeVariable = "1400px";
+export const sizeVariable = "1000px";
 
 export const resetMarginsAndPaddings = css`
   margin: 0;
   padding: 0;
+`;
+
+export const divWithImage = css`
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 export const colorVariables = {
@@ -54,11 +59,6 @@ export const divWithBackground = css`
   background-position: center;
   width: 100%;
   height: auto;
-`;
-
-export const divWithImage = css`
-  background-repeat: no-repeat;
-  background-size: contain;
 `;
 
 export const coverImage = css`
