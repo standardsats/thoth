@@ -70,12 +70,12 @@ const StyledSteps = styled.div`
   ${divWithBackground};
   width: 93.54vw;
   height: auto;
-  background-image: url("/src/assets/images/how-it-works/steps-L.svg");
+  background-image: url("/src/images/how-it-works/steps-L.svg");
 
   @media (max-width: ${sizeVariable}) {
     padding-top: 16.7vw;
     width: 90.55vw;
-    background-image: url("/src/assets/images/how-it-works/steps-S.svg");
+    background-image: url("/src/images/how-it-works/steps-S.svg");
   }
 `;
 
@@ -114,7 +114,7 @@ const StyledParent = styled.div`
 
 const StyledLineLeft = styled.div`
   ${StyledLinesMixin};
-  background-image: url("/src/assets/images/how-it-works/left-line-L.svg");
+  background-image: url("/src/images/how-it-works/left-line-L.svg");
   top: 4vw;
   left: 14.5vw;
   width: 20.83vw;
@@ -124,13 +124,13 @@ const StyledLineLeft = styled.div`
     top: 25vw;
     left: 7vw;
     height: calc(100% - 20.86vw + 15vw);
-    background-image: url("/src/assets/images/how-it-works/left-line-S.svg");
+    background-image: url("/src/images/how-it-works/left-line-S.svg");
   }
 `;
 
 const StyledLineRight = styled.div`
   ${StyledLinesMixin};
-  background-image: url("/src/assets/images/how-it-works/right-line-L.svg");
+  background-image: url("/src/images/how-it-works/right-line-L.svg");
   top: 4vw;
   right: -15vw;
   width: 19vw;
@@ -140,7 +140,7 @@ const StyledLineRight = styled.div`
     top: 30vw;
     right: 3vw;
     height: calc(100% - 24.56vw + 15vw);
-    background-image: url("/src/assets/images/how-it-works/right-line-S.svg");
+    background-image: url("/src/images/how-it-works/right-line-S.svg");
   }
 `;
 
@@ -149,7 +149,7 @@ const StyledSvgStepOne = styled.div`
   margin-bottom: 2vw;
   width: 11.3vw;
   height: 11.3vw;
-  background-image: url("/src/assets/images/how-it-works/send-invoice.svg");
+  background-image: url("/src/images/how-it-works/send-invoice.svg");
   ${commonBackgroundMixin};
   background-size: 7.4vw 7.4vw;
 
@@ -157,7 +157,7 @@ const StyledSvgStepOne = styled.div`
     margin-top: 2vw;
     width: 20.86vw;
     height: 20.86vw;
-    background-image: url("/src/assets/images/how-it-works/send-invoice.svg");
+    background-image: url("/src/images/how-it-works/send-invoice.svg");
     ${divWithImage}
   }
 `;
@@ -166,7 +166,7 @@ const StyledSvgStepTwo = styled.div`
   ${StepSvgMixin};
   width: 11.3vw;
   height: 11.3vw;
-  background-image: url("/src/assets/images/how-it-works/payment.jpg");
+  background-image: url("/src/images/how-it-works/payment.jpg");
   ${commonBackgroundMixin};
   background-size: 8.6vw 8.6vw;
 
@@ -174,7 +174,7 @@ const StyledSvgStepTwo = styled.div`
     margin-top: 4vw;
     width: 24.56vw;
     height: 24.56vw;
-    background-image: url("/src/assets/images/how-it-works/payment.jpg");
+    background-image: url("/src/images/how-it-works/payment.jpg");
     ${divWithImage};
   }
 }
@@ -186,14 +186,14 @@ const StyledSvgStepThree = styled.div`
   left: 0;
   width: 11.3vw;
   height: 11.3vw;
-  background-image: url("/src/assets/images/how-it-works/brodcast.jpg");
+  background-image: url("/src/images/how-it-works/brodcast.jpg");
   ${divWithImage};
 
   @media (max-width: ${sizeVariable}) {
     margin: 4vw 0 4vw;
     width: 32.08vw;
     height: 32.08vw;
-    background-image: url("/src/assets/images/how-it-works/brodcast.jpg");
+    background-image: url("/src/images/how-it-works/brodcast.jpg");
   }
 `;
 

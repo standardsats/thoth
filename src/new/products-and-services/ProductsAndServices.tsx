@@ -77,13 +77,13 @@ const StyledDescription = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("/src/assets/images/products-and-service/description-L.svg");
+  background-image: url("/src/images/products-and-service/description-L.svg");
 
   @media (max-width: ${sizeVariable}) {
     height: calc(970vw / 5.08);
     padding: 14.93vw 0;
     flex-direction: column;
-    background-image: url("/src/assets/images/products-and-service/description-S.svg");
+    background-image: url("/src/images/products-and-service/description-S.svg");
   }
 `;
 

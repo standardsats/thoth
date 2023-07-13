@@ -1,4 +1,4 @@
-import { ReactComponent as HowItWorkSvg } from "../assets/images/how-it-work.svg";
+import { ReactComponent as HowItWorkSvg } from "../images/how-it-work.svg";
 import styled from "styled-components";
 
 const Wrapper = styled.div`

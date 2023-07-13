@@ -27,11 +27,11 @@ const StyledAdvantages = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-image: url("/src/assets/images/how-it-works/advantages/advantages-L.svg");
+  background-image: url("/src/images/how-it-works/advantages/advantages-L.svg");
 
   @media (max-width: ${sizeVariable}) {
     min-height: 212.58vw;
-    background-image: url("/src/assets/images/how-it-works/advantages/advantages-S.svg");
+    background-image: url("/src/images/how-it-works/advantages/advantages-S.svg");
     flex-direction: column;
   }
 `;

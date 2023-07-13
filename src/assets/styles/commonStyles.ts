@@ -75,19 +75,6 @@ export const fontFamilySecond = css`
   font-family: Plus_Jakarta_Sans, sans-serif;
 `;
 
-export interface ButtonProps {
-  $background?: string;
-  width?: string;
-}
-
-const greenGradientBackground = css`
-  background: linear-gradient(133deg, #20f1c0 0%, #3cc1b3 100%);
-`;
-
-const customBackground = css<ButtonProps>`
-  background: ${(props) => props.$background};
-`;
-
 //How-it-works
 export const StepSvgMixin = css`
   margin-bottom: 2vw;

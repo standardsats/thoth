@@ -54,12 +54,12 @@ const StyledMonitor = styled.div`
   width: 100%;
   height: 100%;
   ${coverImage};
-  background-image: url("/src/assets/images/products-and-service/mobile-wallet-L.svg");
+  background-image: url("/src/images/products-and-service/mobile-wallet-L.svg");
 
   @media (max-width: ${sizeVariable}) {
     box-sizing: border-box;
     padding: 0 9vw 4.14vw;
-    background-image: url("/src/assets/images/products-and-service/mobile-wallet-S.svg");
+    background-image: url("/src/images/products-and-service/mobile-wallet-S.svg");
     justify-content: end;
     align-items: start;
   }
@@ -117,7 +117,7 @@ const StyledIcon = styled.div`
   ${divWithImage};
   width: 0.97vw;
   height: 1.53vw;
-  background-image: url("/src/assets/images/products-and-service/download-icon.svg");
+  background-image: url("/src/images/products-and-service/download-icon.svg");
 
   @media (max-width: ${sizeVariable}) {
     width: 2.39vw;

@@ -1,4 +1,4 @@
-import { ReactComponent as Vector } from "../assets/images/vector.svg";
+import { ReactComponent as Vector } from "../images/vector.svg";
 import styled from "styled-components";
 const Wrapper = styled.div`
   position: absolute;

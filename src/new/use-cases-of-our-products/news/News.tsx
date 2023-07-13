@@ -72,10 +72,10 @@ const StyledSection = styled.div`
   min-height: calc(1317vw / 14.4);
   box-sizing: border-box;
   width: 100%;
-  background-image: url("/src/assets/images/news/news-L.svg");
+  background-image: url("/src/images/news/news-L.svg");
 
   @media (max-width: ${sizeVariable}) {
-    background-image: url("/src/assets/images/news/news-S.svg");
+    background-image: url("/src/images/news/news-S.svg");
     min-height: calc(1441vw / 5.08);
   }
 `;
@@ -126,7 +126,7 @@ const StyledButton = styled(CustomButton)`
     position: absolute;
     width: 0.83vw;
     height: 1.04vw;
-    background-image: url("/src/assets/images/products-and-service/play.svg");
+    background-image: url("/src/images/products-and-service/play.svg");
     background-repeat: no-repeat;
     background-size: contain;
     left: calc(100%);

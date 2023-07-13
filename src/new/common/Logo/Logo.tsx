@@ -9,7 +9,7 @@ const StyledLogo = styled.div`
   ${divWithImage};
   width: 11.25vw;
   height: 2.63vw;
-  background-image: url("/src/assets/images/logo.svg");
+  background-image: url("/src/images/logo.svg");
 
   @media (max-width: ${sizeVariable}) {
     width: 25vw;

@@ -216,7 +216,7 @@ const StyledIcon = styled.div`
   ${divWithImage};
   width: 1.04vw;
   height: 1.18vw;
-  background-image: url("/src/assets/images/common/play-icon.svg");
+  background-image: url("/src/images/common/play-icon.svg");
 
   @media (max-width: ${sizeVariable}) {
     width: 3.34vw;

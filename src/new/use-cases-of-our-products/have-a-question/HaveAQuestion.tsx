@@ -171,7 +171,7 @@ export const HaveAQuestion = () => {
         <StyledLink
           href={"example.com"}
           target="_blank"
-          $relAttribute="noopener noreferrer"
+          rel="noopener noreferrer"
           color={darkGreenColor}
         >
           {questions.existing.linkName}
@@ -191,7 +191,7 @@ export const HaveAQuestion = () => {
         <StyledLink
           href={"example.com"}
           target="_blank"
-          $relAttribute="noopener noreferrer"
+          rel="noopener noreferrer"
           color={darkGreenColor}
         >
           {questions.new.linkName}

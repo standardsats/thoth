@@ -81,7 +81,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
           color={"transparent"}
           href={"https://example.com/instagram"}
           target="_blank"
-          $relAttribute="noopener noreferrer"
+          rel="noopener noreferrer"
         >
           {ContentInstagramButton}
         </StyledLink>
@@ -91,7 +91,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
           color={"transparent"}
           href={"https://example.com/telegram"}
           target="_blank"
-          $relAttribute="noopener noreferrer"
+          rel="noopener noreferrer"
         >
           {ContentTelegramButton}
         </StyledLink>
@@ -100,7 +100,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
         color={"transparent"}
         href={"https://example.com/twitter"}
         target="_blank"
-        $relAttribute="noopener noreferrer"
+        rel="noopener noreferrer"
       >
         {ContentTwitterButton}
       </StyledLink>
@@ -108,7 +108,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
         color={"transparent"}
         href={"https://example.com/facebook"}
         target="_blank"
-        $relAttribute="noopener noreferrer"
+        rel="noopener noreferrer"
       >
         {ContentFacebookButton}
       </StyledLink>
@@ -117,7 +117,7 @@ export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({ type }) => {
           color={"transparent"}
           href={"https://example.com/email"}
           target="_blank"
-          $relAttribute="noopener noreferrer"
+          rel="noopener noreferrer"
         >
           {ContentEmailButton}
         </StyledLink>

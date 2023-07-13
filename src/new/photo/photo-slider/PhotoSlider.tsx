@@ -2,8 +2,8 @@ import Slider, { CustomArrowProps, Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
-import arrowLeft from "../../../assets/images/photo/arrow-left.svg";
-import arrowRight from "../../../assets/images/photo/arrow-right.svg";
+import arrowLeft from "../../../images/photo/arrow-left.svg";
+import arrowRight from "../../../images/photo/arrow-right.svg";
 import { CustomButton } from "../../common/customButton/CustomButton.tsx";
 import { useMobileDetection } from "../../../hooks/useMobileDetection.tsx";
 import { FC, ReactNode } from "react";
@@ -76,8 +76,8 @@ const StyledButton = styled(CustomButton)<{ $isPrev?: boolean }>`
   transition: background-color 0.3s;
 
   @media (max-width: ${sizeVariable}) {
-    width: ${(props) => (props.isPrev ? "6.39vw" : "8.82vw")};
-    height: ${(props) => (props.isPrev ? "6.39vw" : "8.82vw")};
+    width: ${(props) => (props.$isPrev ? "6.39vw" : "8.82vw")};
+    height: ${(props) => (props.$isPrev ? "6.39vw" : "8.82vw")};
   }
 
   &:hover {

@@ -88,7 +88,7 @@ const StyledSlideContainerWrapper = styled.div`
   width: 37%;
   ${coverImage};
   height: auto;
-  background-image: url("/src/assets/images/products-and-service/video.svg");
+  background-image: url("/src/images/products-and-service/video.svg");
 
   @media (max-width: ${sizeVariable}) {
     width: 100%;

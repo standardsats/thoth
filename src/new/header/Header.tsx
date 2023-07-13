@@ -89,7 +89,7 @@ const StyledBurgerButton = styled.div`
   ${divWithImage};
   width: 6.5vw;
   height: 3.77vw;
-  background-image: url("/src/assets/images/burger-icon.svg");
+  background-image: url("/src/images/burger-icon.svg");
 `;
 
 //TODO
@@ -173,13 +173,13 @@ export const Header: FC<HeaderProps> = ({ sections }) => {
 
   return (
     <StyledHeader>
+      <p>test2</p>
       <StyledLogo />
       {isMobile && (
         <CustomButton
           type={"button"}
           children={ContentBurgerButton}
           onClick={BurgerButtonHandler}
-          $background={"transparent"}
         />
       )}
       {!isMobile && (

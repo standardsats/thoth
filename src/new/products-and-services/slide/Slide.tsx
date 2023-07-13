@@ -41,7 +41,7 @@ const StyledSlide = styled.div`
   align-items: stretch;
   width: 82.25vw;
   ${divWithBackground};
-  background-image: url("/src/assets/images/products-and-service/item-L.svg");
+  background-image: url("/src/images/products-and-service/item-L.svg");
   border-radius: 30px;
 
   @media (max-width: ${sizeVariable}) {
@@ -51,7 +51,7 @@ const StyledSlide = styled.div`
     flex-direction: column;
     width: 82.41vw;
     height: 100%;
-    background-image: url("/src/assets/images/products-and-service/item-S.svg");
+    background-image: url("/src/images/products-and-service/item-S.svg");
   }
 `;
 
@@ -100,7 +100,7 @@ const StyledMonitorButton = styled(CustomButton)`
     position: absolute;
     width: 0.83vw;
     height: 1.04vw;
-    background-image: url("/src/assets/images/products-and-service/play.svg");
+    background-image: url("/src/images/products-and-service/play.svg");
     background-repeat: no-repeat;
     background-size: contain;
     left: calc(100%);

@@ -97,7 +97,7 @@ export function Footer() {
                 color={"pink"}
                 href={link.href}
                 target="_blank"
-                $relAttribute="noopener noreferrer"
+                rel="noopener noreferrer"
               >
                 {link.name}
               </Link>
@@ -114,7 +114,7 @@ export function Footer() {
                 color={"pink"}
                 href={link.href}
                 target="_blank"
-                $relAttribute="noopener noreferrer"
+                rel="noopener noreferrer"
               >
                 {link.name}
               </Link>
@@ -131,7 +131,7 @@ export function Footer() {
                 color={"pink"}
                 href={link.href}
                 target="_blank"
-                $relAttribute="noopener noreferrer"
+                rel="noopener noreferrer"
               >
                 {link.name}
               </Link>

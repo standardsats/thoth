@@ -119,7 +119,7 @@ const StyledDescription = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("/src/assets/images/use-cases-of-our-products/background-L.svg");
+  background-image: url("/src/images/use-cases-of-our-products/background-L.svg");
 
   @media (max-width: ${sizeVariable}) {
     padding: 14.17vw 0 12.4vw 0;
@@ -127,7 +127,7 @@ const StyledDescription = styled.section`
     min-height: 138.78vw;
     justify-content: space-between;
     flex-direction: column;
-    background-image: url("/src/assets/images/use-cases-of-our-products/background-S.svg");
+    background-image: url("/src/images/use-cases-of-our-products/background-S.svg");
   }
 `;
 
@@ -161,7 +161,7 @@ const StyledMonitor = styled.div`
   width: 88.47vw;
   min-height: 37.15vw;
   ${divWithBackground};
-  background-image: url("/src/assets/images/use-cases-of-our-products/slide-L.svg");
+  background-image: url("/src/images/use-cases-of-our-products/slide-L.svg");
   border-radius: 30px;
 
   @media (max-width: ${sizeVariable}) {

@@ -8,7 +8,7 @@ type LinkProps = {
   color: string;
   href: string;
   target?: string;
-  $relAttribute: "noopener noreferrer";
+  rel?: string;
 };
 
 //Styles
@@ -27,11 +27,11 @@ const StyledLink = styled.a<LinkProps>`
 export const Link: FC<LinkProps> = ({
   href,
   target,
-  $relAttribute,
+  rel,
   children,
   ...style
 }) => (
-  <StyledLink href={href} target={target} rel={$relAttribute} {...style}>
+  <StyledLink href={href} target={target} rel={rel} {...style}>
     {children}
   </StyledLink>
 );

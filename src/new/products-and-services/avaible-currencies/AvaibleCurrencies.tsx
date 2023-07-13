@@ -57,7 +57,7 @@ const StyledAvaibleCurrencies = styled.section`
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  background-image: url("/src/assets/images/products-and-service/avaible-currencies.svg");
+  background-image: url("/src/images/products-and-service/avaible-currencies.svg");
 
   @media (max-width: ${sizeVariable}) {
     padding: 22vw 0 20.27vw 4.93vw;

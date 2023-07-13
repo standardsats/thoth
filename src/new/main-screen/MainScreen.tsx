@@ -6,8 +6,8 @@ import {
   fontFamily,
   resetMarginsAndPaddings,
   sizeVariable,
-} from "../../assets/styles/commonStyles.ts";
-import { useMobileDetection } from "../../hooks/useMobileDetection.tsx";
+} from "@/assets/styles/commonStyles.ts";
+import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { CustomButton } from "../common/customButton/CustomButton.tsx";
 
 const { greenColor, lightGreenColor, whiteColor } = colorVariables;
@@ -25,12 +25,12 @@ const StyledScreen = styled.section`
   width: 100%;
   height: auto;
   min-height: 63.47vw;
-  background-image: url("/src/assets/images/main-screen/screen-L.svg");
+  background-image: url("/images/main-screen/screen-L.svg");
 
   @media (max-width: ${sizeVariable}) {
     width: 100vw;
     min-height: 209.25vw;
-    background-image: url("/src/assets/images/main-screen/screen-S.svg");
+    background-image: url("/images/main-screen/screen-L.svg");
   }
 `;
 
@@ -141,7 +141,7 @@ const StyledIcon = styled.div`
   ${divWithImage};
   width: 1.18vw;
   height: 1.04vw;
-  background-image: url("/src/assets/images/common/play-icon.svg");
+  background-image: url("/src/images/common/play-icon.svg");
 
   @media (max-width: ${sizeVariable}) {
     width: 3.35vw;
@@ -180,4 +180,4 @@ export const MainScreen = () => {
       </StyledScreen>
     </>
   );
-};
+}

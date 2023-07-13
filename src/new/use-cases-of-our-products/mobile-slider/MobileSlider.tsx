@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { Slide } from "../slide/Slide.tsx";
 import { Slides } from "../UseCasesOfOurProducts.tsx";
-import arrowRight from "../../../assets/images/use-cases-of-our-products/slider-bitton.svg";
+import arrowRight from "../../../images/use-cases-of-our-products/slider-bitton.svg";
 import { CustomButton } from "../../common/customButton/CustomButton.tsx";
 import { FC } from "react";
 
@@ -44,7 +44,7 @@ const StyledArrowImage = styled.img`
 
 const StyledSlideContainer = styled.div`
   height: 100%;
-  background-image: url("/src/assets/images/use-cases-of-our-products/slide-S.svg");
+  background-image: url("/src/images/use-cases-of-our-products/slide-S.svg");
   background-repeat: no-repeat;
   background-size: cover;
 `;

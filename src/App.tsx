@@ -17,40 +17,40 @@ const sections = [
 export const App = () => {
   return (
     <>
-      <Header sections={sections} />
+      {/*<Header sections={sections} />*/}
       <MainScreen />
-      {sections.map((section) => {
-        if (section.id === "1") {
-          return (
-            <Element key={section.id} name={section.id}>
-              <HowItWorks />
-            </Element>
-          );
-        }
-        if (section.id === "2") {
-          return (
-            <Element key={section.id} name={section.id}>
-              <Photo />
-            </Element>
-          );
-        }
-        if (section.id === "3") {
-          return (
-            <Element key={section.id} name={section.id}>
-              <ProductAndServices />
-            </Element>
-          );
-        }
-        if (section.id === "4") {
-          return (
-            <Element key={section.id} name={section.id}>
-              <UseCasesOfOurProducts />
-            </Element>
-          );
-        }
-        return null;
-      })}
-      <Footer />
+      {/*{sections.map((section) => {*/}
+      {/*  if (section.id === "1") {*/}
+      {/*    return (*/}
+      {/*      <Element key={section.id} name={section.id}>*/}
+      {/*        <HowItWorks />*/}
+      {/*      </Element>*/}
+      {/*    );*/}
+      {/*  }*/}
+      {/*  if (section.id === "2") {*/}
+      {/*    return (*/}
+      {/*      <Element key={section.id} name={section.id}>*/}
+      {/*        <Photo />*/}
+      {/*      </Element>*/}
+      {/*    );*/}
+      {/*  }*/}
+      {/*  if (section.id === "3") {*/}
+      {/*    return (*/}
+      {/*      <Element key={section.id} name={section.id}>*/}
+      {/*        <ProductAndServices />*/}
+      {/*      </Element>*/}
+      {/*    );*/}
+      {/*  }*/}
+      {/*  if (section.id === "4") {*/}
+      {/*    return (*/}
+      {/*      <Element key={section.id} name={section.id}>*/}
+      {/*        <UseCasesOfOurProducts />*/}
+      {/*      </Element>*/}
+      {/*    );*/}
+      {/*  }*/}
+      {/*  return null;*/}
+      {/*})}*/}
+      {/*<Footer />*/}
     </>
   );
 }
