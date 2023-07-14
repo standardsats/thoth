@@ -10,6 +10,7 @@ import {
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { CustomButton } from "@/components/common/customButton/CustomButton.tsx";
+import { readMoreNews } from "@/../public/ButtonsHandlers.ts";
 
 const { whiteColor, greenColor } = colorVariables;
 
@@ -171,17 +172,12 @@ export const News = () => {
   const bigSlides = slides.slice(0, 2);
   const smallSlides = slides.slice(2, 5);
 
-  const ButtonHandler = () => {
-    //TODO актуализировть событие
-    console.log("Press button Read more");
-  };
-
   //Components
   return (
     <StyledSection>
       <StyledWrapper>
         <SectionTitle color={whiteColor}>{news.title}</SectionTitle>
-        <StyledButton type={"button"} onClick={ButtonHandler}>
+        <StyledButton type={"button"} onClick={readMoreNews}>
           {news.button}
         </StyledButton>
       </StyledWrapper>

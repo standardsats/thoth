@@ -9,7 +9,7 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { CustomButton } from "@/components/common/customButton/CustomButton.tsx";
-import { OpenAccount } from "../../../public/ButtonsHandlers.ts";
+import { openAccount } from "@/../public/ButtonsHandlers.ts";
 
 const { greenColor, lightGreenColor, whiteColor } = colorVariables;
 
@@ -171,7 +171,7 @@ export const MainScreen = () => {
           <StyledButton
             type={"button"}
             children={ButtonContent}
-            onClick={OpenAccount}
+            onClick={openAccount}
           />
         </StyledContent>
       </StyledScreen>

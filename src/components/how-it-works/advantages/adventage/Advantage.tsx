@@ -29,7 +29,7 @@ const StyledAdvantageContainer = styled.div`
     align-self: center;
     padding: 10.5vw 3.5vw;
     max-width: 80.3vw;
-    border-bottom: 0.5px ${colorVariables.whiteColor} solid;
+    border-bottom: 0.5px ${whiteColor} solid;
   }
 
   &:last-child {

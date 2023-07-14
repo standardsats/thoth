@@ -65,6 +65,7 @@ const StyledAvaibleCurrencies = styled.section`
     flex-direction: column;
     background-image: none;
     background-color: ${darkGrayColor};
+    overflow-x: hidden;
   }
 `;
 
@@ -108,6 +109,7 @@ const StyledImage = styled.img`
 
   @media (max-width: ${sizeVariable}) {
     width: 92vw;
+    overflow-x: hidden;
   }
 `;
 

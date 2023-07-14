@@ -28,6 +28,7 @@ export const colorVariables = {
   darkGreenColor: "#00BAA4",
   darkColor: "#1C2938",
   deepColor: "#141E29",
+  deepGrayColor: "#17212D",
 };
 
 export const ButtonNew = styled.button`
@@ -92,6 +93,7 @@ export const StyledLinesMixin = css`
   position: absolute;
   background-repeat: no-repeat;
   z-index: 2;
+  background-size: cover;
 
   @media (max-width: ${sizeVariable}) {
     width: 45vw;

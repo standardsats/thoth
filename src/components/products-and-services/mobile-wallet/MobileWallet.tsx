@@ -9,7 +9,7 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { SectionTitle } from "@/components/common/section-title/SectionTitle.tsx";
 import { CustomButton } from "@/components/common/customButton/CustomButton.tsx";
-import { Download } from "../../../../public/ButtonsHandlers.ts";
+import { download } from "@/../public/ButtonsHandlers.ts";
 
 const { darkColor, whiteColor, darkGrayColor, lightGreenColor, greenColor } =
   colorVariables;
@@ -143,7 +143,7 @@ export const MobileWallet = () => {
         <StyledButton
           type={"button"}
           children={ContentDownloadButton}
-          onClick={Download}
+          onClick={download}
         />
       </StyledMonitor>
     </StyledMobileWallet>

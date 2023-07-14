@@ -115,6 +115,7 @@ const StyledLineLeft = styled.div`
   left: 14.5vw;
   width: 20.83vw;
   height: 6.04vw;
+  z-index: 888;
 
   @media (max-width: ${sizeVariable}) {
     top: 25vw;

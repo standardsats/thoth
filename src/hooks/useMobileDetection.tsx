@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 
 export const useMobileDetection = () => {
   const [isMobile, setIsMobile] = useState<null | boolean>(null);
@@ -6,7 +7,7 @@ export const useMobileDetection = () => {
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;
-      setIsMobile(screenWidth <= 1400);
+      setIsMobile(screenWidth <= parseInt(sizeVariable));
     };
 
     handleResize();

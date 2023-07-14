@@ -14,10 +14,10 @@ import { FeedbackWidgets } from "@/components/common/feedback-widgets/FeedbackWi
 import { FC } from "react";
 import { Link as ScrollLink } from "react-scroll";
 import {
-  BurgerButtonHandler,
-  SignIn,
-  SignUp,
-} from "../../../public/ButtonsHandlers.ts";
+  burgerButtonHandler,
+  signIn,
+  signUp,
+} from "@/../public/ButtonsHandlers.ts";
 
 const { whiteColor, greenColor, lightGreenColor } = colorVariables;
 
@@ -38,6 +38,7 @@ type HeaderProps = {
 };
 
 const StyledHeader = styled.header`
+  overflow-x: hidden;
   box-sizing: border-box;
   padding-left: 4vw;
   position: absolute;
@@ -140,7 +141,7 @@ const StyledButtonLogin = styled(CustomButton)`
 `;
 
 const StyledLogo = styled(Logo)`
-  width: 20vw;
+  width: 21vw;
   display: flex;
   position: relative;
 `;
@@ -183,7 +184,7 @@ export const Header: FC<HeaderProps> = ({ sections }) => {
         <StyledBurgerButton
           type={"button"}
           children={<></>}
-          onClick={BurgerButtonHandler}
+          onClick={burgerButtonHandler}
         />
       )}
       {!isMobile && (
@@ -209,12 +210,12 @@ export const Header: FC<HeaderProps> = ({ sections }) => {
             <StyledButtonRegister
               type={"button"}
               children={ContentSignUpButton}
-              onClick={SignUp}
+              onClick={signUp}
             />
             <StyledButtonLogin
               type={"button"}
               children={ContentSignInButton}
-              onClick={SignIn}
+              onClick={signIn}
             />
           </StyledWrapper>
         </>

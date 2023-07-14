@@ -9,6 +9,7 @@ import {
 import { CustomButton } from "@/components/common/customButton/CustomButton.tsx";
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { SectionTitle } from "@/components/common/section-title/SectionTitle.tsx";
+import { checkPricingDetails } from "../../../../public/ButtonsHandlers.ts";
 
 const {
   lightBlackColor,
@@ -238,18 +239,12 @@ const ContentCheckButton = (
   </StyledButtonContent>
 );
 
-//TODO
-//актуализировать событие
-const CheckButtonHandler = () => {
-  console.log("Press fees button");
-};
-
 const Button = () => (
   <StyledButtonWrapper>
     <StyledButton
       type={"button"}
       children={ContentCheckButton}
-      onClick={CheckButtonHandler}
+      onClick={checkPricingDetails}
     />
   </StyledButtonWrapper>
 );

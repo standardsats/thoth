@@ -12,15 +12,19 @@ type FeedbackWidgetsProps = {
 const StyledFeedbackWidgets = styled.div<{ $reverseOrder: boolean }>`
   display: flex;
   flex-direction: ${({ $reverseOrder }) => ($reverseOrder ? "row" : "row")};
-  justify-content: center;
+  justify-content: left;
   align-items: center;
+
+  @media (max-width: ${sizeVariable}) {
+    justify-content: left;
+  }
 `;
 
 const StyledLink = styled(Link)`
-  margin: 0 0.69vw;
+  margin: 0 1.3vw 0 0;
 
   @media (max-width: ${sizeVariable}) {
-    margin: 0 1.97vw;
+    margin: 0 1.9vw 0 0;
   }
 `;
 

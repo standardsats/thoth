@@ -11,6 +11,12 @@ import { SlideSubtitle } from "@/components/products-and-services/slide-subtitle
 import { CustomButton } from "@/components/common/customButton/CustomButton.tsx";
 import { SlideData } from "@/components/products-and-services/ProductsAndServices.tsx";
 import { FC } from "react";
+import {
+  handleButton1Click,
+  handleButton2Click,
+  handleButton3Click,
+  handleButton4Click,
+} from "@/../public/ButtonsHandlers.ts";
 
 const { greenColor } = colorVariables;
 
@@ -142,23 +148,6 @@ const StyledImage = styled.img`
 //Component
 export const Slide: FC<SlideProps> = ({ slide }) => {
   const isMobile = useMobileDetection();
-
-  //TODO актуализировть события
-  const handleButton1Click = () => {
-    console.log("Button slide 1 clicked");
-  };
-
-  const handleButton2Click = () => {
-    console.log("Button slide 2 clicked");
-  };
-
-  const handleButton3Click = () => {
-    console.log("Button slide 3 clicked");
-  };
-
-  const handleButton4Click = () => {
-    console.log("Button slide 4 clicked");
-  };
 
   const handleButtonClick = (button: string) => {
     switch (button) {
