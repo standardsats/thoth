@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const SliderStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   .slick-track {
     display: flex !important;
   }
@@ -14,5 +14,10 @@ export const SliderStyles = createGlobalStyle`
         height: 100%;
       }
     }
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    content: none !important;
   }
 `;

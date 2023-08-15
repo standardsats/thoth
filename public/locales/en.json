@@ -1,0 +1,11 @@
+{
+  "welcome": "Welcome to our website!",
+  "buttonText": "Switch language",
+
+  "mainScreen": {
+    "span": "Digital Assets Processing",
+    "button": "Open Account",
+    "title": "Accept Bitcoin Payments",
+    "text": "Send, Store, Exchange and Accept Cryptocurrency."
+  }
+}

@@ -15,12 +15,22 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/thoth/",
+  base: "/thoth",
   server: {
     open: true,
   },
   resolve: {
     alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+  },
+  build: {
+    outDir: "dist",
+    sourcemap: true,
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        "404": path.resolve(__dirname, "404.html"),
+      },
+    },
   },
   esbuild: {
     jsxInject: `import React from 'react'`,
