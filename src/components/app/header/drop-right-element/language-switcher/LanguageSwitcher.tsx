@@ -3,27 +3,26 @@ import { FC, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
 import {
-  divWithImage,
   fontFamily,
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { IconAndTextProps } from "../../icon-and-text/IconAndText.tsx";
-import { checkMarkIcon } from "@/assets/constants/constants.ts";
-
-const languages = [
-  { code: "en", name: "English" },
-  { code: "ru", name: "Русский" },
-  { code: "fr", name: "Français" },
-];
+import {
+  languages,
+  CloseIconType,
+  LanguageType,
+  headerIcon,
+} from "@/assets/constants/app/header/Header.ts";
 
 //Type
 type LanguageSwitcherProps = {
-  language: string;
+  language: LanguageType;
   isLanguagesOpen: null | boolean;
   languagesHandler: () => void;
   containerHeight: number;
   headerHeight: number;
+  closeIcon: CloseIconType;
 };
 
 //Styles
@@ -36,17 +35,20 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledCloseButton = styled(CustomButton)`
-  ${divWithImage};
   background-color: transparent;
   width: 1.04vw;
   height: 0.83vw;
-  border-radius: 0;
-  background-image: url("images/header/close-icon.svg");
+  display: flex;
 
   @media (max-width: ${sizeVariable}) {
     width: 2.95vw;
     height: 2.16vw;
   }
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledContainer = styled.div`
@@ -94,7 +96,7 @@ const StyledLanguageButton = styled(CustomButton)<{
         top: 50%;
         left: 18vw;
         transform: translateY(-50%);
-        background-image: url(${checkMarkIcon.background});
+        background-image: url(${headerIcon.checkMark});
         background-size: cover;
         width: 1.25vw;
         height: 1vw;
@@ -113,6 +115,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({
   language,
   isLanguagesOpen,
   languagesHandler,
+  closeIcon,
 }) => {
   const { i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
@@ -134,8 +137,10 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({
           disabled={!isLanguagesOpen}
           type="button"
           onClick={languagesHandler}
-        />
-        <IconAndTextProps type="language" text={language} />
+        >
+          <StyledImage src={closeIcon.src} alt={closeIcon.alt} />
+        </StyledCloseButton>
+        <IconAndTextProps image={language} />
       </StyledWrapper>
       {languages.map((lang) => (
         <StyledLanguageButton

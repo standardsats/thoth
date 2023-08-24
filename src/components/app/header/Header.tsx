@@ -7,34 +7,19 @@ import { FeedbackWidgets } from "@/components/app/common/feedback-widgets/Feedba
 import { forwardRef } from "react";
 import { LanguageSwitcher } from "./drop-right-element/language-switcher/LanguageSwitcher.tsx";
 import { MobileMenu } from "./drop-right-element/mobile-menu/MobileMenu.tsx";
-import { SignInAndSignUp } from "./sign-in-and-sign-up/SigninAndSignup.tsx";
+import { SignInAndSignUp } from "./sign-in-and-sign-up/SignInAndSignUp.tsx";
 import { HeaderNavigation } from "./header-navigation/HeaderNavigation.tsx";
-import {
-  burger,
-  headerAndMobileMenuIcons,
-  language,
-} from "@/assets/constants/constants.ts";
+import { getData } from "@/assets/constants/constants.ts";
 import { DropRightElement } from "./drop-right-element/DropRightElement.tsx";
+import { useTranslation } from "react-i18next";
+import { HeaderType } from "@/assets/constants/app/header/Header.ts";
+import { SectionsType } from "@/assets/constants/app/App.ts";
 
 const { whiteColor, headerColor } = colorVariables;
 
-//Data
-const languageData = {
-  text: "Language",
-};
-
-const menuData = {
-  text: "Menu",
-};
-
-//Types
-export type Section = {
-  id: string;
-  title: string;
-};
-
+//Type
 type Props = {
-  sections: Section[];
+  sections: SectionsType;
   containerHeight: number;
   headerHeight: number;
   paymentFeesHeight: number;
@@ -119,32 +104,28 @@ export const Header = forwardRef<HTMLElement, Props>(
     },
     ref
   ) => {
-    const isMobile = useMobileDetection();
+    const { t } = useTranslation();
+    const headerData = getData("Header", t) as HeaderType;
+    const { loginAndRegister, language, menu, closeIcon } = headerData;
 
-    if (isMobile === null) {
-      return <StyledHeader ref={ref} />;
-    }
+    const isMobile = useMobileDetection();
 
     return (
       <>
         <StyledHeader ref={ref}>
           <StyledLogoContainer>
-            <Logo color="transparent" />
+            <Logo />
           </StyledLogoContainer>
-          {!isMobile && (
+          {isMobile !== null && !isMobile && (
             <>
-              <StyledFeedbackWidgets
-                type={"light"}
-                $location={"menu"}
-                iconsToShow={headerAndMobileMenuIcons}
-              />
+              <StyledFeedbackWidgets type={"light"} $location={"menu"} />
               <HeaderNavigation
                 sections={sections}
                 headerHeight={headerHeight}
                 isLanguagesOpen={isLanguagesOpen}
                 languagesHandler={languagesHandler}
               />
-              <SignInAndSignUp />
+              <SignInAndSignUp loginAndRegister={loginAndRegister} />
               <StyledLanguageButton
                 disabled={!!isLanguagesOpen}
                 type="button"
@@ -163,26 +144,30 @@ export const Header = forwardRef<HTMLElement, Props>(
               type="button"
               onClick={burgerMenuHandler}
             >
-              <StyledBurgerImage src={burger.src} alt={burger.alt} />
+              <StyledBurgerImage src={menu.src} alt={menu.alt} />
             </StyledBurgerButton>
           )}
         </StyledHeader>
-        <DropRightElement
-          isOpen={isBurgerMenuOpen}
-          headerHeight={headerHeight}
-          containerHeight={containerHeight}
-        >
-          <MobileMenu
-            containerHeight={containerHeight}
-            sections={sections}
+        {isMobile && (
+          <DropRightElement
+            isOpen={isBurgerMenuOpen}
             headerHeight={headerHeight}
-            isBurgerMenuOpen={isBurgerMenuOpen}
-            burgerMenuHandler={burgerMenuHandler}
-            languagesHandler={languagesHandler}
-            language={languageData.text}
-            menu={menuData.text}
-          />
-        </DropRightElement>
+            containerHeight={containerHeight}
+          >
+            <MobileMenu
+              containerHeight={containerHeight}
+              sections={sections}
+              headerHeight={headerHeight}
+              isBurgerMenuOpen={isBurgerMenuOpen}
+              burgerMenuHandler={burgerMenuHandler}
+              languagesHandler={languagesHandler}
+              language={language}
+              menu={menu}
+              loginAndRegister={loginAndRegister}
+              closeIcon={closeIcon}
+            />
+          </DropRightElement>
+        )}
         <DropRightElement
           isOpen={isLanguagesOpen}
           headerHeight={headerHeight}
@@ -193,7 +178,8 @@ export const Header = forwardRef<HTMLElement, Props>(
             headerHeight={headerHeight}
             isLanguagesOpen={isLanguagesOpen}
             languagesHandler={languagesHandler}
-            language={languageData.text}
+            language={language}
+            closeIcon={closeIcon}
           />
         </DropRightElement>
       </>

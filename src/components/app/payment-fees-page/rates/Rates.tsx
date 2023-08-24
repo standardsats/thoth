@@ -9,43 +9,30 @@ import {
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
 import { Link } from "@/components/app/common/Link/Link.tsx";
 import { FC } from "react";
-import { commonImages } from "@/assets/constants/constants.ts";
+import { commonImages } from "@/assets/constants/main.ts";
+
 
 const { ratesFeesColor, darkGreenColor, blackColor, whiteColor } =
   colorVariables;
 
 //Types
+type RateInfo = {
+  text: string;
+  percent: string[];
+  span?: string[];
+};
+
 type Props = {
   rates: {
     subtitle: string;
     linkHref: string;
     linkLabel: string;
-    depositFee: {
-      text: string;
-      percent: string[];
-      span?: string[];
-    };
-    swapFee: {
-      text: string;
-      percent: string[];
-      span?: string[];
-    };
-    withdrawFee: {
-      text: string;
-      percent: string[];
-    };
-    fiatBankIn: {
-      text: string;
-      percent: string[];
-    };
-    fiatBankOut: {
-      text: string;
-      percent: string[];
-    };
-    depositFeeSpan: {
-      text: string;
-      percent: string[];
-    };
+    depositFee: RateInfo;
+    swapFee: RateInfo;
+    withdrawFee: RateInfo;
+    fiatBankIn: RateInfo;
+    fiatBankOut: RateInfo;
+    depositFeeSpan: RateInfo;
   };
 };
 
@@ -146,10 +133,6 @@ const StyledLink = styled(Link)`
   line-height: 1;
   background-color: ${blackColor};
 
-  @media (max-width: ${sizeVariable}) {
-    font-size: calc(25vw / 5.09);
-  }
-
   &:after {
     content: "";
     position: absolute;
@@ -158,9 +141,27 @@ const StyledLink = styled(Link)`
     background-image: url(${commonImages.playIconWhite});
     background-repeat: no-repeat;
     background-size: contain;
-    right: 0.5vw;
+    right: 1vw;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  @media (max-width: ${sizeVariable}) {
+    padding: 1.5vw 6vw 1.5vw 3vw;
+    font-size: calc(17vw / 5.09);
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: calc(12vw / 5.09);
+      height: calc(10.5vw / 5.09);
+      background-image: url(${commonImages.playIconWhite});
+      background-repeat: no-repeat;
+      background-size: contain;
+      right: 1vw;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 `;
 
@@ -171,16 +172,21 @@ export const Rates: FC<Props> = ({ rates }) => {
       <StyledSubtitle>{rates.subtitle}</StyledSubtitle>
       <StyledElement>
         {Object.keys(rates).map((key) => {
-          const item = rates[key];
+          const item = rates[key as keyof typeof rates];
+          if (typeof item === "string") {
+            return null;
+          }
           return (
             <StyledWrapper key={key}>
               <StyledLabel>{item.text}</StyledLabel>
               <div>
                 {item.percent &&
-                  item.percent.map((percentage, index) => (
+                  item.percent.map((percentage: string, index: number) => (
                     <StyledTableItem key={index}>
                       <StyledPercentage>{percentage}</StyledPercentage>
-                      {item.span && <StyledSpan>{item.span[index]}</StyledSpan>}
+                      {item.span && item.span[index] && (
+                        <StyledSpan>{item.span[index]}</StyledSpan>
+                      )}
                     </StyledTableItem>
                   ))}
               </div>

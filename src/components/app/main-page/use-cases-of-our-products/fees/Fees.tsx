@@ -9,44 +9,14 @@ import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
 import { FeesButton } from "./fees-button/FeesButton.tsx";
+import { FC } from "react";
+import { FeesType } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { lightBlackColor, blackColor, darkGreenColor } = colorVariables;
 
 //Data
-type Fees = {
-  title: string;
-  lineOne: {
-    title: string;
-    text: {
-      main: string;
-      span: string;
-      button: string;
-    };
-  };
-  lineTwo: {
-    title: string;
-    text: {
-      main: string;
-    };
-  };
-};
-
-const fees: Fees = {
-  title: "Fees",
-  lineOne: {
-    title: "Incoming Transactions",
-    text: {
-      main: "As low as 0.5%",
-      span: "and going down based on your total transaction volume.",
-      button: "Check pricing details",
-    },
-  },
-  lineTwo: {
-    title: "Outgoing Transactions",
-    text: {
-      main: "Free of charge",
-    },
-  },
+type Props = {
+  fees: FeesType;
 };
 
 //Styles
@@ -160,7 +130,7 @@ const StyledSpan = styled.p`
 `;
 
 //Components
-export const Fees = () => {
+export const Fees: FC<Props> = ({ fees }) => {
   const isMobile = useMobileDetection();
   return (
     <StyledFees>
@@ -173,14 +143,14 @@ export const Fees = () => {
             <StyledSpan>{fees.lineOne.text.span}</StyledSpan>
           )}
         </StyledMain>
-        {!isMobile && <FeesButton text={fees.lineOne.text.button}/>}
+        {!isMobile && <FeesButton text={fees.lineOne.text.button} />}
       </StyledLine>
       <StyledLine>
         <StyledSubtitle>{fees.lineTwo.title}</StyledSubtitle>
         <StyledMain>
           <StyledMainText>{fees.lineTwo.text.main}</StyledMainText>
         </StyledMain>
-        {isMobile && <FeesButton text={fees.lineOne.text.button}/>}
+        {isMobile && <FeesButton text={fees.lineOne.text.button} />}
       </StyledLine>
     </StyledFees>
   );

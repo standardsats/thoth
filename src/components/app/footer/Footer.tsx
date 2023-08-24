@@ -8,72 +8,12 @@ import {
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
-import {
-  blogHref,
-  businessRelationHref,
-  discordHref,
-  eventsHref,
-  facebookHref,
-  featuredHref,
-  howItWorksHref,
-  instagramHref,
-  inviteFriendHref,
-  partnershipHref,
-  podcastHref,
-  privacyPolicyHref,
-  termsConditionHref,
-  twitterHref,
-} from "@/assets/links-href/LinksHref.ts";
-import { footerIcons } from "@/assets/constants/constants.ts";
 import { FooterNavigation } from "@/components/app/footer/footer-navigation/FooterNavigation.tsx";
+import { useTranslation } from "react-i18next";
+import { FooterType } from "@/assets/constants/app/footer/Footer.ts";
+import { getData } from "@/assets/constants/constants.ts";
 
 const { whiteColor, deepGrayColor } = colorVariables;
-
-//Data
-const FooterData = {
-  text: "Our vision is to provide convenience and help increase your sales business.",
-  nav: {
-    about: {
-      title: "About",
-      links: [
-        { name: "How it works", href: howItWorksHref },
-        { name: "Featured", href: featuredHref },
-        { name: "Partnership", href: partnershipHref },
-        {
-          name: "Business Relation",
-          href: businessRelationHref,
-        },
-      ],
-    },
-    community: {
-      title: "Community",
-      links: [
-        { name: "Events", href: eventsHref },
-        { name: "Blog", href: blogHref },
-        { name: "Podcast", href: podcastHref },
-        { name: "Invite a friend", href: inviteFriendHref },
-      ],
-    },
-    socials: {
-      title: "Socials",
-      links: [
-        { name: "Discord", href: discordHref },
-        { name: "Instagram", href: instagramHref },
-        { name: "Twitter", href: twitterHref },
-        { name: "Facebook", href: facebookHref },
-      ],
-    },
-  },
-  rights: "Auto Fast. All rights reserved",
-  policy: {
-    name: "Privacy & Policy",
-    href: privacyPolicyHref,
-  },
-  condition: {
-    name: "Terms & Condition",
-    href: termsConditionHref,
-  },
-};
 
 //Styles
 const StyledFooterContainer = styled.footer`
@@ -195,39 +135,43 @@ const StyledLink = styled(Link)`
 //Components
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
+  const footerData = getData("Footer", t) as FooterType;
+
+  const { text, nav, rights, policy, condition } = footerData;
 
   return (
     <StyledFooterContainer>
       <StyledWrapperTop>
         <StyledColumn>
-          <StyledLogo color="transparent" />
-          <StyledFooterMainText>{FooterData.text}</StyledFooterMainText>
-          <StyledFeedbackWidgets iconsToShow={footerIcons} type={"dark"} />
+          <StyledLogo />
+          <StyledFooterMainText>{text}</StyledFooterMainText>
+          <StyledFeedbackWidgets type={"dark"} />
         </StyledColumn>
-        <FooterNavigation data={FooterData.nav.about} />
-        <FooterNavigation data={FooterData.nav.community} />
-        <FooterNavigation data={FooterData.nav.socials} />
+        <FooterNavigation data={nav.about} />
+        <FooterNavigation data={nav.community} />
+        <FooterNavigation data={nav.socials} />
       </StyledWrapperTop>
       <StyledWrapperBottom>
         <StyledFooterMainText>
-          &copy; {currentYear} {FooterData.rights}
+          &copy; {currentYear} {rights}
         </StyledFooterMainText>
         <StyledWrapperLinks>
           <StyledLink
             color={whiteColor}
-            href={FooterData.policy.href}
+            href={policy.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StyledFooterText>{FooterData.policy.name}</StyledFooterText>
+            <StyledFooterText>{policy.name}</StyledFooterText>
           </StyledLink>
           <StyledLink
             color={whiteColor}
-            href={FooterData.condition.href}
+            href={condition.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <StyledFooterText>{FooterData.condition.name}</StyledFooterText>
+            <StyledFooterText>{condition.name}</StyledFooterText>
           </StyledLink>
         </StyledWrapperLinks>
       </StyledWrapperBottom>

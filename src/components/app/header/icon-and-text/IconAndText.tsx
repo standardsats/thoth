@@ -6,12 +6,11 @@ import {
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
-import { language, burger } from "@/assets/constants/constants.ts";
+import { LanguageType, MenuType } from "@/assets/constants/app/header/Header.ts";
 
 //Type
 type IconAndTextProps = {
-  type: "burger menu" | "language";
-  text: string;
+  image: LanguageType | MenuType;
   isButton?: boolean;
   onClick?: () => void;
 };
@@ -64,13 +63,11 @@ const StyledCustomButton = styled(CustomButton)`
 
 //Component
 export const IconAndTextProps: FC<IconAndTextProps> = ({
-  type,
-  text,
+  image,
   isButton = false,
   onClick,
 }) => {
-  const src = type === "burger menu" ? burger.src : language.src;
-  const alt = type === "burger menu" ? burger.alt : language.alt;
+  const { src, alt, text } = image;
 
   return (
     <StyledWrapper>

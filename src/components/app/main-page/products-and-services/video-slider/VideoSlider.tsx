@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
 import { DescriptionTHOH } from "@/components/app/common/descriptionTHOH/descriptionTHOH.tsx";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
@@ -9,47 +9,19 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { Scrollbar } from "./scrollbar/Scrollbar.tsx";
 import ReactPlayer from "react-player";
-import { videoSliderImagesAndVideo } from "@/assets/constants/constants.ts";
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
 import { SubtitleText } from "@/components/app/common/subtitle-text/SubtitleText.tsx";
+import {
+  productsAndServiceImages,
+  VideoSliderType,
+  VideoType,
+} from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 const { darkColor, blackColor } = colorVariables;
 
-// Data
-const sectionVideo = {
-  title: "Video",
-  text: "Product Description THOTH",
-  movies: [
-    {
-      id: "1",
-      video: videoSliderImagesAndVideo.one,
-    },
-    {
-      id: "2",
-      video: videoSliderImagesAndVideo.two,
-    },
-    {
-      id: "3",
-      video: videoSliderImagesAndVideo.three,
-    },
-    {
-      id: "4",
-      video: videoSliderImagesAndVideo.four,
-    },
-    {
-      id: "5",
-      video: videoSliderImagesAndVideo.five,
-    },
-  ],
-};
-
 // Types
-type MovieType = {
-  id: string;
-  video: {
-    title: string;
-    content: string;
-  };
+type Props = {
+  videoSlider: VideoSliderType;
 };
 
 //Styles
@@ -97,7 +69,7 @@ const StyledSlideContainerWrapper = styled.div`
   width: 37%;
   ${coverImage};
   height: auto;
-  background-image: url(${videoSliderImagesAndVideo.background});
+  background-image: url(${productsAndServiceImages.videoBackground});
 
   @media (max-width: ${sizeVariable}) {
     width: 100%;
@@ -185,15 +157,12 @@ const StyledSelectedContent = styled.div`
 `;
 
 //Components
-export const VideoSlider = () => {
-  const [selectedSlide, setSelectedSlide] = useState<MovieType>(
-    sectionVideo.movies[0]
-  );
+export const VideoSlider: FC<Props> = ({ videoSlider }) => {
+  const { title, text, video } = videoSlider;
+  const [selectedSlide, setSelectedSlide] = useState<VideoType>(video[0]);
 
   const handleVideoClick = (slideId: string) => {
-    const selectedMovie = sectionVideo.movies.find(
-      (movie) => movie.id === slideId
-    );
+    const selectedMovie = video.find((movie) => movie.id === slideId);
     if (selectedMovie) {
       setSelectedSlide(selectedMovie);
     }
@@ -201,12 +170,8 @@ export const VideoSlider = () => {
 
   return (
     <StyledSlider>
-      <StyledSectionTitle color={darkColor}>
-        {sectionVideo.title}
-      </StyledSectionTitle>
-      <StyledDescriptionTHOH color={darkColor}>
-        {sectionVideo.text}
-      </StyledDescriptionTHOH>
+      <StyledSectionTitle color={darkColor}>{title}</StyledSectionTitle>
+      <StyledDescriptionTHOH color={darkColor}>{text}</StyledDescriptionTHOH>
       <StyledSliderContainer>
         <StyledVideoContainer>
           {/* Видео */}
@@ -214,20 +179,20 @@ export const VideoSlider = () => {
             <StyledSelectedSlide key={selectedSlide.id}>
               <StyledSelectedContent>
                 <ReactPlayer
-                  url={selectedSlide.video.content}
+                  url={selectedSlide.content}
                   width="100%"
                   height="100%"
                   controls
                 />
               </StyledSelectedContent>
-              <StyledSelectedTitle>{selectedSlide.video.title}</StyledSelectedTitle>
+              <StyledSelectedTitle>{selectedSlide.title}</StyledSelectedTitle>
             </StyledSelectedSlide>
           )}
         </StyledVideoContainer>
         <StyledSlideContainerWrapper>
           <Scrollbar>
             <StyledSlideContainer>
-              {sectionVideo.movies.map((movie) => (
+              {video.map((movie) => (
                 <StyledSlide key={movie.id}>
                   <StyledSlideContent
                     onClick={() => {
@@ -237,13 +202,13 @@ export const VideoSlider = () => {
                     <ReactPlayer
                       style={{ pointerEvents: "none" }}
                       key={movie.id}
-                      url={movie.video.content}
+                      url={movie.content}
                       width="100%"
                       height="100%"
                       light={true}
                     />
                   </StyledSlideContent>
-                  <StyledSlideTitle>{movie.video.title}</StyledSlideTitle>
+                  <StyledSlideTitle>{movie.title}</StyledSlideTitle>
                 </StyledSlide>
               ))}
             </StyledSlideContainer>

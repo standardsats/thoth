@@ -31,6 +31,6 @@ const StyledDescriptionTHOH = styled.p<Props>`
 `;
 
 //Component
-export const DescriptionTHOH: FC<Props> = ({ children, ...style }) => (
-  <StyledDescriptionTHOH {...style}>{children}</StyledDescriptionTHOH>
+export const DescriptionTHOH: FC<Props> = ({ children, ...props }) => (
+  <StyledDescriptionTHOH {...props}>{children}</StyledDescriptionTHOH>
 );

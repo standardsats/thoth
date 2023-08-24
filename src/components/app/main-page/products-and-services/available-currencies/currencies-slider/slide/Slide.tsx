@@ -1,16 +1,11 @@
 import styled from "styled-components";
 import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { FC } from "react";
+import { CoinType } from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 //Types
 type Props = {
-  slide: {
-    id: string;
-    image: {
-      src: string;
-      alt: string;
-    };
-  };
+  slide: CoinType;
 };
 
 //Styles
@@ -43,7 +38,7 @@ const StyledImage = styled.img`
 export const Slide: FC<Props> = ({ slide }) => {
   return (
     <StyledSlideContainer>
-      <StyledImage src={slide.image.src} alt={slide.image.alt} />
+      <StyledImage src={slide.src} alt={slide.alt} />
     </StyledSlideContainer>
   );
 };

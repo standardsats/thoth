@@ -13,21 +13,14 @@ import { useTranslation } from "react-i18next";
 import { forwardRef } from "react";
 import { openAccountHref } from "@/assets/links-href/LinksHref.ts";
 import { Link } from "@/components/app/common/Link/Link.tsx";
+import { getData } from "@/assets/constants/constants.ts";
+import { commonImages } from "@/assets/constants/main.ts";
 import {
-  commonImages,
   mainScreenImages,
-} from "@/assets/constants/constants.ts";
+  MainScreenType,
+} from "@/assets/constants/app/main-page/MainScreen.ts";
 
 const { greenColor, lightGreenColor, whiteColor } = colorVariables;
-
-//TODO
-//Data перенесена в locales
-// const mainScreen = {
-//   span: "Digital Assets Processing"
-//   title: "Accept Bitcoin Payments",
-//   text: "Send, Store, Exchange and Accept Cryptocurrency.",
-//   button: "Open Account",
-// };
 
 //Styles
 const StyledScreen = styled.section`
@@ -164,6 +157,7 @@ const StyledMainTitle = styled.h1`
   line-height: 1.21;
   text-transform: uppercase;
   text-align: left;
+  word-break: break-word;
 
   @media (max-width: ${sizeVariable}) {
     font-size: 9.84vw;
@@ -236,14 +230,18 @@ const StyledIcon = styled.div`
 //Component
 export const MainScreen = forwardRef<HTMLElement>((_, ref) => {
   const { t } = useTranslation();
+  const MainScreenData = getData("MainScreen", t) as MainScreenType;
+  const { span, title, text, button } = MainScreenData;
   const isMobile = useMobileDetection();
 
   return (
     <StyledScreen className="main-screen" ref={ref}>
       <StyledContent>
-        {!isMobile && <StyledSpanText>{t("mainScreen.span")}</StyledSpanText>}
-        <StyledMainTitle>{t("mainScreen.title")}</StyledMainTitle>
-        <StyledText>{t("mainScreen.text")}</StyledText>
+        {isMobile !== null && !isMobile && (
+          <StyledSpanText>{span}</StyledSpanText>
+        )}
+        <StyledMainTitle>{title}</StyledMainTitle>
+        <StyledText>{text}</StyledText>
         <StyledLink
           color={"transparent"}
           href={openAccountHref}
@@ -251,7 +249,7 @@ export const MainScreen = forwardRef<HTMLElement>((_, ref) => {
           rel="noopener noreferrer"
         >
           <>
-            <StyleLinkText>{t("mainScreen.button")}</StyleLinkText>
+            <StyleLinkText>{button}</StyleLinkText>
             <StyledIcon />
           </>
         </StyledLink>

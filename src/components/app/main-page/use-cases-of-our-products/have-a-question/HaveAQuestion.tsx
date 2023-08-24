@@ -7,29 +7,15 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { Link } from "@/components/app/common/Link/Link.tsx";
-import {
-  contactTeamHref,
-  getSupportHref,
-} from "@/assets/links-href/LinksHref.ts";
-import { haveAQuestionImages } from "@/assets/constants/constants.ts";
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
+import { FC } from "react";
+import { QuestionsType } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { deepColor, darkGreenColor } = colorVariables;
 
-//Data
-const questions = {
-  title: "Have a question?",
-  text: "Explore our solutions or you can contact us throughticket system and contact form. Feel free to get in touch..",
-  existing: {
-    title: "For existing clients",
-    text: "If you already have an account please use our ticket system.",
-    linkName: "Get 24\\7 Support",
-  },
-  new: {
-    title: "For new clients or partners",
-    text: "Please leave your inquiry and our Buisness Development Team will contact you shortly.",
-    linkName: "Contact BD Team",
-  },
+//Type
+type Props = {
+  questions: QuestionsType;
 };
 
 //Styles
@@ -150,7 +136,7 @@ const StyledLink = styled(Link)`
 `;
 
 //Component
-export const HaveAQuestion = () => {
+export const HaveAQuestion: FC<Props> = ({ questions }) => {
   return (
     <StyledSection>
       <StyledContainer>
@@ -160,14 +146,14 @@ export const HaveAQuestion = () => {
       <StyledWrapper>
         <StyledContainer>
           <StyledImage
-            src={haveAQuestionImages.existingClient.src}
-            alt={haveAQuestionImages.existingClient.alt}
+            src={questions.existing.image.src}
+            alt={questions.existing.image.alt}
           />
           <StyledSubtitle>{questions.existing.title}</StyledSubtitle>
           <StyledText color={deepColor}>{questions.existing.text}</StyledText>
         </StyledContainer>
         <StyledLink
-          href={getSupportHref}
+          href={questions.new.href}
           target="_blank"
           rel="noopener noreferrer"
           color={darkGreenColor}
@@ -178,14 +164,14 @@ export const HaveAQuestion = () => {
       <StyledWrapper>
         <StyledContainer>
           <StyledImage
-            src={haveAQuestionImages.newClient.src}
-            alt={haveAQuestionImages.newClient.alt}
+            src={questions.new.image.src}
+            alt={questions.new.image.alt}
           />
           <StyledSubtitle>{questions.new.title}</StyledSubtitle>
           <StyledText color={deepColor}>{questions.new.text}</StyledText>
         </StyledContainer>
         <StyledLink
-          href={contactTeamHref}
+          href={questions.new.href}
           target="_blank"
           rel="noopener noreferrer"
           color={darkGreenColor}

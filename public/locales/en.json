@@ -1,11 +1,112 @@
 {
-  "welcome": "Welcome to our website!",
-  "buttonText": "Switch language",
-
+  "sections": {
+    "one": "How it Works",
+    "two": "Photo",
+    "three": "Products and Services",
+    "four": "Use Cases of Our Products"
+  },
+  "header": {
+    "loginAndRegister": {
+      "signUp": "Register",
+      "signIn": "Log In"
+    },
+    "closeIcon": "close icon",
+    "language": {
+      "alt": "language icon",
+      "text": "Language"
+    },
+    "menu": {
+      "alt": "menu icon",
+      "text": "Menu"
+    }
+  },
   "mainScreen": {
     "span": "Digital Assets Processing",
     "button": "Open Account",
     "title": "Accept Bitcoin Payments",
     "text": "Send, Store, Exchange and Accept Cryptocurrency."
+  },
+  "sectionHowItWorks": {
+    "text": "Brief description of how the app works",
+    "stepOne": {
+      "alt": "Send invoice icon",
+      "subtitle": "Send invoice",
+      "text": "Merchant issues an invoice in their local currency"
+    },
+    "stepTwo": {
+      "alt": "Payment icon",
+      "subtitle": "Payment",
+      "text": "The user pays in the currency in which it is convenient for him. We take care of all the difficulties with overpayments and underpayments."
+    },
+    "stepThree": {
+      "alt": "Broadcast icon",
+      "subtitle": "Broadcast",
+      "text": "Conversion and withdrawal, the merchant at any time withdraws his funds to his wallet in the currency in which he is comfortable."
+    },
+    "advantages": {
+      "advantage1": {
+        "subtitle": "EU Regulated",
+        "text": "We support KYC compliance for operation in regulated regions.",
+        "alt": "EU Regulated"
+      },
+      "advantage2": {
+        "subtitle": "All types of crypto",
+        "text": "Bitcoin, altcoins and stable coins are supported.",
+        "alt": "All types of crypto"
+      },
+      "advantage3": {
+        "subtitle": "Major Blockchains",
+        "text": "Bitcoin, Lightning Network, Liquid Network, Ethereum, Polygon,  BSC and more.",
+        "alt": "Major Blockchains"
+      },
+      "advantage4": {
+        "subtitle": "Free of Charge",
+        "text": "All outgoing transactions, transfers and payouts in crypto are free of charge.",
+        "alt": "Free of Charge"
+      }
+    }
+  },
+  "photos": {
+    "one": "photo one",
+    "two": "photo two",
+    "three": "photo three",
+    "arrowLeft": "arrow left",
+    "arrowRight": "arrow right"
+  },
+  "pagePaymentFees": {
+    "title": "Payment fees",
+    "subtitleIndividual": "Individual",
+    "subtitleEnterprise": "Enterprise",
+    "linkLabel": "Try now",
+    "depositFee": "Deposit Fee",
+    "swapFee": "Swap Fee",
+    "withdrawFee": "Withdraw Fee",
+    "fiatBankIn": "Fiat Bank In",
+    "fiatBankOut": "Fiat Bank Out",
+    "depositFeeSpan": "Deposit Fee Span",
+    "navigation": {
+      "button": "Accept bitcoin payment",
+      "location": "Payment fees"
+    }
+  },
+  "pageNotFound": {
+    "navigation": {
+      "button": "Accept bitcoin payment",
+      "location": "Page Not Found"
+    },
+    "subtitle": "Page Not Found",
+    "image alt": "not found icon",
+    "text": "sorry, the page decided to take a little break",
+    "button": "go home"
+  },
+  "logo": {
+    "alt": "logo thoth"
+  },
+  "FeedbackWidgets": {
+    "telegram": "telegram icon",
+    "twitter": "twitter icon",
+    "facebook": "facebook icon",
+    "instagram": "instagram icon",
+    "email": "email icon"
   }
 }

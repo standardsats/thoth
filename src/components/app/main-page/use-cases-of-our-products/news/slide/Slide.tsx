@@ -6,9 +6,10 @@ import {
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { FC } from "react";
-
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
+import { useNavigate } from "react-router-dom";
+import { NewsSlideType } from "@/assets/test/newsData.tsx";
 
 const { whiteColor, greenColor } = colorVariables;
 
@@ -30,17 +31,7 @@ interface StyledText
 }
 
 type Props<T extends "big" | "small"> = {
-  slide: {
-    id: string;
-    span: string;
-    date: string;
-    title: string;
-    text: string;
-    image: {
-      src: string;
-      alt: string;
-    };
-  };
+  slide: NewsSlideType;
   size: T;
 };
 
@@ -118,6 +109,7 @@ const StyledDate = styled(StyledSmallText)`
 `;
 
 const StyledSubtitle = styled(Subtitle)<StyledSubtitle>`
+  width: 100%;
   margin-bottom: calc(6.58vw / 14.4);
   color: ${whiteColor};
   font-size: ${({ size }) =>
@@ -146,6 +138,11 @@ const StyledText = styled.p<StyledText>`
   letter-spacing: -0.5px;
   text-align: left;
   align-self: start;
+  max-height: 5vw;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Добавление многоточия после обрезанного текста */
+  white-space: nowrap;
 
   @media (max-width: ${sizeVariable}) {
     margin: 3vw 0 9.84vw;
@@ -171,9 +168,19 @@ const StyledImage = styled.img<{ size: string }>`
 
 //Component
 export const Slide: FC<Props<"big"> | Props<"small">> = ({ slide, size }) => {
+  const navigate = useNavigate();
+  //TODO
+  //Поправить при роутинге
+  const onClickHandler = () => {
+    navigate(`/news/${slide.id}`);
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
-    <SlideContainer size={size}>
-      <StyledImage size={size} src={slide.image.src} alt={slide.image.alt} />
+    <SlideContainer size={size} onClick={onClickHandler}>
+      <StyledImage size={size} src={slide.url} alt={slide.title} />
       <StyledWrapper size={size}>
         <StyledSpan>{slide.span}</StyledSpan>
         <StyledDate>{slide.date}</StyledDate>

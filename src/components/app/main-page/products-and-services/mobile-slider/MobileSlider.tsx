@@ -3,12 +3,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { Slide } from "../slide/Slide.tsx";
-import { SlideData } from "../ProductsAndServices.tsx";
 import { FC } from "react";
+import {
+  MobileWalletLinkType,
+  ProductAndServiceSlideType,
+} from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 //Types
 type Props = {
-  slides: SlideData[];
+  slides: ProductAndServiceSlideType[];
+  links: MobileWalletLinkType[];
 };
 
 //Styles
@@ -19,7 +23,7 @@ const StyledSliderContainer = styled.div`
 `;
 
 //Component
-export const MobileSlider: FC<Props> = ({ slides }) => {
+export const MobileSlider: FC<Props> = ({ slides, links }) => {
   const settings: Settings = {
     dots: false,
     arrows: false,
@@ -35,7 +39,7 @@ export const MobileSlider: FC<Props> = ({ slides }) => {
     <StyledSliderContainer>
       <Slider {...settings}>
         {slides.map((slide) => (
-          <Slide key={slide.id} slide={slide} />
+          <Slide key={slide.id} slide={slide} links={links} />
         ))}
       </Slider>
     </StyledSliderContainer>

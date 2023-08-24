@@ -4,15 +4,19 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { Slide } from "../slide/Slide.tsx";
 import { FC } from "react";
-import { SlideData } from "../UseCasesOfOurProducts.tsx";
-import { v4 as uuidv4 } from "uuid";
 import { ArrowButton } from "@/components/app/common/arrow-button/ArrowButton.tsx";
 import { sizeVariable } from "@/assets/styles/commonStyles.ts";
-import { mobileSliderImages } from "@/assets/constants/constants.ts";
+import {
+  useCasesOfOurProductsImages,
+  photoSlideArrowRightType,
+  UseCasesOfOurProductsSlideType,
+} from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 //Type
 type Props = {
-  slides: SlideData[];
+  subtitle: string;
+  slides: UseCasesOfOurProductsSlideType[];
+  photoSlideArrowRight: photoSlideArrowRightType;
 };
 
 //Style
@@ -26,13 +30,17 @@ const StyledArrowImage = styled.img`
 
 const StyledSlideContainer = styled.div`
   height: 100%;
-  background-image: url(${mobileSliderImages.background});
+  background-image: url(${useCasesOfOurProductsImages.background});
   background-repeat: no-repeat;
   background-size: cover;
 `;
 
 //Component
-export const MobileSlider: FC<Props> = ({ slides }) => {
+export const MobileSlider: FC<Props> = ({
+  slides,
+  subtitle,
+  photoSlideArrowRight,
+}) => {
   const settings: Settings = {
     dots: false,
     arrows: true,
@@ -46,28 +54,18 @@ export const MobileSlider: FC<Props> = ({ slides }) => {
     nextArrow: (
       <ArrowButton className="arrow next" top={"12.5%"} right={"9%"}>
         <StyledArrowImage
-          src={mobileSliderImages.right.src}
-          alt={mobileSliderImages.right.alt}
+          src={photoSlideArrowRight.src}
+          alt={photoSlideArrowRight.alt}
         />
       </ArrowButton>
     ),
   };
 
-  const slideData = slides.flatMap((slideItem) =>
-    slideItem.content.map((item) => ({
-      id: uuidv4(),
-      subtitle: slideItem.subtitle,
-      image: item.image,
-      title: item.title,
-      text: item.text,
-    }))
-  );
-
   return (
     <StyledSlideContainer>
       <Slider {...settings}>
-        {slideData.map((slide) => (
-          <Slide key={slide.id} slide={slide} />
+        {slides.map((slide) => (
+          <Slide key={slide.id} subtitle={subtitle} slide={slide} />
         ))}
       </Slider>
     </StyledSlideContainer>

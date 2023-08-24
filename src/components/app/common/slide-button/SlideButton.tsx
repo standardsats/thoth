@@ -9,7 +9,7 @@ const { whiteColor, greenColor } = colorVariables;
 type Props = {
   id: string;
   isActive: boolean;
-  length: number;
+  width: string;
   onClick: (id: string) => void;
   children: ReactNode;
 };
@@ -17,11 +17,11 @@ type Props = {
 //Styles
 const StyledButton = styled(CustomButton)<{
   $isActive: boolean;
-  $length: number;
+  $width: string;
 }>`
   padding: 0 2vw;
   background-color: transparent;
-  width: calc(100% / ${({ $length }) => $length});
+  width: ${({ $width }) => $width};
   border-bottom: 2px solid
     ${({ $isActive }) => ($isActive ? greenColor : whiteColor)};
 `;
@@ -31,13 +31,13 @@ export const SlideButton: FC<Props> = ({
   isActive,
   id,
   onClick,
-  length,
   children,
+  width,
 }) => {
   return (
     <StyledButton
       $isActive={isActive}
-      $length={length}
+      $width={width}
       disabled={isActive}
       type={"button"}
       onClick={() => onClick(id)}

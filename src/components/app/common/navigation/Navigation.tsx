@@ -6,16 +6,18 @@ import {
   fontFamily,
   resetMarginsAndPaddings,
   sizeVariable,
-} from "../../../../assets/styles/commonStyles.ts";
-import { useState } from "react";
+} from "@/assets/styles/commonStyles.ts";
+import { FC, useState } from "react";
 
 const { ratesFeesColor, navigateLinkColor } = colorVariables;
 
-//Data
-const navigation = {
-  button: "Accept bitcoin payment",
-  separator: ">",
-  location: "Payment fees",
+//Type
+type Props = {
+  navigation: {
+    button: string;
+    separator: string;
+    location: string;
+  };
 };
 
 //Styles
@@ -52,13 +54,15 @@ const StyledText = styled.p`
 `;
 
 //Component
-export const Navigation = () => {
+export const Navigation: FC<Props> = ({ navigation }) => {
+  const { button, separator, location } = navigation;
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
-
+  //TODO
+  //Поправить при роутинге
   const onClickNavigate = () => {
     setIsDisabled(true);
-    navigate("/thoth");
+    navigate(`/`);
   };
 
   return (
@@ -68,10 +72,10 @@ export const Navigation = () => {
         disabled={isDisabled}
         onClick={onClickNavigate}
       >
-        <StyledText>{navigation.button}</StyledText>
+        <StyledText>{button}</StyledText>
       </StyledButton>
-      <StyledText>{navigation.separator}</StyledText>
-      <StyledText>{navigation.location}</StyledText>
+      <StyledText>{separator}</StyledText>
+      <StyledText>{location}</StyledText>
     </NavigationContainer>
   );
 };

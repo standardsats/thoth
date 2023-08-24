@@ -1,24 +1,27 @@
 import styled from "styled-components";
 import { FC } from "react";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
-import { divWithImage, sizeVariable } from "@/assets/styles/commonStyles.ts";
-import { Section } from "../../Header.tsx";
-import { SignInAndSignUp } from "../../sign-in-and-sign-up/SigninAndSignup.tsx";
+import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { FeedbackWidgets } from "@/components/app/common/feedback-widgets/FeedbackWidgets.tsx";
-import { HeaderNavigation } from "../../header-navigation/HeaderNavigation.tsx";
-import { IconAndTextProps } from "../../icon-and-text/IconAndText.tsx";
-import { headerAndMobileMenuIcons } from "@/assets/constants/constants.ts";
+import { HeaderNavigation } from "@/components/app/header/header-navigation/HeaderNavigation.tsx";
+import { IconAndTextProps } from "@/components/app/header/icon-and-text/IconAndText.tsx";
+import { SignInAndSignUp } from "@/components/app/header/sign-in-and-sign-up/SignInAndSignUp.tsx";
+
+import { CloseIconType, LanguageType, LoginAndRegisterType, MenuType } from "@/assets/constants/app/header/Header.ts";
+import { SectionsType } from "@/assets/constants/app/App.ts";
 
 //Type
 type BurgerMenuProps = {
   containerHeight: number;
-  language: string;
-  menu: string;
-  sections: Section[];
+  language: LanguageType;
+  menu: MenuType;
+  sections: SectionsType;
   headerHeight: number;
   isBurgerMenuOpen: null | boolean;
   burgerMenuHandler: () => void;
   languagesHandler: () => void;
+  loginAndRegister: LoginAndRegisterType;
+  closeIcon: CloseIconType;
 };
 
 //Styles
@@ -30,6 +33,7 @@ const MobileMenuContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: start;
+    justify-content: start;
     padding: 16.7vw 5vw 15vw 5vw;
     box-sizing: border-box;
   }
@@ -44,12 +48,16 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledCloseButton = styled(CustomButton)`
-  ${divWithImage};
   background-color: transparent;
   width: 2.95vw;
   height: 2.16vw;
   border-radius: 0;
-  background-image: url("images/header/close-icon.svg");
+  display: flex;
+`;
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 const StyledContainer = styled.div`
@@ -65,11 +73,6 @@ const StyledContainer = styled.div`
   align-items: center;
 `;
 
-const StyledFeedbackWidgets = styled(FeedbackWidgets)`
-  @media (max-width: ${sizeVariable}) {
-    align-self: start;
-`;
-
 //Component
 export const MobileMenu: FC<BurgerMenuProps> = ({
   language,
@@ -79,6 +82,8 @@ export const MobileMenu: FC<BurgerMenuProps> = ({
   languagesHandler,
   isBurgerMenuOpen,
   burgerMenuHandler,
+  loginAndRegister,
+  closeIcon,
 }) => {
   return (
     <MobileMenuContainer>
@@ -87,8 +92,10 @@ export const MobileMenu: FC<BurgerMenuProps> = ({
           disabled={!isBurgerMenuOpen}
           type="button"
           onClick={burgerMenuHandler}
-        />
-        <IconAndTextProps type="burger menu" text={menu} />
+        >
+          <StyledImage src={closeIcon.src} alt={closeIcon.alt} />
+        </StyledCloseButton>
+        <IconAndTextProps image={menu} />
       </StyledWrapper>
       <HeaderNavigation
         sections={sections}
@@ -97,17 +104,18 @@ export const MobileMenu: FC<BurgerMenuProps> = ({
       />
       <StyledContainer>
         <IconAndTextProps
-          type="language"
-          text={language}
+          image={language}
           isButton={true}
           onClick={languagesHandler}
         />
       </StyledContainer>
-      <SignInAndSignUp onClick={burgerMenuHandler} />
-      <StyledFeedbackWidgets
+      <SignInAndSignUp
+        loginAndRegister={loginAndRegister}
+        onClick={burgerMenuHandler}
+      />
+      <FeedbackWidgets
         $location={"menu"}
         type={"light"}
-        iconsToShow={headerAndMobileMenuIcons}
         onClick={burgerMenuHandler}
       />
     </MobileMenuContainer>

@@ -3,35 +3,16 @@ import { colorVariables, sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { PhotoSlider } from "./photo-slider/PhotoSlider.tsx";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { FC } from "react";
-import { photoImages } from "@/assets/constants/constants.ts";
+import { useTranslation } from "react-i18next";
+import { getData } from "@/assets/constants/constants.ts";
+import { PhotoType } from "@/assets/constants/app/main-page/Photo.ts";
 
 const { darkGrayColor } = colorVariables;
-
-//Data
-const sectionPhoto = {
-  title: "Photo",
-  slides: [
-    {
-      index: "0",
-      image: photoImages.one.image,
-      alt: photoImages.one.alt,
-    },
-    {
-      index: "1",
-      image: photoImages.two.image,
-      alt: photoImages.two.alt,
-    },
-    {
-      index: "2",
-      image: photoImages.three.image,
-      alt: photoImages.three.alt,
-    },
-  ],
-};
 
 //Types
 type Props = {
   id: string;
+  title: string;
 };
 
 //Styles
@@ -54,11 +35,15 @@ const StyledPhoto = styled.section`
 `;
 
 //Component
-export const Photo: FC<Props> = ({ id }) => {
+export const Photo: FC<Props> = ({ id, title }) => {
+  const { t } = useTranslation();
+  const photoData = getData("Photo", t) as PhotoType;
+  const { photos, photoSlideArrows } = photoData;
+
   return (
     <StyledPhoto id={id}>
-      <SectionTitle color={darkGrayColor}>{sectionPhoto.title}</SectionTitle>
-      <PhotoSlider slides={sectionPhoto.slides} />
+      <SectionTitle color={darkGrayColor}>{title}</SectionTitle>
+      <PhotoSlider photos={photos} photoSlideArrows={photoSlideArrows} />
     </StyledPhoto>
   );
 };

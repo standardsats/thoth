@@ -1,21 +1,16 @@
+import { FC } from "react";
 import Slider, { Settings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { Slide } from "./slide/Slide.tsx";
-import { FC } from "react";
 import { sizeVariable } from "@/assets/styles/commonStyles.ts";
+import { CoinType } from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 //Types
 type Props = {
   size: "small" | "big";
-  slides: Array<{
-    id: string;
-    image: {
-      src: string;
-      alt: string;
-    };
-  }>;
+  slides: CoinType[];
 };
 
 //Styles

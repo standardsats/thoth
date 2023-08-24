@@ -9,21 +9,14 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { SlideSubtitle } from "@/components/app/common/slide-subtitle/SlideSubtitle.tsx";
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
+import { UseCasesOfOurProductsSlideType } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { whiteColor } = colorVariables;
 
 //Types
 type Props = {
-  slide: {
-    id: string;
-    image: {
-      src: string;
-      alt: string;
-    };
-    title: string;
-    text: string;
-    subtitle?: string;
-  };
+  subtitle: string;
+  slide: UseCasesOfOurProductsSlideType;
 };
 
 //Styles
@@ -106,18 +99,19 @@ const StyledWrapper = styled.div`
 `;
 
 //Component
-export const Slide: FC<Props> = ({ slide }) => {
+export const Slide: FC<Props> = ({ slide, subtitle }) => {
+  const { image, title, text } = slide;
   const isMobile = useMobileDetection();
 
   return (
     <StyledSlide>
-      {isMobile && <StyledSubtitle>{slide.subtitle}</StyledSubtitle>}
+      {isMobile && <StyledSubtitle>{subtitle}</StyledSubtitle>}
       <StyledSlideContainer>
         <StyledWrapper>
-          <StyledImage src={slide.image.src} alt={slide.image.alt} />
-          <SlidedCardTitle>{slide.title}</SlidedCardTitle>
+          <StyledImage src={image.src} alt={image.alt} />
+          <SlidedCardTitle>{title}</SlidedCardTitle>
         </StyledWrapper>
-        <StyledCardText>{slide.text}</StyledCardText>
+        <StyledCardText>{text}</StyledCardText>
       </StyledSlideContainer>
     </StyledSlide>
   );

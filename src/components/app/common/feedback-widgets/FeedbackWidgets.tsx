@@ -2,64 +2,22 @@ import styled from "styled-components";
 import { FC } from "react";
 import { Link } from "../Link/Link.tsx";
 import { sizeVariable } from "@/assets/styles/commonStyles.ts";
-import { feedbackWidgetImages } from "@/assets/constants/constants.ts";
+import { getData } from "@/assets/constants/constants.ts";
 import { CustomButton } from "../customButton/CustomButton.tsx";
+import { useTranslation } from "react-i18next";
 import {
-  emailHref,
-  facebookHref,
-  instagramHref,
-  telegramHref,
-  twitterHref,
-} from "@/assets/links-href/LinksHref.ts";
+  FeedbackWidgetsType,
+  SocialImageType,
+} from "@/assets/constants/app/common/FeedbackWidgets.ts";
 
 //Types
 type Props = {
   type: "light" | "dark";
   $location?: "menu";
   onClick?: () => void;
-  iconsToShow: string[];
 };
 
-type Image = {
-  darkSrc?: string;
-  lightSrc?: string;
-  alt: string;
-};
-
-type Icon = {
-  id: string;
-  image: Image;
-  href: string;
-};
-
-//Data
-const icons = [
-  {
-    id: "instagram",
-    image: feedbackWidgetImages.instagram,
-    href: instagramHref,
-  },
-  {
-    id: "telegram",
-    image: feedbackWidgetImages.telegram,
-    href: telegramHref,
-  },
-  {
-    id: "twitter",
-    image: feedbackWidgetImages.twitter,
-    href: twitterHref,
-  },
-  {
-    id: "facebook",
-    image: feedbackWidgetImages.facebook,
-    href: facebookHref,
-  },
-  {
-    id: "email",
-    image: feedbackWidgetImages.email,
-    href: emailHref,
-  },
-];
+type Image = SocialImageType;
 
 // Styles
 const StyledFeedbackWidgets = styled.div<{
@@ -105,43 +63,29 @@ const StyledButton = styled(CustomButton)`
 
 // Component
 export const FeedbackWidgets: FC<Props> = ({
-  iconsToShow,
   type,
   $location,
   onClick,
   ...props
 }) => {
+  const { t } = useTranslation();
+  const feedbackWidgetsData = getData(
+    "FeedbackWidgets",
+    t
+  ) as FeedbackWidgetsType;
   return (
     <StyledFeedbackWidgets $location={$location} {...props}>
-      {iconsToShow.map((iconId: string) => {
-        const icon = icons.find((i) => i.id === iconId) as Icon;
-        if (icon) {
-          return (
-            <StyledLink
-              key={icon.id}
-              color={"transparent"}
-              href={icon.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {onClick ? (
-                <StyledButton
-                  type="button"
-                  disabled={!onClick}
-                  onClick={onClick}
-                >
-                  <StyledImage
-                    src={
-                      icon.image[
-                        (type === "light"
-                          ? "lightSrc"
-                          : "darkSrc") as keyof Image
-                      ]
-                    }
-                    alt={icon.image.alt}
-                  />
-                </StyledButton>
-              ) : (
+      {feedbackWidgetsData.map((icon) => {
+        return (
+          <StyledLink
+            key={icon.id}
+            color={"transparent"}
+            href={icon.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {onClick ? (
+              <StyledButton type="button" disabled={!onClick} onClick={onClick}>
                 <StyledImage
                   src={
                     icon.image[
@@ -150,11 +94,19 @@ export const FeedbackWidgets: FC<Props> = ({
                   }
                   alt={icon.image.alt}
                 />
-              )}
-            </StyledLink>
-          );
-        }
-        return null;
+              </StyledButton>
+            ) : (
+              <StyledImage
+                src={
+                  icon.image[
+                    (type === "light" ? "lightSrc" : "darkSrc") as keyof Image
+                  ]
+                }
+                alt={icon.image.alt}
+              />
+            )}
+          </StyledLink>
+        );
       })}
     </StyledFeedbackWidgets>
   );

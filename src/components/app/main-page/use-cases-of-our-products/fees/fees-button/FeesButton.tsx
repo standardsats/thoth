@@ -7,7 +7,7 @@ import {
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
-import { commonImages } from "@/assets/constants/constants.ts";
+import { commonImages } from "@/assets/constants/main.ts";
 
 const { whiteColor, greenColor, lightGreenColor } = colorVariables;
 
@@ -86,7 +86,7 @@ export const FeesButton: FC<Props> = ({ text }) => {
     setIsDisabled(true);
     //TODO
     //навигация скорее всего придется поправить
-    navigate("/thoth/payment-fees");
+    navigate("/payment-fees");
     window.scrollTo({
       top: 0,
     });

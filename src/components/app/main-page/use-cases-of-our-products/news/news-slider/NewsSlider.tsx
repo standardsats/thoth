@@ -4,20 +4,11 @@ import "slick-carousel/slick/slick-theme.css";
 import styled from "styled-components";
 import { Slide } from "../slide/Slide.tsx";
 import { FC } from "react";
+import { NewsSlideType } from "@/assets/test/newsData.tsx";
 
 //Types
 type Props = {
-  slides: Array<{
-    id: string;
-    span: string;
-    date: string;
-    title: string;
-    text: string;
-    image: {
-      src: string;
-      alt: string;
-    };
-  }>;
+  slides: NewsSlideType[];
   size: "small";
 };
 

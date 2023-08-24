@@ -9,18 +9,14 @@ import {
 import { signInHref, signUpHref } from "@/assets/links-href/LinksHref.ts";
 import { Link } from "@/components/app/common/Link/Link.tsx";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
+import { LoginAndRegisterType } from "@/assets/constants/app/header/Header.ts";
 
 const { whiteColor, greenColor, lightGreenColor } = colorVariables;
-
-//Data
-const headerLinks = {
-  signUp: "Register",
-  signIn: "Log In",
-};
 
 //Types
 type Props = {
   onClick?: () => void;
+  loginAndRegister: LoginAndRegisterType;
 };
 
 //Styles
@@ -47,14 +43,17 @@ const StyledLinkLogin = styled(Link)`
     ${greenColor} 0%,
     ${lightGreenColor} 100%
   );
+  word-break: break-word;
   @media (max-width: ${sizeVariable}) {
     padding: 1.7vw 4.4vw;
   }
 `;
 
 const StyledLinkRegister = styled(Link)`
+  visibility: hidden;
   margin: 0 1vw;
   background-color: transparent;
+  word-break: break-word;
   @media (max-width: ${sizeVariable}) {
     margin: 0 7.5vw 0 2vw;
   }
@@ -97,7 +96,8 @@ const StyledButton = styled(CustomButton)`
 `;
 
 //Component
-export const SignInAndSignUp: FC<Props> = ({ onClick }) => {
+export const SignInAndSignUp: FC<Props> = ({ onClick, loginAndRegister }) => {
+  const { signUp, signIn } = loginAndRegister;
   return (
     <StyledWrapper>
       <StyledLinkRegister
@@ -108,10 +108,10 @@ export const SignInAndSignUp: FC<Props> = ({ onClick }) => {
       >
         {onClick ? (
           <StyledButton type="button" disabled={!onClick} onClick={onClick}>
-            <StyledSignUpText>{headerLinks.signUp}</StyledSignUpText>
+            <StyledSignUpText>{signUp}</StyledSignUpText>
           </StyledButton>
         ) : (
-          <StyledSignUpText>{headerLinks.signUp}</StyledSignUpText>
+          <StyledSignUpText>{signUp}</StyledSignUpText>
         )}
       </StyledLinkRegister>
       <StyledLinkLogin
@@ -122,10 +122,10 @@ export const SignInAndSignUp: FC<Props> = ({ onClick }) => {
       >
         {onClick ? (
           <StyledButton type="button" disabled={!onClick} onClick={onClick}>
-            <StyledSignInText>{headerLinks.signIn}</StyledSignInText>
+            <StyledSignInText>{signIn}</StyledSignInText>
           </StyledButton>
         ) : (
-          <StyledSignInText>{headerLinks.signIn}</StyledSignInText>
+          <StyledSignInText>{signIn}</StyledSignInText>
         )}
       </StyledLinkLogin>
     </StyledWrapper>

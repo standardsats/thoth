@@ -7,18 +7,13 @@ import {
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
+import { FooterLinksType } from "@/assets/constants/app/footer/Footer.ts";
 
 const { whiteColor } = colorVariables;
 
 //Types
-type Data = {
-  data: {
-    title: string;
-    links: Array<{
-      name: string;
-      href: string;
-    }>;
-  };
+type Props = {
+  data: FooterLinksType;
 };
 
 //Styles
@@ -86,7 +81,7 @@ const StyledLinkItem = styled.li`
 `;
 
 //Components
-export const FooterNavigation: FC<Data> = ({ data }) => {
+export const FooterNavigation: FC<Props> = ({ data }) => {
   return (
     <StyledColumn>
       <StyledTitle>{data.title}</StyledTitle>

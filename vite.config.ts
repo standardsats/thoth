@@ -1,11 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
-import type { UserConfig } from "vite";
 import path from "path";
+console.log(process.env.VITE_BASE_NAME);
 
-//export default defineConfig(({ mode }): UserConfig & { hmr?: boolean } => {
-//return {
 export default defineConfig({
   plugins: [
     react(),
@@ -15,7 +13,9 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/thoth",
+  // base: process.env.VITE_BASE_NAME,
+  // base: "/thoth/",
+  base: "/",
   server: {
     open: true,
   },

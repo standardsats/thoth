@@ -5,13 +5,14 @@ import {
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
-import { Section } from "../Header.tsx";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
+import { SectionsType } from "@/assets/constants/app/App.ts";
+
 
 //Types
 type HeaderNavigationProps = {
-  sections: Section[];
+  sections: SectionsType;
   headerHeight: number;
   burgerMenuHandler?: () => void;
   isLanguagesOpen?: boolean | null;
@@ -85,9 +86,12 @@ export const HeaderNavigation: FC<HeaderNavigationProps> = ({
   const location = useLocation();
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
 
+  //TODO
+  //Возможно придется поправить роутинг
+
   const scrollToSection = async (sectionId: string) => {
-    if (location.pathname !== "/thoth") {
-      await navigate("/thoth");
+    if (location.pathname !== "/") {
+      await navigate("/");
     }
 
     const element = document.getElementById(sectionId);

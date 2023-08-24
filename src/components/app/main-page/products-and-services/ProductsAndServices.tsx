@@ -12,73 +12,28 @@ import { MobileSlider } from "./mobile-slider/MobileSlider.tsx";
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { DescriptionTHOH } from "@/components/app/common/descriptionTHOH/descriptionTHOH.tsx";
-import { VideoSlider } from "./video-slider/VidioSlider.tsx";
+//import { VideoSlider } from "./video-slider/VideoSlider.tsx";
 import { SlideButton } from "@/components/app/common/slide-button/SlideButton.tsx";
 import { SlideSubtitle } from "@/components/app/common/slide-subtitle/SlideSubtitle.tsx";
-import { productsAndServiceImages } from "@/assets/constants/constants.ts";
+import { getData } from "@/assets/constants/constants.ts";
+import { useTranslation } from "react-i18next";
+import {
+  ProductAndServiceType,
+  productsAndServiceImages,
+} from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 const { whiteColor } = colorVariables;
-
-//Data
-const sectionProductsAndService = {
-  title: "Products and Services",
-  text: "Product Description THOTH",
-  slides: [
-    {
-      id: "1",
-      subtitle: "Merchants Solution",
-      textContent:
-        "A solution enabling businesses to accept crypto payments in all major coins and exchange it all into Fiat, Coins or StableCoins.",
-      button: "Read more",
-      image: productsAndServiceImages.one,
-    },
-    {
-      id: "2",
-      subtitle: "Enterprise Blockchain Wallets",
-      textContent:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      button: "test",
-      image: productsAndServiceImages.two,
-    },
-    {
-      id: "3",
-      subtitle: "Wallet App",
-      textContent:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      button: "test",
-      image: productsAndServiceImages.three,
-    },
-    {
-      id: "4",
-      subtitle: "Staking",
-      textContent:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      button: "test",
-      image: productsAndServiceImages.four,
-    },
-  ],
-};
 
 //Types
 type Props = {
   id: string;
-};
-
-export type SlideData = {
-  id: string;
-  subtitle: string;
-  textContent: string;
-  button: string;
-  image: {
-    src: string;
-    alt: string;
-  };
+  title: string;
 };
 
 //Styles
 const StyledDescription = styled.section`
   ${coverImage};
-  border-radius: 1.6vw 1.6vw 0 0;
+  //border-radius: 1.6vw 1.6vw 0 0;
   min-height: calc(901vw / 14.4);
   padding: 4.28vw;
   box-sizing: border-box;
@@ -90,7 +45,7 @@ const StyledDescription = styled.section`
 
   @media (max-width: ${sizeVariable}) {
     min-height: calc(970vw / 5.08);
-    border-radius: 3.93vw 3.93vw 0 0;
+    //border-radius: 3.93vw 3.93vw 0 0;
     padding: 14.93vw 0;
     flex-direction: column;
     background-image: url(${productsAndServiceImages.backgroundS});
@@ -118,43 +73,41 @@ const StyledButtons = styled.div`
 `;
 
 //Component
-export const ProductAndServices: FC<Props> = ({ id }) => {
+export const ProductAndServices: FC<Props> = ({ id, title }) => {
   const isMobile = useMobileDetection();
-  const [activeButton, setActiveButton] = useState<string>(
-    sectionProductsAndService.slides[0].id
-  );
+  const { t } = useTranslation();
+  const sectionData = getData("ProductAndService", t) as ProductAndServiceType;
+
+  //TODO
+  //Добавить видео слайдер если будет нужно videoSlider
+  const { text, slides, mobileWallet, availableCurrencies } = sectionData;
+  const [activeButton, setActiveButton] = useState<string>(slides[0].id);
 
   const handleButtonClick = (button: string) => {
     setActiveButton(button);
   };
 
-  const buttonKeys = sectionProductsAndService.slides.map((slide) => slide.id);
-  const slideData = sectionProductsAndService.slides.find(
-    (slide) => slide.id === activeButton
-  );
+  const buttonKeys = slides.map((slide) => slide.id);
+  const slideData = slides.find((slide) => slide.id === activeButton);
 
   return (
     <section id={id}>
       <StyledDescription>
-        <StyledSectionTitle color={whiteColor}>
-          {sectionProductsAndService.title}
-        </StyledSectionTitle>
-        <StyledDescriptionTHOH color={whiteColor}>
-          {sectionProductsAndService.text}
-        </StyledDescriptionTHOH>
+        <StyledSectionTitle color={whiteColor}>{title}</StyledSectionTitle>
+        <StyledDescriptionTHOH color={whiteColor}>{text}</StyledDescriptionTHOH>
         {!isMobile && (
           <StyledButtons>
-            {buttonKeys.map((key) => {
+            {buttonKeys.map((key, index) => {
               const isActive = activeButton === key;
-              const slide = sectionProductsAndService.slides.find(
-                (slide) => slide.id === key
-              );
+              const slide = slides.find((slide) => slide.id === key);
               if (slide) {
+                const buttonPercentage = [29, 29, 27, 15];
+                const width = buttonPercentage[index];
                 return (
                   <SlideButton
                     key={slide.id}
                     id={slide.id}
-                    length={sectionProductsAndService.slides.length}
+                    width={`${width}%`}
                     isActive={isActive}
                     onClick={handleButtonClick}
                   >
@@ -167,14 +120,14 @@ export const ProductAndServices: FC<Props> = ({ id }) => {
           </StyledButtons>
         )}
         {isMobile ? (
-          <MobileSlider slides={sectionProductsAndService.slides} />
+          <MobileSlider slides={slides} links={mobileWallet.links} />
         ) : (
-          slideData && <Slide slide={slideData} />
+          slideData && <Slide slide={slideData} links={mobileWallet.links} />
         )}
       </StyledDescription>
-      <MobileWallet />
-      <AvailableCurrencies />
-      <VideoSlider />
+      <MobileWallet mobileWallet={mobileWallet} />
+      <AvailableCurrencies availableCurrencies={availableCurrencies} />
+      {/*<VideoSlider videoSlider={videoSlider} />*/}
     </section>
   );
 };

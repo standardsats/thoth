@@ -9,58 +9,20 @@ import {
   fontFamily,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
-import { newsHref } from "@/assets/links-href/LinksHref.ts";
 import { Link } from "@/components/app/common/Link/Link.tsx";
-import { commonImages, newsImages } from "@/assets/constants/constants.ts";
+import { newsData } from "@/assets/test/newsData.tsx";
+import { FC } from "react";
+import { commonImages } from "@/assets/constants/main.ts";
+import {
+  useCasesOfOurProductsImages,
+  NewsType,
+} from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { whiteColor, greenColor } = colorVariables;
 
-//Data
-const news = {
-  title: "News",
-  button: "Read more",
-  slides: [
-    {
-      id: "1",
-      span: "Corporate News",
-      date: "20.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: newsImages.one,
-    },
-    {
-      id: "2",
-      span: "Corporate News",
-      date: "21.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: newsImages.two,
-    },
-    {
-      id: "3",
-      span: "Corporate News",
-      date: "22.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: newsImages.three,
-    },
-    {
-      id: "4",
-      span: "Corporate News",
-      date: "23.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: newsImages.four,
-    },
-    {
-      id: "5",
-      span: "Corporate News",
-      date: "24.04.2022",
-      title: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      text: "Athletic Club and B2BinPay Join Forces in Historic Partnership",
-      image: newsImages.five,
-    },
-  ],
+//Type
+type Props = {
+  news: NewsType;
 };
 
 //Styles
@@ -69,13 +31,13 @@ const StyledSection = styled.div`
   width: 100vw;
   padding-bottom: 5vw;
   min-height: calc(1317vw / 14.4);
-  background-image: url(${newsImages.backgroundL});
+  background-image: url(${useCasesOfOurProductsImages.newsImages.backgroundL});
   ${coverImage};
   border-radius: 1.6vw;
 
   @media (max-width: ${sizeVariable}) {
     padding-bottom: 10vw;
-    background-image: url(${newsImages.backgroundL});
+    background-image: url(${useCasesOfOurProductsImages.newsImages.backgroundL});
     min-height: calc(1441vw / 5.08);
     border-radius: 3.93vw;
   }
@@ -102,6 +64,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
+  visibility: hidden;
   margin-left: 3.54vw;
   position: relative;
   padding-right: 1.43vw;
@@ -163,24 +126,25 @@ const SmallSlidesContainer = styled.div`
   }
 `;
 
-export const News = () => {
+export const News: FC<Props> = ({ news }) => {
+  const { title, link } = news;
+  const newsToRender = newsData;
   const isMobile = useMobileDetection();
-  const slides = news.slides;
-  const bigSlides = slides.slice(0, 2);
-  const smallSlides = slides.slice(2, 5);
+  const bigSlides = newsToRender.slice(0, 2);
+  const smallSlides = newsToRender.slice(2, 5);
 
   //Components
   return (
     <StyledSection>
       <StyledWrapper>
-        <SectionTitle color={whiteColor}>{news.title}</SectionTitle>
+        <SectionTitle color={whiteColor}>{title}</SectionTitle>
         <StyledLink
           color={"transparent"}
-          href={newsHref}
+          href={link.href}
           target="_blank"
           rel="noopener noreferrer"
         >
-          {news.button}
+          {link.value}
         </StyledLink>
       </StyledWrapper>
       <NewsContainer>

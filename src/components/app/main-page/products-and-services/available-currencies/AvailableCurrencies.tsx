@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { FC } from "react";
 import styled from "styled-components";
 import {
   colorVariables,
@@ -11,91 +11,13 @@ import {
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { CurrenciesSlider } from "./currencies-slider/CurrenciesSlider.tsx";
-import { availableCurrenciesImages } from "@/assets/constants/constants.ts";
+import { AvailableCurrenciesType, productsAndServiceImages } from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 const { whiteColor, darkGrayColor } = colorVariables;
 
-//Data
-const availableCurrencies: AvailableCurrencies = {
-  title: "Available Currencies",
-  text: "A vast range of major coins, stablecoins and liquid tokens is available.",
-  imagesContext: [
-    {
-      text: "Coins",
-      coins: [
-        {
-          id: "1",
-          image: availableCurrenciesImages.one,
-        },
-        {
-          id: "2",
-          image: availableCurrenciesImages.two,
-        },
-        {
-          id: "3",
-          image: availableCurrenciesImages.three,
-        },
-        {
-          id: "4",
-          image: availableCurrenciesImages.four,
-        },
-        {
-          id: "5",
-          image: availableCurrenciesImages.five,
-        },
-        {
-          id: "6",
-          image: availableCurrenciesImages.six,
-        },
-        {
-          id: "7",
-          image: availableCurrenciesImages.seven,
-        },
-        {
-          id: "8",
-          image: availableCurrenciesImages.eight,
-        },
-        {
-          id: "9",
-          image: availableCurrenciesImages.nine,
-        },
-        {
-          id: "10",
-          image: availableCurrenciesImages.ten,
-        },
-        {
-          id: "11",
-          image: availableCurrenciesImages.eleven,
-        },
-        {
-          id: "12",
-          image: availableCurrenciesImages.twelve,
-        },
-        {
-          id: "13",
-          image: availableCurrenciesImages.thirteen,
-        },
-      ],
-    },
-  ],
-};
-
 //Type
-type AvailableCurrencies = {
-  title: string;
-  text: string;
-  imagesContext: ImagesContext[];
-};
-
-type ImagesContext = {
-  text: string;
-  coins: Array<{
-    id: string;
-    image: {
-      src: string;
-      alt: string;
-    };
-  }>;
+type Props = {
+  availableCurrencies: AvailableCurrenciesType;
 };
 
 //Styles
@@ -110,8 +32,10 @@ const StyledAvailableCurrencies = styled.section`
   flex-direction: column;
   align-items: start;
   justify-content: center;
-  background-image: url(${availableCurrenciesImages.background});
-  border-radius: 0 0 1.6vw 1.6vw;
+  background-image: url(${productsAndServiceImages.availableCurrencies
+    .background});
+  //border-radius: 0 0 1.6vw 1.6vw;
+  border-radius: 0;
 
   @media (max-width: ${sizeVariable}) {
     padding: 22vw 0 20.27vw 9vw;
@@ -174,26 +98,21 @@ const StyledGridText = styled.p`
 `;
 
 //Component
-export const AvailableCurrencies = () => {
+export const AvailableCurrencies: FC<Props> = ({ availableCurrencies }) => {
+  const { title, text, subtitle, coins } = availableCurrencies;
   const isMobile = useMobileDetection();
 
   return (
     <StyledAvailableCurrencies>
-      <SectionTitle color={whiteColor}>
-        {availableCurrencies.title}
-      </SectionTitle>
-      <StyledText>{availableCurrencies.text}</StyledText>
+      <SectionTitle color={whiteColor}>{title}</SectionTitle>
+      <StyledText>{text}</StyledText>
       <StyledGridContainer>
-        {availableCurrencies.imagesContext.map((item, index) => (
-          <Fragment key={index}>
-            <StyledGridText>{item.text}</StyledGridText>
-            {!isMobile ? (
-              <CurrenciesSlider slides={item.coins} size={"big"} />
-            ) : (
-              <CurrenciesSlider slides={item.coins} size={"small"} />
-            )}
-          </Fragment>
-        ))}
+        <StyledGridText>{subtitle}</StyledGridText>
+        {!isMobile ? (
+          <CurrenciesSlider slides={coins} size={"big"} />
+        ) : (
+          <CurrenciesSlider slides={coins} size={"small"} />
+        )}
       </StyledGridContainer>
     </StyledAvailableCurrencies>
   );

@@ -34,7 +34,7 @@ export const StyledButton = styled.button`
     props.disabled &&
     css`
       cursor: not-allowed;
-      opacity: 1;
+      opacity: 0.5;
       pointer-events: none;
     `}
 `;

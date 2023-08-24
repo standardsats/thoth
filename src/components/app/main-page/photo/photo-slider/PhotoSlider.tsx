@@ -6,17 +6,15 @@ import { FC } from "react";
 import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { ArrowButton } from "@/components/app/common/arrow-button/ArrowButton.tsx";
 import { Slide } from "./slide/Slide.tsx";
-import { photoSlideArrows } from "@/assets/constants/constants.ts";
+import {
+  PhotoSlideArrowsType,
+  PhotosType,
+} from "@/assets/constants/app/main-page/Photo.ts";
 
 //Types
-type Slide = {
-  index: string;
-  image: string;
-  alt: string;
-};
-
 type Props = {
-  slides: Slide[];
+  photos: PhotosType;
+  photoSlideArrows: PhotoSlideArrowsType;
 };
 
 //Styles
@@ -66,7 +64,7 @@ const StyledArrowImage = styled.img<{ $isPrev?: boolean }>`
 `;
 
 //Components
-export const PhotoSlider: FC<Props> = ({ slides }) => {
+export const PhotoSlider: FC<Props> = ({ photos, photoSlideArrows }) => {
   const settings: Settings = {
     className: "center",
     centerMode: true,
@@ -77,7 +75,7 @@ export const PhotoSlider: FC<Props> = ({ slides }) => {
       <ArrowButton className={"arrow next"} top={"52%"} right={"1%"}>
         <StyledArrowImage
           $isPrev={false}
-          src={photoSlideArrows.right.image}
+          src={photoSlideArrows.right.src}
           alt={photoSlideArrows.right.alt}
         />
       </ArrowButton>
@@ -86,7 +84,7 @@ export const PhotoSlider: FC<Props> = ({ slides }) => {
       <ArrowButton className={"arrow prev"} top={"52%"} left={"7%"}>
         <StyledArrowImage
           $isPrev={true}
-          src={photoSlideArrows.left.image}
+          src={photoSlideArrows.left.src}
           alt={photoSlideArrows.left.alt}
         />
       </ArrowButton>
@@ -98,10 +96,10 @@ export const PhotoSlider: FC<Props> = ({ slides }) => {
   return (
     <StyledSliderContainer>
       <Slider {...settings}>
-        {slides.map((slide) => (
-          <Slide key={slide.index} index={slide.index}>
+        {photos.map((photo, index) => (
+          <Slide key={photo.id} index={index}>
             <StyledSlideContent>
-              <img src={slide.image} alt={slide.alt} />
+              <img src={photo.src} alt={photo.alt} />
             </StyledSlideContent>
           </Slide>
         ))}

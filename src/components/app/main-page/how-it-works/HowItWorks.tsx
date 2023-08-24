@@ -10,64 +10,19 @@ import { Advantages } from "./advantages/Advantages.tsx";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { DescriptionTHOH } from "@/components/app/common/descriptionTHOH/descriptionTHOH.tsx";
 import { FC } from "react";
+import { getData } from "@/assets/constants/constants.ts";
+import { useTranslation } from "react-i18next";
 import {
-  advantageImage,
   howItWorksImages,
-} from "@/assets/constants/constants.ts";
+  HowItWorksType,
+} from "@/assets/constants/app/main-page/HowItWorks.ts";
 
 const { darkGrayColor } = colorVariables;
 
 // Types
 type Props = {
   id: string;
-};
-
-// Data
-const sectionHowItWork = {
-  title: "How it work",
-  text: '"Brief description of how the app works"',
-  stepOne: {
-    subtitle: "Send invoice",
-    text: "Merchant issues an invoice in their local currency",
-  },
-  stepTwo: {
-    subtitle: "Payment",
-    text: "The user pays in the currency in which it is convenient for him. We take care of all the difficulties with overpayments and underpayments.",
-  },
-  stepThree: {
-    subtitle: "Broadcast",
-    text: "Conversion and withdrawal, the merchant at any time withdraws his funds to his wallet in the currency in which he is comfortable.",
-  },
-  advantages: [
-    {
-      index: "1",
-      subtitle: "EU Regulated",
-      text: "is fully regulated underEstionian License.",
-      image: advantageImage.one.image,
-      alt: advantageImage.one.alt,
-    },
-    {
-      index: "2",
-      subtitle: "All types of crypto",
-      text: "Coins, StableCoins, Tokens are supported.",
-      image: advantageImage.two.image,
-      alt: advantageImage.two.alt,
-    },
-    {
-      index: "3",
-      subtitle: "Major Blockchains",
-      text: "Bitcoin, Ethereum, Solana, BinanceSmart Chain, Ripple, etc.",
-      image: advantageImage.three.image,
-      alt: advantageImage.three.alt,
-    },
-    {
-      index: "4",
-      subtitle: "Free of Charge",
-      text: "All outgoing transactions, transfers and payouts in crypto are free of charge.",
-      image: advantageImage.four.image,
-      alt: advantageImage.four.alt,
-    },
-  ],
+  title: string;
 };
 
 //Styles
@@ -152,41 +107,32 @@ const StyledLineRight = styled.div`
 `;
 
 //Component
-export const HowItWorks: FC<Props> = ({ id }) => {
+export const HowItWorks: FC<Props> = ({ id, title }) => {
+  const { t } = useTranslation();
+  const sectionData = getData("HowItWorks", t) as HowItWorksType;
+
+  const { text, stepOne, stepTwo, stepThree, advantages } = sectionData;
+
   return (
     <section id={id}>
       <StyledSteps>
-        <SectionTitle color={darkGrayColor}>
-          {sectionHowItWork.title}
-        </SectionTitle>
+        <SectionTitle color={darkGrayColor}>{title}</SectionTitle>
         <StyledDescriptionTHOH color={darkGrayColor}>
-          {sectionHowItWork.text}
+          {text}
         </StyledDescriptionTHOH>
         <StyledStepsWrapper>
           <StyledParent>
             <StyledLineLeft />
-            <Step
-              index="one"
-              image={howItWorksImages.stepOne}
-              content={sectionHowItWork.stepOne}
-            />
+            <Step index="one" content={stepOne} />
           </StyledParent>
           <StyledParent>
             <StyledLineRight />
-            <Step
-              index="two"
-              image={howItWorksImages.stepTwo}
-              content={sectionHowItWork.stepTwo}
-            />
+            <Step index="two" content={stepTwo} />
           </StyledParent>
-          <Step
-            index="three"
-            image={howItWorksImages.stepThree}
-            content={sectionHowItWork.stepThree}
-          />
+          <Step index="three" content={stepThree} />
         </StyledStepsWrapper>
       </StyledSteps>
-      <Advantages advantages={sectionHowItWork.advantages} />
+      {advantages && <Advantages advantages={advantages} />}
     </section>
   );
 };

@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components";
-import { FC, ReactNode, useEffect } from "react";
+import { FC, ReactNode, useLayoutEffect } from "react";
 import {
   sizeVariable,
   slideInAnimation,
   slideOutAnimation,
 } from "@/assets/styles/commonStyles.ts";
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
+import { useLocation } from "react-router-dom";
 
 //Type
 type Props = {
@@ -21,9 +22,9 @@ const StyledDropRight = styled.div<{ $isOpen: boolean | null }>`
   flex-direction: column;
   align-items: start;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
+  background: rgba(23, 42, 68, 0.6);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   position: absolute;
   top: 0;
   right: -100%;
@@ -53,9 +54,13 @@ export const DropRightElement: FC<Props> = ({
   children,
   isOpen,
 }) => {
+  //TODO
+  //нужно поменять при изменении роутинга
+  const location = useLocation();
   const isMobile = useMobileDetection();
+  const isMainPage = location.pathname === "/";
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const updateMenuDropRight = () => {
       const menuDropRightElements = document.querySelectorAll(
         ".drop-right"
@@ -63,7 +68,7 @@ export const DropRightElement: FC<Props> = ({
 
       menuDropRightElements.forEach((element) => {
         element.style.height = `calc(${containerHeight}px + ${headerHeight}px + ${
-          isMobile ? 0 : 1.7
+          !isMobile && isMainPage ? 1.7 : 0
         }vw)`;
       });
     };
@@ -73,7 +78,7 @@ export const DropRightElement: FC<Props> = ({
     return () => {
       window.removeEventListener("resize", updateMenuDropRight);
     };
-  }, [containerHeight, headerHeight]);
+  }, [containerHeight, headerHeight, isMobile]);
 
   return (
     <StyledDropRight className="drop-right" $isOpen={isOpen}>

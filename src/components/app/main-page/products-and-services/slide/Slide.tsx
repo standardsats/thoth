@@ -1,3 +1,4 @@
+import { FC } from "react";
 import styled from "styled-components";
 import {
   divWithBackground,
@@ -8,25 +9,24 @@ import {
 import { colorVariables } from "@/assets/styles/commonStyles.ts";
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { SlideSubtitle } from "@/components/app/common/slide-subtitle/SlideSubtitle.tsx";
-import { SlideData } from "../ProductsAndServices.tsx";
-import { FC } from "react";
-import {
-  slide1Href,
-  slide2Href,
-  slide3Href,
-  slide4Href,
-} from "@/assets/links-href/LinksHref.ts";
 import { Link } from "@/components/app/common/Link/Link.tsx";
+import { MobileWalletLinks } from "@/components/app/main-page/products-and-services/mobile-wallet-links/MobileWalletLinks.tsx";
 import {
-  commonImages,
-  productsAndServiceSlideImages,
-} from "@/assets/constants/constants.ts";
+  MobileWalletLinkType,
+  ProductAndServiceSlideType,
+  productsAndServiceImages,
+  slideFourId,
+  slideThreeId,
+  slideTwoId,
+} from "@/assets/constants/app/main-page/ProductAndService.ts";
+import { commonImages } from "@/assets/constants/main.ts";
 
 const { greenColor } = colorVariables;
 
 //Types
 type Props = {
-  slide: SlideData;
+  slide: ProductAndServiceSlideType;
+  links: MobileWalletLinkType[];
 };
 
 //Styles
@@ -51,7 +51,7 @@ const StyledSlide = styled.div`
   align-items: stretch;
   width: 82.25vw;
   ${divWithBackground};
-  background-image: url(${productsAndServiceSlideImages.backgroundL});
+  background-image: url(${productsAndServiceImages.slideBackgroundL});
   border-radius: 30px;
 
   @media (max-width: ${sizeVariable}) {
@@ -61,7 +61,7 @@ const StyledSlide = styled.div`
     flex-direction: column;
     width: 82.41vw;
     height: 100%;
-    background-image: url(${productsAndServiceSlideImages.backgroundS});
+    background-image: url(${productsAndServiceImages.slideBackgroundS});
   }
 `;
 
@@ -124,6 +124,23 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const StyledUnderlineLink = styled(Link)`
+  text-decoration: underline;
+  width: fit-content;
+  background: transparent;
+  color: ${greenColor};
+  font-size: 1.74vw;
+  ${fontFamily};
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.5px;
+
+  @media (max-width: ${sizeVariable}) {
+    font-size: 4.91vw;
+  }
+`;
+
 const StyledImageContainer = styled.div`
   height: 20vw;
   width: 40vw;
@@ -150,23 +167,46 @@ const StyledImage = styled.img`
 `;
 
 //Component
-export const Slide: FC<Props> = ({ slide }) => {
-  const isMobile = useMobileDetection();
+const getLinks = (
+  slide: ProductAndServiceSlideType,
+  links: MobileWalletLinkType[]
+) => {
+  switch (slide.id) {
+    case slideTwoId:
+      return (
+        slide.link && (
+          <StyledUnderlineLink
+            color={"transparent"}
+            href={slide.link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {slide.link.value}
+          </StyledUnderlineLink>
+        )
+      );
+    case slideThreeId:
+      return <MobileWalletLinks links={links} />;
+    case slideFourId:
+      return (
+        slide.link && (
+          <StyledLink
+            color={"transparent"}
+            href={slide.link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {slide.link.value}
+          </StyledLink>
+        )
+      );
+    default:
+      return null;
+  }
+};
 
-  const handleHref = (id: string) => {
-    switch (id) {
-      case "1":
-        return slide1Href;
-      case "2":
-        return slide2Href;
-      case "3":
-        return slide3Href;
-      case "4":
-        return slide4Href;
-      default:
-        return "";
-    }
-  };
+export const Slide: FC<Props> = ({ slide, links }) => {
+  const isMobile = useMobileDetection();
 
   return (
     <StyledWrapper>
@@ -174,14 +214,7 @@ export const Slide: FC<Props> = ({ slide }) => {
         {isMobile && <SlideSubtitle>{slide.subtitle}</SlideSubtitle>}
         <StyledSlideContent>
           <StyledText>{slide.textContent}</StyledText>
-          <StyledLink
-            color={"transparent"}
-            href={handleHref(slide.id)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {slide.button}
-          </StyledLink>
+          {getLinks(slide, links)}
         </StyledSlideContent>
         <StyledImageContainer>
           <StyledImage src={slide.image.src} alt={slide.image.alt} />

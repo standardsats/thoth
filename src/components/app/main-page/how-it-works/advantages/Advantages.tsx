@@ -2,25 +2,21 @@ import styled from "styled-components";
 import { FC } from "react";
 import { Advantage } from "./adventage/Advantage.tsx";
 import { coverImage, sizeVariable } from "@/assets/styles/commonStyles.ts";
-import { advantagesImages } from "@/assets/constants/constants.ts";
+import {
+  AdvantageType,
+  howItWorksImages,
+} from "@/assets/constants/app/main-page/HowItWorks.ts";
 
 //Types
-type Advantage = {
-  index: string;
-  subtitle: string;
-  text: string;
-  image: string;
-  alt: string;
-};
-
 type Props = {
-  advantages: Advantage[];
+  advantages: AdvantageType[];
 };
 
 //Styles
 const StyledAdvantages = styled.div`
-  background-image: url(${advantagesImages.backgroundL});
-  border-radius: 1.6vw;
+  background-image: url(${howItWorksImages.advantages.backgroundL});
+  //border-radius: 1.6vw;
+  border-radius: 1.6vw 1.6vw 0 0;
   ${coverImage};
   min-height: 25.14vw;
   width: 100vw;
@@ -31,9 +27,10 @@ const StyledAdvantages = styled.div`
 
   @media (max-width: ${sizeVariable}) {
     width: 100vw;
-    border-radius: 3.93vw;
+    //border-radius: 3.93vw;
+    border-radius: 3.93vw 3.93vw 0 0;
     min-height: 212.58vw;
-    background-image: url(${advantagesImages.backgroundS});
+    background-image: url(${howItWorksImages.advantages.backgroundS});
     flex-direction: column;
   }
 `;
@@ -72,7 +69,7 @@ export const Advantages: FC<Props> = ({ advantages }) => {
       <StyledWrapper>
         {advantages.map((advantage) => (
           <Advantage
-            key={advantage.index}
+            key={advantage.id}
             svg={<StyledSvg src={advantage.image} alt={advantage.alt} />}
             subtitle={advantage.subtitle}
             text={advantage.text}

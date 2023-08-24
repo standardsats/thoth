@@ -7,20 +7,14 @@ import {
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
+import { StepType } from "@/assets/constants/app/main-page/HowItWorks.ts";
 
 const { lightGrayColor } = colorVariables;
 
 //Types
 type Props = {
   index: "one" | "two" | "three";
-  image: {
-    src: string;
-    alt: string;
-  };
-  content: {
-    subtitle: string;
-    text: string;
-  };
+  content: StepType;
 };
 
 //Styles
@@ -72,6 +66,7 @@ const StyledText = styled.p`
 const StyledImage = styled.img<{ $index: string }>`
   margin-top: ${({ $index }) =>
     $index === "one" ? "3.9vw" : $index === "two" ? "2.7vw" : "0"};
+  margin-bottom: 2vw;
   width: ${({ $index }) =>
     $index === "one" ? "7.4vw" : $index === "two" ? "8.6vw" : "11.3vw"};
   height: ${({ $index }) =>
@@ -87,10 +82,14 @@ const StyledImage = styled.img<{ $index: string }>`
 `;
 
 //Component
-export const Step: FC<Props> = ({ index, content, image }) => {
+export const Step: FC<Props> = ({ index, content }) => {
   return (
     <StyledStep>
-      <StyledImage $index={index} src={image.src} alt={image.alt} />
+      <StyledImage
+        $index={index}
+        src={content.image.src}
+        alt={content.image.alt}
+      />
       <StyledSubtitle>{content.subtitle}</StyledSubtitle>
       <StyledText>{content.text}</StyledText>
     </StyledStep>
