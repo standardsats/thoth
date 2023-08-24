@@ -148,8 +148,8 @@ export const Footer = () => {
           <StyledFooterMainText>{text}</StyledFooterMainText>
           <StyledFeedbackWidgets type={"dark"} />
         </StyledColumn>
-        <FooterNavigation data={nav.about} />
-        <FooterNavigation data={nav.community} />
+        {/*<FooterNavigation data={nav.about} />*/}
+        {/*<FooterNavigation data={nav.community} />*/}
         <FooterNavigation data={nav.socials} />
       </StyledWrapperTop>
       <StyledWrapperBottom>
