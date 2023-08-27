@@ -1,19 +1,19 @@
-//import { TFunction } from "i18next";
 import {
-  blogHref,
-  businessRelationHref,
-  eventsHref,
+  // blogHref,
+  // businessRelationHref,
+  // eventsHref,
   facebookHref,
-  featuredHref,
-  howItWorksHref,
-  inviteFriendHref,
-  partnershipHref,
-  podcastHref,
+  // featuredHref,
+  // howItWorksHref,
+  // inviteFriendHref,
+  // partnershipHref,
+  // podcastHref,
   privacyPolicyHref,
   telegramHref,
   termsConditionHref,
   twitterHref,
 } from "@/assets/links-href/LinksHref.ts";
+import { TFunction } from "i18next";
 
 export type FooterLinkType = {
   name: string;
@@ -28,8 +28,8 @@ export type FooterLinksType = {
 export type FooterType = {
   text: string;
   nav: {
-    about: FooterLinksType;
-    community: FooterLinksType;
+    // about: FooterLinksType;
+    // community: FooterLinksType;
     socials: FooterLinksType;
   };
   rights: string;
@@ -37,33 +37,33 @@ export type FooterType = {
   condition: FooterLinkType;
 };
 
-export const getFooterData = () => {
+export const getFooterData = (t: TFunction) => {
   return {
-    text: "Our vision is to provide convenience and help increase your sales business.",
+    text: t("footer.text"),
     nav: {
-      about: {
-        title: "About",
-        links: [
-          { name: "How it works", href: howItWorksHref },
-          { name: "Featured", href: featuredHref },
-          { name: "Partnership", href: partnershipHref },
-          {
-            name: "Business Relation",
-            href: businessRelationHref,
-          },
-        ],
-      },
-      community: {
-        title: "Community",
-        links: [
-          { name: "Events", href: eventsHref },
-          { name: "Blog", href: blogHref },
-          { name: "Podcast", href: podcastHref },
-          { name: "Invite a friend", href: inviteFriendHref },
-        ],
-      },
+      // about: {
+      //   title: "About",
+      //   links: [
+      //     { name: "How it works", href: howItWorksHref },
+      //     { name: "Featured", href: featuredHref },
+      //     { name: "Partnership", href: partnershipHref },
+      //     {
+      //       name: "Business Relation",
+      //       href: businessRelationHref,
+      //     },
+      //   ],
+      // },
+      // community: {
+      //   title: "Community",
+      //   links: [
+      //     { name: "Events", href: eventsHref },
+      //     { name: "Blog", href: blogHref },
+      //     { name: "Podcast", href: podcastHref },
+      //     { name: "Invite a friend", href: inviteFriendHref },
+      //   ],
+      // },
       socials: {
-        title: "Socials",
+        title: t("footer.navTitleOne"),
         links: [
           { name: "Telegram", href: telegramHref },
           { name: "Twitter", href: twitterHref },
@@ -71,13 +71,13 @@ export const getFooterData = () => {
         ],
       },
     },
-    rights: "Auto Fast. All rights reserved",
+    rights: t("footer.rights"),
     policy: {
-      name: "Privacy & Policy",
+      name: t("footer.policy"),
       href: privacyPolicyHref,
     },
     condition: {
-      name: "Terms & Condition",
+      name: t("footer.condition"),
       href: termsConditionHref,
     },
   };

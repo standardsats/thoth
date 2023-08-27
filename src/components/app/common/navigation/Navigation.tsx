@@ -58,8 +58,7 @@ export const Navigation: FC<Props> = ({ navigation }) => {
   const { button, separator, location } = navigation;
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
-  //TODO
-  //Поправить при роутинге
+
   const onClickNavigate = () => {
     setIsDisabled(true);
     navigate(`/`);

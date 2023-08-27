@@ -14,7 +14,7 @@ export default defineConfig({
     }),
   ],
   // base: process.env.VITE_BASE_NAME,
-  // base: "/thoth/",
+  //base: "/thoth/",
   base: "/",
   server: {
     open: true,

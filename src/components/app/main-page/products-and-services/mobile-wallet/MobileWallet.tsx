@@ -8,7 +8,10 @@ import {
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { MobileWalletLinks } from "@/components/app/main-page/products-and-services/mobile-wallet-links/MobileWalletLinks.tsx";
 import { FC } from "react";
-import { MobileWalletType, productsAndServiceImages } from "@/assets/constants/app/main-page/ProductAndService.ts";
+import {
+  MobileWalletType,
+  productsAndServiceImages,
+} from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 const { darkColor, whiteColor, darkGrayColor } = colorVariables;
 

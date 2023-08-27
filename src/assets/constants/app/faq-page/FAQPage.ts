@@ -1,5 +1,6 @@
 import { generateUniqueId } from "@/assets/functions/functions.ts";
 import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { TFunction } from "i18next";
 
 export type FAQItemType = {
   id: string;
@@ -36,131 +37,91 @@ export const faqImages = {
   show: `${baseName}/images/faq-page/show-icon.svg`,
 };
 
-export const faqPageData = () => {
+export const faqPageData = (t: TFunction) => {
   return {
-    title: "FAQ",
+    title: t("pageFaq.title"),
     navigation: {
-      button: "Accept bitcoin payment",
+      button: t("pageFaq.navigation.button"),
       separator: ">",
-      location: "FAQ",
+      location: t("pageFaq.navigation.location"),
     },
     search: {
-      placeholder: "Search",
+      placeholder: t("pageFaq.search.placeholder"),
       image: {
         src: faqImages.search,
-        alt: "search icon",
+        alt: t("pageFaq.search.alt"),
       },
     },
     hideButton: {
       src: faqImages.hide,
-      alt: "hide icon",
+      alt: t("pageFaq.hideButtonAlt"),
     },
     showButton: {
       src: faqImages.show,
-      alt: "show icon",
+      alt: t("pageFaq.showButtonAlt"),
     },
     content: {
-      noResult: `
-        Sorry, No results found.
-      `,
+      noResult: t("pageFaq.content.noResult"),
       list: [
         {
           id: generateUniqueId(),
-          question: `Can login thoth more 1 people has access per one merchant?`,
-          answer: `
-        In the same Merchant Panel you can create multiple API keys, which can be used to access to the API by multiple people.
-        Also you can share the wallet seed, that will allow several people to login into the same Merchant Panel, but we DON'T recommend this, because anybody who knows seed phrase can access Merchant Panel.
-      `,
+          question: t("pageFaq.content.questionOne"),
+          answer: t("pageFaq.content.answerOne"),
         },
         {
           id: generateUniqueId(),
-          question: `Please have a list with all supporting currencies?`,
-          answer: `
-        The currencies that are supported to receive:
-        
-        - BTC (onchain, Lightning Network, Liquid Network)
-        - ETH
-        - USDT (Erc20, Trc20, Bep20, Plg20, Liquid Network)
-        - BUSD (Bep20)
-        - Tron
-        - Matic
-        - BNB
-        - Stellar XLM and EURMTL (euro stable in Montenegro)
-        
-        The fiat currencies that can be used for prices are in the table on merchant manual.
-      `,
+          question: t("pageFaq.content.questionTwo"),
+          answer: t("pageFaq.content.answerTwo"),
         },
         {
           id: generateUniqueId(),
-          question: `How to start API things?`,
-          answer: `
-        Go to <a href="https://thothpay.com/merchant">https://thothpay.com/merchant</a> and scan qr code with Blixt Wallet and next use your profile on dashboard to get API token and URL to API docs.
-      `,
+          question: t("pageFaq.content.questionThree"),
+          answer: t("pageFaq.content.answerThree"),
         },
         {
           id: generateUniqueId(),
-          question: `What URL for connect any API?`,
-          answer: `
-        This is detail for API > <a href="https://thothpay.com/swagger/index.html">https://thothpay.com/swagger/index.html</a>
-      `,
+          question: t("pageFaq.content.questionFour"),
+          answer: t("pageFaq.content.answerFour"),
         },
         {
           id: generateUniqueId(),
-          question: `Thothpay offer withdraw page? or withdraw can be done only from our wallet?
-      (client can do autonomously from the wallet or we can only do for the client from our wallet?)`,
-          answer: `
-        Thothpay provide withdraw for merchant account either by Web UI in thothpay.com/merchant or by API. The merchant should initiate withdraw for client.
-      `,
+          question: t("pageFaq.content.questionFive"),
+          answer: t("pageFaq.content.answerFive"),
         },
         {
           id: generateUniqueId(),
-          question: `Will they also be able to withdrawal from there trading account to their wallet?`,
-          answer: `
-        Thothpay can withdraw in any crypto currency. That is done via API calls from CRM to Thothpay. But, CRM has to track balances of their users. Thothpay manages aggregated balance of whole merchant account only.
-      `,
+          question: t("pageFaq.content.questionSix"),
+          answer: t("pageFaq.content.answerSix"),
         },
         {
           id: generateUniqueId(),
-          question: `Can you please guide us from swagger for deposit from which API need to start as we have key now we checked api/signin there is k1 which value will come there?`,
-          answer: `
-        Should use the API key in header to auth the end points from swagger. The k1 is part of auth for merchant panel, not API. Once you get API key in profile page you can auth with it in any API handle.
-      `,
+          question: t("pageFaq.content.questionSeven"),
+          answer: t("pageFaq.content.answerSeven"),
         },
         {
           id: generateUniqueId(),
-          question: `Can you tell us once in swagger for deposit which APIs we need to follow please suggest once?`,
-          answer: `
-        To make deposit you should check the POST /api/invoice handle. Use "currency" : { "Fiat": "Usd"} for price in dollars. Also, note that 1 usd is 100 in amount field. The amount in API is always in smallest units of the currency.  
-        `,
+          question: t("pageFaq.content.questionEight"),
+          answer: t("pageFaq.content.answerEight"),
         },
         {
           id: generateUniqueId(),
-          question: `What should be base URL for API we need to use?`,
-          answer: `
-        <a href="https://thothpay.com/api/invoice">https://thothpay.com/api/invoice</a>
-        Swagger prints curl example if you press "Try it out" and then "Execute"
-      `,
+          question: t("pageFaq.content.questionNine"),
+          answer: t("pageFaq.content.answerNine"),
         },
         {
           id: generateUniqueId(),
-          question: `callback url must be in POST method or get method URL`,
-          answer: `
-        Post
-      `,
+          question: t("pageFaq.content.questionTen"),
+          answer: t("pageFaq.content.answerTen"),
         },
         {
           id: generateUniqueId(),
-          question: `When they created the key. what they have to do next?`,
-          answer: `
-        They should use the key in request http headers in API. How to use it and example they can find in interactive documentation (swagger) <a href="https://thothpay.com/swagger">https://thothpay.com/swagger</a>
-      `,
+          question: t("pageFaq.content.questionEleven"),
+          answer: t("pageFaq.content.answerEleven"),
         },
         {
           id: generateUniqueId(),
-          question: `When have a error code on API testing?`,
-          answer: `
-        Captuer screen shot and give detail that error to support team
-      `,
+          question: t("pageFaq.content.questionTwelve"),
+          answer: t("pageFaq.content.answerTwelve"),
         },
       ],
     },

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { getData } from "@/assets/constants/constants.ts";
 import { NewsPageDataType } from "@/assets/constants/app/news-page/NewsPage.ts";
-import { Rating } from "@/components/app/news-page/rating/Rating.tsx";
+// import { Rating } from "@/components/app/news-page/rating/Rating.tsx";
 import {
   colorVariables,
   fontFamily,
@@ -22,7 +22,7 @@ import {
 import { NotFoundPage } from "@/components/app/not-found-page/NotFoundPage.tsx";
 import { Share } from "@/components/app/news-page/share/Share.tsx";
 import { News } from "@/components/app/news-page/news/News.tsx";
-import { SubscriptionForm } from "@/components/app/news-page/subscription-form/SubscriptionForm.tsx";
+// import { SubscriptionForm } from "@/components/app/news-page/subscription-form/SubscriptionForm.tsx";
 import { Navigation } from "@/components/app/common/navigation/Navigation.tsx";
 
 const { smallNewsColor, largeNewsColor, blackColor, lineNewsColor } =
@@ -223,8 +223,7 @@ const StyledSelectedImage = styled.img`
 export const NewsPage = forwardRef<HTMLElement>((_, ref) => {
   const { t } = useTranslation();
   const paigeData = getData("News", t) as NewsPageDataType;
-  const { rating, navigation, subscribe, share, title, views, time } =
-    paigeData;
+  const { navigation, share, title, time } = paigeData;
   const { id } = useParams();
 
   const selectedNews = newsData.find((news) => news.id === id);
@@ -260,15 +259,15 @@ export const NewsPage = forwardRef<HTMLElement>((_, ref) => {
             <StyledSelectedContainer>
               <StyledTitle size="big">{selectedNews.title}</StyledTitle>
               <StyledSelectedInfo>
-                <Rating
-                  id={selectedNews.id}
-                  initialValue={selectedNews.rating}
-                  ratingData={rating}
-                />
-                <StyledSelectedWrapper>
-                  <StyledSelectedImage src={views.src} alt={views.alt} />
-                  <StyledSelectedSpan>{selectedNews.views}</StyledSelectedSpan>
-                </StyledSelectedWrapper>
+                {/*<Rating*/}
+                {/*  id={selectedNews.id}*/}
+                {/*  initialValue={selectedNews.rating}*/}
+                {/*  ratingData={rating}*/}
+                {/*/>*/}
+                {/*<StyledSelectedWrapper>*/}
+                {/*  <StyledSelectedImage src={views.src} alt={views.alt} />*/}
+                {/*  <StyledSelectedSpan>{selectedNews.views}</StyledSelectedSpan>*/}
+                {/*</StyledSelectedWrapper>*/}
                 <StyledSelectedWrapper>
                   <StyledSelectedImage src={time.src} alt={time.alt} />
                   <StyledSelectedSpan>
@@ -281,7 +280,7 @@ export const NewsPage = forwardRef<HTMLElement>((_, ref) => {
           </StyledSelectedContent>
         </SelectedNews>
         <StyledSectionsContainer>
-          <SubscriptionForm subscribe={subscribe} />
+          {/*<SubscriptionForm subscribe={subscribe} />*/}
           <Share selectedNews={selectedNews} share={share} />
           <News news={remainingNews} title={title} />
         </StyledSectionsContainer>

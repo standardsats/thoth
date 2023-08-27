@@ -7,8 +7,8 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
-import { SectionsType } from "@/assets/constants/app/App.ts";
-
+import { sectionFaq, SectionsType } from "@/assets/constants/app/App.ts";
+import { scrollTo } from "@/assets/functions/functions.ts";
 
 //Types
 type HeaderNavigationProps = {
@@ -86,35 +86,50 @@ export const HeaderNavigation: FC<HeaderNavigationProps> = ({
   const location = useLocation();
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
 
-  //TODO
-  //Возможно придется поправить роутинг
-
   const scrollToSection = async (sectionId: string) => {
     if (location.pathname !== "/") {
       await navigate("/");
+      scrollTo(0);
     }
 
     const element = document.getElementById(sectionId);
+    console.log(element);
 
     if (element) {
       const offset = element.offsetTop - headerHeight;
-      window.scrollTo({
-        top: offset,
-        behavior: "smooth",
-      });
+      scrollTo(offset);
     }
+
+    setIsButtonDisabled(false);
+  };
+
+  const scrollToFaqPage = async () => {
+    if (location.pathname !== "/faq") {
+      await navigate("/faq");
+      scrollTo(0);
+    }
+    // Включаем кнопку
     setIsButtonDisabled(false);
   };
 
   const onClickHandler = async (sectionId: string) => {
     setIsButtonDisabled(true);
+
     if (burgerMenuHandler) {
       await burgerMenuHandler();
     }
+
     if (languagesHandler && isLanguagesOpen) {
       await languagesHandler();
     }
-    await scrollToSection(sectionId);
+
+    if (sectionId === sectionFaq) {
+      await scrollToFaqPage();
+    } else {
+      await scrollToSection(sectionId);
+    }
+
+    setIsButtonDisabled(false);
   };
 
   return (

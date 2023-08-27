@@ -32,7 +32,7 @@ const StyledImage = styled.img`
 `;
 
 //TODO
-//временно отключили ссылки нужно потом включить
+//временно отключили ссылки, нужно потом включить
 const StyledLink = styled(Link)`
   pointer-events: none;
   text-decoration: none; 

@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getData } from "@/assets/constants/constants.ts";
 import {
@@ -114,7 +114,7 @@ const StyledItem = styled.li`
   border-bottom: 2px solid ${inputColor};
 
   &:last-of-type {
-    padding: 8vw 0;
+    //padding: 8vw 0;
     border-bottom: none;
   }
 
@@ -137,14 +137,17 @@ const StyledQuestion = styled(Subtitle)<{ $isExpanded: boolean }>`
 
 export const FAQPage = forwardRef<HTMLElement>((_, ref) => {
   const { t } = useTranslation();
-  const pageData = getData("FAQ", t) as FAQPageDataType;
+  const pageData = useMemo(() => getData("FAQ", t), [t]) as FAQPageDataType;
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
   const { hideButton, showButton, content, navigation, search, title } =
     pageData;
   const [filteredData, setFilteredData] = useState<FAQItemType[]>(content.list);
 
+  useEffect(() => {
+    setFilteredData(content.list);
+  }, [content.list]);
+
   const handleSearch = (searchValue: string) => {
-    console.log(searchValue);
     const newData = content.list.filter(
       (item) =>
         item.question.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -160,9 +163,6 @@ export const FAQPage = forwardRef<HTMLElement>((_, ref) => {
         : [...prevExpandedIds, id]
     );
   };
-
-  // const height = ref.current?.clientHeight;
-  // console.log(height);
 
   return (
     <StyledPage ref={ref}>

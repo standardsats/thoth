@@ -8,6 +8,7 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
 import { commonImages } from "@/assets/constants/main.ts";
+import { scrollTo } from "@/assets/functions/functions.ts";
 
 const { whiteColor, greenColor, lightGreenColor } = colorVariables;
 
@@ -84,12 +85,8 @@ export const FeesButton: FC<Props> = ({ text }) => {
   const navigate = useNavigate();
   const onClickHandler = () => {
     setIsDisabled(true);
-    //TODO
-    //навигация скорее всего придется поправить
     navigate("/payment-fees");
-    window.scrollTo({
-      top: 0,
-    });
+    scrollTo(0);
   };
   return (
     <StyledWrapper>

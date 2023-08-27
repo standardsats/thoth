@@ -1,4 +1,3 @@
-//import { TFunction } from "i18next";
 import { baseName, ImageType } from "@/assets/constants/main.ts";
 import { generateUniqueId } from "@/assets/functions/functions.ts";
 import {
@@ -6,6 +5,7 @@ import {
   getSupportHref,
   newsHref,
 } from "@/assets/links-href/LinksHref.ts";
+import { TFunction } from "i18next";
 
 export type UseCasesOfOurProductsSlideType = {
   id: string;
@@ -100,115 +100,106 @@ export const useCasesOfOurProductsImages = {
   sliderArrow: `${baseName}/images/main-page/use-cases-of-our-products/mobile-slider/slider-button.svg`,
 };
 
-export const getUseCasesOfOurProductsData = () => {
+export const getUseCasesOfOurProductsData = (t: TFunction) => {
   return {
-    text: "Product Description THOTH",
-    subtitle: "Merchants Solution",
+    text: t("sectionUseCasesOfOurProducts.text"),
+    subtitle: t("sectionUseCasesOfOurProducts.subtitle"),
     slides: [
       {
         id: generateUniqueId(),
         image: {
           src: useCasesOfOurProductsImages.slides.slideOne,
-          alt: "icon one",
+          alt: t("sectionUseCasesOfOurProducts.slideOne.alt"),
         },
-        title: "FOREX & CFD Brokers",
-        text: "Attract new clients by offering them a way to top up their accounts with many different cryptocurrencies.",
+        title: t("sectionUseCasesOfOurProducts.slideOne.title"),
+        text: t("sectionUseCasesOfOurProducts.slideOne.text"),
       },
       {
         id: generateUniqueId(),
         image: {
           src: useCasesOfOurProductsImages.slides.slideTwo,
-          alt: "icon two",
+          alt: t("sectionUseCasesOfOurProducts.slideTwo.alt"),
         },
-        title: "E-commerce",
-        text: "The world of e-commerce has experienced massive growth. Reap the benefits of the huge online market by accepting crypto payments.",
+        title: t("sectionUseCasesOfOurProducts.slideTwo.title"),
+        text: t("sectionUseCasesOfOurProducts.slideTwo.text"),
       },
       {
         id: generateUniqueId(),
         image: {
           src: useCasesOfOurProductsImages.slides.slideThree,
-          alt: "icon three",
+          alt: t("sectionUseCasesOfOurProducts.slideThree.alt"),
         },
-        title: "Marketplaces",
-        text: "There are many platforms used by businesses to sell their products or services. Offering crypto payments to customers is now the advantage.",
+        title: t("sectionUseCasesOfOurProducts.slideThree.title"),
+        text: t("sectionUseCasesOfOurProducts.slideThree.text"),
       },
       {
         id: generateUniqueId(),
         image: {
           src: useCasesOfOurProductsImages.slides.slideFour,
-          alt: "icon four",
+          alt: t("sectionUseCasesOfOurProducts.slideFour.alt"),
         },
-        title: "Travel Industry",
-        text: "The travel industry is a growing sector. With increasing bookings now made online, it makes financial sense to accept crypto payments.",
+        title: t("sectionUseCasesOfOurProducts.slideFour.title"),
+        text: t("sectionUseCasesOfOurProducts.slideFour.text"),
       },
       {
         id: generateUniqueId(),
         image: {
           src: useCasesOfOurProductsImages.slides.slideFive,
-          alt: "icon five",
+          alt: t("sectionUseCasesOfOurProducts.slideFive.alt"),
         },
-        title: "Gambling",
-        text: "The global online gambling industry is worth billions of dollars. Crypto payments are part for the course.",
-      },
-      {
-        id: generateUniqueId(),
-        image: {
-          src: useCasesOfOurProductsImages.slides.slideSix,
-          alt: "icon six",
-        },
-        title: "FOREX & CFD Brokers",
-        text: "Attract new clients by offering them a way to top up their accounts with many different cryptocurrencies.",
+        title: t("sectionUseCasesOfOurProducts.slideFive.title"),
+        text: t("sectionUseCasesOfOurProducts.slideFive.text"),
       },
     ],
     photoSlideArrowRight: {
       src: useCasesOfOurProductsImages.sliderArrow,
-      alt: "arrow right",
+      alt: t("sectionUseCasesOfOurProducts.photoSlideArrowRightAlt"),
     },
     fees: {
-      title: "Fees",
+      title: t("sectionUseCasesOfOurProducts.fees.title"),
       lineOne: {
-        title: "Incoming Transactions",
+        title: t("sectionUseCasesOfOurProducts.fees.lineOne.title"),
         text: {
-          main: "As low as 0.5%",
-          span: "and going down based on your total transaction volume.",
-          button: "Check pricing details",
+          main: t("sectionUseCasesOfOurProducts.fees.lineOne.text.main"),
+          span: t("sectionUseCasesOfOurProducts.fees.lineOne.text.span"),
+          button: t("sectionUseCasesOfOurProducts.fees.lineOne.text.button"),
         },
       },
       lineTwo: {
-        title: "Outgoing Transactions",
+        title: t("sectionUseCasesOfOurProducts.fees.lineTwo.title"),
         text: {
-          main: "Free of charge",
+          main: t("sectionUseCasesOfOurProducts.fees.lineTwo.text.main"),
         },
       },
     },
     news: {
-      title: "News",
+      title: t("sectionUseCasesOfOurProducts.news.title"),
       link: {
-        value: "Read more",
+        value: t("sectionUseCasesOfOurProducts.news.link"),
         href: newsHref,
       },
     },
     questions: {
-      title: "Have a question?",
-      text: "Explore our solutions or you can contact us through ticket system and contact form. Feel free to get in touch..",
+      title: t("sectionUseCasesOfOurProducts.questions.title"),
+      text: t("sectionUseCasesOfOurProducts.questions.text"),
       existing: {
         image: {
           src: useCasesOfOurProductsImages.haveAQuestion.existingClient,
-          alt: "existing client",
+          alt: t("sectionUseCasesOfOurProducts.questions.existing.alt"),
         },
-        title: "For existing clients",
-        text: "If you already have an account please use our ticket system.",
-        linkName: "Get 24\\7 Support",
+        title: t("sectionUseCasesOfOurProducts.questions.existing.title"),
+        text: t("sectionUseCasesOfOurProducts.questions.existing.text"),
+        linkName: t("sectionUseCasesOfOurProducts.questions.existing.linkName"),
         href: getSupportHref,
       },
       new: {
         image: {
           src: useCasesOfOurProductsImages.haveAQuestion.newClient,
-          alt: "new client",
+          alt: t("sectionUseCasesOfOurProducts.questions.new.alt"),
         },
-        title: "For new clients or partners",
-        text: "Please leave your inquiry and our Business Development Team will contact you shortly.",
-        linkName: "Contact BD Team",
+        title: t("sectionUseCasesOfOurProducts.questions.new.title"),
+        text: t("sectionUseCasesOfOurProducts.questions.new.text"),
+        linkName: t("sectionUseCasesOfOurProducts.questions.new.linkName"),
         href: contactTeamHref,
       },
     },

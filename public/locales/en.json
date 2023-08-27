@@ -1,7 +1,7 @@
 {
   "sections": {
     "one": "How it Works",
-    "two": "Photo",
+    "two": "FAQ",
     "three": "Products and Services",
     "four": "Use Cases of Our Products"
   },
@@ -66,12 +66,145 @@
       }
     }
   },
-  "photos": {
-    "one": "photo one",
-    "two": "photo two",
-    "three": "photo three",
-    "arrowLeft": "arrow left",
-    "arrowRight": "arrow right"
+  "sectionProductAndService": {
+    "text": "Product Description THOTH",
+    "slideOne": {
+      "subtitle": "Merchants Solution",
+      "textContent": "The solution for businesses to accept crypto payments in any coins and automatically exchange it all into desired stable or currency.",
+      "alt": "Merchants Solution"
+    },
+    "slideTwo": {
+      "subtitle": "Enterprise Blockchain Wallets",
+      "textContent": "We deploy infrastructure to provide coins self-custody for enterprise needs.",
+      "alt": "Enterprise Blockchain Wallets"
+    },
+    "slideThree": {
+      "subtitle": "Wallet App",
+      "textContent": "Download Android or iOS application to instantly get access to your account.",
+      "alt": "Wallet App"
+    },
+    "slideFour": {
+      "subtitle": "API",
+      "textContent": "Automate acceptance in your web store, CRM or application with our feature full API.",
+      "link": "Read more",
+      "alt": "API"
+    },
+    "mobileWallet": {
+      "title": "Mobile Wallet",
+      "text": "A solution enabling businesses to accept crypto payments in all major coins and exchange it all into Fiat, Coins or StableCoins.",
+      "googlePlayAlt": "google play link",
+      "appleStoreAlt": "apple store link"
+    },
+    "availableCurrencies": {
+      "title": "Available Currencies",
+      "text": "A vast range of major coins, stablecoins and liquid tokens is available.",
+      "subtitle": "Coins",
+      "bitcoinAlt": "Bitcoin icon",
+      "bitcoinLightningAlt": "Bitcoin lightning icon",
+      "bitcoinLiquidAlt": "Bitcoin liquid icon",
+      "binanceCoinAlt": "Binance coin icon",
+      "tronAlt": "Tron icon",
+      "polygonAlt": "Polygon icon",
+      "stellarAlt": "Stellar icon",
+      "EurmtlAlt": "EURMTL icon",
+      "UsdtErc20Alt": "USDT ERC20 icon",
+      "UsdtTrc20Alt": "USDT TRC20 icon",
+      "UsdtPlg20Alt": "USDT PLG20 icon",
+      "UsdtLiquidAlt": "USDT LIQUID icon",
+      "BusdBep20Alt": "BUSD BEP20 icon"
+    }
+  },
+  "sectionUseCasesOfOurProducts": {
+    "text": "Product Description THOTH",
+    "subtitle": "Merchants Solution",
+    "slideOne": {
+      "alt": "FOREX & CFD Brokers",
+      "title": "FOREX & CFD Brokers",
+      "text": "Attract new clients by offering them a way to top up their accounts with many different cryptocurrencies."
+    },
+    "slideTwo": {
+      "alt": "E-commerce",
+      "title": "E-commerce",
+      "text": "The world of e-commerce has experienced massive growth. Reap the benefits of the huge online market by accepting crypto payments."
+    },
+    "slideThree": {
+      "alt": "Marketplaces",
+      "title": "Marketplaces",
+      "text": "There are many platforms used by businesses to sell their products or services. Offering crypto payments to customers is now the advantage."
+    },
+    "slideFour": {
+      "alt": "Travel Industry",
+      "title": "Travel Industry",
+      "text": "The travel industry is a growing sector. With increasing bookings now made online, it makes financial sense to accept crypto payments."
+    },
+    "slideFive": {
+      "alt": "Gambling",
+      "title": "Gambling",
+      "text": "The global online gambling industry is worth billions of dollars. Crypto payments are part for the course."
+    },
+    "photoSlideArrowRightAlt": "arrow right",
+    "fees": {
+      "title": "Fees",
+      "lineOne": {
+        "title": "Incoming Transactions",
+        "text": {
+          "main": "As low as 0.5%",
+          "span": "and going down based on your total transaction volume.",
+          "button": "Check pricing details"
+        }
+      },
+      "lineTwo": {
+        "title": "Outgoing Transactions",
+        "text": {
+          "main": "Free of charge"
+        }
+      }
+    },
+    "news": {
+      "title": "News",
+      "link": "Read more"
+    },
+    "questions": {
+      "title": "Have a question?",
+      "text": "Explore our solutions or you can contact us through ticket system and contact form. Feel free to get in touch.",
+      "existing": {
+        "alt": "existing client",
+        "title": "For existing clients",
+        "text": "If you already have an account please use our ticket system.",
+        "linkName": "Get 24\\7 Support"
+      },
+      "new": {
+        "alt": "new client",
+        "title": "For new clients or partners",
+        "text": "Please leave your inquiry and our Business Development Team will contact you shortly.",
+        "linkName": "Contact BD Team"
+      }
+    }
+  },
+  "footer": {
+    "text": "Our vision is to provide convenience and help increase your sales business.",
+    "navTitleOne": "Socials",
+    "rights": "Auto Fast. All rights reserved",
+    "policy": "Privacy & Policy",
+    "condition": "Terms & Condition"
+  },
+  "pageNews": {
+    "navigation": {
+      "button": "Accept bitcoin payment",
+      "location": "News"
+    },
+    "time": {
+      "text": "min",
+      "alt": "time reading icon"
+    },
+    "share": {
+      "title": "Share this article",
+      "twitterAlt": "twitter icon",
+      "facebookAlt": "facebook icon",
+      "emailAlt": "email icon",
+      "chainAlt": "chain icon"
+    },
+    "title": "News"
   },
   "pagePaymentFees": {
     "title": "Payment fees",
@@ -87,6 +220,46 @@
     "navigation": {
       "button": "Accept bitcoin payment",
       "location": "Payment fees"
+    }
+  },
+  "pageFaq": {
+    "title": "FAQ",
+    "navigation": {
+      "button": "Accept bitcoin payment",
+      "location": "FAQ"
+    },
+    "search": {
+      "placeholder": "Search",
+      "alt": "search icon"
+    },
+    "hideButtonAlt": "hide icon",
+    "showButtonAlt": "show icon",
+    "content": {
+      "noResult": "\nSorry, No results found.\n",
+      "questionOne": "Can login thoth more 1 people has access per one merchant?",
+      "answerOne": "\nIn the same Merchant Panel you can create multiple API keys, which can be used to access to the API by multiple people.\nAlso you can share the wallet seed, that will allow several people to login into the same Merchant Panel, but we DON'T recommend this, because anybody who knows seed phrase can access Merchant Panel.\n",
+      "questionTwo": "Please have a list with all supporting currencies?",
+      "answerTwo": "\nThe currencies that are supported to receive:\n\n- BTC (onchain, Lightning Network, Liquid Network)\n- ETH\n- USDT (Erc20, Trc20, Bep20, Plg20, Liquid Network)\n- BUSD (Bep20)\n- Tron\n- Matic\n- BNB\n- Stellar XLM and EURMTL (euro stable in Montenegro)\n\nThe fiat currencies that can be used for prices are in the table on merchant manual.\n",
+      "questionThree": "How to start API things?",
+      "answerThree": "\nGo to <a href=\"https://thothpay.com/merchant\" target=\"_blank\" rel=\"noopener noreferrer\">https://thothpay.com/merchant</a> and scan qr code with Blixt Wallet and next use your profile on dashboard to get API token and URL to API docs.\n",
+      "questionFour": "What URL for connect any API?",
+      "answerFour": "\nThis is detail for API > <a href=\"https://thothpay.com/swagger/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">https://thothpay.com/swagger/index.html</a>\n",
+      "questionFive": "Thothpay offer withdraw page? or withdraw can be done only from our wallet? (client can do autonomously from the wallet or we can only do for the client from our wallet?)",
+      "answerFive": "\nThothpay provide withdraw for merchant account either by Web UI in thothpay.com/merchant or by API. The merchant should initiate withdraw for client.\n",
+      "questionSix": "Will they also be able to withdrawal from there trading account to their wallet?",
+      "answerSix": "\nThothpay can withdraw in any crypto currency. That is done via API calls from CRM to Thothpay. But, CRM has to track balances of their users. Thothpay manages aggregated balance of whole merchant account only.\n",
+      "questionSeven": "Can you please guide us from swagger for deposit from which API need to start as we have key now we checked api/signin there is k1 which value will come there?",
+      "answerSeven": "\nShould use the API key in header to auth the end points from swagger. The k1 is part of auth for merchant panel, not API. Once you get API key in profile page you can auth with it in any API handle.\n",
+      "questionEight": "Can you tell us once in swagger for deposit which APIs we need to follow please suggest once?",
+      "answerEight": "\nTo make deposit you should check the POST /api/invoice handle. Use \"currency\" : { \"Fiat\": \"Usd\"} for price in dollars. Also, note that 1 usd is 100 in amount field. The amount in API is always in smallest units of the currency.\n",
+      "questionNine": "What should be base URL for API we need to use?",
+      "answerNine": "\n<a href=\"https://thothpay.com/api/invoice\" target=\"_blank\" rel=\"noopener noreferrer\">https://thothpay.com/api/invoice</a>\nSwagger prints curl example if you press \"Try it out\" and then \"Execute\"\n",
+      "questionTen": "callback url must be in POST method or get method URL",
+      "answerTen": "\nPost\n",
+      "questionEleven": "When they created the key. what they have to do next?",
+      "answerEleven": "\nThey should use the key in request http headers in API. How to use it and example they can find in interactive documentation (swagger) <a href=\"https://thothpay.com/swagger\" target=\"_blank\" rel=\"noopener noreferrer\">https://thothpay.com/swagger</a>\n",
+      "questionTwelve": "When have a error code on API testing?",
+      "answerTwelve": "\nCaptuer screen shot and give detail that error to support team\n"
     }
   },
   "pageNotFound": {

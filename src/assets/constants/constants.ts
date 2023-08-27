@@ -19,10 +19,10 @@ import {
   getHowItWorksData,
   HowItWorksType,
 } from "@/assets/constants/app/main-page/HowItWorks.ts";
-import {
-  getPhotoData,
-  PhotoType,
-} from "@/assets/constants/app/main-page/Photo.ts";
+// import {
+//   getPhotoData,
+//   PhotoType,
+// } from "@/assets/constants/app/main-page/Photo.ts";
 import { getLogoData, LogoType } from "@/assets/constants/app/common/Logo.ts";
 import { getAppData, SectionsType } from "@/assets/constants/app/App.ts";
 import {
@@ -55,7 +55,7 @@ type Name =
   | "Header"
   | "MainScreen"
   | "HowItWorks"
-  | "Photo"
+  // | "Photo"
   | "ProductAndService"
   | "UseCasesOfOurProducts"
   | "Footer"
@@ -72,7 +72,7 @@ type Data =
   | HeaderType
   | MainScreenType
   | HowItWorksType
-  | PhotoType
+  //  | PhotoType
   | ProductAndServiceType
   | UseCasesOfOurProductsType
   | FooterType
@@ -94,20 +94,20 @@ export const getData = (name: Name, t: TFunction): Data => {
       return getMainScreenData(t);
     case "HowItWorks":
       return getHowItWorksData(t);
-    case "Photo":
-      return getPhotoData(t);
+    // case "Photo":
+    //   return getPhotoData(t);
     case "ProductAndService":
-      return getProductAndServiceData();
+      return getProductAndServiceData(t);
     case "UseCasesOfOurProducts":
-      return getUseCasesOfOurProductsData();
+      return getUseCasesOfOurProductsData(t);
     case "Footer":
-      return getFooterData();
+      return getFooterData(t);
     case "PaymentFees":
       return getPaymentFeesData(t);
     case "News":
-      return newsPageData();
+      return newsPageData(t);
     case "FAQ":
-      return faqPageData();
+      return faqPageData(t);
     case "NotFound":
       return getNotFoundPageData(t);
     case "Logo":

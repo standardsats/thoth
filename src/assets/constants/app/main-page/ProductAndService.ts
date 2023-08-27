@@ -1,4 +1,3 @@
-//import { TFunction } from "i18next";
 import { baseName, ImageType } from "@/assets/constants/main.ts";
 import { generateUniqueId } from "@/assets/functions/functions.ts";
 import {
@@ -7,6 +6,7 @@ import {
   slide2Href,
   slide4Href,
 } from "@/assets/links-href/LinksHref.ts";
+import { TFunction } from "i18next";
 
 export const slideOneId = generateUniqueId();
 export const slideTwoId = generateUniqueId();
@@ -46,24 +46,24 @@ export type AvailableCurrenciesType = {
   coins: CoinType[];
 };
 
-export type VideoType = {
-  id: string;
-  title: string;
-  content: string;
-};
+// export type VideoType = {
+//   id: string;
+//   title: string;
+//   content: string;
+// };
 
-export type VideoSliderType = {
-  title: string;
-  text: string;
-  video: VideoType[];
-};
+// export type VideoSliderType = {
+//   title: string;
+//   text: string;
+//   video: VideoType[];
+// };
 
 export type ProductAndServiceType = {
   text: string;
   slides: ProductAndServiceSlideType[];
   mobileWallet: MobileWalletType;
   availableCurrencies: AvailableCurrenciesType;
-  videoSlider: VideoSliderType;
+  // videoSlider: VideoSliderType;
 };
 
 export const productsAndServiceImages = {
@@ -134,179 +134,179 @@ export const videoLinks = {
 //   background: `${baseName}/images/main-page/products-and-service/video-slider/video.svg`,
 // };
 
-export const getProductAndServiceData = () => {
+export const getProductAndServiceData = (t: TFunction) => {
   return {
-    text: "Product Description THOTH",
+    text: t("sectionProductAndService.title"),
     slides: [
       {
         id: slideOneId,
-        subtitle: "Merchants Solution",
-        textContent:
-          "The solution for businesses to accept crypto payments in any coins and automatically exchange it all into desired stable or currency.",
+        subtitle: t("sectionProductAndService.slideOne.subtitle"),
+        textContent: t("sectionProductAndService.slideOne.textContent"),
         image: {
           src: productsAndServiceImages.oneSlideImage,
-          alt: "image one",
+          alt: t("sectionProductAndService.slideOne.textContent"),
         },
       },
       {
         id: slideTwoId,
-        subtitle: "Enterprise Blockchain Wallets",
-        textContent:
-          "We deploy infrastructure to provide coins self-custody for enterprise needs.",
+        subtitle: t("sectionProductAndService.slideTwo.subtitle"),
+        textContent: t("sectionProductAndService.slideTwo.textContent"),
         link: {
           value: "docs.thothpay.com",
           href: slide2Href,
         },
         image: {
           src: productsAndServiceImages.twoSlideImage,
-          alt: "image two",
+          alt: t("sectionProductAndService.slideTwo.textContent"),
         },
       },
       {
         id: slideThreeId,
-        subtitle: "Wallet App",
-        textContent:
-          "Download Android or iOS application to instantly get access to your account.",
+        subtitle: t("sectionProductAndService.slideThree.subtitle"),
+        textContent: t("sectionProductAndService.slideThree.textContent"),
         image: {
           src: productsAndServiceImages.threeSlideImage,
-          alt: "image three",
+          alt: t("sectionProductAndService.slideThree.textContent"),
         },
       },
       {
         id: slideFourId,
-        subtitle: "API",
-        textContent:
-          "Automate acceptance in your web store, CRM or application with our feature full API.",
+        subtitle: t("sectionProductAndService.slideFour.subtitle"),
+        textContent: t("sectionProductAndService.slideFour.textContent"),
         link: {
-          value: "Read more",
+          value: t("sectionProductAndService.slideFour.link"),
           href: slide4Href,
         },
         image: {
           src: productsAndServiceImages.fourSlideImage,
-          alt: "image four",
+          alt: t("sectionProductAndService.slideFour.textContent"),
         },
       },
     ],
     mobileWallet: {
-      title: "Mobile Wallet",
-      text: "A solution enabling businesses to accept crypto payments in all major coins and exchange it all into Fiat, Coins or StableCoins.",
+      title: t("sectionProductAndService.mobileWallet.title"),
+      text: t("sectionProductAndService.mobileWallet.text"),
       links: [
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.mobileWallet.googlePay,
-          alt: "google play link",
+          alt: t("sectionProductAndService.mobileWallet.googlePlayAlt"),
           href: googleHref,
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.mobileWallet.appStore,
-          alt: "apple store link",
+          alt: t("sectionProductAndService.mobileWallet.appleStoreAlt"),
           href: appHref,
         },
       ],
     },
     availableCurrencies: {
-      title: "Available Currencies",
-      text: "A vast range of major coins, stablecoins and liquid tokens is available.",
-      subtitle: "Coins",
+      title: t("sectionProductAndService.availableCurrencies.title"),
+      text: t("sectionProductAndService.availableCurrencies.text"),
+      subtitle: t("sectionProductAndService.availableCurrencies.subtitle"),
       coins: [
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.bitcoin,
-          alt: "bitcoin icon",
+          alt: t("sectionProductAndService.availableCurrencies.bitcoinAlt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.bitcoinLightning,
-          alt: "bitcoin lightning icon",
+          alt: t(
+            "sectionProductAndService.availableCurrencies.bitcoinLightningAlt"
+          ),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.bitcoinLiquid,
-          alt: "bitcoin liquid icon",
+          alt: t(
+            "sectionProductAndService.availableCurrencies.bitcoinLiquidAlt"
+          ),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.binanceCoin,
-          alt: "binance coin icon",
+          alt: t("sectionProductAndService.availableCurrencies.binanceCoinAlt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.tron,
-          alt: "tron icon",
+          alt: t("sectionProductAndService.availableCurrencies.tronAlt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.polygon,
-          alt: "polygon icon",
+          alt: t("sectionProductAndService.availableCurrencies.polygonAlt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.stellar,
-          alt: "stellar icon",
+          alt: t("sectionProductAndService.availableCurrencies.stellarAlt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.EURMTL,
-          alt: "EURMTL icon",
+          alt: t("sectionProductAndService.availableCurrencies.EurmtlAlt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.USDTERC20,
-          alt: "USDT ERC20 icon",
+          alt: t("sectionProductAndService.availableCurrencies.UsdtErc20Alt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.USDTTRC20,
-          alt: "USDT TRC20 icon",
+          alt: t("sectionProductAndService.availableCurrencies.UsdtTrc20Alt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.USDTPLG20,
-          alt: "USDT PLG20 icon",
+          alt: t("sectionProductAndService.availableCurrencies.UsdtPlg20Alt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.USDTLIQUID,
-          alt: "USDT LIQUID icon",
+          alt: t("sectionProductAndService.availableCurrencies.UsdtLiquidAlt"),
         },
         {
           id: generateUniqueId(),
           src: productsAndServiceImages.availableCurrencies.BUSDBEP20,
-          alt: "BUSD BEP20 icon",
+          alt: t("sectionProductAndService.availableCurrencies.BusdBep20Alt"),
         },
       ],
     },
-    videoSlider: {
-      title: "Video",
-      text: "Product Description THOTH",
-      video: [
-        {
-          id: generateUniqueId(),
-          title: "Video title 1",
-          content: videoLinks.videoOne,
-        },
-        {
-          id: generateUniqueId(),
-          title: "Video title 2",
-          content: videoLinks.videoTwo,
-        },
-        {
-          id: generateUniqueId(),
-          title: "Video title 3",
-          content: videoLinks.videoThree,
-        },
-        {
-          id: generateUniqueId(),
-          title: "Video title 4",
-          content: videoLinks.videoFour,
-        },
-        {
-          id: generateUniqueId(),
-          title: "Video title 4",
-          content: videoLinks.videoFive,
-        },
-      ],
-    },
+    // videoSlider: {
+    //   title: "Video",
+    //   text: "Product Description THOTH",
+    //   video: [
+    //     {
+    //       id: generateUniqueId(),
+    //       title: "Video title 1",
+    //       content: videoLinks.videoOne,
+    //     },
+    //     {
+    //       id: generateUniqueId(),
+    //       title: "Video title 2",
+    //       content: videoLinks.videoTwo,
+    //     },
+    //     {
+    //       id: generateUniqueId(),
+    //       title: "Video title 3",
+    //       content: videoLinks.videoThree,
+    //     },
+    //     {
+    //       id: generateUniqueId(),
+    //       title: "Video title 4",
+    //       content: videoLinks.videoFour,
+    //     },
+    //     {
+    //       id: generateUniqueId(),
+    //       title: "Video title 4",
+    //       content: videoLinks.videoFive,
+    //     },
+    //   ],
+    // },
   };
 };

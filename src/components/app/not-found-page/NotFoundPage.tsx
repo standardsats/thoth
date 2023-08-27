@@ -14,6 +14,7 @@ import { SectionTitle } from "@/components/app/common/section-title/SectionTitle
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
 import { Navigation } from "@/components/app/common/navigation/Navigation.tsx";
 import { NotFoundType } from "@/assets/constants/app/not-found-page/NotFoundPage.ts";
+import { scrollTo } from "@/assets/functions/functions.ts";
 
 const {
   darkGreenColor,
@@ -122,9 +123,7 @@ export const NotFoundPage = forwardRef<HTMLElement>((_, ref) => {
   const buttonHandler = () => {
     setIsDisabled(true);
     navigate("/");
-    window.scrollTo({
-      top: 0,
-    });
+    scrollTo(0);
   };
 
   return (

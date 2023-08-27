@@ -10,6 +10,7 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
 import { useNavigate } from "react-router-dom";
 import { NewsSlideType } from "@/assets/test/newsData.tsx";
+import { scrollTo } from "@/assets/functions/functions.ts";
 
 const { whiteColor, greenColor } = colorVariables;
 
@@ -173,9 +174,7 @@ export const Slide: FC<Props<"big"> | Props<"small">> = ({ slide, size }) => {
   //Поправить при роутинге
   const onClickHandler = () => {
     navigate(`/news/${slide.id}`);
-    window.scrollTo({
-      top: 0,
-    });
+    scrollTo(0);
   };
 
   return (
