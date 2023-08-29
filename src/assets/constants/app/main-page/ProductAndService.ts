@@ -136,7 +136,7 @@ export const videoLinks = {
 
 export const getProductAndServiceData = (t: TFunction) => {
   return {
-    text: t("sectionProductAndService.title"),
+    text: t("sectionProductAndService.text"),
     slides: [
       {
         id: slideOneId,

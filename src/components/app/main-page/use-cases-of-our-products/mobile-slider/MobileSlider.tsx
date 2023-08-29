@@ -52,7 +52,12 @@ export const MobileSlider: FC<Props> = ({
     centerMode: false,
     prevArrow: <></>,
     nextArrow: (
-      <ArrowButton className="arrow next" top={"12.5%"} right={"9%"}>
+      <ArrowButton
+        className="arrow next"
+        top={"12.5%"}
+        right={"9%"}
+        aria-label={photoSlideArrowRight.alt}
+      >
         <StyledArrowImage
           src={photoSlideArrowRight.src}
           alt={photoSlideArrowRight.alt}

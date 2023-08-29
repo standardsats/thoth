@@ -93,7 +93,6 @@ export const HeaderNavigation: FC<HeaderNavigationProps> = ({
     }
 
     const element = document.getElementById(sectionId);
-    console.log(element);
 
     if (element) {
       const offset = element.offsetTop - headerHeight;

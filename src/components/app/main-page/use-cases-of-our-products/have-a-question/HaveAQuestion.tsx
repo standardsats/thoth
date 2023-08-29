@@ -48,7 +48,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   justify-content: start;
   align-items: start;
-  max-width: 31.94vw;
+  max-width: 31vw;
 
   @media (max-width: ${sizeVariable}) {
     min-width: 100%;
@@ -59,7 +59,7 @@ const StyledWrapper = styled.div`
   min-height: 25.69vw;
   display: flex;
   flex-direction: column;
-  max-width: 31.94vw;
+  max-width: 24vw;
   align-items: start;
   justify-content: space-between;
 
@@ -69,8 +69,8 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledText = styled.p`
-  width: 25vw;
   ${resetMarginsAndPaddings};
+  padding-bottom: 1vw;
   font-size: calc(25vw / 14.4);
   ${fontFamily};
   color: ${deepColor};
@@ -79,6 +79,7 @@ const StyledText = styled.p`
   line-height: 1.6;
   letter-spacing: -0.5px;
   text-align: left;
+
   @media (max-width: ${sizeVariable}) {
     width: 100%;
     padding: 2.56vw 0 5.5vw;
@@ -86,7 +87,7 @@ const StyledText = styled.p`
 
   &:first-child,
   &.custom-first {
-    width: 30.76vw;
+    max-width: 32vw;
     @media (max-width: ${sizeVariable}) {
       width: 100%;
     }

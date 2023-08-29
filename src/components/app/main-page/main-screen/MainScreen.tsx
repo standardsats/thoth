@@ -41,8 +41,8 @@ const StyledScreen = styled.section`
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: 1.5vw;
+    width: 98.5vw;
     height: 100%;
     background-image: url(${mainScreenImages.coinsL});
     ${divWithImage};
@@ -98,7 +98,7 @@ const StyledScreen = styled.section`
 
 const StyledContent = styled.div`
   box-sizing: border-box;
-  margin: 17.47vw 0 2vw 4.28vw;
+  margin: 10.47vw 0 2vw 5vw;
   width: 50%;
   position: relative;
   z-index: 1;
@@ -107,7 +107,7 @@ const StyledContent = styled.div`
   align-items: start;
 
   @media (max-width: ${sizeVariable}) {
-    margin: 123.05vw 0 10vw 0;
+    margin: 110vw 0 10vw 0;
     padding: 1vw 7vw 5vw 9vw;
     width: 100vw;
     background-image: url(${mainScreenImages.wrapper});
@@ -166,8 +166,9 @@ const StyledMainTitle = styled.h1`
 
 const StyledText = styled.p`
   ${resetMarginsAndPaddings};
-  margin: 1.46vw 0 5.9vw;
+  margin: 1.5vw 4vw 1.5vw 0;
   ${fontFamily};
+  min-height: 5.5vw;
   font-size: calc(25vw / 14.4);
   color: ${greenColor};
   font-style: normal;

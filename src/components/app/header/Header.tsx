@@ -130,6 +130,7 @@ export const Header = forwardRef<HTMLElement, Props>(
                 disabled={!!isLanguagesOpen}
                 type="button"
                 onClick={languagesHandler}
+                aria-label={language.alt}
               >
                 <StyledLanguageImage
                   src={language.srcGray}
@@ -143,6 +144,7 @@ export const Header = forwardRef<HTMLElement, Props>(
               disabled={!!isBurgerMenuOpen}
               type="button"
               onClick={burgerMenuHandler}
+              aria-label={menu.alt}
             >
               <StyledBurgerImage src={menu.src} alt={menu.alt} />
             </StyledBurgerButton>

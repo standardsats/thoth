@@ -72,7 +72,12 @@ export const IconAndTextProps: FC<IconAndTextProps> = ({
   return (
     <StyledWrapper>
       {isButton && onClick ? (
-        <StyledCustomButton type="button" disabled={false} onClick={onClick}>
+        <StyledCustomButton
+          type="button"
+          disabled={false}
+          onClick={onClick}
+          aria-label={alt}
+        >
           <StyledIcon src={src} alt={alt} $isButton={isButton} />
         </StyledCustomButton>
       ) : (

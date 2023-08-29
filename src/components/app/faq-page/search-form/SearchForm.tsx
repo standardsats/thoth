@@ -108,6 +108,7 @@ export const SearchForm: FC<Props> = ({ onSearch, search }) => {
               onClick={onClickHandler}
               type="submit"
               disabled={!values.inputValue}
+              aria-label={search.image.alt}
             >
               <StyledImage src={search.image.src} alt={search.image.alt} />
             </StyledCustomButton>

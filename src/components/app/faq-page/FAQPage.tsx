@@ -114,7 +114,6 @@ const StyledItem = styled.li`
   border-bottom: 2px solid ${inputColor};
 
   &:last-of-type {
-    //padding: 8vw 0;
     border-bottom: none;
   }
 
@@ -164,6 +163,10 @@ export const FAQPage = forwardRef<HTMLElement>((_, ref) => {
     );
   };
 
+  const getButtonLabel = (id: string) => {
+    return expandedIds.includes(id) ? hideButton.alt : showButton.alt;
+  };
+
   return (
     <StyledPage ref={ref}>
       <Navigation navigation={navigation} />
@@ -179,6 +182,7 @@ export const FAQPage = forwardRef<HTMLElement>((_, ref) => {
                     type="button"
                     disabled={false}
                     onClick={() => toggleAnswer(item.id)}
+                    aria-label={getButtonLabel(item.id)}
                   >
                     {expandedIds.includes(item.id) ? (
                       <StyledImage src={hideButton.src} alt={hideButton.alt} />

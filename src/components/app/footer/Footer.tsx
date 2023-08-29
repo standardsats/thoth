@@ -74,12 +74,14 @@ const StyledColumn = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
+  width: calc(274vw / 14.4);
 
   @media (max-width: ${sizeVariable}) {
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-bottom: 10vw;
+    width: calc(355vw / 5.08);
   }
 `;
 
@@ -94,13 +96,13 @@ const StyledFooterMainText = styled.p`
   line-height: 1.5;
   letter-spacing: -0.32px;
   text-align: left;
-  width: calc(274vw / 14.4);
+  //width: calc(274vw / 14.4);
 
   @media (max-width: ${sizeVariable}) {
     margin: 5vw 0 5vw;
     text-align: center;
     font-size: calc(16vw / 5.08);
-    width: calc(355vw / 5.08);
+    //width: calc(355vw / 5.08);
   }
 `;
 

@@ -31,7 +31,7 @@
     "stepOne": {
       "alt": "Send invoice icon",
       "subtitle": "Send invoice",
-      "text": "Merchant issues an invoice in their local currency"
+      "text": "Merchant issues an invoice in their local currency."
     },
     "stepTwo": {
       "alt": "Payment icon",
@@ -239,14 +239,14 @@
       "questionOne": "Can login thoth more 1 people has access per one merchant?",
       "answerOne": "\nIn the same Merchant Panel you can create multiple API keys, which can be used to access to the API by multiple people.\nAlso you can share the wallet seed, that will allow several people to login into the same Merchant Panel, but we DON'T recommend this, because anybody who knows seed phrase can access Merchant Panel.\n",
       "questionTwo": "Please have a list with all supporting currencies?",
-      "answerTwo": "\nThe currencies that are supported to receive:\n\n- BTC (onchain, Lightning Network, Liquid Network)\n- ETH\n- USDT (Erc20, Trc20, Bep20, Plg20, Liquid Network)\n- BUSD (Bep20)\n- Tron\n- Matic\n- BNB\n- Stellar XLM and EURMTL (euro stable in Montenegro)\n\nThe fiat currencies that can be used for prices are in the table on merchant manual.\n",
+      "answerTwo": "\nThe currencies that are supported to receive:\n\n- BTC (onchain, Lightning Network, Liquid Network)\n- ETH\n- USDT (Erc20, Trc20, Bep20, Plg20, Liquid Network)\n- BUSD (Bep20)\n- Tron\n- Matic\n- BNB\n- Stellar XLM\n- EURMTL (euro stable in Montenegro)\n\nThe fiat currencies that can be used for prices are in the table on merchant manual.\n",
       "questionThree": "How to start API things?",
       "answerThree": "\nGo to <a href=\"https://thothpay.com/merchant\" target=\"_blank\" rel=\"noopener noreferrer\">https://thothpay.com/merchant</a> and scan qr code with Blixt Wallet and next use your profile on dashboard to get API token and URL to API docs.\n",
       "questionFour": "What URL for connect any API?",
       "answerFour": "\nThis is detail for API > <a href=\"https://thothpay.com/swagger/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">https://thothpay.com/swagger/index.html</a>\n",
       "questionFive": "Thothpay offer withdraw page? or withdraw can be done only from our wallet? (client can do autonomously from the wallet or we can only do for the client from our wallet?)",
       "answerFive": "\nThothpay provide withdraw for merchant account either by Web UI in thothpay.com/merchant or by API. The merchant should initiate withdraw for client.\n",
-      "questionSix": "Will they also be able to withdrawal from there trading account to their wallet?",
+      "questionSix": "Will they also be able to withdrawal from their trading account to their wallet?",
       "answerSix": "\nThothpay can withdraw in any crypto currency. That is done via API calls from CRM to Thothpay. But, CRM has to track balances of their users. Thothpay manages aggregated balance of whole merchant account only.\n",
       "questionSeven": "Can you please guide us from swagger for deposit from which API need to start as we have key now we checked api/signin there is k1 which value will come there?",
       "answerSeven": "\nShould use the API key in header to auth the end points from swagger. The k1 is part of auth for merchant panel, not API. Once you get API key in profile page you can auth with it in any API handle.\n",

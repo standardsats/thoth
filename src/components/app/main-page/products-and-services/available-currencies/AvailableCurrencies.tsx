@@ -11,7 +11,10 @@ import {
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { CurrenciesSlider } from "./currencies-slider/CurrenciesSlider.tsx";
-import { AvailableCurrenciesType, productsAndServiceImages } from "@/assets/constants/app/main-page/ProductAndService.ts";
+import {
+  AvailableCurrenciesType,
+  productsAndServiceImages,
+} from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 const { whiteColor, darkGrayColor } = colorVariables;
 
@@ -48,6 +51,13 @@ const StyledAvailableCurrencies = styled.section`
   }
 `;
 
+const StyledSectionTitle = styled(SectionTitle)`
+  text-align: left;
+  @media (max-width: ${sizeVariable}) {
+    padding-right: 9vw;
+  }
+`;
+
 const StyledGridContainer = styled.div`
   width: 91vw;
   box-sizing: border-box;
@@ -64,8 +74,9 @@ const StyledGridContainer = styled.div`
 
 const StyledText = styled.p`
   ${TextMixin};
-  max-width: 37%;
-  margin: 2vw 0 6.18vw;
+  max-width: 98.5%;
+  min-height: 9vw;
+  margin: 2vw 0 2vw;
 
   @media (max-width: 1400px) {
     max-width: 90%;
@@ -104,7 +115,7 @@ export const AvailableCurrencies: FC<Props> = ({ availableCurrencies }) => {
 
   return (
     <StyledAvailableCurrencies>
-      <SectionTitle color={whiteColor}>{title}</SectionTitle>
+      <StyledSectionTitle color={whiteColor}>{title}</StyledSectionTitle>
       <StyledText>{text}</StyledText>
       <StyledGridContainer>
         <StyledGridText>{subtitle}</StyledGridText>

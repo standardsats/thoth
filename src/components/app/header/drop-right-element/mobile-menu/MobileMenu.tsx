@@ -7,7 +7,12 @@ import { HeaderNavigation } from "@/components/app/header/header-navigation/Head
 import { IconAndTextProps } from "@/components/app/header/icon-and-text/IconAndText.tsx";
 import { SignInAndSignUp } from "@/components/app/header/sign-in-and-sign-up/SignInAndSignUp.tsx";
 
-import { CloseIconType, LanguageType, LoginAndRegisterType, MenuType } from "@/assets/constants/app/header/Header.ts";
+import {
+  CloseIconType,
+  LanguageType,
+  LoginAndRegisterType,
+  MenuType,
+} from "@/assets/constants/app/header/Header.ts";
 import { SectionsType } from "@/assets/constants/app/App.ts";
 
 //Type
@@ -92,6 +97,7 @@ export const MobileMenu: FC<BurgerMenuProps> = ({
           disabled={!isBurgerMenuOpen}
           type="button"
           onClick={burgerMenuHandler}
+          aria-label={closeIcon.alt}
         >
           <StyledImage src={closeIcon.src} alt={closeIcon.alt} />
         </StyledCloseButton>

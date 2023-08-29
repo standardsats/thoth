@@ -46,6 +46,7 @@ export function CustomButton({
   onClick,
   type,
   disabled,
+  ...props
 }: ButtonPropsType) {
   return (
     <StyledButton
@@ -53,6 +54,7 @@ export function CustomButton({
       className={className}
       disabled={disabled}
       onClick={onClick}
+      {...props}
     >
       {children}
     </StyledButton>

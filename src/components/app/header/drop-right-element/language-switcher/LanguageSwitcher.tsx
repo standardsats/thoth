@@ -137,6 +137,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({
           disabled={!isLanguagesOpen}
           type="button"
           onClick={languagesHandler}
+          aria-label={closeIcon.alt}
         >
           <StyledImage src={closeIcon.src} alt={closeIcon.alt} />
         </StyledCloseButton>

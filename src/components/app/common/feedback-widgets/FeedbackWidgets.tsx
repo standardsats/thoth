@@ -59,6 +59,7 @@ const StyledImage = styled.img`
 const StyledButton = styled(CustomButton)`
   display: flex;
   background-color: transparent;
+  position: relative;
 `;
 
 // Component
