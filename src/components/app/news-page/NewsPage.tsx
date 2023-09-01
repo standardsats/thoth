@@ -17,7 +17,6 @@ import {
   DetailedHTMLProps,
   HTMLAttributes,
   useEffect,
-  forwardRef,
 } from "react";
 import { NotFoundPage } from "@/components/app/not-found-page/NotFoundPage.tsx";
 import { Share } from "@/components/app/news-page/share/Share.tsx";
@@ -85,8 +84,7 @@ const StyledSectionsContainer = styled.div`
 `;
 
 const StyledImage = styled.img<{ size: string }>`
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.2);
   height: ${({ size }) =>
     size === "big" ? "calc(399vw / 14.4)" : "calc(154vw / 14.4)"};
   width: ${({ size }) =>
@@ -222,7 +220,7 @@ const StyledSelectedImage = styled.img`
 `;
 
 //Component
-export const NewsPage = forwardRef<HTMLElement>((_, ref) => {
+export const NewsPage = () => {
   const { t } = useTranslation();
   const paigeData = getData("News", t) as NewsPageDataType;
   const { navigation, share, title, time } = paigeData;
@@ -237,7 +235,7 @@ export const NewsPage = forwardRef<HTMLElement>((_, ref) => {
   }, [id, selectedNews]);
 
   if (!selectedNews) {
-    return <NotFoundPage ref={ref} />;
+    return <NotFoundPage />;
   }
 
   const remainingNews = newsData.filter((news) => news.id !== id);
@@ -247,7 +245,7 @@ export const NewsPage = forwardRef<HTMLElement>((_, ref) => {
   const estimatedReadingTime = Math.ceil(wordCount / averageReadingSpeed);
 
   return (
-    <StyledNewsPage ref={ref}>
+    <StyledNewsPage>
       <Navigation navigation={navigation} />
       <StyledNewsContainer>
         <SelectedNews>
@@ -289,4 +287,4 @@ export const NewsPage = forwardRef<HTMLElement>((_, ref) => {
       </StyledNewsContainer>
     </StyledNewsPage>
   );
-});
+};

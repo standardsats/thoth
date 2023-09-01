@@ -6,7 +6,10 @@ import {
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
-import { LanguageType, MenuType } from "@/assets/constants/app/header/Header.ts";
+import {
+  LanguageType,
+  MenuType,
+} from "@/assets/constants/app/header/Header.ts";
 
 //Type
 type IconAndTextProps = {
@@ -33,9 +36,9 @@ const StyledIcon = styled.img<{ $isButton: boolean }>`
   height: 2.22vw;
 
   @media (max-width: ${sizeVariable}) {
-    margin: ${({ $isButton }) => ($isButton ? "0" : "0 2vw")};
-    width: ${({ $isButton }) => ($isButton ? "3vw" : "6.5vw")};
-    height: ${({ $isButton }) => ($isButton ? "3vw" : "6.5vw")};
+    margin: ${({ $isButton }) => ($isButton ? "0 0 0.8vw" : "0 2vw")};
+    width: ${({ $isButton }) => ($isButton ? "4.32vw" : "6.5vw")};
+    height: ${({ $isButton }) => ($isButton ? "4.32vw" : "6.5vw")};
   }
 `;
 
@@ -56,6 +59,7 @@ const StyledText = styled.p`
 `;
 
 const StyledCustomButton = styled(CustomButton)`
+  display: flex;
   margin-right: 1vw;
   background: transparent;
   border-radius: 50px;

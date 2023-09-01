@@ -11,7 +11,7 @@ import { sectionFaq, SectionsType } from "@/assets/constants/app/App.ts";
 import { scrollTo } from "@/assets/functions/functions.ts";
 
 //Types
-type HeaderNavigationProps = {
+type Props = {
   sections: SectionsType;
   headerHeight: number;
   burgerMenuHandler?: () => void;
@@ -28,7 +28,7 @@ const StyledList = styled.ul`
   flex-direction: row;
   justify-content: space-evenly;
   list-style-type: none;
-  margin: 0 1vw;
+  margin: 0 2vw;
   min-width: 40vw;
   border-left: 1px solid rgba(255, 255, 255, 0.9);
   border-right: 1px solid rgba(255, 255, 255, 0.9);
@@ -75,7 +75,7 @@ const StyledButton = styled(CustomButton)`
 `;
 
 //Component
-export const HeaderNavigation: FC<HeaderNavigationProps> = ({
+export const HeaderNavigation: FC<Props> = ({
   sections,
   headerHeight,
   burgerMenuHandler,
@@ -85,7 +85,6 @@ export const HeaderNavigation: FC<HeaderNavigationProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false);
-
   const scrollToSection = async (sectionId: string) => {
     if (location.pathname !== "/") {
       await navigate("/");

@@ -230,7 +230,8 @@
     },
     "search": {
       "placeholder": "Search",
-      "alt": "search icon"
+      "searchAlt": "search icon",
+      "closeAlt": "close icon"
     },
     "hideButtonAlt": "hide icon",
     "showButtonAlt": "show icon",

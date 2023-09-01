@@ -30,7 +30,8 @@ const StyledWrapper = styled.div`
   align-items: center;
 
   @media (max-width: ${sizeVariable}) {
-    width: 100%;
+    margin: 0 0 10vw 2vw;
+    width: 95%;
     justify-content: start;
   }
 `;

@@ -73,8 +73,7 @@ const NewsPreview = styled.div`
 `;
 
 const StyledImage = styled.img<{ size: string }>`
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0.5;
+  background-color: rgba(0, 0, 0, 0.2);
   height: ${({ size }) =>
     size === "big" ? "calc(399vw / 14.4)" : "calc(154vw / 14.4)"};
   width: ${({ size }) =>

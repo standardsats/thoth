@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getData } from "@/assets/constants/constants.ts";
 import {
@@ -29,6 +29,7 @@ const {
 
 //Styles
 const StyledPage = styled.main`
+  width: 100%;
   margin-bottom: 7vw;
   min-height: 90vh;
 `;
@@ -134,7 +135,7 @@ const StyledQuestion = styled(Subtitle)<{ $isExpanded: boolean }>`
   }
 `;
 
-export const FAQPage = forwardRef<HTMLElement>((_, ref) => {
+export const FAQPage = () => {
   const { t } = useTranslation();
   const pageData = useMemo(() => getData("FAQ", t), [t]) as FAQPageDataType;
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
@@ -168,7 +169,7 @@ export const FAQPage = forwardRef<HTMLElement>((_, ref) => {
   };
 
   return (
-    <StyledPage ref={ref}>
+    <StyledPage>
       <Navigation navigation={navigation} />
       <StyledContainer>
         <StyledTitle color={lightBlackColor}>{title}</StyledTitle>
@@ -206,4 +207,4 @@ export const FAQPage = forwardRef<HTMLElement>((_, ref) => {
       </StyledContainer>
     </StyledPage>
   );
-});
+};

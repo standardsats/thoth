@@ -16,8 +16,7 @@ import {
 import { SectionsType } from "@/assets/constants/app/App.ts";
 
 //Type
-type BurgerMenuProps = {
-  containerHeight: number;
+type Props = {
   language: LanguageType;
   menu: MenuType;
   sections: SectionsType;
@@ -34,13 +33,13 @@ const MobileMenuContainer = styled.div`
   display: none;
 
   @media (max-width: ${sizeVariable}) {
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
-    padding: 16.7vw 5vw 15vw 5vw;
     box-sizing: border-box;
+    padding: 12vw 5vw 15vw 5vw;
   }
 `;
 
@@ -65,21 +64,25 @@ const StyledImage = styled.img`
   height: 100%;
 `;
 
+const StyledFeedbackWidgets = styled(FeedbackWidgets)`
+  margin: auto 0 0 2vw;
+`;
+
 const StyledContainer = styled.div`
   box-sizing: border-box;
-  margin: 6.88vw 0 4.51vw 1vw;
+  margin: 6.88vw 0 4.51vw 2vw;
   padding: 5.09vw 0;
-  width: 100%;
+  width: 95%;
   border-top: 1px solid rgba(255, 255, 255, 0.45);
   border-bottom: 1px solid rgba(255, 255, 255, 0.45);
   display: flex;
   flex-direction: row;
   justify-content: start;
-  align-items: center;
+  align-items: end;
 `;
 
 //Component
-export const MobileMenu: FC<BurgerMenuProps> = ({
+export const MobileMenu: FC<Props> = ({
   language,
   menu,
   sections,
@@ -105,8 +108,8 @@ export const MobileMenu: FC<BurgerMenuProps> = ({
       </StyledWrapper>
       <HeaderNavigation
         sections={sections}
-        headerHeight={headerHeight}
         burgerMenuHandler={burgerMenuHandler}
+        headerHeight={headerHeight}
       />
       <StyledContainer>
         <IconAndTextProps
@@ -119,7 +122,7 @@ export const MobileMenu: FC<BurgerMenuProps> = ({
         loginAndRegister={loginAndRegister}
         onClick={burgerMenuHandler}
       />
-      <FeedbackWidgets
+      <StyledFeedbackWidgets
         $location={"menu"}
         type={"light"}
         onClick={burgerMenuHandler}

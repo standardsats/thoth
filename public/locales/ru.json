@@ -229,7 +229,8 @@
     },
     "search": {
       "placeholder": "Поиск",
-      "alt": "иконка поиска"
+      "searchAlt": "иконка поиска",
+      "closeAlt": "иконка закрыть"
     },
     "hideButtonAlt": "иконка скрыть",
     "showButtonAlt": "иконка показать",

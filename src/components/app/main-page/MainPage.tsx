@@ -1,4 +1,4 @@
-import { FC, RefObject } from "react";
+import { FC } from "react";
 import { MainScreen } from "./main-screen/MainScreen.tsx";
 import { HowItWorks } from "./how-it-works/HowItWorks.tsx";
 //import { Photo } from "./photo/Photo.tsx";
@@ -14,15 +14,14 @@ import {
 
 //Types
 type Props = {
-  mainScreenRef: RefObject<HTMLElement>;
   sections: SectionsType;
 };
 
 //Component
-export const MainPage: FC<Props> = ({ mainScreenRef, sections }) => {
+export const MainPage: FC<Props> = ({ sections }) => {
   return (
     <>
-      <MainScreen ref={mainScreenRef} />
+      <MainScreen />
       {sections.map((section) => {
         if (section.id === sectionOneId) {
           return (

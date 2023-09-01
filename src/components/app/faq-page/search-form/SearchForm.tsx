@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field, FormikHelpers } from "formik";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
@@ -45,7 +45,7 @@ const StyledField = styled(Field)`
   border-radius: 20px;
   border: none;
   ${resetMarginsAndPaddings};
-  padding: 0 1vw;
+  padding: 0;
   ${fontFamily};
   font-size: calc(14vw / 14.4);
   font-style: normal;
@@ -60,7 +60,6 @@ const StyledField = styled(Field)`
 
   @media (max-width: ${sizeVariable}) {
     font-size: calc(14vw / 5.09);
-    padding: 0 3vw;
   }
 `;
 
@@ -70,13 +69,13 @@ const StyledImage = styled.img`
 `;
 
 const StyledCustomButton = styled(CustomButton)`
-  margin-left: 1vw;
+  margin: 0 1vw;
   box-sizing: border-box;
   display: flex;
   background-color: transparent;
 
   @media (max-width: ${sizeVariable}) {
-    margin-left: 3vw;
+    margin: 0 3vw;
   }
 `;
 
@@ -86,31 +85,40 @@ const StyledSearchForm = styled(Form)`
 
 //Component
 export const SearchForm: FC<Props> = ({ onSearch, search }) => {
-  const handleSubmit = async (
+  const [isDisabledClose, setIsDisabledClose] = useState<boolean>(true);
+  const handleSubmit = (
     values: { inputValue: string },
     formikHelpers: FormikHelpers<{ inputValue: string }>
   ) => {
     onSearch(values.inputValue);
     formikHelpers.setSubmitting(false);
-    await formikHelpers.resetForm();
   };
 
-  const onClickHandler = () => {
-    console.log("Здесь бы релультаты поиска показать");
+  const onSearchHandler = () => {
+    setIsDisabledClose(false);
+  };
+
+  const onCloseHandler = (resetForm: () => void) => {
+    resetForm();
+    onSearch("");
+    setIsDisabledClose(true);
   };
 
   return (
     <Formik initialValues={{ inputValue: "" }} onSubmit={handleSubmit}>
-      {({ values }) => (
+      {({ values, resetForm }) => (
         <StyledSearchForm>
           <InputWithButtonWrapper>
             <StyledCustomButton
-              onClick={onClickHandler}
+              onClick={onSearchHandler}
               type="submit"
               disabled={!values.inputValue}
-              aria-label={search.image.alt}
+              aria-label={search.imageSearch}
             >
-              <StyledImage src={search.image.src} alt={search.image.alt} />
+              <StyledImage
+                src={search.imageSearch.src}
+                alt={search.imageSearch.alt}
+              />
             </StyledCustomButton>
             <StyledField
               id="search"
@@ -118,6 +126,19 @@ export const SearchForm: FC<Props> = ({ onSearch, search }) => {
               name="inputValue"
               placeholder={search.placeholder}
             />
+            <StyledCustomButton
+              onClick={() => {
+                onCloseHandler(resetForm);
+              }}
+              type="reset"
+              disabled={!values.inputValue && isDisabledClose}
+              aria-label={search.imageClose}
+            >
+              <StyledImage
+                src={search.imageClose.src}
+                alt={search.imageClose.alt}
+              />
+            </StyledCustomButton>
           </InputWithButtonWrapper>
         </StyledSearchForm>
       )}

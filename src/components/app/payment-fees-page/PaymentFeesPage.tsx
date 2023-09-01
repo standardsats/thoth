@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import styled from "styled-components";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { Navigation } from "@/components/app/common/navigation/Navigation.tsx";
@@ -37,14 +36,14 @@ const StyledTitle = styled(SectionTitle)`
 `;
 
 //Components
-export const PaymentFeesPage = forwardRef<HTMLElement>((_, ref) => {
+export const PaymentFeesPage = () => {
   const { t } = useTranslation();
   const pageData = getData("PaymentFees", t) as PaymentFeesType;
 
   const { title, individual, enterprise, navigation } = pageData;
 
   return (
-    <StyledPage ref={ref}>
+    <StyledPage>
       <Navigation navigation={navigation} />
       <StyledWrapper>
         <StyledTitle color={lightBlackColor}>{title}</StyledTitle>
@@ -55,4 +54,4 @@ export const PaymentFeesPage = forwardRef<HTMLElement>((_, ref) => {
       </StyledWrapper>
     </StyledPage>
   );
-});
+};

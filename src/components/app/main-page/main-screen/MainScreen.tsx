@@ -10,7 +10,6 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { useTranslation } from "react-i18next";
-import { forwardRef } from "react";
 import { openAccountHref } from "@/assets/links-href/LinksHref.ts";
 import { Link } from "@/components/app/common/Link/Link.tsx";
 import { getData } from "@/assets/constants/constants.ts";
@@ -24,8 +23,8 @@ const { greenColor, lightGreenColor, whiteColor } = colorVariables;
 
 //Styles
 const StyledScreen = styled.section`
-  box-sizing: border-box;
   margin: 0 auto 7vw;
+  box-sizing: border-box;
   position: relative;
   background-image: url(${mainScreenImages.backgroundL});
   ${coverImage};
@@ -99,7 +98,7 @@ const StyledScreen = styled.section`
 const StyledContent = styled.div`
   box-sizing: border-box;
   margin: 10.47vw 0 2vw 5vw;
-  width: 50%;
+  width: 45%;
   position: relative;
   z-index: 1;
   display: flex;
@@ -166,7 +165,7 @@ const StyledMainTitle = styled.h1`
 
 const StyledText = styled.p`
   ${resetMarginsAndPaddings};
-  margin: 1.5vw 4vw 1.5vw 0;
+  margin: 1.5vw 0 1.5vw;
   ${fontFamily};
   min-height: 5.5vw;
   font-size: calc(25vw / 14.4);
@@ -229,14 +228,14 @@ const StyledIcon = styled.div`
 `;
 
 //Component
-export const MainScreen = forwardRef<HTMLElement>((_, ref) => {
+export const MainScreen = () => {
   const { t } = useTranslation();
   const MainScreenData = getData("MainScreen", t) as MainScreenType;
   const { span, title, text, button } = MainScreenData;
   const isMobile = useMobileDetection();
 
   return (
-    <StyledScreen className="main-screen" ref={ref}>
+    <StyledScreen className="main-screen">
       <StyledContent>
         {isMobile !== null && !isMobile && (
           <StyledSpanText>{span}</StyledSpanText>
@@ -258,4 +257,4 @@ export const MainScreen = forwardRef<HTMLElement>((_, ref) => {
       <StyledCircle />
     </StyledScreen>
   );
-});
+};

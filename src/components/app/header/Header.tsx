@@ -4,7 +4,6 @@ import { CustomButton } from "@/components/app/common/customButton/CustomButton.
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import { Logo } from "@/components/app/common/Logo/Logo.tsx";
 import { FeedbackWidgets } from "@/components/app/common/feedback-widgets/FeedbackWidgets.tsx";
-import { forwardRef } from "react";
 import { LanguageSwitcher } from "./drop-right-element/language-switcher/LanguageSwitcher.tsx";
 import { MobileMenu } from "./drop-right-element/mobile-menu/MobileMenu.tsx";
 import { SignInAndSignUp } from "./sign-in-and-sign-up/SignInAndSignUp.tsx";
@@ -14,19 +13,13 @@ import { DropRightElement } from "./drop-right-element/DropRightElement.tsx";
 import { useTranslation } from "react-i18next";
 import { HeaderType } from "@/assets/constants/app/header/Header.ts";
 import { SectionsType } from "@/assets/constants/app/App.ts";
+import { FC, useEffect, useRef, useState } from "react";
 
 const { whiteColor, headerColor } = colorVariables;
 
 //Type
 type Props = {
   sections: SectionsType;
-  containerHeight: number;
-  headerHeight: number;
-  paymentFeesHeight: number;
-  isLanguagesOpen: boolean | null;
-  isBurgerMenuOpen: boolean | null;
-  languagesHandler: () => void;
-  burgerMenuHandler: () => void;
 };
 
 //Styles
@@ -36,7 +29,6 @@ const StyledHeader = styled.header`
   -webkit-backdrop-filter: blur(2px);
   box-sizing: border-box;
   padding-left: 4vw;
-  position: sticky;
   top: 0;
   width: 100%;
   min-height: 6.94vw;
@@ -46,6 +38,7 @@ const StyledHeader = styled.header`
   flex-direction: row;
   justify-content: start;
   align-items: center;
+  position: sticky;
 
   @media (max-width: ${sizeVariable}) {
     box-sizing: border-box;
@@ -91,100 +84,103 @@ const StyledLanguageImage = styled.img`
 `;
 
 //Component
-export const Header = forwardRef<HTMLElement, Props>(
-  (
-    {
-      sections,
-      containerHeight,
-      isLanguagesOpen,
-      isBurgerMenuOpen,
-      languagesHandler,
-      burgerMenuHandler,
-      headerHeight,
-    },
-    ref
-  ) => {
-    const { t } = useTranslation();
-    const headerData = getData("Header", t) as HeaderType;
-    const { loginAndRegister, language, menu, closeIcon } = headerData;
+export const Header: FC<Props> = ({ sections }) => {
+  const { t } = useTranslation();
+  const headerData = getData("Header", t) as HeaderType;
+  const { loginAndRegister, language, menu, closeIcon } = headerData;
+  const isMobile = useMobileDetection();
+  const [isLanguagesOpen, setIsLanguagesOpen] = useState<null | boolean>(null);
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState<null | boolean>(
+    null
+  );
+  const headerHeightRef = useRef<HTMLElement>(null);
+  const [headerHeight, setHeaderHeight] = useState<number>(0);
 
-    const isMobile = useMobileDetection();
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerHeightRef.current) {
+        const headerHeight = headerHeightRef.current.clientHeight;
+        setHeaderHeight(headerHeight);
+      }
+    };
+    updateHeaderHeight();
+    window.addEventListener("resize", updateHeaderHeight);
 
-    return (
-      <>
-        <StyledHeader ref={ref}>
-          <StyledLogoContainer>
-            <Logo />
-          </StyledLogoContainer>
-          {isMobile !== null && !isMobile && (
-            <>
-              <StyledFeedbackWidgets type={"light"} $location={"menu"} />
-              <HeaderNavigation
-                sections={sections}
-                headerHeight={headerHeight}
-                isLanguagesOpen={isLanguagesOpen}
-                languagesHandler={languagesHandler}
-              />
-              <SignInAndSignUp loginAndRegister={loginAndRegister} />
-              <StyledLanguageButton
-                disabled={!!isLanguagesOpen}
-                type="button"
-                onClick={languagesHandler}
-                aria-label={language.alt}
-              >
-                <StyledLanguageImage
-                  src={language.srcGray}
-                  alt={language.alt}
-                />
-              </StyledLanguageButton>
-            </>
-          )}
-          {isMobile && (
-            <StyledBurgerButton
-              disabled={!!isBurgerMenuOpen}
-              type="button"
-              onClick={burgerMenuHandler}
-              aria-label={menu.alt}
-            >
-              <StyledBurgerImage src={menu.src} alt={menu.alt} />
-            </StyledBurgerButton>
-          )}
-        </StyledHeader>
-        {isMobile && (
-          <DropRightElement
-            isOpen={isBurgerMenuOpen}
-            headerHeight={headerHeight}
-            containerHeight={containerHeight}
-          >
-            <MobileMenu
-              containerHeight={containerHeight}
+    return () => {
+      window.removeEventListener("resize", updateHeaderHeight);
+    };
+  }, [headerHeightRef, isBurgerMenuOpen, isLanguagesOpen]);
+
+  const languagesHandler = () => {
+    setIsLanguagesOpen(!isLanguagesOpen);
+    if (isBurgerMenuOpen) {
+      burgerMenuHandler();
+    }
+  };
+  const burgerMenuHandler = () => {
+    setIsBurgerMenuOpen(!isBurgerMenuOpen);
+  };
+
+  return (
+    <>
+      <StyledHeader ref={headerHeightRef}>
+        <StyledLogoContainer>
+          <Logo />
+        </StyledLogoContainer>
+        {isMobile !== null && !isMobile && (
+          <>
+            <StyledFeedbackWidgets type={"light"} $location={"menu"} />
+            <HeaderNavigation
               sections={sections}
               headerHeight={headerHeight}
-              isBurgerMenuOpen={isBurgerMenuOpen}
-              burgerMenuHandler={burgerMenuHandler}
+              isLanguagesOpen={isLanguagesOpen}
               languagesHandler={languagesHandler}
-              language={language}
-              menu={menu}
-              loginAndRegister={loginAndRegister}
-              closeIcon={closeIcon}
             />
-          </DropRightElement>
+            <SignInAndSignUp loginAndRegister={loginAndRegister} />
+            <StyledLanguageButton
+              disabled={!!isLanguagesOpen}
+              type="button"
+              onClick={languagesHandler}
+              aria-label={language.alt}
+            >
+              <StyledLanguageImage src={language.srcGray} alt={language.alt} />
+            </StyledLanguageButton>
+          </>
         )}
-        <DropRightElement
-          isOpen={isLanguagesOpen}
-          headerHeight={headerHeight}
-          containerHeight={containerHeight}
-        >
-          <LanguageSwitcher
-            containerHeight={containerHeight}
-            headerHeight={headerHeight}
-            isLanguagesOpen={isLanguagesOpen}
-            languagesHandler={languagesHandler}
+        {isMobile && (
+          <StyledBurgerButton
+            disabled={!!isBurgerMenuOpen}
+            type="button"
+            onClick={burgerMenuHandler}
+            aria-label={menu.alt}
+          >
+            <StyledBurgerImage src={menu.src} alt={menu.alt} />
+          </StyledBurgerButton>
+        )}
+      </StyledHeader>
+      {isMobile && (
+        <DropRightElement isOpen={isBurgerMenuOpen}>
+          <MobileMenu
             language={language}
+            menu={menu}
+            sections={sections}
+            headerHeight={headerHeight}
+            languagesHandler={languagesHandler}
+            isBurgerMenuOpen={isBurgerMenuOpen}
+            burgerMenuHandler={burgerMenuHandler}
+            loginAndRegister={loginAndRegister}
             closeIcon={closeIcon}
           />
         </DropRightElement>
-      </>
-    );
-  }
-);
+      )}
+      <DropRightElement isOpen={isLanguagesOpen}>
+        <LanguageSwitcher
+          isLanguagesOpen={isLanguagesOpen}
+          languagesHandler={languagesHandler}
+          language={language}
+          closeIcon={closeIcon}
+        />
+      </DropRightElement>
+    </>
+  );
+};

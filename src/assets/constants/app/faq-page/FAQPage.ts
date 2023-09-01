@@ -16,7 +16,8 @@ export type FAQNavigationType = {
 
 export type FAQSearchType = {
   placeholder: string;
-  image: ImageType;
+  imageSearch: ImageType;
+  imageClose: ImageType;
 };
 
 export type FAQPageDataType = {
@@ -33,6 +34,7 @@ export type FAQPageDataType = {
 
 export const faqImages = {
   search: `${baseName}/images/faq-page/search-form/search-icon.svg`,
+  close: `${baseName}/images/faq-page/search-form/close-icon.svg`,
   hide: `${baseName}/images/faq-page/hide-icon.svg`,
   show: `${baseName}/images/faq-page/show-icon.svg`,
 };
@@ -47,9 +49,13 @@ export const faqPageData = (t: TFunction) => {
     },
     search: {
       placeholder: t("pageFaq.search.placeholder"),
-      image: {
+      imageSearch: {
         src: faqImages.search,
-        alt: t("pageFaq.search.alt"),
+        alt: t("pageFaq.search.searchAlt"),
+      },
+      imageClose: {
+        src: faqImages.close,
+        alt: t("pageFaq.close.closeAlt"),
       },
     },
     hideButton: {

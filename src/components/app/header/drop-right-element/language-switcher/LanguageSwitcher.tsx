@@ -20,18 +20,21 @@ type LanguageSwitcherProps = {
   language: LanguageType;
   isLanguagesOpen: null | boolean;
   languagesHandler: () => void;
-  containerHeight: number;
-  headerHeight: number;
   closeIcon: CloseIconType;
 };
 
 //Styles
 const StyledWrapper = styled.div`
+  margin-bottom: 1vw;
   display: flex;
   gap: 1vw;
   flex-direction: row;
   justify-content: left;
   align-items: center;
+
+  @media (max-width: ${sizeVariable}) {
+    margin-bottom: 3vw;
+  }
 `;
 
 const StyledCloseButton = styled(CustomButton)`
@@ -52,14 +55,14 @@ const StyledImage = styled.img`
 `;
 
 const StyledContainer = styled.div`
+  padding: 2.3vw 5vw 2.3vw 1.74vw;
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 2.3vw 5vw 2.3vw 1.74vw;
   box-sizing: border-box;
 
   @media (max-width: ${sizeVariable}) {
-    padding: 16.7vw 5vw 13vw 5vw;
+    padding: 12vw 5vw 15vw 5vw;
   }
 `;
 

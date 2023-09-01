@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { forwardRef, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getData } from "@/assets/constants/constants.ts";
 import styled from "styled-components";
@@ -111,7 +111,7 @@ const StyledButton = styled(CustomButton)`
 `;
 
 //Component
-export const NotFoundPage = forwardRef<HTMLElement>((_, ref) => {
+export const NotFoundPage = () => {
   const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
@@ -127,7 +127,7 @@ export const NotFoundPage = forwardRef<HTMLElement>((_, ref) => {
   };
 
   return (
-    <StyledPage ref={ref}>
+    <StyledPage>
       <Navigation navigation={navigation} />
       <StyledWrapper>
         <StyledTitle>{title}</StyledTitle>
@@ -144,4 +144,4 @@ export const NotFoundPage = forwardRef<HTMLElement>((_, ref) => {
       </StyledWrapper>
     </StyledPage>
   );
-});
+};
