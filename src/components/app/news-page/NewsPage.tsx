@@ -13,11 +13,7 @@ import {
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
-import {
-  DetailedHTMLProps,
-  HTMLAttributes,
-  useEffect,
-} from "react";
+import { DetailedHTMLProps, HTMLAttributes, useEffect } from "react";
 import { NotFoundPage } from "@/components/app/not-found-page/NotFoundPage.tsx";
 import { Share } from "@/components/app/news-page/share/Share.tsx";
 import { News } from "@/components/app/news-page/news/News.tsx";

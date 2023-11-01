@@ -15,6 +15,7 @@ import { FAQPage } from "@/components/app/faq-page/FAQPage.tsx";
 import { NewsPage } from "@/components/app/news-page/NewsPage.tsx";
 import { SectionsType } from "@/assets/constants/app/App.ts";
 import { baseName } from "@/assets/constants/main.ts";
+import { DeleteAccountPage } from "@/components/app/delete-accoun-page/DeleteAccountPage.tsx";
 
 //Component
 export const App = () => {
@@ -35,6 +36,7 @@ export const App = () => {
           <Route path="/payment-fees" element={<PaymentFeesPage />} />
           <Route path="/news/:id" element={<NewsPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/delete" element={<DeleteAccountPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

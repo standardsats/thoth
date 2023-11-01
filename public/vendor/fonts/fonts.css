@@ -1,24 +1,24 @@
-@font-face { 
-    font-family: 'Gramatika-Black'; 
-    src: url('Gramatika-Black.ttf') format('truetype');
+@font-face {
+  font-family: "Gramatika-Black";
+  src: url("Gramatika-Black.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Gramatika-Regular'; 
-    src: url('Gramatika-Regular.ttf') format('truetype');
-} 
-
-@font-face {
-    font-family: "Gramatika-Medium";
-    src: url("Gramatika-Medium.ttf") format("truetype");
-} 
-
-@font-face {
-    font-family: 'Gramatika-Bold'; 
-    src: url('Gramatika-Bold.ttf') format('truetype');
+  font-family: "Gramatika-Regular";
+  src: url("Gramatika-Regular.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Plus_Jakarta_Sans-Regular';
-    src: url('Plus_Jakarta_Sans-Regular.ttf') format('truetype');
+  font-family: "Gramatika-Medium";
+  src: url("Gramatika-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gramatika-Bold";
+  src: url("Gramatika-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Plus_Jakarta_Sans-Regular";
+  src: url("Plus_Jakarta_Sans-Regular.ttf") format("truetype");
 }

@@ -190,7 +190,7 @@
   },
   "pageNews": {
     "navigation": {
-      "button": "Accept bitcoin payment",
+      "button": "Main page",
       "location": "News"
     },
     "time": {
@@ -218,14 +218,14 @@
     "fiatBankOut": "Fiat Bank Out",
     "depositFeeSpan": "Deposit Fee Span",
     "navigation": {
-      "button": "Accept bitcoin payment",
+      "button": "Main page",
       "location": "Payment fees"
     }
   },
   "pageFaq": {
     "title": "FAQ",
     "navigation": {
-      "button": "Accept bitcoin payment",
+      "button": "Main page",
       "location": "FAQ"
     },
     "search": {
@@ -263,9 +263,23 @@
       "answerTwelve": "\nCapture a screenshot and provide the error details to the support team.\n"
     }
   },
+  "pageDeleteAccount": {
+    "title": "How to delete an account",
+    "description": "The steps below outline the process for irreversibly deleting your account from the Thothpay service. Ensure you have withdrawn all funds before proceeding.",
+    "steps": {
+      "stepOne": "Have your Lightning wallet ready, the one you used to sign in to the system.",
+      "stepTwo": "Visit [this page](thothpay.com/merchant/delete) and log in as usual.",
+      "stepThree": "Input the confirmation statement in the designated field and click on \"Yes, delete me.\"",
+      "stepFour": "If all goes well, you'll be redirected to the main page."
+    },
+    "navigation": {
+      "button": "Main page",
+      "location": "Delete account"
+    }
+  },
   "pageNotFound": {
     "navigation": {
-      "button": "Accept bitcoin payment",
+      "button": "Main page",
       "location": "Page Not Found"
     },
     "subtitle": "Page Not Found",

@@ -49,6 +49,10 @@ import {
   FooterType,
   getFooterData,
 } from "@/assets/constants/app/footer/Footer.ts";
+import {
+  getDeleteAccountPageData,
+  DeleteAccountPageData
+} from "@/assets/constants/app/delete-account-page/DeleteAccountPage.ts";
 
 type Name =
   | "Sections"
@@ -62,6 +66,7 @@ type Name =
   | "PaymentFees"
   | "News"
   | "FAQ"
+  | "DeleteAccount"
   | "NotFound"
   | "Logo"
   | "FeedbackWidgets";
@@ -81,6 +86,7 @@ type Data =
   | NotFoundType
   | LogoType
   | FeedbackWidgetsType
+  | DeleteAccountPageData
   | FAQPageDataType
   | null;
 
@@ -108,6 +114,8 @@ export const getData = (name: Name, t: TFunction): Data => {
       return newsPageData(t);
     case "FAQ":
       return faqPageData(t);
+    case "DeleteAccount":
+      return getDeleteAccountPageData(t);
     case "NotFound":
       return getNotFoundPageData(t);
     case "Logo":

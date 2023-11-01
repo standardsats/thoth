@@ -11,7 +11,6 @@ import { Link } from "@/components/app/common/Link/Link.tsx";
 import { FC } from "react";
 import { commonImages } from "@/assets/constants/main.ts";
 
-
 const { ratesFeesColor, darkGreenColor, blackColor, whiteColor } =
   colorVariables;
 

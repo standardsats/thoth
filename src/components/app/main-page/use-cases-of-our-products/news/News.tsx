@@ -37,7 +37,8 @@ const StyledSection = styled.div`
 
   @media (max-width: ${sizeVariable}) {
     padding-bottom: 10vw;
-    background-image: url(${useCasesOfOurProductsImages.newsImages.backgroundL});
+    background-image: url(${useCasesOfOurProductsImages.newsImages
+      .backgroundL});
     min-height: calc(1441vw / 5.08);
     border-radius: 3.93vw;
   }
