@@ -1,32 +1,32 @@
 import { TFunction } from "i18next";
-import { baseName, commonImages, ImageType } from "@/assets/constants/main.ts";
+import { baseName, commonImages, Image } from "@/assets/constants/main.ts";
 
 export const languages = [
   { code: "en", name: "English" },
   { code: "ru", name: "Русский" },
 ];
 
-export type LoginAndRegisterType = {
+export type LoginAndRegisterData = {
   signUp: string;
   signIn: string;
 };
 
-export type LanguageType = ImageType & {
+export type LanguageData = Image & {
   srcGray: string;
   text: string;
 };
 
-export type MenuType = ImageType & {
+export type MenuData = Image & {
   text: string;
 };
 
-export type CloseIconType = ImageType;
+export type CloseIconData = Image;
 
-export type HeaderType = {
-  loginAndRegister: LoginAndRegisterType;
-  closeIcon: CloseIconType;
-  language: LanguageType;
-  menu: MenuType;
+export type HeaderData = {
+  loginAndRegister: LoginAndRegisterData;
+  closeIcon: CloseIconData;
+  language: LanguageData;
+  menu: MenuData;
 };
 
 export const headerIcon = {

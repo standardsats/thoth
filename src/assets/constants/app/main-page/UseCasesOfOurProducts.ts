@@ -1,4 +1,4 @@
-import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { baseName, Image } from "@/assets/constants/main.ts";
 import { generateUniqueId } from "@/assets/functions/functions.ts";
 import {
   contactTeamHref,
@@ -7,19 +7,19 @@ import {
 } from "@/assets/links-href/LinksHref.ts";
 import { TFunction } from "i18next";
 
-export type UseCasesOfOurProductsSlideType = {
+export type UseCasesOfOurProductsSlideData = {
   id: string;
-  image: ImageType;
+  image: Image;
   title: string;
   text: string;
 };
 
-export type photoSlideArrowRightType = {
+export type PhotoSlideArrowRightData = {
   src: string;
   alt: string;
 };
 
-export type FeesType = {
+export type FeesData = {
   title: string;
   lineOne: {
     title: string;
@@ -37,18 +37,18 @@ export type FeesType = {
   };
 };
 
-export type QuestionsType = {
+export type QuestionsData = {
   title: string;
   text: string;
   existing: {
-    image: ImageType;
+    image: Image;
     title: string;
     text: string;
     linkName: string;
     href: string;
   };
   new: {
-    image: ImageType;
+    image: Image;
     title: string;
     text: string;
     linkName: string;
@@ -56,7 +56,7 @@ export type QuestionsType = {
   };
 };
 
-export type NewsType = {
+export type NewsData = {
   title: string;
   link: {
     value: string;
@@ -64,14 +64,14 @@ export type NewsType = {
   };
 };
 
-export type UseCasesOfOurProductsType = {
+export type UseCasesOfOurProductsData = {
   text: string;
   subtitle: string;
-  slides: UseCasesOfOurProductsSlideType[];
-  photoSlideArrowRight: photoSlideArrowRightType;
-  fees: FeesType;
-  news: NewsType;
-  questions: QuestionsType;
+  slides: UseCasesOfOurProductsSlideData[];
+  photoSlideArrowRight: PhotoSlideArrowRightData;
+  fees: FeesData;
+  news: NewsData;
+  questions: QuestionsData;
 };
 
 export const useCasesOfOurProductsImages = {

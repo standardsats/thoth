@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FC } from "react";
 import {
-  ShareType,
+  ShareData,
   twitterId,
   facebookId,
   emailId,
@@ -14,9 +14,9 @@ import { SectionTitle } from "@/components/app/common/section-title/SectionTitle
 const { blackColor } = colorVariables;
 
 //Types
-type Props = {
+type ShareProps = {
   selectedNews: NewsSlideType;
-  share: ShareType;
+  share: ShareData;
 };
 
 //Styles
@@ -69,7 +69,7 @@ const StyledImage = styled.img`
 `;
 
 //Component
-export const Share: FC<Props> = ({ selectedNews, share }) => {
+export const Share: FC<ShareProps> = ({ selectedNews, share }) => {
   const shareSocialInNetwork = (id: string) => {
     const message = encodeURIComponent(
       selectedNews.title + "\n" + selectedNews.text

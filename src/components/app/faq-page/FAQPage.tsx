@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getData } from "@/assets/constants/constants.ts";
 import {
-  FAQItemType,
-  FAQPageDataType,
+  FAQItemData,
+  FAQPageData,
 } from "@/assets/constants/app/faq-page/FAQPage.ts";
 import styled from "styled-components";
 import {
@@ -137,11 +137,11 @@ const StyledQuestion = styled(Subtitle)<{ $isExpanded: boolean }>`
 
 export const FAQPage = () => {
   const { t } = useTranslation();
-  const pageData = useMemo(() => getData("FAQ", t), [t]) as FAQPageDataType;
+  const pageData = useMemo(() => getData("FAQ", t), [t]) as FAQPageData;
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
   const { hideButton, showButton, content, navigation, search, title } =
     pageData;
-  const [filteredData, setFilteredData] = useState<FAQItemType[]>(content.list);
+  const [filteredData, setFilteredData] = useState<FAQItemData[]>(content.list);
 
   useEffect(() => {
     setFilteredData(content.list);

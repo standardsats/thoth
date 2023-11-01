@@ -6,7 +6,7 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 
 //Types
-type Props = {
+type LinkProps = {
   children: ReactNode;
   color: string;
   href: string;
@@ -15,7 +15,7 @@ type Props = {
 };
 
 //Styles
-const StyledLink = styled.a<Props>`
+const StyledLink = styled.a<LinkProps>`
   ${resetMarginsAndPaddings};
   ${fontFamily};
   color: ${(props) => props.color};
@@ -29,7 +29,13 @@ const StyledLink = styled.a<Props>`
 `;
 
 //Component
-export const Link: FC<Props> = ({ href, target, rel, children, ...style }) => (
+export const Link: FC<LinkProps> = ({
+  href,
+  target,
+  rel,
+  children,
+  ...style
+}) => (
   <StyledLink href={href} target={target} rel={rel} {...style}>
     {children}
   </StyledLink>

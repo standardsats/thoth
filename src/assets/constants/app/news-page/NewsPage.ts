@@ -1,23 +1,17 @@
 import { generateUniqueId } from "@/assets/functions/functions.ts";
-import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { baseName, Image, Navigate } from "@/assets/constants/main.ts";
 import { TFunction } from "i18next";
 
 export const twitterId = generateUniqueId();
 export const facebookId = generateUniqueId();
 export const emailId = generateUniqueId();
 
-export type NavigationType = {
-  button: string;
-  separator: string;
-  location: string;
+export type RatingData = {
+  active: Image;
+  inactive: Image;
 };
 
-export type RatingType = {
-  active: ImageType;
-  inactive: ImageType;
-};
-
-export type SubscribeType = {
+export type SubscribeData = {
   title: string;
   placeholder: string;
   button: string;
@@ -27,19 +21,19 @@ export type SubscribeType = {
   };
 };
 
-export type ShareType = {
+export type ShareData = {
   title: string;
-  links: Array<ImageType & { id: string }>;
-  image: ImageType;
+  links: Array<Image & { id: string }>;
+  image: Image;
 };
 
-export type NewsPageDataType = {
-  // rating: RatingType;
-  time: ImageType & { text: string };
-  // views: ImageType;
-  navigation: NavigationType;
-  // subscribe: SubscribeType;
-  share: ShareType;
+export type NewsPageData = {
+  // rating: RatingData;
+  time: Image & { text: string };
+  // views: Image;
+  navigation: Navigate;
+  // subscribe: SubscribeData;
+  share: ShareData;
   title: string;
 };
 
@@ -54,7 +48,7 @@ export const newsImages = {
   chain: `${baseName}/images/news-page/share/chain.svg`,
 };
 
-export const newsPageData = (t: TFunction) => {
+export const getNewsPageData = (t: TFunction) => {
   return {
     navigation: {
       button: t("pageNews.navigation.button"),

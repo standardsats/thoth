@@ -15,26 +15,26 @@ import {
 } from "@/assets/links-href/LinksHref.ts";
 import { TFunction } from "i18next";
 
-export type FooterLinkType = {
+export type FooterLinkData = {
   name: string;
   href: string;
 };
 
-export type FooterLinksType = {
+export type FooterLinksData = {
   title: string;
-  links: FooterLinkType[];
+  links: FooterLinkData[];
 };
 
-export type FooterType = {
+export type FooterData = {
   text: string;
   nav: {
-    // about: FooterLinksType;
-    // community: FooterLinksType;
-    socials: FooterLinksType;
+    // about: FooterLinksData;
+    // community: FooterLinksData;
+    socials: FooterLinksData;
   };
   rights: string;
-  policy: FooterLinkType;
-  condition: FooterLinkType;
+  policy: FooterLinkData;
+  condition: FooterLinkData;
 };
 
 export const getFooterData = (t: TFunction) => {

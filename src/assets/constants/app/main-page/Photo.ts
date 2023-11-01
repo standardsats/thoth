@@ -1,17 +1,17 @@
 import { TFunction } from "i18next";
-import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { baseName, Image } from "@/assets/constants/main.ts";
 import { generateUniqueId } from "@/assets/functions/functions.ts";
 
-export type PhotosType = (ImageType & { id: string })[];
+export type PhotosData = (Image & { id: string })[];
 
-export type PhotoSlideArrowsType = {
-  left: ImageType;
-  right: ImageType;
+export type PhotoSlideArrowsData = {
+  left: Image;
+  right: Image;
 };
 
-export type PhotoType = {
-  photos: PhotosType;
-  photoSlideArrows: PhotoSlideArrowsType;
+export type PhotoData = {
+  photos: PhotosData;
+  photoSlideArrows: PhotoSlideArrowsData;
 };
 
 export const photosImages = {

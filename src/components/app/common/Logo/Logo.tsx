@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { divWithImage, sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { getData } from "@/assets/constants/constants.ts";
 import { useTranslation } from "react-i18next";
-import { LogoType } from "@/assets/constants/app/common/Logo.ts";
+import { LogoData } from "@/assets/constants/app/common/Logo.ts";
 
 //Styles
 export const StyledLogo = styled.img`
@@ -19,7 +19,7 @@ export const StyledLogo = styled.img`
 //Component
 export const Logo = () => {
   const { t } = useTranslation();
-  const logoData = getData("Logo", t) as LogoType;
+  const logoData = getData("Logo", t) as LogoData;
   const { src, alt } = logoData;
   return <StyledLogo src={src} alt={alt} />;
 };

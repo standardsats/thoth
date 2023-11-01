@@ -13,8 +13,6 @@ export type SectionType = {
 };
 
 export type SectionsType = SectionType[];
-// TODO
-// секция FAQ
 export const getAppData = (t: TFunction) => {
   return [
     { id: sectionOneId, title: t("sections.one") },

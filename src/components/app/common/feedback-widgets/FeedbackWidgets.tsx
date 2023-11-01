@@ -6,18 +6,18 @@ import { getData } from "@/assets/constants/constants.ts";
 import { CustomButton } from "../customButton/CustomButton.tsx";
 import { useTranslation } from "react-i18next";
 import {
-  FeedbackWidgetsType,
-  SocialImageType,
+  FeedbackWidgetsData,
+  SocialImageData,
 } from "@/assets/constants/app/common/FeedbackWidgets.ts";
 
 //Types
-type Props = {
+type FeedbackWidgetsProps = {
   type: "light" | "dark";
   $location?: "menu";
   onClick?: () => void;
 };
 
-type Image = SocialImageType;
+type Image = SocialImageData;
 
 // Styles
 const StyledFeedbackWidgets = styled.div<{
@@ -63,7 +63,7 @@ const StyledButton = styled(CustomButton)`
 `;
 
 // Component
-export const FeedbackWidgets: FC<Props> = ({
+export const FeedbackWidgets: FC<FeedbackWidgetsProps> = ({
   type,
   $location,
   onClick,
@@ -73,7 +73,7 @@ export const FeedbackWidgets: FC<Props> = ({
   const feedbackWidgetsData = getData(
     "FeedbackWidgets",
     t
-  ) as FeedbackWidgetsType;
+  ) as FeedbackWidgetsData;
   return (
     <StyledFeedbackWidgets $location={$location} {...props}>
       {feedbackWidgetsData.map((icon) => {

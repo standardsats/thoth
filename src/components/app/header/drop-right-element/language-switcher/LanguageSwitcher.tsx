@@ -7,20 +7,20 @@ import {
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
-import { IconAndTextProps } from "../../icon-and-text/IconAndText.tsx";
+import { IconAndText } from "../../icon-and-text/IconAndText.tsx";
 import {
   languages,
-  CloseIconType,
-  LanguageType,
+  CloseIconData,
+  LanguageData,
   headerIcon,
 } from "@/assets/constants/app/header/Header.ts";
 
 //Type
 type LanguageSwitcherProps = {
-  language: LanguageType;
+  language: LanguageData;
   isLanguagesOpen: null | boolean;
   languagesHandler: () => void;
-  closeIcon: CloseIconType;
+  closeIcon: CloseIconData;
 };
 
 //Styles
@@ -144,7 +144,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({
         >
           <StyledImage src={closeIcon.src} alt={closeIcon.alt} />
         </StyledCloseButton>
-        <IconAndTextProps image={language} />
+        <IconAndText image={language} />
       </StyledWrapper>
       {languages.map((lang) => (
         <StyledLanguageButton

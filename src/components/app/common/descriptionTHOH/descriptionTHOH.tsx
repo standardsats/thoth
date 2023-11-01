@@ -8,13 +8,13 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 
 //Types
-type Props = {
+type DescriptionTHOHProps = {
   children: ReactNode;
   color: string;
 };
 
 //Styles
-const StyledDescriptionTHOH = styled.p<Props>`
+const StyledDescriptionTHOH = styled.p<DescriptionTHOHProps>`
   ${resetMarginsAndPaddings};
   text-align: center;
   font-size: calc(20vw / 14.05);
@@ -31,6 +31,7 @@ const StyledDescriptionTHOH = styled.p<Props>`
 `;
 
 //Component
-export const DescriptionTHOH: FC<Props> = ({ children, ...props }) => (
-  <StyledDescriptionTHOH {...props}>{children}</StyledDescriptionTHOH>
-);
+export const DescriptionTHOH: FC<DescriptionTHOHProps> = ({
+  children,
+  ...props
+}) => <StyledDescriptionTHOH {...props}>{children}</StyledDescriptionTHOH>;

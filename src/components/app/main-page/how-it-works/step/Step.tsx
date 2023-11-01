@@ -7,14 +7,14 @@ import {
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
-import { StepType } from "@/assets/constants/app/main-page/HowItWorks.ts";
+import { StepData } from "@/assets/constants/app/main-page/HowItWorks.ts";
 
 const { lightGrayColor } = colorVariables;
 
 //Types
 type Props = {
   index: "one" | "two" | "three";
-  content: StepType;
+  content: StepData;
 };
 
 //Styles

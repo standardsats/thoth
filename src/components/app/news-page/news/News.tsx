@@ -16,7 +16,7 @@ import { newsDataType } from "@/assets/test/newsData.tsx";
 const { blackColor, greenColor, smallNewsColor, inputColor } = colorVariables;
 
 //Types
-type Props = {
+type NewsProps = {
   news: newsDataType;
   title: string;
 };
@@ -161,7 +161,7 @@ const StyledDate = styled(StyledSmallText)`
 `;
 
 //Component
-export const News: FC<Props> = ({ news, title }) => {
+export const News: FC<NewsProps> = ({ news, title }) => {
   const navigate = useNavigate();
   const onClickHandler = (id: string) => {
     navigate(`/news/${id}`);

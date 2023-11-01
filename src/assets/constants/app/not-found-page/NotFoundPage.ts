@@ -1,19 +1,13 @@
 import { TFunction } from "i18next";
-import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { baseName, Image, Navigate } from "@/assets/constants/main.ts";
 
-export type NotFoundNavigationType = {
-  button: string;
-  separator: string;
-  location: string;
-};
+export type NotFoundImageData = Image;
 
-export type NotFoundImageType = ImageType;
-
-export type NotFoundType = {
-  navigation: NotFoundNavigationType;
+export type NotFoundData = {
+  navigation: Navigate;
   title: string;
   subtitle: string;
-  image: NotFoundImageType;
+  image: NotFoundImageData;
   text: string;
   button: string;
 };

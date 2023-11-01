@@ -31,7 +31,7 @@ interface StyledText
   size: string;
 }
 
-type Props<T extends "big" | "small"> = {
+type SlideProps<T extends "big" | "small"> = {
   slide: NewsSlideType;
   size: T;
 };
@@ -169,7 +169,7 @@ const StyledImage = styled.img<{ size: string }>`
 `;
 
 //Component
-export const Slide: FC<Props<"big"> | Props<"small">> = ({ slide, size }) => {
+export const Slide: FC<SlideProps<"big"> | SlideProps<"small">> = ({ slide, size }) => {
   const navigate = useNavigate();
   //TODO
   //Поправить при роутинге

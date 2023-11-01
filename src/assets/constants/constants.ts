@@ -1,37 +1,33 @@
 import { TFunction } from "i18next";
 import {
-  newsPageData,
-  NewsPageDataType,
+  getNewsPageData,
+  NewsPageData,
 } from "@/assets/constants/app/news-page/NewsPage.ts";
 import {
-  faqPageData,
-  FAQPageDataType,
-} from "@/assets/constants/app/faq-page/FAQPage.ts";
-import {
   getHeaderData,
-  HeaderType,
+  HeaderData,
 } from "@/assets/constants/app/header/Header.ts";
 import {
   getMainScreenData,
-  MainScreenType,
+  MainScreenData,
 } from "@/assets/constants/app/main-page/MainScreen.ts";
 import {
   getHowItWorksData,
-  HowItWorksType,
+  HowItWorksData,
 } from "@/assets/constants/app/main-page/HowItWorks.ts";
 // import {
 //   getPhotoData,
-//   PhotoType,
+//   PhotoData,
 // } from "@/assets/constants/app/main-page/Photo.ts";
-import { getLogoData, LogoType } from "@/assets/constants/app/common/Logo.ts";
+import { getLogoData, LogoData } from "@/assets/constants/app/common/Logo.ts";
 import { getAppData, SectionsType } from "@/assets/constants/app/App.ts";
 import {
-  FeedbackWidgetsType,
+  FeedbackWidgetsData,
   getFeedbackWidgetsData,
 } from "@/assets/constants/app/common/FeedbackWidgets.ts";
 import {
   getNotFoundPageData,
-  NotFoundType,
+  NotFoundData,
 } from "@/assets/constants/app/not-found-page/NotFoundPage.ts";
 import {
   getProductAndServiceData,
@@ -39,20 +35,24 @@ import {
 } from "@/assets/constants/app/main-page/ProductAndService.ts";
 import {
   getUseCasesOfOurProductsData,
-  UseCasesOfOurProductsType,
+  UseCasesOfOurProductsData,
 } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 import {
   getPaymentFeesData,
-  PaymentFeesType,
+  PaymentFeesData,
 } from "@/assets/constants/app/payment-fees-page/PaymentFeesPage.ts";
 import {
-  FooterType,
+  FooterData,
   getFooterData,
 } from "@/assets/constants/app/footer/Footer.ts";
 import {
+  DeleteAccountPageData,
   getDeleteAccountPageData,
-  DeleteAccountPageData
 } from "@/assets/constants/app/delete-account-page/DeleteAccountPage.ts";
+import {
+  FAQPageData,
+  getFAQPageData,
+} from "@/assets/constants/app/faq-page/FAQPage.ts";
 
 type Name =
   | "Sections"
@@ -74,20 +74,20 @@ type Name =
 // sectionData.ts
 type Data =
   | SectionsType
-  | HeaderType
-  | MainScreenType
-  | HowItWorksType
-  //  | PhotoType
+  | HeaderData
+  | MainScreenData
+  | HowItWorksData
+  //  | PhotoData
   | ProductAndServiceType
-  | UseCasesOfOurProductsType
-  | FooterType
-  | PaymentFeesType
-  | NewsPageDataType
-  | NotFoundType
-  | LogoType
-  | FeedbackWidgetsType
+  | UseCasesOfOurProductsData
+  | FooterData
+  | PaymentFeesData
+  | NewsPageData
+  | NotFoundData
+  | LogoData
+  | FeedbackWidgetsData
   | DeleteAccountPageData
-  | FAQPageDataType
+  | FAQPageData
   | null;
 
 export const getData = (name: Name, t: TFunction): Data => {
@@ -111,9 +111,9 @@ export const getData = (name: Name, t: TFunction): Data => {
     case "PaymentFees":
       return getPaymentFeesData(t);
     case "News":
-      return newsPageData(t);
+      return getNewsPageData(t);
     case "FAQ":
-      return faqPageData(t);
+      return getFAQPageData(t);
     case "DeleteAccount":
       return getDeleteAccountPageData(t);
     case "NotFound":

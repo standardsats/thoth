@@ -9,14 +9,14 @@ import {
 import { signInHref, signUpHref } from "@/assets/links-href/LinksHref.ts";
 import { Link } from "@/components/app/common/Link/Link.tsx";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
-import { LoginAndRegisterType } from "@/assets/constants/app/header/Header.ts";
+import { LoginAndRegisterData } from "@/assets/constants/app/header/Header.ts";
 
 const { whiteColor, greenColor, lightGreenColor } = colorVariables;
 
 //Types
 type Props = {
   onClick?: () => void;
-  loginAndRegister: LoginAndRegisterType;
+  loginAndRegister: LoginAndRegisterData;
 };
 
 //Styles

@@ -1,13 +1,10 @@
 import { CustomArrowProps } from "react-slick";
 import styled from "styled-components";
-import {
-  ButtonPropsType,
-  CustomButton,
-} from "../customButton/CustomButton.tsx";
+import { ButtonProps, CustomButton } from "../customButton/CustomButton.tsx";
 import { FC, ReactNode } from "react";
 
 //Types
-type Props = CustomArrowProps & {
+type ArrowButtonProps = CustomArrowProps & {
   children: ReactNode;
   className: string;
   top?: string;
@@ -38,7 +35,7 @@ const StyledButton = styled(CustomButton)<{
 `;
 
 //Component
-export const ArrowButton: FC<Props> = ({
+export const ArrowButton: FC<ArrowButtonProps> = ({
   children,
   className,
   currentSlide,
@@ -48,7 +45,7 @@ export const ArrowButton: FC<Props> = ({
   right,
   ...props
 }) => {
-  const customButtonProps: ButtonPropsType = {
+  const customButtonProps: ButtonProps = {
     className: className,
     onClick: props.onClick || (() => console.log("onClick")),
     type: "button",

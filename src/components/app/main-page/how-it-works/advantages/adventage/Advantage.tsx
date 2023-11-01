@@ -11,7 +11,7 @@ import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
 const { whiteColor } = colorVariables;
 
 //Types
-type Props = {
+type AdvantageProps = {
   subtitle: string;
   text: string;
   svg: ReactNode;
@@ -81,7 +81,7 @@ const StyledText = styled.p`
   }
 `;
 
-export const Advantage: FC<Props> = ({ subtitle, text, svg }) => {
+export const Advantage: FC<AdvantageProps> = ({ subtitle, text, svg }) => {
   return (
     <StyledAdvantageContainer>
       <StyledWrapper>

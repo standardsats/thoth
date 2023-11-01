@@ -12,8 +12,8 @@ import { SlideSubtitle } from "@/components/app/common/slide-subtitle/SlideSubti
 import { Link } from "@/components/app/common/Link/Link.tsx";
 import { MobileWalletLinks } from "@/components/app/main-page/products-and-services/mobile-wallet-links/MobileWalletLinks.tsx";
 import {
-  MobileWalletLinkType,
-  ProductAndServiceSlideType,
+  MobileWalletLinkData,
+  ProductAndServiceSlideData,
   productsAndServiceImages,
   slideFourId,
   slideThreeId,
@@ -24,9 +24,9 @@ import { commonImages } from "@/assets/constants/main.ts";
 const { greenColor } = colorVariables;
 
 //Types
-type Props = {
-  slide: ProductAndServiceSlideType;
-  links: MobileWalletLinkType[];
+type SlideProps = {
+  slide: ProductAndServiceSlideData;
+  links: MobileWalletLinkData[];
 };
 
 //Styles
@@ -168,8 +168,8 @@ const StyledImage = styled.img`
 
 //Component
 const getLinks = (
-  slide: ProductAndServiceSlideType,
-  links: MobileWalletLinkType[]
+  slide: ProductAndServiceSlideData,
+  links: MobileWalletLinkData[]
 ) => {
   switch (slide.id) {
     case slideTwoId:
@@ -205,7 +205,7 @@ const getLinks = (
   }
 };
 
-export const Slide: FC<Props> = ({ slide, links }) => {
+export const Slide: FC<SlideProps> = ({ slide, links }) => {
   const isMobile = useMobileDetection();
 
   return (

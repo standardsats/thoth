@@ -16,7 +16,7 @@ import { getData } from "@/assets/constants/constants.ts";
 import { commonImages } from "@/assets/constants/main.ts";
 import {
   mainScreenImages,
-  MainScreenType,
+  MainScreenData,
 } from "@/assets/constants/app/main-page/MainScreen.ts";
 
 const { greenColor, lightGreenColor, whiteColor } = colorVariables;
@@ -230,7 +230,7 @@ const StyledIcon = styled.div`
 //Component
 export const MainScreen = () => {
   const { t } = useTranslation();
-  const MainScreenData = getData("MainScreen", t) as MainScreenType;
+  const MainScreenData = getData("MainScreen", t) as MainScreenData;
   const { span, title, text, button } = MainScreenData;
   const isMobile = useMobileDetection();
 

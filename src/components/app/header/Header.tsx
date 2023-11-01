@@ -11,14 +11,14 @@ import { HeaderNavigation } from "./header-navigation/HeaderNavigation.tsx";
 import { getData } from "@/assets/constants/constants.ts";
 import { DropRightElement } from "./drop-right-element/DropRightElement.tsx";
 import { useTranslation } from "react-i18next";
-import { HeaderType } from "@/assets/constants/app/header/Header.ts";
+import { HeaderData } from "@/assets/constants/app/header/Header.ts";
 import { SectionsType } from "@/assets/constants/app/App.ts";
 import { FC, useEffect, useRef, useState } from "react";
 
 const { whiteColor, headerColor } = colorVariables;
 
 //Type
-type Props = {
+type HeaderProps = {
   sections: SectionsType;
 };
 
@@ -84,9 +84,9 @@ const StyledLanguageImage = styled.img`
 `;
 
 //Component
-export const Header: FC<Props> = ({ sections }) => {
+export const Header: FC<HeaderProps> = ({ sections }) => {
   const { t } = useTranslation();
-  const headerData = getData("Header", t) as HeaderType;
+  const headerData = getData("Header", t) as HeaderData;
   const { loginAndRegister, language, menu, closeIcon } = headerData;
   const isMobile = useMobileDetection();
   const [isLanguagesOpen, setIsLanguagesOpen] = useState<null | boolean>(null);

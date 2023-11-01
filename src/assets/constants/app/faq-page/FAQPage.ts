@@ -1,35 +1,29 @@
 import { generateUniqueId } from "@/assets/functions/functions.ts";
-import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { baseName, Image, Navigate } from "@/assets/constants/main.ts";
 import { TFunction } from "i18next";
 
-export type FAQItemType = {
+export type FAQItemData = {
   id: string;
   question: string;
   answer: string;
 };
 
-export type FAQNavigationType = {
-  button: string;
-  separator: string;
-  location: string;
-};
-
-export type FAQSearchType = {
+export type FAQSearchData = {
   placeholder: string;
-  imageSearch: ImageType;
-  imageClose: ImageType;
+  imageSearch: Image;
+  imageClose: Image;
 };
 
-export type FAQPageDataType = {
+export type FAQPageData = {
   title: string;
-  search: FAQSearchType;
-  hideButton: ImageType;
-  showButton: ImageType;
+  search: FAQSearchData;
+  hideButton: Image;
+  showButton: Image;
   content: {
     noResult: string;
-    list: FAQItemType[];
+    list: FAQItemData[];
   };
-  navigation: FAQNavigationType;
+  navigation: Navigate;
 };
 
 export const faqImages = {
@@ -39,7 +33,7 @@ export const faqImages = {
   show: `${baseName}/images/faq-page/show-icon.svg`,
 };
 
-export const faqPageData = (t: TFunction) => {
+export const getFAQPageData = (t: TFunction) => {
   return {
     title: t("pageFaq.title"),
     navigation: {

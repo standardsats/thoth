@@ -1,4 +1,4 @@
-import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { baseName, Image } from "@/assets/constants/main.ts";
 import { generateUniqueId } from "@/assets/functions/functions.ts";
 import {
   appHref,
@@ -13,29 +13,29 @@ export const slideTwoId = generateUniqueId();
 export const slideThreeId = generateUniqueId();
 export const slideFourId = generateUniqueId();
 
-export type ProductAndServiceSlideType = {
+export type ProductAndServiceSlideData = {
   id: string;
   subtitle: string;
   textContent: string;
-  image: ImageType;
+  image: Image;
   link?: {
     value: string;
     href: string;
   };
 };
 
-export type MobileWalletLinkType = ImageType & {
+export type MobileWalletLinkData = Image & {
   id: string;
   href: string;
 };
 
-export type MobileWalletType = {
+export type MobileWalletData = {
   title: string;
   text: string;
-  links: MobileWalletLinkType[];
+  links: MobileWalletLinkData[];
 };
 
-export type CoinType = ImageType & {
+export type CoinType = Image & {
   id: string;
 };
 
@@ -60,8 +60,8 @@ export type AvailableCurrenciesType = {
 
 export type ProductAndServiceType = {
   text: string;
-  slides: ProductAndServiceSlideType[];
-  mobileWallet: MobileWalletType;
+  slides: ProductAndServiceSlideData[];
+  mobileWallet: MobileWalletData;
   availableCurrencies: AvailableCurrenciesType;
   // videoSlider: VideoSliderType;
 };

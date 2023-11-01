@@ -5,12 +5,12 @@
 // import { FC } from "react";
 // import { useTranslation } from "react-i18next";
 // import { getData } from "@/assets/constants/constants.ts";
-// import { PhotoType } from "@/assets/constants/app/main-page/Photo.ts";
+// import { PhotoData } from "@/assets/constants/app/main-page/Photo.ts";
 //
 // const { darkGrayColor } = colorVariables;
 //
 // //Types
-// type Props = {
+// type PhotoProps = {
 //   id: string;
 //   title: string;
 // };
@@ -35,9 +35,9 @@
 // `;
 //
 // //Component
-// export const Photo: FC<Props> = ({ id, title }) => {
+// export const Photo: FC<PhotoProps> = ({ id, title }) => {
 //   const { t } = useTranslation();
-//   const photoData = getData("Photo", t) as PhotoType;
+//   const photoData = getData("Photo", t) as PhotoData;
 //   const { photos, photoSlideArrows } = photoData;
 //
 //   return (

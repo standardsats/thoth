@@ -8,7 +8,7 @@ import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { CoinType } from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 //Types
-type Props = {
+type CurrenciesSliderProps = {
   size: "small" | "big";
   slides: CoinType[];
 };
@@ -26,7 +26,7 @@ const StyledSliderContainer = styled.div`
 `;
 
 //Component
-export const CurrenciesSlider: FC<Props> = ({ slides, size }) => {
+export const CurrenciesSlider: FC<CurrenciesSliderProps> = ({ slides, size }) => {
   const slidesForShow = size === "small" ? 4 : 11;
   const settings: Settings = {
     dots: false,

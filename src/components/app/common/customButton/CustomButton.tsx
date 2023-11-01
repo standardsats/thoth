@@ -3,7 +3,7 @@ import { resetMarginsAndPaddings } from "@/assets/styles/commonStyles.ts";
 import styled, { css } from "styled-components";
 
 //Types
-export type ButtonPropsType = {
+export type ButtonProps = {
   className?: string;
   children?: ReactNode;
   onClick: MouseEventHandler<HTMLButtonElement> | (() => void);
@@ -47,7 +47,7 @@ export function CustomButton({
   type,
   disabled,
   ...props
-}: ButtonPropsType) {
+}: ButtonProps) {
   return (
     <StyledButton
       type={type}

@@ -13,7 +13,7 @@ import { scrollTo } from "@/assets/functions/functions.ts";
 const { whiteColor, greenColor, lightGreenColor } = colorVariables;
 
 //Types
-type Props = {
+type FeesButtonProps = {
   text: string;
 };
 
@@ -80,7 +80,7 @@ const StyledCheckText = styled.span`
 `;
 
 //Component«
-export const FeesButton: FC<Props> = ({ text }) => {
+export const FeesButton: FC<FeesButtonProps> = ({ text }) => {
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
   const onClickHandler = () => {

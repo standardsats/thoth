@@ -25,7 +25,7 @@ import {
 const { whiteColor } = colorVariables;
 
 //Types
-type Props = {
+type ProductAndServicesProps = {
   id: string;
   title: string;
 };
@@ -73,13 +73,10 @@ const StyledButtons = styled.div`
 `;
 
 //Component
-export const ProductAndServices: FC<Props> = ({ id, title }) => {
+export const ProductAndServices: FC<ProductAndServicesProps> = ({ id, title }) => {
   const isMobile = useMobileDetection();
   const { t } = useTranslation();
   const sectionData = getData("ProductAndService", t) as ProductAndServiceType;
-
-  //TODO
-  //Добавить видео слайдер если будет нужно videoSlider
   const { text, slides, mobileWallet, availableCurrencies } = sectionData;
   const [activeButton, setActiveButton] = useState<string>(slides[0].id);
 

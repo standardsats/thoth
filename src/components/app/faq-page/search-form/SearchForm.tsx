@@ -8,14 +8,14 @@ import {
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
-import { FAQSearchType } from "@/assets/constants/app/faq-page/FAQPage.ts";
+import { FAQSearchData } from "@/assets/constants/app/faq-page/FAQPage.ts";
 
 const { blackColor, inputColor } = colorVariables;
 
 //Type
-type Props = {
+type SearchFormProps = {
   onSearch: (searchValue: string) => void;
-  search: FAQSearchType;
+  search: FAQSearchData;
 };
 
 //Styles
@@ -84,7 +84,7 @@ const StyledSearchForm = styled(Form)`
 `;
 
 //Component
-export const SearchForm: FC<Props> = ({ onSearch, search }) => {
+export const SearchForm: FC<SearchFormProps> = ({ onSearch, search }) => {
   const [isDisabledClose, setIsDisabledClose] = useState<boolean>(true);
   const handleSubmit = (
     values: { inputValue: string },

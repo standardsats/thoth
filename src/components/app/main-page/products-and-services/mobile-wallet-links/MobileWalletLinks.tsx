@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { Link } from "@/components/app/common/Link/Link.tsx";
 import { FC } from "react";
-import { MobileWalletLinkType } from "@/assets/constants/app/main-page/ProductAndService.ts";
+import { MobileWalletLinkData } from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 //Types
-type Props = {
-  links: MobileWalletLinkType[];
+type MobileWalletLinksProps = {
+  links: MobileWalletLinkData[];
 };
 
 //Styles
@@ -46,7 +46,7 @@ const StyledLink = styled(Link)`
 `;
 
 //Component
-export const MobileWalletLinks: FC<Props> = ({ links }) => {
+export const MobileWalletLinks: FC<MobileWalletLinksProps> = ({ links }) => {
   return (
     <StyledWrapper>
       {links.map((link) => (

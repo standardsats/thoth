@@ -1,11 +1,6 @@
 import { generateUniqueId } from "@/assets/functions/functions.ts";
 import { TFunction } from "i18next";
-
-export type NavigationData = {
-  button: string;
-  separator: string;
-  location: string;
-};
+import {Navigate} from "@/assets/constants/main.ts";
 
 export type StepData = {
   id: string;
@@ -16,7 +11,7 @@ export type DeleteAccountPageData = {
   title: string;
   description: string;
   steps: StepData[];
-  navigation: NavigationData;
+  navigation: Navigate;
 };
 
 export const getDeleteAccountPageData = (t: TFunction) => {

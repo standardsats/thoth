@@ -13,7 +13,7 @@ import {
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
 import { Navigation } from "@/components/app/common/navigation/Navigation.tsx";
-import { NotFoundType } from "@/assets/constants/app/not-found-page/NotFoundPage.ts";
+import { NotFoundData } from "@/assets/constants/app/not-found-page/NotFoundPage.ts";
 import { scrollTo } from "@/assets/functions/functions.ts";
 
 const {
@@ -116,7 +116,7 @@ export const NotFoundPage = () => {
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
 
   const { t } = useTranslation();
-  const pageData = getData("NotFound", t) as NotFoundType;
+  const pageData = getData("NotFound", t) as NotFoundData;
 
   const { navigation, title, subtitle, image, text, button } = pageData;
 

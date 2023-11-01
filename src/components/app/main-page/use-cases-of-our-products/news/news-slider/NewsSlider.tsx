@@ -7,7 +7,7 @@ import { FC } from "react";
 import { NewsSlideType } from "@/assets/test/newsData.tsx";
 
 //Types
-type Props = {
+type NewsSliderProps = {
   slides: NewsSlideType[];
   size: "small";
 };
@@ -20,7 +20,7 @@ const StyledSliderContainer = styled.div`
 `;
 
 //Component
-export const NewsSlider: FC<Props> = ({ slides, size }) => {
+export const NewsSlider: FC<NewsSliderProps> = ({ slides, size }) => {
   const settings: Settings = {
     dots: false,
     arrows: false,

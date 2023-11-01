@@ -13,12 +13,12 @@ import {
 } from "@/assets/constants/app/App.ts";
 
 //Types
-type Props = {
+type MainPageProps = {
   sections: SectionsType;
 };
 
 //Component
-export const MainPage: FC<Props> = ({ sections }) => {
+export const MainPage: FC<MainPageProps> = ({ sections }) => {
   return (
     <>
       <MainScreen />

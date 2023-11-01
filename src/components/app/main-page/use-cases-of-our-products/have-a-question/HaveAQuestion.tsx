@@ -9,13 +9,13 @@ import { SectionTitle } from "@/components/app/common/section-title/SectionTitle
 import { Link } from "@/components/app/common/Link/Link.tsx";
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
 import { FC } from "react";
-import { QuestionsType } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
+import { QuestionsData } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { deepColor, darkGreenColor } = colorVariables;
 
 //Type
-type Props = {
-  questions: QuestionsType;
+type HaveAQuestionProps = {
+  questions: QuestionsData;
 };
 
 //Styles
@@ -137,7 +137,7 @@ const StyledLink = styled(Link)`
 `;
 
 //Component
-export const HaveAQuestion: FC<Props> = ({ questions }) => {
+export const HaveAQuestion: FC<HaveAQuestionProps> = ({ questions }) => {
   return (
     <StyledSection>
       <StyledContainer>

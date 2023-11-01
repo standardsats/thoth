@@ -1,7 +1,7 @@
 import { TFunction } from "i18next";
 import { baseName } from "@/assets/constants/main.ts";
 
-export type MainScreenType = {
+export type MainScreenData = {
   span: string;
   title: string;
   text: string;

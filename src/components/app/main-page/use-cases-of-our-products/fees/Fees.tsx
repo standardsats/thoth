@@ -10,13 +10,13 @@ import { SectionTitle } from "@/components/app/common/section-title/SectionTitle
 import { Subtitle } from "@/components/app/common/subtitle/Subtitle.tsx";
 import { FeesButton } from "./fees-button/FeesButton.tsx";
 import { FC } from "react";
-import { FeesType } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
+import { FeesData } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { lightBlackColor, blackColor, darkGreenColor } = colorVariables;
 
 //Data
-type Props = {
-  fees: FeesType;
+type FeesProps = {
+  fees: FeesData;
 };
 
 //Styles
@@ -130,7 +130,7 @@ const StyledSpan = styled.p`
 `;
 
 //Components
-export const Fees: FC<Props> = ({ fees }) => {
+export const Fees: FC<FeesProps> = ({ fees }) => {
   const isMobile = useMobileDetection();
   return (
     <StyledFees>

@@ -1,7 +1,7 @@
 import { TFunction } from "i18next";
-import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { baseName, Image } from "@/assets/constants/main.ts";
 
-export type LogoType = ImageType;
+export type LogoData = Image;
 
 export const logoImages = {
   logo: `${baseName}/images/common/logo.svg`,

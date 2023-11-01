@@ -4,28 +4,28 @@ import { CustomButton } from "@/components/app/common/customButton/CustomButton.
 import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { FeedbackWidgets } from "@/components/app/common/feedback-widgets/FeedbackWidgets.tsx";
 import { HeaderNavigation } from "@/components/app/header/header-navigation/HeaderNavigation.tsx";
-import { IconAndTextProps } from "@/components/app/header/icon-and-text/IconAndText.tsx";
+import { IconAndText } from "@/components/app/header/icon-and-text/IconAndText.tsx";
 import { SignInAndSignUp } from "@/components/app/header/sign-in-and-sign-up/SignInAndSignUp.tsx";
 
 import {
-  CloseIconType,
-  LanguageType,
-  LoginAndRegisterType,
-  MenuType,
+  CloseIconData,
+  LanguageData,
+  LoginAndRegisterData,
+  MenuData,
 } from "@/assets/constants/app/header/Header.ts";
 import { SectionsType } from "@/assets/constants/app/App.ts";
 
 //Type
 type Props = {
-  language: LanguageType;
-  menu: MenuType;
+  language: LanguageData;
+  menu: MenuData;
   sections: SectionsType;
   headerHeight: number;
   isBurgerMenuOpen: null | boolean;
   burgerMenuHandler: () => void;
   languagesHandler: () => void;
-  loginAndRegister: LoginAndRegisterType;
-  closeIcon: CloseIconType;
+  loginAndRegister: LoginAndRegisterData;
+  closeIcon: CloseIconData;
 };
 
 //Styles
@@ -104,7 +104,7 @@ export const MobileMenu: FC<Props> = ({
         >
           <StyledImage src={closeIcon.src} alt={closeIcon.alt} />
         </StyledCloseButton>
-        <IconAndTextProps image={menu} />
+        <IconAndText image={menu} />
       </StyledWrapper>
       <HeaderNavigation
         sections={sections}
@@ -112,7 +112,7 @@ export const MobileMenu: FC<Props> = ({
         headerHeight={headerHeight}
       />
       <StyledContainer>
-        <IconAndTextProps
+        <IconAndText
           image={language}
           isButton={true}
           onClick={languagesHandler}

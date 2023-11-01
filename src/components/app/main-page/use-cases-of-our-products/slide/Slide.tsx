@@ -9,14 +9,14 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { SlideSubtitle } from "@/components/app/common/slide-subtitle/SlideSubtitle.tsx";
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
-import { UseCasesOfOurProductsSlideType } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
+import { UseCasesOfOurProductsSlideData } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { whiteColor } = colorVariables;
 
 //Types
-type Props = {
+type SlideProps = {
   subtitle: string;
-  slide: UseCasesOfOurProductsSlideType;
+  slide: UseCasesOfOurProductsSlideData;
 };
 
 //Styles
@@ -99,7 +99,7 @@ const StyledWrapper = styled.div`
 `;
 
 //Component
-export const Slide: FC<Props> = ({ slide, subtitle }) => {
+export const Slide: FC<SlideProps> = ({ slide, subtitle }) => {
   const { image, title, text } = slide;
   const isMobile = useMobileDetection();
 

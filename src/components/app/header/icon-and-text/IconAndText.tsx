@@ -7,13 +7,13 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
 import {
-  LanguageType,
-  MenuType,
+  LanguageData,
+  MenuData,
 } from "@/assets/constants/app/header/Header.ts";
 
 //Type
 type IconAndTextProps = {
-  image: LanguageType | MenuType;
+  image: LanguageData | MenuData;
   isButton?: boolean;
   onClick?: () => void;
 };
@@ -66,7 +66,7 @@ const StyledCustomButton = styled(CustomButton)`
 `;
 
 //Component
-export const IconAndTextProps: FC<IconAndTextProps> = ({
+export const IconAndText: FC<IconAndTextProps> = ({
   image,
   isButton = false,
   onClick,

@@ -19,7 +19,7 @@ import {
 const { whiteColor, darkGrayColor } = colorVariables;
 
 //Type
-type Props = {
+type AvailableCurrenciesProps = {
   availableCurrencies: AvailableCurrenciesType;
 };
 
@@ -109,7 +109,7 @@ const StyledGridText = styled.p`
 `;
 
 //Component
-export const AvailableCurrencies: FC<Props> = ({ availableCurrencies }) => {
+export const AvailableCurrencies: FC<AvailableCurrenciesProps> = ({ availableCurrencies }) => {
   const { title, text, subtitle, coins } = availableCurrencies;
   const isMobile = useMobileDetection();
 

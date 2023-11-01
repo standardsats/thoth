@@ -10,7 +10,7 @@ import {
 } from "@/assets/styles/commonStyles.ts";
 import { FooterNavigation } from "@/components/app/footer/footer-navigation/FooterNavigation.tsx";
 import { useTranslation } from "react-i18next";
-import { FooterType } from "@/assets/constants/app/footer/Footer.ts";
+import { FooterData } from "@/assets/constants/app/footer/Footer.ts";
 import { getData } from "@/assets/constants/constants.ts";
 
 const { whiteColor, deepGrayColor } = colorVariables;
@@ -138,7 +138,7 @@ const StyledLink = styled(Link)`
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useTranslation();
-  const footerData = getData("Footer", t) as FooterType;
+  const footerData = getData("Footer", t) as FooterData;
 
   const { text, nav, rights, policy, condition } = footerData;
 

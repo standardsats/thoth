@@ -3,13 +3,13 @@ import { FC } from "react";
 import { Advantage } from "./adventage/Advantage.tsx";
 import { coverImage, sizeVariable } from "@/assets/styles/commonStyles.ts";
 import {
-  AdvantageType,
+  AdvantageData,
   howItWorksImages,
 } from "@/assets/constants/app/main-page/HowItWorks.ts";
 
 //Types
-type Props = {
-  advantages: AdvantageType[];
+type AdvantagesProps = {
+  advantages: AdvantageData[];
 };
 
 //Styles
@@ -63,7 +63,7 @@ const StyledSvg = styled.img`
 `;
 
 // Component
-export const Advantages: FC<Props> = ({ advantages }) => {
+export const Advantages: FC<AdvantagesProps> = ({ advantages }) => {
   return (
     <StyledAdvantages>
       <StyledWrapper>

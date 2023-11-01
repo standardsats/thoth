@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import isEmail from "validator/lib/isEmail";
 import styled from "styled-components";
-import { SubscribeType } from "@/assets/constants/app/news-page/NewsPage.ts";
+import { SubscribeData } from "@/assets/constants/app/news-page/NewsPage.ts";
 import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
 import {
   colorVariables,
@@ -25,8 +25,8 @@ const {
 } = colorVariables;
 
 //Type
-type Props = {
-  subscribe: SubscribeType;
+type SubscriptionFormProps = {
+  subscribe: SubscribeData;
 };
 
 //Styles
@@ -130,7 +130,7 @@ const StyledContainer = styled.div`
   }
 `;
 
-export const SubscriptionForm: FC<Props> = ({ subscribe }) => {
+export const SubscriptionForm: FC<SubscriptionFormProps> = ({ subscribe }) => {
   const { title, placeholder, button, validation } = subscribe;
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const initialValues = { email: "" };

@@ -21,7 +21,7 @@ type RateInfo = {
   span?: string[];
 };
 
-type Props = {
+type RatesProps = {
   rates: {
     subtitle: string;
     linkHref: string;
@@ -165,7 +165,7 @@ const StyledLink = styled(Link)`
 `;
 
 //Component
-export const Rates: FC<Props> = ({ rates }) => {
+export const Rates: FC<RatesProps> = ({ rates }) => {
   return (
     <StyledRates>
       <StyledSubtitle>{rates.subtitle}</StyledSubtitle>

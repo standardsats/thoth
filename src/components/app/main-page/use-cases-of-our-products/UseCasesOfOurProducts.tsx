@@ -18,13 +18,13 @@ import { getData } from "@/assets/constants/constants.ts";
 import { useTranslation } from "react-i18next";
 import {
   useCasesOfOurProductsImages,
-  UseCasesOfOurProductsType,
+  UseCasesOfOurProductsData,
 } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { whiteColor } = colorVariables;
 
 //Type
-type Props = {
+type UseCasesOfOurProductsProps = {
   id: string;
   title: string;
 };
@@ -88,12 +88,12 @@ const StyledMonitor = styled.div`
 `;
 
 //Component
-export const UseCasesOfOurProducts: FC<Props> = ({ id, title }) => {
+export const UseCasesOfOurProducts: FC<UseCasesOfOurProductsProps> = ({ id, title }) => {
   const { t } = useTranslation();
   const sectionData = getData(
     "UseCasesOfOurProducts",
     t
-  ) as UseCasesOfOurProductsType;
+  ) as UseCasesOfOurProductsData;
   const {
     text,
     subtitle,

@@ -5,7 +5,7 @@ import { colorVariables, sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { Rates } from "./rates/Rates.tsx";
 import { useTranslation } from "react-i18next";
 import { getData } from "@/assets/constants/constants.ts";
-import { PaymentFeesType } from "@/assets/constants/app/payment-fees-page/PaymentFeesPage.ts";
+import { PaymentFeesData } from "@/assets/constants/app/payment-fees-page/PaymentFeesPage.ts";
 
 const { lightBlackColor } = colorVariables;
 
@@ -38,7 +38,7 @@ const StyledTitle = styled(SectionTitle)`
 //Components
 export const PaymentFeesPage = () => {
   const { t } = useTranslation();
-  const pageData = getData("PaymentFees", t) as PaymentFeesType;
+  const pageData = getData("PaymentFees", t) as PaymentFeesData;
 
   const { title, individual, enterprise, navigation } = pageData;
 

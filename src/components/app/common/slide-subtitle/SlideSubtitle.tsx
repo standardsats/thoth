@@ -4,7 +4,7 @@ import { colorVariables, sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { Subtitle } from "../subtitle/Subtitle.tsx";
 
 //Types
-type Props = {
+type SlideSubtitleProps = {
   children: ReactNode;
 };
 
@@ -25,6 +25,7 @@ const StyledSubtitle = styled(Subtitle)`
 `;
 
 //Component
-export const SlideSubtitle: FC<Props> = ({ children, ...props }) => (
-  <StyledSubtitle {...props}>{children}</StyledSubtitle>
-);
+export const SlideSubtitle: FC<SlideSubtitleProps> = ({
+  children,
+  ...props
+}) => <StyledSubtitle {...props}>{children}</StyledSubtitle>;

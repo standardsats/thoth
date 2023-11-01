@@ -3,7 +3,7 @@ import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 import styled from "styled-components";
 
 //Types
-type Props = {
+type SlideProps = {
   index: number;
   children: ReactNode;
 };
@@ -24,7 +24,7 @@ const StyledSlide = styled.div`
 `;
 
 //Component
-export const Slide: FC<Props> = ({ children, index }) => {
+export const Slide: FC<SlideProps> = ({ children, index }) => {
   const isMobile = useMobileDetection();
 
   let width;

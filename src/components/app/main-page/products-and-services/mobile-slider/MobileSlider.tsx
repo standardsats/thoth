@@ -5,14 +5,14 @@ import styled from "styled-components";
 import { Slide } from "../slide/Slide.tsx";
 import { FC } from "react";
 import {
-  MobileWalletLinkType,
-  ProductAndServiceSlideType,
+  MobileWalletLinkData,
+  ProductAndServiceSlideData,
 } from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 //Types
-type Props = {
-  slides: ProductAndServiceSlideType[];
-  links: MobileWalletLinkType[];
+type MobileSliderProps = {
+  slides: ProductAndServiceSlideData[];
+  links: MobileWalletLinkData[];
 };
 
 //Styles
@@ -23,7 +23,7 @@ const StyledSliderContainer = styled.div`
 `;
 
 //Component
-export const MobileSlider: FC<Props> = ({ slides, links }) => {
+export const MobileSlider: FC<MobileSliderProps> = ({ slides, links }) => {
   const settings: Settings = {
     dots: false,
     arrows: false,

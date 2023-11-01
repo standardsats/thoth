@@ -4,7 +4,7 @@ import { FC } from "react";
 import { CoinType } from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 //Types
-type Props = {
+type SlideProps = {
   slide: CoinType;
 };
 
@@ -35,7 +35,7 @@ const StyledImage = styled.img`
   }
 `;
 
-export const Slide: FC<Props> = ({ slide }) => {
+export const Slide: FC<SlideProps> = ({ slide }) => {
   return (
     <StyledSlideContainer>
       <StyledImage src={slide.src} alt={slide.alt} />

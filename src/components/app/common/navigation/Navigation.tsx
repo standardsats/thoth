@@ -8,16 +8,13 @@ import {
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
 import { FC, useState } from "react";
+import { Navigate } from "@/assets/constants/main.ts";
 
 const { ratesFeesColor, navigateLinkColor } = colorVariables;
 
 //Type
-type Props = {
-  navigation: {
-    button: string;
-    separator: string;
-    location: string;
-  };
+type NavigationProps = {
+  navigation: Navigate;
 };
 
 //Styles
@@ -54,7 +51,7 @@ const StyledText = styled.p`
 `;
 
 //Component
-export const Navigation: FC<Props> = ({ navigation }) => {
+export const Navigation: FC<NavigationProps> = ({ navigation }) => {
   const { button, separator, location } = navigation;
   const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const navigate = useNavigate();

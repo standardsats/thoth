@@ -14,13 +14,13 @@ import { getData } from "@/assets/constants/constants.ts";
 import { useTranslation } from "react-i18next";
 import {
   howItWorksImages,
-  HowItWorksType,
+  HowItWorksData,
 } from "@/assets/constants/app/main-page/HowItWorks.ts";
 
 const { darkGrayColor } = colorVariables;
 
 // Types
-type Props = {
+type HowItWorksProps = {
   id: string;
   title: string;
 };
@@ -107,9 +107,9 @@ const StyledLineRight = styled.div`
 `;
 
 //Component
-export const HowItWorks: FC<Props> = ({ id, title }) => {
+export const HowItWorks: FC<HowItWorksProps> = ({ id, title }) => {
   const { t } = useTranslation();
-  const sectionData = getData("HowItWorks", t) as HowItWorksType;
+  const sectionData = getData("HowItWorks", t) as HowItWorksData;
 
   const { text, stepOne, stepTwo, stepThree, advantages } = sectionData;
 

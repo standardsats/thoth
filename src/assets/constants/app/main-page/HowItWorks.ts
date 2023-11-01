@@ -1,8 +1,8 @@
 import { TFunction } from "i18next";
-import { baseName, ImageType } from "@/assets/constants/main.ts";
+import { baseName, Image } from "@/assets/constants/main.ts";
 import { generateUniqueId } from "@/assets/functions/functions.ts";
 
-export type AdvantageType = {
+export type AdvantageData = {
   id: string;
   subtitle: string;
   text: string;
@@ -10,18 +10,18 @@ export type AdvantageType = {
   alt: string;
 };
 
-export type StepType = {
-  image: ImageType;
+export type StepData = {
+  image: Image;
   subtitle: string;
   text: string;
 };
 
-export type HowItWorksType = {
+export type HowItWorksData = {
   text: string;
-  stepOne: StepType;
-  stepTwo: StepType;
-  stepThree: StepType;
-  advantages: AdvantageType[];
+  stepOne: StepData;
+  stepTwo: StepData;
+  stepThree: StepData;
+  advantages: AdvantageData[];
 };
 
 export const howItWorksImages = {

@@ -7,14 +7,14 @@ import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 import { ArrowButton } from "@/components/app/common/arrow-button/ArrowButton.tsx";
 import { Slide } from "./slide/Slide.tsx";
 import {
-  PhotoSlideArrowsType,
-  PhotosType,
+  PhotoSlideArrowsData,
+  PhotosData,
 } from "@/assets/constants/app/main-page/Photo.ts";
 
 //Types
-type Props = {
-  photos: PhotosType;
-  photoSlideArrows: PhotoSlideArrowsType;
+type PhotoSliderProps = {
+  photos: PhotosData;
+  photoSlideArrows: PhotoSlideArrowsData;
 };
 
 //Styles
@@ -64,7 +64,7 @@ const StyledArrowImage = styled.img<{ $isPrev?: boolean }>`
 `;
 
 //Components
-export const PhotoSlider: FC<Props> = ({ photos, photoSlideArrows }) => {
+export const PhotoSlider: FC<PhotoSliderProps> = ({ photos, photoSlideArrows }) => {
   const settings: Settings = {
     className: "center",
     centerMode: true,

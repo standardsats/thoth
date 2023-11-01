@@ -6,7 +6,7 @@ import { CustomButton } from "../customButton/CustomButton.tsx";
 const { whiteColor, greenColor } = colorVariables;
 
 //Types
-type Props = {
+type SlideButtonProps = {
   id: string;
   isActive: boolean;
   width: string;
@@ -27,7 +27,7 @@ const StyledButton = styled(CustomButton)<{
 `;
 
 //Component
-export const SlideButton: FC<Props> = ({
+export const SlideButton: FC<SlideButtonProps> = ({
   isActive,
   id,
   onClick,

@@ -15,14 +15,14 @@ import { FC } from "react";
 import { commonImages } from "@/assets/constants/main.ts";
 import {
   useCasesOfOurProductsImages,
-  NewsType,
+  NewsData,
 } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 const { whiteColor, greenColor } = colorVariables;
 
 //Type
-type Props = {
-  news: NewsType;
+type NewsProps = {
+  news: NewsData;
 };
 
 //Styles
@@ -127,7 +127,7 @@ const SmallSlidesContainer = styled.div`
   }
 `;
 
-export const News: FC<Props> = ({ news }) => {
+export const News: FC<NewsProps> = ({ news }) => {
   const { title, link } = news;
   const newsToRender = newsData;
   const isMobile = useMobileDetection();

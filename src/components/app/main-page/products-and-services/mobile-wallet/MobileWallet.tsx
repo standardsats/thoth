@@ -8,15 +8,15 @@ import { SectionTitle } from "@/components/app/common/section-title/SectionTitle
 import { MobileWalletLinks } from "@/components/app/main-page/products-and-services/mobile-wallet-links/MobileWalletLinks.tsx";
 import { FC } from "react";
 import {
-  MobileWalletType,
+  MobileWalletData,
   productsAndServiceImages,
 } from "@/assets/constants/app/main-page/ProductAndService.ts";
 
 const { darkColor, whiteColor, darkGrayColor } = colorVariables;
 
 //Type
-type Props = {
-  mobileWallet: MobileWalletType;
+type MobileWalletProps = {
+  mobileWallet: MobileWalletData;
 };
 
 //Styles
@@ -84,7 +84,7 @@ const StyledWrapper = styled.div`
 `;
 
 //Component
-export const MobileWallet: FC<Props> = ({ mobileWallet }) => {
+export const MobileWallet: FC<MobileWalletProps> = ({ mobileWallet }) => {
   const { title, text, links } = mobileWallet;
 
   return (

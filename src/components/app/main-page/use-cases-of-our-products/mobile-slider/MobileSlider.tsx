@@ -7,16 +7,16 @@ import { FC } from "react";
 import { ArrowButton } from "@/components/app/common/arrow-button/ArrowButton.tsx";
 import { sizeVariable } from "@/assets/styles/commonStyles.ts";
 import {
+  PhotoSlideArrowRightData,
   useCasesOfOurProductsImages,
-  photoSlideArrowRightType,
-  UseCasesOfOurProductsSlideType,
+  UseCasesOfOurProductsSlideData,
 } from "@/assets/constants/app/main-page/UseCasesOfOurProducts.ts";
 
 //Type
-type Props = {
+type MobileSliderProps = {
   subtitle: string;
-  slides: UseCasesOfOurProductsSlideType[];
-  photoSlideArrowRight: photoSlideArrowRightType;
+  slides: UseCasesOfOurProductsSlideData[];
+  photoSlideArrowRight: PhotoSlideArrowRightData;
 };
 
 //Style
@@ -36,7 +36,7 @@ const StyledSlideContainer = styled.div`
 `;
 
 //Component
-export const MobileSlider: FC<Props> = ({
+export const MobileSlider: FC<MobileSliderProps> = ({
   slides,
   subtitle,
   photoSlideArrowRight,

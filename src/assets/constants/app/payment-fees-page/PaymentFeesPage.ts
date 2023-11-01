@@ -3,8 +3,9 @@ import {
   enterpriseHref,
   individualHref,
 } from "@/assets/links-href/LinksHref.ts";
+import { Navigate } from "@/assets/constants/main.ts";
 
-export type PaymentFeesType = {
+export type PaymentFeesData = {
   title: string;
   individual: {
     subtitle: string;
@@ -66,11 +67,7 @@ export type PaymentFeesType = {
       percent: string[];
     };
   };
-  navigation: {
-    button: string;
-    separator: string;
-    location: string;
-  };
+  navigation: Navigate;
 };
 
 export const getPaymentFeesData = (t: TFunction) => {

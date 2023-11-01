@@ -11,7 +11,7 @@ import { sectionFaq, SectionsType } from "@/assets/constants/app/App.ts";
 import { scrollTo } from "@/assets/functions/functions.ts";
 
 //Types
-type Props = {
+type HeaderNavigationProps = {
   sections: SectionsType;
   headerHeight: number;
   burgerMenuHandler?: () => void;
@@ -75,7 +75,7 @@ const StyledButton = styled(CustomButton)`
 `;
 
 //Component
-export const HeaderNavigation: FC<Props> = ({
+export const HeaderNavigation: FC<HeaderNavigationProps> = ({
   sections,
   headerHeight,
   burgerMenuHandler,

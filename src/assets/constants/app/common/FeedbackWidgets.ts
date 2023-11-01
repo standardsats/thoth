@@ -7,19 +7,19 @@ import {
   twitterHref,
 } from "@/assets/links-href/LinksHref.ts";
 
-export type SocialImageType = {
+export type SocialImageData = {
   darkSrc?: string;
   lightSrc?: string;
   alt: string;
 };
 
-export type SocialType = {
+export type SocialData = {
   id: string;
-  image: SocialImageType;
+  image: SocialImageData;
   href: string;
 };
 
-export type FeedbackWidgetsType = SocialType[];
+export type FeedbackWidgetsData = SocialData[];
 
 export const feedbackWidgetsImages = {
   telegramDark: `${baseName}/images/common/telegram-dark.svg`,

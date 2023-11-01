@@ -8,7 +8,7 @@ import {
 import { useMobileDetection } from "@/hooks/useMobileDetection.tsx";
 
 //Type
-type Props = {
+type DropRightElementProps = {
   isOpen: boolean | null;
   children: ReactNode;
 };
@@ -53,7 +53,7 @@ const ScrollableContent = styled.div<{ $scrollEnabled: boolean }>`
 `;
 
 //Component
-export const DropRightElement: FC<Props> = ({ children, isOpen }) => {
+export const DropRightElement: FC<DropRightElementProps> = ({ children, isOpen }) => {
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const containerHeightRef = useRef<HTMLDivElement>(null);
 

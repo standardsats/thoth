@@ -3,7 +3,7 @@ import { newsData } from "@/assets/test/newsData.tsx";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { getData } from "@/assets/constants/constants.ts";
-import { NewsPageDataType } from "@/assets/constants/app/news-page/NewsPage.ts";
+import { NewsPageData } from "@/assets/constants/app/news-page/NewsPage.ts";
 // import { Rating } from "@/components/app/news-page/rating/Rating.tsx";
 import {
   colorVariables,
@@ -218,7 +218,7 @@ const StyledSelectedImage = styled.img`
 //Component
 export const NewsPage = () => {
   const { t } = useTranslation();
-  const paigeData = getData("News", t) as NewsPageDataType;
+  const paigeData = getData("News", t) as NewsPageData;
   const { navigation, share, title, time } = paigeData;
   const { id } = useParams();
 
