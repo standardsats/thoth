@@ -183,7 +183,11 @@
   },
   "footer": {
     "text": "Our vision is to provide convenience and help increase your sales business.",
-    "navTitleOne": "Socials",
+    "navTitleSocials": "Socials",
+    "settings": {
+      "navTitleSettings": "Settings",
+      "accountDeletion": "Account deletion"
+    },
     "rights": "Auto Fast. All rights reserved",
     "policy": "Privacy & Policy",
     "condition": "Terms & Condition"

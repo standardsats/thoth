@@ -28,7 +28,7 @@ export const App = () => {
         <Route path="/payment-fees" element={<PaymentFeesPage />} />
         <Route path="/news/:id" element={<NewsPage />} />
         <Route path="/faq" element={<FAQPage />} />
-        <Route path="/delete" element={<DeleteAccountPage />} />
+        <Route path="/delete-account" element={<DeleteAccountPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

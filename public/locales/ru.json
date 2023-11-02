@@ -182,7 +182,11 @@
   },
   "footer": {
     "text": "Наша цель - удобство и рост продаж вашего бизнеса.",
-    "navTitleOne": "Социальные сети",
+    "navTitleSocials": "Социальные сети",
+    "settings": {
+      "navTitleSettings": "Настройки",
+      "accountDeletion": "Удаление аккаунта"
+    },
     "rights": "Auto Fast. Все права защищены",
     "policy": "Политика конфиденциальности",
     "condition": "Условия и положения"

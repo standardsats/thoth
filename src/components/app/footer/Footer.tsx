@@ -12,6 +12,10 @@ import { FooterNavigation } from "@/components/app/footer/footer-navigation/Foot
 import { useTranslation } from "react-i18next";
 import { FooterData } from "@/assets/constants/app/footer/Footer.ts";
 import { getData } from "@/assets/constants/constants.ts";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { scrollTo } from "@/assets/functions/functions.ts";
+import { CustomButton } from "@/components/app/common/customButton/CustomButton.tsx";
 
 const { whiteColor, deepGrayColor } = colorVariables;
 
@@ -113,6 +117,7 @@ const StyledFeedbackWidgets = styled(FeedbackWidgets)`
 `;
 
 const StyledFooterText = styled.p`
+  color: ${whiteColor};
   ${resetMarginsAndPaddings};
   font-size: calc(16vw / 14.4);
   font-style: normal;
@@ -134,13 +139,46 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const StyledLinkItem = styled.li`
+  ${resetMarginsAndPaddings};
+  margin-bottom: 0.34vw;
+  color: ${whiteColor};
+  ${fontFamilySecond};
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.32px;
+  text-align: left;
+
+  @media (max-width: ${sizeVariable}) {
+    text-align: center;
+    font-size: calc(20vw / 5.08);
+  }
+`;
+
+const StyledButtonContent = styled(CustomButton)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+`;
+
 //Components
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useTranslation();
   const footerData = getData("Footer", t) as FooterData;
-
   const { text, nav, rights, policy, condition } = footerData;
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
+  const navigate = useNavigate();
+  const onClickHandler = () => {
+    setIsDisabled(true);
+    navigate("/delete-account");
+    scrollTo(0);
+    setIsDisabled(false);
+  };
 
   return (
     <StyledFooterContainer>
@@ -152,7 +190,32 @@ export const Footer = () => {
         </StyledColumn>
         {/*<FooterNavigation data={nav.about} />*/}
         {/*<FooterNavigation data={nav.community} />*/}
-        <FooterNavigation data={nav.socials} />
+        <FooterNavigation title={nav.settings.title}>
+          {nav.settings.buttons.map((button) => (
+            <StyledButtonContent
+              key={button.name}
+              type="button"
+              disabled={isDisabled}
+              onClick={onClickHandler}
+            >
+              <StyledFooterText>{button.name}</StyledFooterText>
+            </StyledButtonContent>
+          ))}
+        </FooterNavigation>
+        <FooterNavigation title={nav.socials.title}>
+          {nav.socials.links.map((link) => (
+            <StyledLinkItem key={link.name}>
+              <Link
+                color={whiteColor}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.name}
+              </Link>
+            </StyledLinkItem>
+          ))}
+        </FooterNavigation>
       </StyledWrapperTop>
       <StyledWrapperBottom>
         <StyledFooterMainText>

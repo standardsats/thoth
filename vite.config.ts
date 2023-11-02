@@ -2,19 +2,18 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
 import path from "path";
-console.log(process.env.VITE_BASE_NAME);
 
 export default defineConfig({
   plugins: [
     react(),
     svgr({
       svgrOptions: {
-        // свойства для настройки SVGR
+        // SVGR
       },
     }),
   ],
-  // base: process.env.VITE_BASE_NAME,
-  //base: "/thoth/",
+  // gh-pages base: "/thoth/
+  // https://thothpay.com base: "/"
   base: "/",
   server: {
     open: true,

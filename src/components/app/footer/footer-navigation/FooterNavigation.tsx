@@ -1,19 +1,17 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import styled from "styled-components";
-import { Link } from "@/components/app/common/Link/Link.tsx";
 import {
   colorVariables,
   fontFamilySecond,
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
-import { FooterLinksData } from "@/assets/constants/app/footer/Footer.ts";
+import { FooterTitleData } from "@/assets/constants/app/footer/Footer.ts";
 
 const { whiteColor } = colorVariables;
-
 //Types
-type FooterNavigationProps = {
-  data: FooterLinksData;
+type FooterNavigationProps = FooterTitleData & {
+  children: ReactNode;
 };
 
 //Styles
@@ -62,43 +60,15 @@ const StyledLinkList = styled.ul`
   }
 `;
 
-const StyledLinkItem = styled.li`
-  ${resetMarginsAndPaddings};
-  margin-bottom: 0.34vw;
-  color: ${whiteColor};
-  ${fontFamilySecond};
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.32px;
-  text-align: left;
-
-  @media (max-width: ${sizeVariable}) {
-    text-align: center;
-    font-size: calc(20vw / 5.08);
-  }
-`;
-
 //Components
-export const FooterNavigation: FC<FooterNavigationProps> = ({ data }) => {
+export const FooterNavigation: FC<FooterNavigationProps> = ({
+  title,
+  children,
+}) => {
   return (
     <StyledColumn>
-      <StyledTitle>{data.title}</StyledTitle>
-      <StyledLinkList>
-        {data.links.map((link) => (
-          <StyledLinkItem key={link.name}>
-            <Link
-              color={whiteColor}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.name}
-            </Link>
-          </StyledLinkItem>
-        ))}
-      </StyledLinkList>
+      <StyledTitle>{title}</StyledTitle>
+      <StyledLinkList>{children}</StyledLinkList>
     </StyledColumn>
   );
 };

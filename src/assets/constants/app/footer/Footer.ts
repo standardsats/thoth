@@ -20,9 +20,20 @@ export type FooterLinkData = {
   href: string;
 };
 
-export type FooterLinksData = {
+export type FooterButtonData = {
+  name: string;
+};
+
+export type FooterTitleData = {
   title: string;
+};
+
+export type FooterLinksData = {
   links: FooterLinkData[];
+};
+
+export type FooterButtonsData = {
+  buttons: FooterButtonData[];
 };
 
 export type FooterData = {
@@ -30,7 +41,8 @@ export type FooterData = {
   nav: {
     // about: FooterLinksData;
     // community: FooterLinksData;
-    socials: FooterLinksData;
+    socials: FooterTitleData & FooterLinksData;
+    settings: FooterTitleData & FooterButtonsData;
   };
   rights: string;
   policy: FooterLinkData;
@@ -63,12 +75,16 @@ export const getFooterData = (t: TFunction) => {
       //   ],
       // },
       socials: {
-        title: t("footer.navTitleOne"),
+        title: t("footer.navTitleSocials"),
         links: [
           { name: "Telegram", href: telegramHref },
           { name: "Twitter", href: twitterHref },
           { name: "Facebook", href: facebookHref },
         ],
+      },
+      settings: {
+        title: t("footer.settings.navTitleSettings"),
+        buttons: [{ name: t("footer.settings.accountDeletion") }],
       },
     },
     rights: t("footer.rights"),
