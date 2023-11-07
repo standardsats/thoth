@@ -9,6 +9,7 @@ import {
   resetMarginsAndPaddings,
   sizeVariable,
 } from "@/assets/styles/commonStyles.ts";
+import ReactHtmlParser from "react-html-parser";
 import { Navigation } from "@/components/app/common/navigation/Navigation.tsx";
 import { SectionTitle } from "@/components/app/common/section-title/SectionTitle.tsx";
 import { DeleteAccountPageData } from "@/assets/constants/app/delete-account-page/DeleteAccountPage.ts";
@@ -102,7 +103,7 @@ export const DeleteAccountPage = () => {
         <StyledDescription>{description}</StyledDescription>
         <StyledList>
           {steps.map((item) => (
-            <StyledItem key={item.id}>{item.step}</StyledItem>
+            <StyledItem key={item.id}>{ReactHtmlParser(item.step)}</StyledItem>
           ))}
         </StyledList>
       </StyledContainer>

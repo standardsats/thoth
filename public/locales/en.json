@@ -272,7 +272,7 @@
     "description": "The steps below outline the process for irreversibly deleting your account from the Thothpay service. Ensure you have withdrawn all funds before proceeding.",
     "steps": {
       "stepOne": "Have your Lightning wallet ready, the one you used to sign in to the system.",
-      "stepTwo": "Visit <a href=\"thothpay.com/merchant/delete\">this page</a> and log in as usual.",
+      "stepTwo": "Visit <a href=\"/merchant/delete\">this page</a> and log in as usual.",
       "stepThree": "Input the confirmation statement in the designated field and click on \"Yes, delete me.\"",
       "stepFour": "If all goes well, you'll be redirected to the main page."
     },
