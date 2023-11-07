@@ -79,29 +79,24 @@ export const getPaymentFeesData = (t: TFunction) => {
       linkLabel: t("pagePaymentFees.linkLabel"),
       depositFee: {
         text: t("pagePaymentFees.depositFee"),
-        percent: ["0.1%", "0.3%"],
-        span: ["<1000$", ">1000$"],
+        percent: ["0.35%"],
       },
       swapFee: {
         text: t("pagePaymentFees.swapFee"),
-        percent: ["0.5%"],
+        percent: ["0.75%"],
       },
       withdrawFee: {
         text: t("pagePaymentFees.withdrawFee"),
-        percent: ["0.5%"],
+        percent: ["0%"],
       },
       fiatBankIn: {
         text: t("pagePaymentFees.fiatBankIn"),
-        percent: ["0.5%"],
+        percent: ["3.0%"],
       },
       fiatBankOut: {
         text: t("pagePaymentFees.fiatBankOut"),
-        percent: ["0.5%"],
-      },
-      depositFeeSpan: {
-        text: t("pagePaymentFees.depositFeeSpan"),
-        percent: ["0.5%"],
-      },
+        percent: ["3.0%"],
+      }
     },
     enterprise: {
       subtitle: t("pagePaymentFees.subtitleEnterprise"),
@@ -109,29 +104,25 @@ export const getPaymentFeesData = (t: TFunction) => {
       linkLabel: t("pagePaymentFees.linkLabel"),
       depositFee: {
         text: t("pagePaymentFees.depositFee"),
-        percent: ["0.1%"],
+        percent: ["0.35%"],
       },
       swapFee: {
         text: t("pagePaymentFees.swapFee"),
-        percent: ["0.5%", "0.6%"],
+        percent: ["0.75%", "0.5%"],
         span: ["<1000$", ">1000$"],
       },
       withdrawFee: {
         text: t("pagePaymentFees.withdrawFee"),
-        percent: ["0.5%"],
+        percent: ["0%"],
       },
       fiatBankIn: {
         text: t("pagePaymentFees.fiatBankIn"),
-        percent: ["0.5%"],
+        percent: ["3.0%"],
       },
       fiatBankOut: {
         text: t("pagePaymentFees.fiatBankOut"),
-        percent: ["0.5%"],
-      },
-      depositFeeSpan: {
-        text: t("pagePaymentFees.depositFeeSpan"),
-        percent: ["0.5%"],
-      },
+        percent: ["3.0%"],
+      }
     },
     navigation: {
       button: t("pagePaymentFees.navigation.button"),
