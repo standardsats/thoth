@@ -31,13 +31,8 @@ const StyledImage = styled.img`
   }
 `;
 
-//TODO
-//временно отключили ссылки, нужно потом включить
 const StyledLink = styled(Link)`
-  pointer-events: none;
-  text-decoration: none; 
-  cursor: not-allowed;
-  opacity: 0.3;
+  text-decoration: none;
 }
 
   @media (max-width: ${sizeVariable}) {
@@ -45,21 +40,41 @@ const StyledLink = styled(Link)`
   }
 `;
 
+//TODO
+//временно отключили ссылку, нужно потом включить
+const StyledDisabledLink = styled(StyledLink)`
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.3;
+`;
+
 //Component
 export const MobileWalletLinks: FC<MobileWalletLinksProps> = ({ links }) => {
   return (
     <StyledWrapper>
-      {links.map((link) => (
-        <StyledLink
-          key={link.id}
-          color={"transparent"}
-          href={link.href}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <StyledImage src={link.src} alt={link.alt} />
-        </StyledLink>
-      ))}
+      {links.map((link, index) =>
+        index === 0 ? (
+          <StyledLink
+            key={link.id}
+            color={"transparent"}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <StyledImage src={link.src} alt={link.alt} />
+          </StyledLink>
+        ) : (
+          <StyledDisabledLink
+            key={link.id}
+            color={"transparent"}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <StyledImage src={link.src} alt={link.alt} />
+          </StyledDisabledLink>
+        )
+      )}
     </StyledWrapper>
   );
 };

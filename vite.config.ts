@@ -12,7 +12,7 @@ export default defineConfig({
       },
     }),
   ],
-  // gh-pages base: "/thoth/
+  // gh-pages base: "/thoth/"
   // https://thothpay.com base: "/"
   base: "/",
   server: {
