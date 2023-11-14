@@ -1,6 +1,7 @@
 {
   "homepage": "https://annavilnid.github.io/thoth/",
   "name": "thoth",
+  "license": "MIT",
   "private": true,
   "version": "0.0.0",
   "type": "module",

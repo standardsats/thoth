@@ -9,7 +9,8 @@ export type Navigate = {
   location: string;
 };
 
-// gh-pages = "/thoth"  https://thothpay.com = ""
+// gh-pages baseName = "/thoth"
+// https://thothpay.com baseName = ""
 export const baseName = "";
 export const commonImages = {
   playIconWhite: "images/common/play-icon-white.svg",
